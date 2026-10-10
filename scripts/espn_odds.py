@@ -16,9 +16,26 @@ now = dt.datetime.now(dt.timezone.utc)
 dates = "-".join(d.strftime("%Y%m%d") for d in (now - dt.timedelta(days=1), now + dt.timedelta(days=7)))
 
 def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
+
+def fetch_board(lg):
+    """Try the date-range pull first, then fall back to one request per day."""
+    try:
+        return fetch(LEAGUES[lg].format(d=dates)).get("events", []), "range"
+    except Exception as e:
+        errors.append(f"{lg} range: {type(e).__name__}: {e}")
+    events, seen = [], set()
+    for i in range(-1, 8):
+        day = (now + dt.timedelta(days=i)).strftime("%Y%m%d")
+        try:
+            for ev in fetch(LEAGUES[lg].format(d=day)).get("events", []):
+                if ev["id"] not in seen:
+                    seen.add(ev["id"]); events.append(ev)
+        except Exception as e:
+            errors.append(f"{lg} {day}: {type(e).__name__}: {e}")
+    return events, "per-day"
 
 def g(d, *keys):
     for k in keys:
@@ -53,13 +70,20 @@ def parse(ev):
         row["total_open"] = g(dk, "total", "over", "open", "line")
     return row
 
+errors, status = [], {}
 os.makedirs(OUT, exist_ok=True)
 stamp = now.strftime("%Y-%m-%dT%H:%MZ")
 for lg, url in LEAGUES.items():
-    try:
-        rows = [parse(e) for e in fetch(url.format(d=dates)).get("events", [])]
-    except Exception as e:
-        print(f"FAIL {lg}: {e}")
+    events, mode = fetch_board(lg)
+    rows = []
+    for e in events:
+        try:
+            rows.append(parse(e))
+        except Exception as ex:
+            errors.append(f"{lg} parse {e.get('id')}: {type(ex).__name__}: {ex}")
+    status[lg] = {"games": len(rows), "with_dk_line": sum(1 for r in rows if r.get("total") is not None), "mode": mode}
+    if not rows:
+        print(f"FAIL {lg}: no games")
         continue
     with open(f"{OUT}/latest_{lg}.json", "w") as f:
         json.dump({"pulled_utc": stamp, "source": "ESPN scoreboard, provider DraftKings", "games": rows}, f, indent=1)
@@ -76,3 +100,6 @@ for lg, url in LEAGUES.items():
             if r.get("status") != "post" or r.get("home_score"):
                 w.writerow({"pulled_utc": stamp, **r})
     print(f"ok   {lg}: {len(rows)} games")
+
+with open(f"{OUT}/_status.json", "w") as f:
+    json.dump({"pulled_utc": stamp, "status": status, "errors": errors[:50]}, f, indent=1)
