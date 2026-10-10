@@ -21,7 +21,7 @@ def main(first, last):
     M.calibrate(rows)
     rows = [r for r in rows if first <= r["season"] <= last and r["result"] is not None and r["close"] is not None and r["blend"] is not None]
     cols = ["season", "week", "game_id", "home", "away", "close", "result", "close_total", "total", "qb_adj",
-            "epa_cal", "sr_cal", "pts_cal", "last_cal", "elo_cal", "mkt_cal", "blend", "epa_tot_cal", "pts_tot_cal"]
+            "epa_cal", "sr_cal", "pts_cal", "last_cal", "elo_cal", "mkt_cal", "blend", "side_sd", "tot_sd", "epa_tot_cal", "pts_tot_cal"]
     with open("data/nfl/backtest_games.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore"); w.writeheader()
         for r in rows:
@@ -30,21 +30,46 @@ def main(first, last):
     summ = {"generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
             "seasons": [first, last], "games": len(rows), "line": "nflverse consensus closing line",
             "rmse": {"close": round(float(np.sqrt(np.mean([(r["result"] - r["close"]) ** 2 for r in rows]))), 2)},
-            "ats_vs_close": {}, "by_season": {}, "totals_vs_close": {}}
+            "by_season": {}}
     for m in ("epa_cal", "sr_cal", "pts_cal", "blend", "last_cal", "elo_cal", "mkt_cal"):
         summ["rmse"][m] = round(float(np.sqrt(np.mean([(r["result"] - r[m]) ** 2 for r in rows]))), 2)
-    for t in (1, 2, 3):
-        e = [(r["blend"] - r["close"]) if abs(r["blend"] - r["close"]) >= t else None for r in rows]
-        summ["ats_vs_close"][f"blend_edge_{t}+"] = rec(e, res_vs_close)
-        e = [(r["blend"] - r["close"]) if abs(r["blend"] - r["close"]) >= t and all(
-            (r[m] - r["close"]) * (r["blend"] - r["close"]) > 0 and abs(r[m] - r["close"]) >= 1 for m in ("epa_cal", "sr_cal", "pts_cal")) else None for r in rows]
-        summ["ats_vs_close"][f"blend_{t}+_all3_agree"] = rec(e, res_vs_close)
-        tr = [r["total"] - r["close_total"] if r["close_total"] else 0 for r in rows]
-        e = [(r["epa_tot_cal"] - r["close_total"]) if r["close_total"] and abs(r["epa_tot_cal"] - r["close_total"]) >= t + 1 and
-             abs(r["pts_tot_cal"] - r["close_total"]) >= t + 1 and (r["epa_tot_cal"] - r["close_total"]) * (r["pts_tot_cal"] - r["close_total"]) > 0 else None for r in rows]
-        summ["totals_vs_close"][f"both_{t + 1}+"] = rec(e, tr)
+    # the live tiers (see regrade_nfl.py), applied to closing lines
+    sys.path.insert(0, os.path.dirname(__file__))
+    from regrade_nfl import grade_side, grade_total
+    tiers = {"side": {}, "total": {}}
+    fav_n = fav_t = over_n = over_t = 0
+    for r in rows:
+        e = r["blend"] - r["close"]; es = [r[m] - r["close"] for m in ("epa_cal", "sr_cal", "pts_cal")]
+        g = grade_side(e, es, r.get("side_sd"))
+        if g != "PASS":
+            o = r["result"] - r["close"]
+            if o != 0:
+                d = tiers["side"].setdefault(g, {"w": 0, "l": 0, "fav": 0, "n": 0})
+                d["w" if (e > 0) == (o > 0) else "l"] += 1
+            d = tiers["side"].setdefault(g, {"w": 0, "l": 0, "fav": 0, "n": 0}); d["n"] += 1
+            fav = (e > 0) == (r["close"] > 0); d["fav"] += fav
+        if r["close_total"]:
+            t1, t2 = r["epa_tot_cal"] - r["close_total"], r["pts_tot_cal"] - r["close_total"]
+            g = grade_total(t1, t2)
+            if g != "PASS":
+                t = (t1 + t2) / 2; o = r["total"] - r["close_total"]
+                d = tiers["total"].setdefault(g, {"w": 0, "l": 0, "over": 0, "n": 0}); d["n"] += 1; d["over"] += t > 0
+                if o != 0:
+                    d["w" if (t > 0) == (o > 0) else "l"] += 1
+    for mk in tiers.values():
+        for d in mk.values():
+            d["pct"] = round(d["w"] / max(d["w"] + d["l"], 1), 3)
+            d["per_week"] = round(d["n"] / (18 * (last - first + 1)), 1)
+            if "fav" in d: d["fav_share"] = round(d.pop("fav") / d["n"], 2)
+            if "over" in d: d["over_share"] = round(d.pop("over") / d["n"], 2)
+    summ["tiers_vs_close"] = tiers
+    gaps = {}
+    for lo, hi in ((0, 1), (1, 2), (2, 3), (3, 4), (4, 6), (6, 99)):
+        sub = [(r["blend"] - r["close"], r["result"] - r["close"]) for r in rows if lo <= abs(r["blend"] - r["close"]) < hi]
+        gaps[f"{lo}-{hi if hi < 99 else '+'}"] = rec([a for a, _ in sub], [b for _, b in sub])
+    summ["side_by_gap"] = gaps
     for s in range(first, last + 1):
-        sub = [(r["blend"] - r["close"] if abs(r["blend"] - r["close"]) >= 2 else None, r["result"] - r["close"]) for r in rows if r["season"] == s]
+        sub = [(r["blend"] - r["close"] if 2 <= abs(r["blend"] - r["close"]) < 4 else None, r["result"] - r["close"]) for r in rows if r["season"] == s]
         summ["by_season"][str(s)] = rec([a for a, _ in sub], [b for _, b in sub])
     with open("data/nfl/backtest_summary.json", "w") as f:
         json.dump(summ, f, indent=1)

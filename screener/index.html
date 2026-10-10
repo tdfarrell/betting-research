@@ -156,6 +156,9 @@ footer .legal{font:500 11.5px var(--mono);letter-spacing:.3px;color:#6E788A}
 .sport:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 .gr.TARGET{background:var(--win-bg);color:var(--win);border:1px solid rgba(74,222,155,.35)}
 .gr.WATCH{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(255,176,32,.35)}
+.gr.CHECK{background:var(--lotto-bg);color:var(--lotto);border:1px dashed rgba(201,162,255,.45)}
+.pk.lean{color:var(--muted);font-weight:500}
+.adj.info{color:var(--lotto)}
 .angle{color:var(--muted)}
 th.ang,td.ang{background:rgba(201,162,255,.04)}
 th.grp.ang{color:var(--lotto)}
@@ -311,8 +314,9 @@ function cmpRow(label, a, h, f, higherBetter) {
 }
 const sect = t => `<tr><td colspan="3" class="edge" style="padding-top:10px">${t}</td></tr>`;
 function gradeCell(m) {
-  const adj = (m.adjust || []).map(a => `<span class="adj">↓ ${esc(a)}</span>`).join("");
-  return `<span class="gr ${m.grade}">${m.grade}</span>${m.pick ? `<span class="pk">${esc(m.pick)}</span>` : ""}${adj}`;
+  const chk = m.grade === "CHECK";
+  const adj = (m.adjust || []).map(a => chk ? `<span class="adj info">? Big gap — check news first</span>` : `<span class="adj">↓ ${esc(a)}</span>`).join("");
+  return `<span class="gr ${m.grade}">${m.grade}</span>${m.pick ? `<span class="pk${chk ? " lean" : ""}">${chk ? "lean " : ""}${esc(m.pick)}</span>` : ""}${adj}`;
 }
 const moveTxt = (open, now, f = sgn) => open == null || now == null || open === now ? "" : `<span class="mv">open ${f(open)}</span>`;
 
@@ -358,11 +362,11 @@ const SPORTS = {
       const up = slates.filter(s => s.first_day >= t || s.games > 1).filter(s => s.first_day >= addDays(t, -6));
       return (up.sort((a, b) => b.games - a.games || a.key.localeCompare(b.key))[0] || slates[slates.length - 1]).key; },
     grades: ["TARGET", "WATCH"], topWord: "Targets", bothWord: "Targets + Watch", bestTitle: "Targets", stats: ["Targets", "Watch list"],
-    head: `<tr><th></th><th></th><th class="grp" colspan="6">Spread (home line) · this season</th><th class="grp ang" colspan="2">Angles</th><th class="grp" colspan="4">Total</th><th></th></tr>
+    head: `<tr><th></th><th></th><th class="grp" colspan="6">Spread (home line) · this season</th><th class="grp ang" colspan="2">Angles</th><th class="grp" colspan="5">Total</th><th></th></tr>
       <tr><th>Kick (ET)</th><th>Matchup</th><th class="num">DK</th><th class="num">BW #</th><th class="num">EPA</th><th class="num">Succ.</th><th class="num">Pts</th><th>Grade</th>
       <th class="num ang">Last yr</th><th class="num ang">Elo</th>
-      <th class="num">DK</th><th class="num">EPA</th><th class="num">Pts</th><th>Grade</th><th>Weather</th></tr>`,
-    cols: 15,
+      <th class="num">DK</th><th class="num">BW</th><th class="num">EPA</th><th class="num">Pts</th><th>Grade</th><th>Weather</th></tr>`,
+    cols: 16,
     rank: (T, t) => T[t].net_rank,
     row(g, T) { const d = g.dk, m = g.model; return `
       <td class="num mono">${sgn(d.home_spread)}${moveTxt(d.home_spread_open, d.home_spread)}</td>
@@ -370,17 +374,17 @@ const SPORTS = {
       <td>${gradeCell(g.side)}${(g.side.keys || []).length ? `<span class="mv">crosses ${g.side.keys.join(" & ")}</span>` : ""}</td>
       <td class="num mono ang angle">${sgn(m.last_spread)}</td><td class="num mono ang angle">${sgn(m.elo_spread)}</td>
       <td class="num mono">${fmt(d.total)}${moveTxt(d.total_open, d.total, fmt)}</td>
-      <td class="num mono">${fmt(m.epa_total)}</td><td class="num mono">${fmt(m.pts_total)}</td><td>${gradeCell(g.total)}</td>
+      <td class="num mono"><b>${fmt(m.total_number)}</b></td><td class="num mono">${fmt(m.epa_total)}</td><td class="num mono">${fmt(m.pts_total)}</td><td>${gradeCell(g.total)}</td>
       <td class="wx">${esc(nflWx(g))}</td>`; },
     mobile(g) { const m = g.model; return [
       `BW ${sgn(m.number)} · EPA ${sgn(m.epa_spread)} · SR ${sgn(m.sr_spread)} · Pts ${sgn(m.pts_spread)}<br><span class="angle">Last yr ${sgn(m.last_spread)} · Elo ${sgn(m.elo_spread)}</span>`,
-      `EPA ${fmt(m.epa_total)} · Pts ${fmt(m.pts_total)}`]; },
+      `BW ${fmt(m.total_number)} · EPA ${fmt(m.epa_total)} · Pts ${fmt(m.pts_total)}`]; },
     cardWhy(g, k) { const m = g.model, d = g.dk; return k === "side"
       ? `BW ${esc(g.home_abbr)} ${sgn(m.number)} vs DK ${sgn(d.home_spread)} · EPA ${sgn(m.epa_spread)} · SR ${sgn(m.sr_spread)} · Pts ${sgn(m.pts_spread)}`
-      : `EPA ${fmt(m.epa_total)} · points ${fmt(m.pts_total)} vs DK ${fmt(d.total)}`; },
+      : `BW total ${fmt(m.total_number)} vs DK ${fmt(d.total)} · EPA ${fmt(m.epa_total)} · points ${fmt(m.pts_total)}`; },
     drawer: nflDrawer, extra: nflTrack, early: nflEarly, props: true,
-    how: () => `<p><b>How grades work.</b> Grades use <b>this season only</b>: three ratings built from this season's play-by-play — EPA per play, success rate and points scored/allowed — each adjusted for opponent and for the projected starting quarterback, fitted to recent closing lines, and averaged into the <b>BW number</b>. Last season only seeds the ratings early (full weight in Week 1, fading to zero by Week 6) because rosters and coaching staffs change too much year to year. <b style="color:var(--win)">TARGET</b>: BW number differs from DraftKings by 2+ points and all three ratings agree (each 1+ point, same team). <b style="color:var(--amber)">WATCH</b>: differs by 1+ and at least two agree. <b>Totals</b>: an EPA × pace projection and a points-rating projection must both miss DK by 3+ the same way (TARGET if either is 5+). <b style="color:var(--loss)">Downgrades</b>: line moved 2+ toward the other side since open; overs in 15+ mph wind or rain with a falling total. If a projected starting QB is questionable, doubtful or out, the game is flagged and not graded.</p>
-      <p><b style="color:var(--lotto)">Angles</b> — last season's rating, multi-season Elo and the market rating — are context only and never change a grade. <b>Honesty note:</b> NFL closing lines are sharp. In a 2022–25 backtest no grade beat the closing line, so TARGETs are early-line opportunities, not locks: every TARGET and WATCH is logged at the DraftKings line when first flagged and graded on closing-line value (did the DK line move our way?) in the Track record above.</p>
+    how: () => `<p><b>How grades work.</b> Grades use <b>this season only</b>: three ratings built from this season's play-by-play — EPA per play, success rate and points scored/allowed — each adjusted for opponent and for the projected starting quarterback, fitted to recent closing lines, and averaged into the <b>BW number</b>. Last season only seeds the ratings early (full weight in Week 1, fading to zero by Week 6) because rosters and coaching staffs change too much year to year. The ratings are put on DraftKings' scale so that an edge can't be predicted from the size of the line — favorites and underdogs, overs and unders all get an even shot. Gaps are measured against the <b>usual gap</b> between the BW number and the close lately (about 4 points early in the season, 3 later), so a tier means the same thing in Week 4 as in Week 14. <b style="color:var(--amber)">WATCH</b>: 0.3–0.6× the usual gap and at least two ratings agree (each 1+ point, same team). <b style="color:var(--win)">TARGET</b>: 0.6–1.0× the usual gap, at least two agree. <b style="color:var(--lotto)">CHECK</b>: bigger than the usual gap — in the backtest these lost against the close every season, because the market usually knows something the model doesn't (injury, QB, news); shown as a lean only. <b>Totals</b>: an EPA × pace projection and a points-rating projection, averaged into the BW total; TARGET when both miss DK by 1.5+ the same way and the BW total is 2–4.5 off, WATCH at 1.5–2, CHECK at 4.5+. <b style="color:var(--loss)">Downgrades</b>: line moved 2+ toward the other side since open; overs in 15+ mph wind or rain with a falling total. If a projected starting QB is questionable, doubtful or out, the game is flagged and not graded.</p>
+      <p><b style="color:var(--lotto)">Angles</b> — last season's rating, multi-season Elo and the market rating — are context only and never change a grade. <b>Honesty note:</b> backtested 2022–25 against closing lines, side WATCHes and TARGETs have run 55–59% and CHECK leans 44%; totals have shown no edge yet (about 50% in every band). Samples are a few hundred games, so every TARGET, WATCH and CHECK is logged at the DraftKings line when first flagged and graded on closing-line value in the Track record above.</p>
       <p>Data: DraftKings lines via ESPN's public scoreboard; play-by-play, schedules, projected starters and injury reports via nflverse. Always check final inactives and confirm the current price in the DraftKings app. Research tool, not a pick; Ballwatcher's actual plays are on <a href="https://ballwatcher.com/today">Today's Card</a>.</p>`,
   },
   nba: { label: "NBA", soon: true },
@@ -584,8 +588,9 @@ function nflTrack(ix) {
     return `<div class="stat"><div class="k">${label}</div><div class="v">${x.n ? clv + " pts" : "—"}</div>
       <div class="s">${x.n ? `CLV avg · beat close ${x.beat_close}/${x.n}` : "No closed flags yet"}${x.w + x.l + (x.p || 0) ? ` · ${x.w}-${x.l}${x.p ? "-" + x.p : ""} ATS` : ""}</div></div>`; };
   let btTxt = "";
-  if (bt) { const a = bt.ats_vs_close["blend_2+_all3_agree"]; btTxt = `<div class="note"><b>Backtest ${bt.seasons[0]}–${String(bt.seasons[1]).slice(2)}</b> (${bt.games} games, vs the ${esc(bt.line)}): TARGET-style edges went ${a.w}-${a.l} (${pct(a.pct)}) against the close, below the 52.4% break-even. The closing line is very hard to beat, so the record that matters is above: whether flags beat the <b>DraftKings close</b> (CLV). Bet early, track it, and trust a tier only once it shows positive CLV.</div>`; }
-  return `<h2>Track record</h2><div class="track">${box("TARGET_side", "Targets · sides")}${box("WATCH_side", "Watch · sides")}${box("TARGET_total", "Targets · totals")}${box("WATCH_total", "Watch · totals")}</div>${btTxt}`;
+  if (bt && bt.tiers_vs_close) { const T = bt.tiers_vs_close, f = (m, k) => { const x = (T[m] || {})[k]; return x ? `${k} ${x.w}-${x.l} (${pct(x.pct)})` : ""; };
+    btTxt = `<div class="note"><b>Backtest ${bt.seasons[0]}–${String(bt.seasons[1]).slice(2)}</b> (${bt.games} games vs the ${esc(bt.line)}). Sides: ${["WATCH", "TARGET", "CHECK"].map(k => f("side", k)).filter(Boolean).join(" · ")}; favorites are about half of all side flags. Totals: ${["WATCH", "TARGET", "CHECK"].map(k => f("total", k)).filter(Boolean).join(" · ")} — no edge yet. CHECK = the model's lean when it's far from the market; those leans have lost, so treat them as "find out what the market knows." The record that matters is above: whether flags beat the <b>DraftKings close</b> (CLV).</div>`; }
+  return `<h2>Track record</h2><div class="track">${box("TARGET_side", "Targets · sides")}${box("WATCH_side", "Watch · sides")}${box("CHECK_side", "Check leans · sides")}${box("TARGET_total", "Targets · totals")}</div>${btTxt}`;
 }
 function nflDrawer(g, teams) {
   const A = teams[g.away], H = teams[g.home], d = g.dk, m = g.model, e3 = x => x == null ? "—" : (+x).toFixed(2), p = pct, n0 = x => fmt(x, 0), rk = x => x == null ? "—" : "#" + x;
@@ -595,10 +600,10 @@ function nflDrawer(g, teams) {
     DK ${esc(g.home_abbr)} ${sgn(d.home_spread)} (open ${sgn(d.home_spread_open)}) · ${esc(d.home_spread_odds)} / ${esc(d.away_spread_odds)}<br>
     <b style="color:var(--ink)">BW number ${esc(g.home_abbr)} ${sgn(m.number)}</b> · edge ${sgn(sd.edge)}<br>
     This season: EPA ${sgn(m.epa_spread)} · success ${sgn(m.sr_spread)} · points ${sgn(m.pts_spread)}<br>
-    QB adjustment in all: ${sgn(m.qb_adj)} pts to ${esc(g.home_abbr)}${(sd.keys || []).length ? `<br>Our number and DK sit on opposite sides of ${sd.keys.join(" & ")}` : ""}</div></div>`;
+    QB adjustment in all: ${sgn(m.qb_adj)} pts to ${esc(g.home_abbr)}${g.bands ? `<br>Gap bands this week: WATCH ${fmt(g.bands[0])}+ · TARGET ${fmt(g.bands[1])}+ · CHECK ${fmt(g.bands[2])}+ pts` : ""}${sd.grade === "CHECK" ? `<br><span style="color:var(--lotto)">${esc(sd.adjust[0] || "")}</span>` : ""}${(sd.keys || []).length ? `<br>Our number and DK sit on opposite sides of ${sd.keys.join(" & ")}` : ""}</div></div>`;
   const tot = `<div class="panel"><h4>Total</h4><div>${gradeCell(td)}</div><div class="mono edge" style="margin-top:6px">
     DK ${fmt(d.total)} (open ${fmt(d.total_open)}) · O ${esc(d.over_odds)} / U ${esc(d.under_odds)}<br>
-    EPA × pace ${fmt(m.epa_total)} · points ${fmt(m.pts_total)}<br>Edge: EPA ${sgn(td.edge_epa)}, points ${sgn(td.edge_pts)}<br>
+    <b style="color:var(--ink)">BW total ${fmt(m.total_number)}</b> · edge ${sgn(td.edge)}<br>EPA × pace ${fmt(m.epa_total)} · points ${fmt(m.pts_total)}<br>Edge: EPA ${sgn(td.edge_epa)}, points ${sgn(td.edge_pts)}<br>
     ${esc(g.roof || "")}${g.surface ? " · " + esc(g.surface) : ""}</div></div>`;
   const angles = `<div class="panel" style="border-left:3px solid var(--lotto)"><h4 style="color:var(--lotto)">Angles · context only, not graded</h4><div class="mono edge">
     Last season's rating ${esc(g.home_abbr)} ${sgn(m.last_spread)} · Elo (multi-season) ${sgn(m.elo_spread)} · Market rating ${sgn(m.mkt_spread)}<br>

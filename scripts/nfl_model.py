@@ -351,38 +351,72 @@ def predict(first, last, data=None, with_matchups=False):
 SIDE_MODELS = ("epa", "sr", "pts")     # current season: these grade
 ANGLES = ("last", "elo", "mkt")         # context only
 
+def match_fit(x, y):
+    """Map a screen onto the market's scale so that its edges are UNRELATED to the size of the line.
+    We fit what the screen typically says for a given market number (screen = a + b * market) and invert
+    it. A plain regression (market on screen) pulls predictions toward the middle, so big favorites and
+    high totals always looked too big and the picks were nearly all underdogs and unders.
+    Returns (slope, intercept) to apply to the screen."""
+    x, y = np.asarray(x, float), np.asarray(y, float)
+    if y.std() < 1e-9 or x.std() < 1e-9:
+        return 0.0, float(y.mean())
+    b, a = np.polyfit(y, x, 1)
+    if abs(b) < 0.15:  # screen barely tracks the market: fall back to matching spreads
+        b = np.sign(np.corrcoef(x, y)[0, 1] or 1) * x.std() / y.std()
+        a = x.mean() - b * y.mean()
+    return float(1 / b), float(-a / b)
+
 def calibrate(rows, n=64, min_n=40):
-    """Fit each screen to recent closing lines (like the CFB fit-to-DK step), rolling, using only
-    games from earlier weeks. Adds <m>_cal (home margin, + = home favored) and blend; plus totals."""
-    done = []  # (seq, row) of games with a closing line, in order
+    """Put each screen on the market's scale using recent closing lines (rolling, earlier weeks only).
+    Adds <m>_cal (home margin, + = home favored), blend (the BW number), epa_tot_cal, pts_tot_cal, tot_blend."""
+    done = []
     by_seq = defaultdict(list)
     for r in rows:
         by_seq[seq(r["season"], r["week"])].append(r)
     for sq in sorted(by_seq):
-        past = [r for r in done if r["close"] is not None][-n:]
+        # recent weeks + THIS week's own lines (like the CFB fit-to-the-slate step): ratings change shape as
+        # last season fades out, so this week's numbers must be scaled against this week's board too
+        cur = [r for r in by_seq[sq] if r["close"] is not None]
+        past = [r for r in done if r["close"] is not None][-max(n - len(cur), 16):] + cur
         fits = {}
         if len(past) >= min_n:
+            y = np.array([r["close"] for r in past])
             for m in SIDE_MODELS + ANGLES:
-                x = np.array([r[m + "_raw"] + r["qb_adj"] for r in past]); y = np.array([r["close"] for r in past])
-                fits[m] = np.polyfit(x, y, 1)
+                fits[m] = match_fit([r[m + "_raw"] + r["qb_adj"] for r in past], y)
+            # the average of three screens is narrower than any one of them: rescale it to the market too
+            bl = np.array([np.mean([fits[m][0] * (r[m + "_raw"] + r["qb_adj"]) + fits[m][1] for m in SIDE_MODELS]) for r in past])
+            fits["blend"] = match_fit(bl, y)
             tp = [r for r in past if r["close_total"] is not None]
-            # totals: EPA total via a regression fit on past results, then de-biased to the market
+            yt = np.array([r["close_total"] for r in tp])
             res = [r for r in done if r["total"] is not None][-512:]
             X = np.array([[1, r["epa_sum"], r["pace"], r["dome"]] for r in res]); yy = np.array([r["total"] for r in res])
             coef = np.linalg.lstsq(X, yy, rcond=None)[0]
-            et = lambda r: coef @ np.array([1, r["epa_sum"], r["pace"], r["dome"]])
-            eb = np.mean([et(r) - r["close_total"] for r in tp]); pb = np.mean([r["pts_total"] - r["close_total"] for r in tp])
+            et = lambda r, c=coef: float(c @ np.array([1, r["epa_sum"], r["pace"], r["dome"]]))
+            fits["epa_tot"] = match_fit([et(r) for r in tp], yt)
+            fits["pts_tot"] = match_fit([r["pts_total"] for r in tp], yt)
+            tb = np.array([(fits["epa_tot"][0] * et(r) + fits["epa_tot"][1] + fits["pts_tot"][0] * r["pts_total"] + fits["pts_tot"][1]) / 2 for r in tp])
+            fits["tot_blend"] = match_fit(tb, yt)
+            # how far the BW numbers have typically strayed from the close lately (for gap sizes that mean
+            # the same thing in Week 4 as in Week 14)
+            bwp = fits["blend"][0] * bl + fits["blend"][1]
+            side_sd = float(np.sqrt(np.mean((bwp - y) ** 2)))
+            tot_sd = float(np.sqrt(np.mean((tb - yt) ** 2)))
         for r in by_seq[sq]:
             if fits:
                 for m in SIDE_MODELS + ANGLES:
-                    r[m + "_cal"] = float(np.polyval(fits[m], r[m + "_raw"] + r["qb_adj"]))
-                r["blend"] = sum(r[m + "_cal"] for m in SIDE_MODELS) / len(SIDE_MODELS)
-                r["epa_tot_cal"] = float(et(r) - eb); r["pts_tot_cal"] = float(r["pts_total"] - pb)
-                r["calib"] = {m: [round(float(fits[m][0]), 3), round(float(fits[m][1]), 2)] for m in SIDE_MODELS}
-                r["calib"].update({"epa_total_bias": round(float(eb), 2), "pts_total_bias": round(float(pb), 2), "n": len(past)})
+                    r[m + "_cal"] = fits[m][0] * (r[m + "_raw"] + r["qb_adj"]) + fits[m][1]
+                b0 = np.mean([r[m + "_cal"] for m in SIDE_MODELS])
+                r["blend"] = fits["blend"][0] * b0 + fits["blend"][1]
+                r["epa_tot_cal"] = fits["epa_tot"][0] * et(r) + fits["epa_tot"][1]
+                r["pts_tot_cal"] = fits["pts_tot"][0] * r["pts_total"] + fits["pts_tot"][1]
+                r["tot_blend"] = fits["tot_blend"][0] * (r["epa_tot_cal"] + r["pts_tot_cal"]) / 2 + fits["tot_blend"][1]
+                r["side_sd"], r["tot_sd"] = side_sd, tot_sd
+                r["calib"] = {k: [round(v[0], 3), round(v[1], 2)] for k, v in fits.items() if k not in ANGLES}
+                r["calib"].update({"side_sd": round(side_sd, 2), "tot_sd": round(tot_sd, 2)})
+                r["calib"]["n"] = len(past)
             else:
                 for m in SIDE_MODELS + ANGLES:
                     r[m + "_cal"] = None
-                r["blend"] = r["epa_tot_cal"] = r["pts_tot_cal"] = None
+                r["blend"] = r["epa_tot_cal"] = r["pts_tot_cal"] = r["tot_blend"] = r["side_sd"] = r["tot_sd"] = None
         done += by_seq[sq]
     return rows

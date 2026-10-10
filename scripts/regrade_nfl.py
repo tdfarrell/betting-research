@@ -13,12 +13,19 @@ Method (see the project's NFL handicapping checklist):
           the ratings in Weeks 1-5 and fades to zero by Week 6.
   Angles  Last season's rating, multi-season Elo and the market rating are shown for context only;
           they never change a grade.
-          TARGET = number differs from DK by 2+ and all three screens agree (each 1+ same side).
-          WATCH  = number differs by 1+ and at least two screens agree.
-          Backtest (2022-25): no tier beat the closing line, so these are early-line targets judged on
-          CLV, not "plays". The flag log tracks whether they beat the DK close.
-  Totals  EPA total (EPA x pace, dome) and points-rating total, de-biased to the market.
-          TARGET = both 3+ same way and one 5+; WATCH = both 3+.
+          Calibration is "fair" to favorites and dogs: an edge can't be predicted from the size of the line.
+          Gap sizes are measured against how far the BW number has recently strayed from the close
+          ("usual gap", ~4 pts early season, ~3 late), so tiers mean the same thing all season:
+          WATCH  = 0.3-0.6 x usual gap and at least two screens agree (each 1+ pts, same side).
+          TARGET = 0.6-1.0 x usual gap and at least two screens agree.
+          CHECK  = more than the usual gap: the market usually knows something (injury, QB, news). Shown with
+                   the model's lean, not as a pick: check the news first.
+          Backtest 2022-25 vs the close: WATCH 91-65 (58%), TARGET 115-86 (57%), CHECK 160-215 (43%);
+          favorites ~half of all flags. Every flag is logged and judged on CLV vs the DK close.
+  Totals  EPA total (EPA x pace, dome) and points-rating total, put on the market's scale the same way;
+          BW total = their average. TARGET = both 1.5+ same way and BW total 2-4.5 off DK;
+          WATCH = both 1+ same way and 1.5-2 off; CHECK = 4.5+ off. Totals have NOT shown an edge in
+          the backtest (TARGET 76-64, other bands ~50%): treat them as unproven until the CLV log says otherwise.
   Adjust  Line moved 2+ toward the other side since open: one tier down.
           Projected starting QB questionable/doubtful/out: not graded (FLAG).
           Overs with 15+ mph wind or rain and a falling total: PASS.
@@ -30,7 +37,8 @@ import nfl_model as M
 
 ET = dt.timezone(dt.timedelta(hours=-4))  # EDT; good through early November
 ESPN_TO_NFLVERSE = {"WSH": "WAS", "LAR": "LA"}
-DOWN = {"TARGET": "WATCH", "WATCH": "PASS", "PASS": "PASS", "FLAG": "FLAG"}
+DOWN = {"TARGET": "WATCH", "WATCH": "PASS", "PASS": "PASS", "FLAG": "FLAG", "CHECK": "CHECK"}
+GAP_CHECK_TOTAL = 4.5
 MOVE_AGAINST = 2.0
 FLAGS = "data/nfl/flags.csv"
 FLAG_COLS = ["game_id", "season", "week", "kickoff_utc", "game", "market", "pick_side", "pick", "first_grade", "best_grade",
@@ -182,18 +190,36 @@ def last_qb(team, week):
     return top["qb_id"], top["qb"]
 
 # ---------------------------------------------------------------- grading
-def grade_side(e, es):
+def side_bands(sd):
+    """Point gaps for WATCH / TARGET / CHECK, scaled to how far the BW number has recently strayed from
+    the close (sd). Early season the ratings are looser, so the same gap means less."""
+    sd = sd or 3.3
+    return 0.3 * sd, 0.6 * sd, 1.0 * sd
+
+def grade_side(e, es, sd=None):
+    w, t, c = side_bands(sd)
     agree = [x for x in es if x is not None and abs(x) >= 1 and side(x) == side(e)]
-    if abs(e) >= 2 and len(agree) == len(es):
+    if abs(e) >= c:
+        return "CHECK"
+    if abs(e) >= t and len(agree) >= 2:
         return "TARGET"
-    if abs(e) >= 1 and len(agree) >= 2:
+    if abs(e) >= w and len(agree) >= 2:
         return "WATCH"
     return "PASS"
 
 def grade_total(e1, e2):
-    if e1 is None or e2 is None or e1 * e2 <= 0 or min(abs(e1), abs(e2)) < 3:
+    if e1 is None or e2 is None:
         return "PASS"
-    return "TARGET" if max(abs(e1), abs(e2)) >= 5 else "WATCH"
+    t = (e1 + e2) / 2
+    if abs(t) >= GAP_CHECK_TOTAL:
+        return "CHECK"
+    if e1 * e2 <= 0:
+        return "PASS"
+    if min(abs(e1), abs(e2)) >= 1.5 and abs(t) >= 2:
+        return "TARGET"
+    if min(abs(e1), abs(e2)) >= 1 and abs(t) >= 1.5:
+        return "WATCH"
+    return "PASS"
 
 def wind_mph(s):
     m = re.search(r"(\d+)\s*mph", s or "", re.I)
@@ -222,16 +248,18 @@ def build(games, season, week):
             st = qb_status(q)
             if st:
                 flags.append(f"{t} QB {teams[t]['qb'] or ''} {st.lower()}".replace("  ", " "))
-        sg = "FLAG" if flags else grade_side(e, es)
+        sg = "FLAG" if flags else grade_side(e, es, r.get("side_sd"))
         side_d = {"edge": rnd(e), "edge_epa": rnd(es[0]), "edge_sr": rnd(es[1]), "edge_pts": rnd(es[2]), "grade": sg,
                   "pick": None, "adjust": [], "keys": []}
         open_hs = num(bg.get("home_spread_open"))
-        if sg in ("TARGET", "WATCH"):
+        if sg in ("TARGET", "WATCH", "CHECK"):
             hp = e > 0
             line = dk_hs if hp else -dk_hs
             side_d.update(pick=f"{bg['home' if hp else 'away']} {line:+g}", pick_side="home" if hp else "away", line=line,
                           odds=bg.get("home_spread_odds" if hp else "away_spread_odds"))
-            if open_hs is not None:
+            if sg == "CHECK":
+                side_d["adjust"].append(f"BW number is {abs(e):.1f} pts off DK (usual gap {r.get('side_sd') or 0:.1f}): big gaps usually mean news the model doesn't have. Lean only; check injuries/QB first")
+            elif open_hs is not None:
                 moved = dk_hs - open_hs  # + = toward away
                 against = moved if hp else -moved
                 if against >= MOVE_AGAINST:
@@ -243,15 +271,18 @@ def build(games, season, week):
                           and r["blend"] * dk_line > 0]
         t1, t2 = r["epa_tot_cal"] - dk_tot, r["pts_tot_cal"] - dk_tot
         tg = "FLAG" if flags else grade_total(t1, t2)
-        tot_d = {"edge_epa": rnd(t1), "edge_pts": rnd(t2), "grade": tg, "pick": None, "adjust": []}
-        if tg in ("TARGET", "WATCH"):
-            over = t1 > 0
+        tavg = (t1 + t2) / 2
+        tot_d = {"edge": rnd(tavg), "edge_epa": rnd(t1), "edge_pts": rnd(t2), "grade": tg, "pick": None, "adjust": []}
+        if tg in ("TARGET", "WATCH", "CHECK"):
+            over = tavg > 0
             tot_d.update(pick=f"{'Over' if over else 'Under'} {dk_tot:g}", pick_side="over" if over else "under", line=dk_tot,
                          odds=bg.get("over_odds" if over else "under_odds"))
             wx = (bg.get("weather") or "")
             wm = wind_mph(wx)
             topen = num(bg.get("total_open"))
-            if over and ((wm and wm >= 15) or (any(k in wx.lower() for k in ("rain", "snow", "storm")) and topen and topen - dk_tot >= 3)):
+            if tg == "CHECK":
+                tot_d["adjust"].append(f"BW total is {abs(tavg):.1f} off DK: big gaps usually mean weather or news the model doesn't have. Lean only")
+            elif over and ((wm and wm >= 15) or (any(k in wx.lower() for k in ("rain", "snow", "storm")) and topen and topen - dk_tot >= 3)):
                 tot_d["adjust"].append(f"Weather: {wx}; models don't see it")
                 tot_d["grade"], tot_d["pick"] = "PASS", None
         k = dt.datetime.fromisoformat(bg["kickoff_utc"].replace("Z", "+00:00")).astimezone(ET)
@@ -268,11 +299,12 @@ def build(games, season, week):
             "model": {"number": rnd(-r["blend"]), "epa_spread": rnd(-r["epa_cal"]), "sr_spread": rnd(-r["sr_cal"]),
                       "pts_spread": rnd(-r["pts_cal"]), "last_spread": rnd(-r["last_cal"]), "elo_spread": rnd(-r["elo_cal"]),
                       "mkt_spread": rnd(-r["mkt_cal"]), "prior_weight": rnd(W["c"]["prior_weight"], 2),
-                      "qb_adj": rnd(r["qb_adj"]), "epa_total": rnd(r["epa_tot_cal"]), "pts_total": rnd(r["pts_tot_cal"])},
-            "side": side_d, "total": tot_d, "flags": flags, "notes": [],
+                      "qb_adj": rnd(r["qb_adj"]), "epa_total": rnd(r["epa_tot_cal"]), "pts_total": rnd(r["pts_tot_cal"]),
+                      "total_number": rnd((r["epa_tot_cal"] + r["pts_tot_cal"]) / 2)},
+            "side": side_d, "total": tot_d, "flags": flags, "notes": [], "bands": [rnd(x) for x in side_bands(r.get("side_sd"))],
         })
         rows[-1]["notes"] = notes(h, a, teams, g, r)
-    order = {"TARGET": 0, "WATCH": 1, "PASS": 2, "FLAG": 3}
+    order = {"TARGET": 0, "WATCH": 1, "CHECK": 2, "PASS": 3, "FLAG": 4}
     rows.sort(key=lambda x: (min(order[x["side"]["grade"]], order[x["total"]["grade"]]), x["kickoff_utc"]))
     calib = next((r["calib"] for r in ROWS if r["season"] == season and r["week"] == week and r.get("calib")), None)
     return rows, teams, unmatched, calib
@@ -283,7 +315,7 @@ def load_flags():
 
 def log_flags(rows, season, week, flags):
     have = {(f["game_id"], f["market"]): f for f in flags}
-    rank = {"TARGET": 2, "WATCH": 1}
+    rank = {"TARGET": 3, "WATCH": 2, "CHECK": 1}
     for r in rows:
         for mk in ("side", "total"):
             m = r[mk]
@@ -340,7 +372,7 @@ def settle_flags(flags):
 
 def flag_record(flags):
     out = {}
-    for grade in ("TARGET", "WATCH"):
+    for grade in ("TARGET", "WATCH", "CHECK"):
         for mk in ("side", "total"):
             fs = [f for f in flags if f["best_grade"] == grade and f["market"] == mk and f.get("clv") not in ("", None)]
             clv = [float(f["clv"]) for f in fs]
@@ -363,12 +395,12 @@ def write(season, week, rows, teams, unmatched, calib, odds_pulled):
         w = csv.writer(f)
         w.writerow(["kick_et", "game", "dk_home_spread", "dk_open", "bw_number", "epa", "success_rate", "pts", "angle_last_season",
                     "angle_elo", "angle_market", "side_grade", "side_pick",
-                    "dk_total", "total_open", "epa_total", "pts_total", "total_grade", "total_pick", "flags", "adjustments", "notes"])
+                    "dk_total", "total_open", "bw_total", "epa_total", "pts_total", "total_grade", "total_pick", "flags", "adjustments", "notes"])
         for r in rows:
             w.writerow([r["kick_et"], f"{r['away_abbr']} @ {r['home_abbr']}", r["dk"]["home_spread"], r["dk"]["home_spread_open"],
                         r["model"]["number"], r["model"]["epa_spread"], r["model"]["sr_spread"], r["model"]["pts_spread"],
                         r["model"]["last_spread"], r["model"]["elo_spread"], r["model"]["mkt_spread"],
-                        r["side"]["grade"], r["side"]["pick"] or "", r["dk"]["total"], r["dk"]["total_open"], r["model"]["epa_total"],
+                        r["side"]["grade"], r["side"]["pick"] or "", r["dk"]["total"], r["dk"]["total_open"], r["model"]["total_number"], r["model"]["epa_total"],
                         r["model"]["pts_total"], r["total"]["grade"], r["total"]["pick"] or "", "; ".join(r["flags"]),
                         "; ".join(r["side"]["adjust"] + r["total"]["adjust"]), "; ".join(r["notes"])])
 
@@ -400,7 +432,7 @@ def main():
         wr = csv.DictWriter(f, fieldnames=FLAG_COLS, extrasaction="ignore"); wr.writeheader(); wr.writerows(flags)
     index["flag_record"] = flag_record(flags)
     if BACKTEST:
-        index["backtest"] = {k: BACKTEST[k] for k in ("seasons", "games", "line", "rmse", "ats_vs_close", "totals_vs_close")}
+        index["backtest"] = {k: BACKTEST[k] for k in ("seasons", "games", "line", "rmse", "tiers_vs_close", "side_by_gap") if k in BACKTEST}
     if os.path.exists("data/boards/nfl_index.json"):  # keep past weeks listed
         old = json.load(open("data/boards/nfl_index.json"))
         have = {x["key"] for x in index["slates"]}
