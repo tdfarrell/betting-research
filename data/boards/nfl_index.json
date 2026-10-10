@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-10T07:49+00:00",
- "odds_pulled_utc": "2026-10-10T07:49Z",
+ "generated_utc": "2026-10-10T14:01+00:00",
+ "odds_pulled_utc": "2026-10-10T14:00Z",
  "stats_pulled_utc": "2026-10-10T03:21+00:00",
  "slates": [
   {
@@ -11,7 +11,7 @@
    "first_day": "2026-10-11",
    "games": 14,
    "targets": 7,
-   "watches": 0
+   "watches": 1
   },
   {
    "key": "2026_wk06",

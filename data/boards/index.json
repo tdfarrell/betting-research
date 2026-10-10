@@ -1,13 +1,13 @@
 {
- "generated_utc": "2026-10-10T07:49+00:00",
- "odds_pulled_utc": "2026-10-10T07:49Z",
+ "generated_utc": "2026-10-10T14:01+00:00",
+ "odds_pulled_utc": "2026-10-10T14:00Z",
  "cfbd_pulled_utc": "2026-10-10T03:20+00:00",
  "slates": [
   {
    "date": "2026-10-10",
    "games": 46,
-   "plays": 12,
-   "leans": 15
+   "plays": 14,
+   "leans": 13
   },
   {
    "date": "2026-10-13",
@@ -19,7 +19,7 @@
    "date": "2026-10-17",
    "games": 13,
    "plays": 5,
-   "leans": 6
+   "leans": 8
   }
  ]
 }
