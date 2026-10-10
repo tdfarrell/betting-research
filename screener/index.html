@@ -13,6 +13,7 @@
 <meta property="og:url" content="https://ballwatcher.com/screener/">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0B0E13">
+<meta name="bw-build" content="screener 2026-10-10b">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -845,12 +846,36 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
+const SCREENER_BUILD = "2026-10-10b";
+const slipDiag = { status: "not checked", body: "" };
 async function detectAdmin() {
-  if (/(^|&)admin=preview(&|$)/.test(location.hash.slice(1))) { slip.admin = true; return; }  // layout preview only
+  if (/(^|&)admin=preview(&|$)/.test(location.hash.slice(1))) { slip.admin = true; slipDiag.status = "preview"; return; }  // layout preview only
   try {
-    const r = await fetch(ADMIN_WHOAMI, { credentials: "same-origin", cache: "no-store" });
-    if (r.ok) { const j = await r.json(); slip.admin = !!(j && j.admin); }
-  } catch (e) { slip.admin = false; }
+    const r = await fetch(ADMIN_WHOAMI + "?t=" + Date.now(), { credentials: "same-origin", cache: "no-store", headers: { Accept: "application/json" } });
+    const txt = await r.text();
+    slipDiag.status = `HTTP ${r.status}`; slipDiag.body = txt.slice(0, 160);
+    let j = null; try { j = JSON.parse(txt); } catch (e) {}
+    slip.admin = !!(r.ok && j && j.admin === true);
+  } catch (e) { slip.admin = false; slipDiag.status = "request failed"; slipDiag.body = String(e); }
+}
+// Logged in after opening the Screener (e.g. in another tab)? Re-check when you come back to this tab.
+async function recheckAdmin() {
+  const was = slip.admin;
+  await detectAdmin();
+  if (slip.admin !== was) { drawTray(); if (state.view === "props" && state.props) renderProps(); else if (state.slate) render(); }
+  showSlipCheck();
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden) recheckAdmin(); });
+window.addEventListener("focus", () => recheckAdmin());
+// Diagnostic: ballwatcher.com/screener/#slipcheck shows what the page sees (only shows when asked for)
+function showSlipCheck() {
+  if (!/slipcheck/.test(location.hash)) return;
+  let el = $("#slipCheck");
+  if (!el) { el = document.createElement("div"); el.id = "slipCheck"; el.className = "note"; el.style.cssText = "position:fixed;left:16px;bottom:16px;z-index:9;max-width:520px";
+    document.body.appendChild(el); }
+  const hostNote = location.hostname.startsWith("www.") ? "You're on www. — log in at www.ballwatcher.com/admin too (or use the address without www.)" : "";
+  el.innerHTML = `<b>Bet slip check</b> · Screener build ${SCREENER_BUILD}<br>Login check (${esc(ADMIN_WHOAMI)}): ${esc(slipDiag.status)} ${esc(slipDiag.body)}<br>
+    Result: <b>${slip.admin ? "logged in — + buttons on" : "not logged in here — + buttons hidden"}</b>${hostNote ? "<br>" + esc(hostNote) : ""}`;
 }
 
 function regItem(it) { const id = "s" + (++slipSeq); SLIPSRC[id] = it; return id; }
@@ -982,7 +1007,7 @@ document.addEventListener("click", e => { const b = e.target.closest(".addb"); i
   if (!sp) { // in season, show the sport with games soonest; default NFL on Sun/Mon/Thu, CFB on Fri/Sat
     const day = new Date(Date.now() - 4 * 3600e3).getUTCDay(); sp = [5, 6].includes(day) ? "cfb" : "nfl";
   }
-  detectAdmin().then(() => { drawTray(); setSport(sp, key, view); });
+  detectAdmin().then(() => { drawTray(); showSlipCheck(); setSport(sp, key, view); });
 })();
 // links that change only the hash (e.g. #s=nfl) switch sport/slate without a reload
 window.addEventListener("hashchange", () => {
