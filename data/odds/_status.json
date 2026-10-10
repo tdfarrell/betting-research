@@ -1,0 +1,19 @@
+{
+ "pulled_utc": "2026-10-10T01:55Z",
+ "status": {
+  "cfb": {
+   "games": 113,
+   "with_dk_line": 65,
+   "mode": "per-day"
+  },
+  "nfl": {
+   "games": 15,
+   "with_dk_line": 15,
+   "mode": "per-day"
+  }
+ },
+ "errors": [
+  "cfb range: HTTPError: HTTP Error 400: Bad Request",
+  "nfl range: HTTPError: HTTP Error 400: Bad Request"
+ ]
+}
