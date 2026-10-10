@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://ballwatcher.com/screener/">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0B0E13">
-<meta name="bw-build" content="screener 2026-10-10b">
+<meta name="bw-build" content="screener 2026-10-10c">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -846,7 +846,18 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-10b";
+const SCREENER_BUILD = "2026-10-10c";
+// Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
+// browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
+const SLIP_MODE_KEY = "bw_slip_mode";
+function slipModeOn() { try { return localStorage.getItem(SLIP_MODE_KEY) === "1"; } catch (e) { return false; } }
+(function () {
+  const h = location.hash;
+  try {
+    if (/(^|[#&])slip=on(&|$)/.test(h)) localStorage.setItem(SLIP_MODE_KEY, "1");
+    if (/(^|[#&])slip=off(&|$)/.test(h)) localStorage.removeItem(SLIP_MODE_KEY);
+  } catch (e) {}
+})();
 const slipDiag = { status: "not checked", body: "" };
 async function detectAdmin() {
   if (/(^|&)admin=preview(&|$)/.test(location.hash.slice(1))) { slip.admin = true; slipDiag.status = "preview"; return; }  // layout preview only
@@ -855,8 +866,8 @@ async function detectAdmin() {
     const txt = await r.text();
     slipDiag.status = `HTTP ${r.status}`; slipDiag.body = txt.slice(0, 160);
     let j = null; try { j = JSON.parse(txt); } catch (e) {}
-    slip.admin = !!(r.ok && j && j.admin === true);
-  } catch (e) { slip.admin = false; slipDiag.status = "request failed"; slipDiag.body = String(e); }
+    slip.admin = !!(r.ok && j && j.admin === true) || slipModeOn();
+  } catch (e) { slip.admin = slipModeOn(); slipDiag.status = "request failed"; slipDiag.body = String(e); }
 }
 // Logged in after opening the Screener (e.g. in another tab)? Re-check when you come back to this tab.
 async function recheckAdmin() {
@@ -875,7 +886,8 @@ function showSlipCheck() {
     document.body.appendChild(el); }
   const hostNote = location.hostname.startsWith("www.") ? "You're on www. — log in at www.ballwatcher.com/admin too (or use the address without www.)" : "";
   el.innerHTML = `<b>Bet slip check</b> · Screener build ${SCREENER_BUILD}<br>Login check (${esc(ADMIN_WHOAMI)}): ${esc(slipDiag.status)} ${esc(slipDiag.body)}<br>
-    Result: <b>${slip.admin ? "logged in — + buttons on" : "not logged in here — + buttons hidden"}</b>${hostNote ? "<br>" + esc(hostNote) : ""}`;
+    Bet-slip mode in this browser: <b>${slipModeOn() ? "on" : "off"}</b> (turn on from the admin menu's "Screener + bet slip" link)<br>
+    Result: <b>${slip.admin ? "+ buttons on" : "+ buttons hidden"}</b>${hostNote ? "<br>" + esc(hostNote) : ""}`;
 }
 
 function regItem(it) { const id = "s" + (++slipSeq); SLIPSRC[id] = it; return id; }
@@ -977,12 +989,13 @@ function drawTray() {
         <input class="todds" data-i="${i}" value="${esc(x.odds || "")}" placeholder="DK odds" aria-label="DraftKings odds for ${esc(x.pick)}" inputmode="numeric">
         <button class="tbtn" data-act="one" data-i="${i}" title="Open as a straight bet in the admin">Straight ↗</button>
         <button class="tx" data-act="rm" data-i="${i}" aria-label="Remove ${esc(x.pick)}">✕</button></div>`).join("")
-        : `<div class="empty">Tap + on any line or prop tier to add it here.</div>`}
+        : `<div class="empty">Tap + on any line or prop tier to add it here.</div>${slipModeOn() ? `<button class="tbtn ghost" data-act="modeoff">Turn off bet slip in this browser</button>` : ""}`}
       ${n ? `<div class="tfoot">
         ${n > 1 ? `<button class="tbtn main" data-act="parlay">Build ${sameGame ? "SGP" : "parlay"} (${n} legs) ↗</button>
           <span class="edge">${dec ? `Est. from leg odds ${decToAm(dec)} — enter DraftKings' actual parlay price in the admin` : "Enter DraftKings' parlay price in the admin"}</span>` : ""}
         <button class="tbtn ghost" data-act="clear">Clear</button></div>
-      <div class="edge" style="margin-top:6px">Opens the admin slip form prefilled. Set units and confidence, confirm the DK price, then Publish. Props need the DK price typed in.</div>` : ""}
+      <div class="edge" style="margin-top:6px">Opens the admin slip form prefilled (log in if asked). Set units and confidence, confirm the DK price, then Publish. Props need the DK price typed in.</div>` : ""}
+      ${slipModeOn() ? `<div class="edge" style="margin-top:8px"><button class="tbtn ghost" data-act="modeoff">Turn off bet slip in this browser</button></div>` : ""}
     </div>` : ""}`;
 }
 function trayClick(e) {
@@ -993,6 +1006,7 @@ function trayClick(e) {
   else if (a === "clear") { slip.items = []; saveSlip(); drawTray(); refreshAdds(); }
   else if (a === "one") openStraight(slip.items[i]);
   else if (a === "parlay") openParlay();
+  else if (a === "modeoff") { try { localStorage.removeItem(SLIP_MODE_KEY); } catch (e) {} recheckAdmin(); }
 }
 function trayInput(e) { const inp = e.target.closest(".todds"); if (!inp) return; slip.items[+inp.dataset.i].odds = inp.value.trim(); saveSlip(); }
 function refreshAdds() { document.querySelectorAll(".addb").forEach(b => { const x = SLIPSRC[b.dataset.slip]; if (!x) return; const on = inSlip(x);
