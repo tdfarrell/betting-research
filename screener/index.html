@@ -870,16 +870,17 @@ function lineItem(g, k, sideKey) {
     const home = sideKey === "home", ln = home ? d.home_spread : -d.home_spread;
     if (ln == null || isNaN(ln)) return null;
     const team = home ? g.home_abbr : g.away_abbr;
+    // written for the public slip / Today's Card: plain numbers, no internal grade labels
     const why = sp === "nfl"
-      ? `BW ${g.home_abbr} ${sgn(m.number)} vs DK ${sgn(d.home_spread)} (EPA ${sgn(m.epa_spread)}, success ${sgn(m.sr_spread)}, points ${sgn(m.pts_spread)}); screener grade ${g.side.grade}`
-      : `SP+ ${g.home_abbr} ${sgn(m.sp_spread_cal)}, Elo ${sgn(m.elo_spread_cal)} vs DK ${sgn(d.home_spread)}; screener grade ${g.side.grade}`;
+      ? `Our number: ${g.home_abbr} ${sgn(m.number)} vs DraftKings ${sgn(d.home_spread)}. This season's EPA, success-rate and points ratings make it ${g.home_abbr} ${sgn(m.epa_spread)}, ${sgn(m.sr_spread)} and ${sgn(m.pts_spread)}.`
+      : `SP+ makes it ${g.home_abbr} ${sgn(m.sp_spread_cal)} and Elo ${sgn(m.elo_spread_cal)}, vs DraftKings ${sgn(d.home_spread)}.`;
     return { key: `${sp}:${g.id}:side:${sideKey}`, gid: `${sp}:${g.id}`, sport: sp, market: "Spread", pick: `${team} ${ln > 0 ? "+" : ""}${fmt(ln)}`,
       odds: home ? d.home_spread_odds : d.away_spread_odds, game: gameName(g), starts_at: g.kickoff_utc, odds_at: state.slate.odds_pulled_utc, reasoning: why };
   }
   if (d.total == null) return null;
   const over = sideKey === "over";
-  const why = sp === "nfl" ? `BW total ${fmt(m.total_number)} vs DK ${fmt(d.total)} (EPA ${fmt(m.epa_total)}, points ${fmt(m.pts_total)}); screener grade ${g.total.grade}`
-    : `SP+ total ${fmt(m.sp_total_cal)}, per-play ${fmt(m.pp_total_cal)} vs DK ${fmt(d.total)}; screener grade ${g.total.grade}`;
+  const why = sp === "nfl" ? `Our total: ${fmt(m.total_number)} vs DraftKings ${fmt(d.total)} (EPA-and-pace model ${fmt(m.epa_total)}, points model ${fmt(m.pts_total)}).`
+    : `SP+ projects ${fmt(m.sp_total_cal)} and the per-play model ${fmt(m.pp_total_cal)}, vs DraftKings ${fmt(d.total)}.`;
   return { key: `${sp}:${g.id}:total:${sideKey}`, gid: `${sp}:${g.id}`, sport: sp, market: "Total", pick: `${over ? "Over" : "Under"} ${fmt(d.total)}`,
     odds: over ? d.over_odds : d.under_odds, game: gameName(g), starts_at: g.kickoff_utc, odds_at: state.slate.odds_pulled_utc, reasoning: why };
 }
@@ -900,7 +901,7 @@ function propItem(c, mk, t) {
   const hr = ([h, n]) => n ? `${h}/${n}` : "—";
   return { key: `nfl:prop:${c.id}:${mk}:${t}`, gid: `nfl:${c.game_id}`, sport: "nfl", market: `Player prop: ${lab}`, pick, odds: null,
     game: `${c.home ? c.opp : c.team} @ ${c.home ? c.team : c.opp}`, starts_at: c.kickoff_utc, odds_at: null,
-    reasoning: `L3 ${hr(tier.l3)} · season ${hr(tier.season)} · ${c.opp} vs ${c.role}s ${hr(tier.def)} · model ${Math.round(tier.p * 100)}% (fair ${fairTxt(tier.fair)})` };
+    reasoning: `Hit ${hr(tier.season)} this season and ${hr(tier.l3)} in the last 3; ${c.opp} has allowed it to ${c.role}s ${hr(tier.def)}. Our model: ${Math.round(tier.p * 100)}%.` };
 }
 function propAddRow(c, mk) {
   if (!slip.admin) return "";
@@ -933,7 +934,7 @@ function openParlay() {
   openPrefill({ kind: sameGame ? "sgp" : "parlay", sport: sports.length === 1 ? sports[0] : "", market: sameGame ? "Same game parlay" : "Parlay",
     title: `${legs.length}-leg ${sameGame ? "SGP" : "parlay"}`, starts_at: legs.map(x => x.starts_at).filter(Boolean).sort()[0],
     est_odds: decToAm(dec), legs: legs.map(x => ({ sport: x.sport, pick: x.pick, game: x.game, odds: x.odds || "", market: x.market, starts_at: x.starts_at })),
-    reasoning: legs.map(x => `${x.pick}: ${x.reasoning}`).join("\n") });
+    reasoning: legs.map(x => `${x.pick}: ${x.reasoning}`).join(" ").slice(0, 1000) });
 }
 function drawTray() {
   let t = $("#slipTray");
