@@ -1,0 +1,15 @@
+{
+ "spread_vs_sp": [
+  0.85,
+  -0.37
+ ],
+ "spread_vs_elo": [
+  0.84,
+  -1.11
+ ],
+ "sp_total_bias": 1.7,
+ "pp_total_bias": -2.3,
+ "n": 15,
+ "source": "this slate",
+ "saved_utc": "2026-10-10T02:20+00:00"
+}

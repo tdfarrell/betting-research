@@ -200,18 +200,30 @@ def build_rows(games):
         })
     return rows, unmatched
 
+CALIB_FILE, MIN_FIT = "data/boards/calibration.json", 15
+DEFAULT_CALIB = {"spread_vs_sp": [0.73, -0.8], "spread_vs_elo": [0.8, -1.48], "sp_total_bias": 2.5, "pp_total_bias": -1.8}
+
 def grade(rows):
+    """Fit models to this slate's DK lines when it's big enough; small (midweek) slates
+    reuse the fit from the most recent full slate so a 2-game Tuesday isn't graded on noise."""
     base = [r for r in rows if not r["flags"]]
-    if len(base) < 6:
-        base = rows
-    bs, a_s = fit([-r["model"]["sp_margin"] for r in base], [r["dk"]["home_spread"] for r in base])
-    eb = [r for r in base if r["model"]["elo_margin"] is not None]
-    be, a_e = fit([-r["model"]["elo_margin"] for r in eb], [r["dk"]["home_spread"] for r in eb])
-    sp_bias = sum(r["model"]["sp_total"] - r["dk"]["total"] for r in base) / len(base)
-    pb = [r for r in base if r["model"]["pp_total"] is not None]
-    pp_bias = sum(r["model"]["pp_total"] - r["dk"]["total"] for r in pb) / len(pb)
-    calib = {"spread_vs_sp": [round(bs, 2), round(a_s, 2)], "spread_vs_elo": [round(be, 2), round(a_e, 2)],
-             "sp_total_bias": round(sp_bias, 1), "pp_total_bias": round(pp_bias, 1), "n": len(base)}
+    if len(base) >= MIN_FIT:
+        bs, a_s = fit([-r["model"]["sp_margin"] for r in base], [r["dk"]["home_spread"] for r in base])
+        eb = [r for r in base if r["model"]["elo_margin"] is not None]
+        be, a_e = fit([-r["model"]["elo_margin"] for r in eb], [r["dk"]["home_spread"] for r in eb])
+        sp_bias = sum(r["model"]["sp_total"] - r["dk"]["total"] for r in base) / len(base)
+        pb = [r for r in base if r["model"]["pp_total"] is not None]
+        pp_bias = sum(r["model"]["pp_total"] - r["dk"]["total"] for r in pb) / len(pb)
+        calib = {"spread_vs_sp": [round(bs, 2), round(a_s, 2)], "spread_vs_elo": [round(be, 2), round(a_e, 2)],
+                 "sp_total_bias": round(sp_bias, 1), "pp_total_bias": round(pp_bias, 1), "n": len(base), "source": "this slate"}
+        with open(CALIB_FILE, "w") as f:
+            json.dump({**calib, "saved_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")}, f, indent=1)
+    else:
+        saved = json.load(open(CALIB_FILE)) if os.path.exists(CALIB_FILE) else dict(DEFAULT_CALIB, saved_utc=None)
+        calib = {k: saved[k] for k in DEFAULT_CALIB}
+        calib.update({"n": len(base), "source": f"last full slate ({saved.get('saved_utc') or 'default'})"})
+    bs, a_s = calib["spread_vs_sp"]; be, a_e = calib["spread_vs_elo"]
+    sp_bias, pp_bias = calib["sp_total_bias"], calib["pp_total_bias"]
     for r in rows:
         m, d = r["model"], r["dk"]
         sp_c = bs * -m["sp_margin"] + a_s
@@ -280,7 +292,7 @@ def main(days=None):
         k = dt.datetime.fromisoformat(g["kickoff_utc"].replace("Z", "+00:00")).astimezone(ET)
         if g.get("status") == "pre":
             by_day.setdefault(k.date().isoformat(), []).append(g)
-    days = days or sorted(by_day)
+    days = days or sorted(by_day, key=lambda d: -sum(1 for g in by_day[d] if g.get("total") is not None))
     index = {"generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
              "odds_pulled_utc": board["pulled_utc"], "cfbd_pulled_utc": CFBD_PULLED, "slates": []}
     for day in days:
