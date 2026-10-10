@@ -45,7 +45,7 @@ def i(x):
 def summarize(season):
     """Team-game and QB-game summaries from one season of play-by-play."""
     raw = fetch(f"play_by_play_{season}.csv.gz", f"{REL}/pbp/play_by_play_{season}.csv.gz")
-    T, Q, last = {}, {}, {}
+    T, Q, last, RZ = {}, {}, {}, {}
     for p in rows_of(raw, gz=True):
         off, de = p["posteam"], p["defteam"]
         if not off or not de:
@@ -63,6 +63,18 @@ def summarize(season):
         is_pass, is_rush = p["pass"] == "1", p["rush"] == "1"
         if p["play_type"] in ("qb_kneel", "qb_spike") or not (is_pass or is_rush):
             continue
+        yl = f(p["yardline_100"])
+        if yl is not None and yl <= 20:
+            pid = p["receiver_player_id"] if is_pass else p["rusher_player_id"]
+            if pid:
+                z = RZ.setdefault((p["game_id"], pid), {"game_id": p["game_id"], "player_id": pid, "rz_tgt": 0, "rz_car": 0, "gl_car": 0, "rz_pass_att": 0})
+                if is_pass:
+                    z["rz_tgt"] += 1
+                else:
+                    z["rz_car"] += 1; z["gl_car"] += yl <= 5
+            if is_pass and p["passer_player_id"]:
+                z = RZ.setdefault((p["game_id"], p["passer_player_id"]), {"game_id": p["game_id"], "player_id": p["passer_player_id"], "rz_tgt": 0, "rz_car": 0, "gl_car": 0, "rz_pass_att": 0})
+                z["rz_pass_att"] += 1
         epa, wp = f(p["epa"]), f(p["wp"])
         if epa is None:
             continue
@@ -116,7 +128,53 @@ def summarize(season):
             t[k] = round(t[k], 3)
     for q in Q.values():
         q["epa"] = round(q["epa"], 3)
-    return list(T.values()), list(Q.values())
+    return list(T.values()), list(Q.values()), RZ
+
+PCOLS = ["season", "week", "game_id", "season_type", "team", "opp", "player_id", "name", "position", "headshot",
+         "attempts", "completions", "passing_yards", "passing_tds", "interceptions", "sacks",
+         "carries", "rushing_yards", "rushing_tds", "targets", "receptions", "receiving_yards", "receiving_tds",
+         "target_share", "air_yards_share", "rz_tgt", "rz_car", "gl_car", "rz_pass_att", "snaps", "snap_pct"]
+
+def players(season, rz):
+    """One row per offensive player per game: nflverse weekly stats + red-zone touches + snap counts."""
+    st = rows_of(fetch(f"stats_player_week_{season}.csv", f"{REL}/stats_player/stats_player_week_{season}.csv"))
+    snaps = {}
+    try:
+        ros = rows_of(fetch(f"roster_weekly_{season}.csv", f"{REL}/weekly_rosters/roster_weekly_{season}.csv"))
+        pfr = {r["pfr_id"]: r["gsis_id"] for r in ros if r.get("pfr_id") and r.get("gsis_id")}
+        for r in rows_of(fetch(f"snap_counts_{season}.csv", f"{REL}/snap_counts/snap_counts_{season}.csv")):
+            g = pfr.get(r["pfr_player_id"])
+            if g:
+                snaps[(r["game_id"], g)] = (i(r["offense_snaps"]), f(r["offense_pct"]))
+    except Exception as e:
+        print(f"snaps {season}: {e}")
+    out = []
+    for r in st:
+        if r["position"] not in ("QB", "RB", "FB", "WR", "TE") or r["season_type"] != "REG":
+            continue
+        z = rz.get((r["game_id"], r["player_id"]), {})
+        sn = snaps.get((r["game_id"], r["player_id"]), (None, None))
+        out.append({"season": season, "week": i(r["week"]), "game_id": r["game_id"], "season_type": r["season_type"],
+                    "team": r["team"], "opp": r["opponent_team"], "player_id": r["player_id"], "name": r["player_display_name"],
+                    "position": "RB" if r["position"] == "FB" else r["position"], "headshot": r["headshot_url"] if season == CUR else "",
+                    "attempts": i(r["attempts"]), "completions": i(r["completions"]), "passing_yards": i(r["passing_yards"]),
+                    "passing_tds": i(r["passing_tds"]), "interceptions": i(r["passing_interceptions"]), "sacks": i(r["sacks_suffered"]),
+                    "carries": i(r["carries"]), "rushing_yards": i(r["rushing_yards"]), "rushing_tds": i(r["rushing_tds"]),
+                    "targets": i(r["targets"]), "receptions": i(r["receptions"]), "receiving_yards": i(r["receiving_yards"]),
+                    "receiving_tds": i(r["receiving_tds"]), "target_share": round(f(r["target_share"]) or 0, 3),
+                    "air_yards_share": round(f(r["air_yards_share"]) or 0, 3),
+                    "rz_tgt": z.get("rz_tgt", 0), "rz_car": z.get("rz_car", 0), "gl_car": z.get("gl_car", 0), "rz_pass_att": z.get("rz_pass_att", 0),
+                    "snaps": sn[0] if sn[0] is not None else "", "snap_pct": sn[1] if sn[1] is not None else ""})
+    return out
+
+def current_roster(season):
+    """Latest weekly roster rows for skill players (who is active, depth chart, headshot)."""
+    ros = list(rows_of(fetch(f"roster_weekly_{season}.csv", f"{REL}/weekly_rosters/roster_weekly_{season}.csv")))
+    wk = max(i(r["week"]) for r in ros)
+    return [{"season": season, "week": wk, "team": r["team"], "player_id": r["gsis_id"], "name": r["full_name"],
+             "position": "RB" if r["position"] == "FB" else r["position"], "depth_chart_position": r["depth_chart_position"],
+             "status": r["status"], "headshot": r["headshot_url"]}
+            for r in ros if i(r["week"]) == wk and r["position"] in ("QB", "RB", "FB", "WR", "TE") and r.get("gsis_id")]
 
 def write(name, rows, cols=None):
     os.makedirs(OUT, exist_ok=True)
@@ -145,18 +203,39 @@ def main(first, last_season):
     redo = {s for s in seasons if not (s < CUR and s in have)}
     TG = [r for r in old_t if i(r["season"]) not in redo]
     QG = [r for r in old_q if i(r["season"]) not in redo]
+    old_p = list(csv.DictReader(open(f"{OUT}/player_games.csv"))) if os.path.exists(f"{OUT}/player_games.csv") else []
+    have_p = {i(r["season"]) for r in old_p}
+    redo |= {s for s in seasons if s not in have_p}   # first run for player data re-reads those seasons
+    TG = [r for r in old_t if i(r["season"]) not in redo]
+    QG = [r for r in old_q if i(r["season"]) not in redo]
+    PG = [r for r in old_p if i(r["season"]) not in redo]
     for s in sorted(redo):
         try:
-            t, q = summarize(s)
+            t, q, rz = summarize(s)
             TG += t; QG += q
             print(f"ok   pbp {s}: {len(t)} team-games")
+            try:
+                pl = players(s, rz); PG += pl
+                print(f"ok   players {s}: {len(pl)} player-games")
+            except Exception as e:
+                status["errors"].append(f"players {s}: {type(e).__name__}: {e}")
+                PG += [r for r in old_p if i(r["season"]) == s]
         except Exception as e:
             status["errors"].append(f"pbp {s}: {type(e).__name__}: {e}")
             TG += [r for r in old_t if i(r["season"]) == s]; QG += [r for r in old_q if i(r["season"]) == s]
+            PG += [r for r in old_p if i(r["season"]) == s]
             print(f"FAIL pbp {s}: {e}")
     TG.sort(key=lambda r: (i(r["season"]), i(r["week"]), r["game_id"], r["team"]))
     QG.sort(key=lambda r: (i(r["season"]), i(r["week"]), r["game_id"], r["team"]))
     write("team_games.csv", TG); write("qb_games.csv", QG)
+    PG.sort(key=lambda r: (i(r["season"]), i(r["week"]), r["game_id"], r["team"], r["player_id"]))
+    if PG:
+        write("player_games.csv", PG, PCOLS)
+    try:
+        rc = current_roster(CUR); write("roster_current.csv", rc)
+        print(f"ok   roster week {rc[0]['week']}: {len(rc)} skill players")
+    except Exception as e:
+        status["errors"].append(f"roster: {type(e).__name__}: {e}")
     try:
         inj = list(rows_of(fetch(f"injuries_{CUR}.csv", f"{REL}/injuries/injuries_{CUR}.csv")))
         wk = max(i(r["week"]) for r in inj) if inj else 0

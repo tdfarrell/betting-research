@@ -1,0 +1,28 @@
+{
+ "generated_utc": "2026-10-10T03:19+00:00",
+ "weeks": [
+  {
+   "key": "2026_wk05",
+   "season": 2026,
+   "week": 5,
+   "players": 196,
+   "flags": 45
+  },
+  {
+   "key": "2026_wk06",
+   "season": 2026,
+   "week": 6,
+   "players": 14,
+   "flags": 3
+  }
+ ],
+ "backtest": {
+  "seasons": [
+   2023,
+   2025
+  ],
+  "predictions": 299647,
+  "brier_model": 0.1276,
+  "brier_season_hr": 0.1366
+ }
+}

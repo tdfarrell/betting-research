@@ -6,6 +6,8 @@ on:
     - cron: "*/30 * * * *"
     # CollegeFootballData + nflverse stats: twice a day (~6am / 6pm ET)
     - cron: "7 10,22 * * *"
+    # Sunday 11:17am ET: fresh injuries, rosters and implied totals for the NFL prop cards before kickoff
+    - cron: "17 15 * * 0"
   workflow_dispatch:
     inputs:
       cfbd:
@@ -35,7 +37,7 @@ jobs:
           python-version: "3.12"
 
       - name: Python packages
-        run: pip install --quiet numpy
+        run: pip install --quiet numpy pandas
 
       - name: DraftKings lines (ESPN)
         run: python scripts/espn_odds.py
@@ -48,7 +50,7 @@ jobs:
 
       - name: nflverse stats
         continue-on-error: true
-        if: github.event.schedule == '7 10,22 * * *' || (github.event_name == 'workflow_dispatch' && inputs.nflverse)
+        if: github.event.schedule == '7 10,22 * * *' || github.event.schedule == '17 15 * * 0' || (github.event_name == 'workflow_dispatch' && inputs.nflverse)
         run: python scripts/nflverse_pull.py
 
       - name: Grade slates (SP+ / Elo / per-play)
@@ -59,6 +61,11 @@ jobs:
         continue-on-error: true
         run: |
           if [ -f data/nfl/team_games.csv ]; then python scripts/regrade_nfl.py; fi
+
+      - name: NFL prop cards (hit rates + model)
+        continue-on-error: true
+        if: github.event.schedule == '7 10,22 * * *' || github.event.schedule == '17 15 * * 0' || (github.event_name == 'workflow_dispatch' && inputs.nflverse)
+        run: python scripts/nfl_props.py
 
       - name: Commit changes
         run: |
