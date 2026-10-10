@@ -3903,7 +3903,7 @@ game_id,season,game_type,week,gameday,weekday,gametime,away_team,away_score,home
 2026_05_HOU_TEN,2026,REG,5,2026-10-11,Sunday,13:00,HOU,,TEN,,Home,,,,401872984,7,7,-360,285,-7,38.5,1,outdoors,grass,,,00-0039163,00-0040676,C.J. Stroud,Cam Ward,DeMeco Ryans,Robert Saleh,Nissan Stadium
 2026_05_NYG_WAS,2026,REG,5,2026-10-11,Sunday,13:00,NYG,,WAS,,Home,,,,401872988,7,7,142,-170,3.5,41.5,1,outdoors,grass,,,00-0031503,00-0039910,Jameis Winston,Jayden Daniels,John Harbaugh,Dan Quinn,Northwest Stadium
 2026_05_DEN_LAC,2026,REG,5,2026-10-11,Sunday,16:05,DEN,,LAC,,Home,,,,401872989,7,7,-192,160,-3.5,41.5,1,dome,matrixturf,,,00-0039732,00-0036355,Bo Nix,Justin Herbert,Sean Payton,Jim Harbaugh,SoFi Stadium
-2026_05_DET_ARI,2026,REG,5,2026-10-11,Sunday,16:25,DET,,ARI,,Home,,,,401872991,7,7,-258,210,-5.5,54.5,0,,grass,,,00-0033106,00-0033119,Jared Goff,Jacoby Brissett,Dan Campbell,Jonathan Gannon,State Farm Stadium
+2026_05_DET_ARI,2026,REG,5,2026-10-11,Sunday,16:25,DET,,ARI,,Home,,,,401872991,7,7,-250,205,-5.5,54.5,0,,grass,,,00-0033106,00-0033119,Jared Goff,Jacoby Brissett,Dan Campbell,Jonathan Gannon,State Farm Stadium
 2026_05_SF_SEA,2026,REG,5,2026-10-11,Sunday,16:25,SF,,SEA,,Home,,,,401872992,7,7,136,-162,3,45.5,1,outdoors,fieldturf,,,00-0037834,00-0035704,Brock Purdy,Drew Lock,Kyle Shanahan,Mike Macdonald,Lumen Field
 2026_05_BAL_ATL,2026,REG,5,2026-10-11,Sunday,20:20,BAL,,ATL,,Home,,,,401872993,7,6,150,-180,3.5,43.5,0,,fieldturf,,,00-0035993,00-0039917,Tyler Huntley,Michael Penix Jr.,Jesse Minter,Raheem Morris,Mercedes-Benz Stadium
 2026_05_BUF_LA,2026,REG,5,2026-10-12,Monday,20:15,BUF,,LA,,Home,,,,401872994,8,8,145,-175,3,54.5,0,dome,matrixturf,,,00-0034857,00-0026498,Josh Allen,Matthew Stafford,Sean McDermott,Sean McVay,SoFi Stadium
