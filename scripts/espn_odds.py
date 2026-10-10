@@ -92,13 +92,22 @@ for lg, url in LEAGUES.items():
             "home_spread_odds", "away_spread_odds", "total", "over_odds", "under_odds", "away_ml", "home_ml",
             "away_score", "home_score"]
     new = not os.path.exists(hist)
+    last = {}
+    if not new:
+        with open(hist, newline="") as f:
+            for old in csv.DictReader(f):
+                last[old["game_id"]] = old
+    track = ["home_spread", "away_spread", "home_spread_odds", "away_spread_odds", "total", "over_odds", "under_odds",
+             "away_ml", "home_ml", "status", "away_score", "home_score"]
     with open(hist, "a", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
         if new:
             w.writeheader()
         for r in rows:
-            if r.get("status") != "post" or r.get("home_score"):
-                w.writerow({"pulled_utc": stamp, **r})
+            prev = last.get(r["game_id"])
+            if prev and all(str(r.get(k) if r.get(k) is not None else "") == prev.get(k, "") for k in track):
+                continue  # nothing changed since the last recorded row
+            w.writerow({"pulled_utc": stamp, **r})
     print(f"ok   {lg}: {len(rows)} games")
 
 with open(f"{OUT}/_status.json", "w") as f:

@@ -39,6 +39,10 @@ jobs:
           CFBD_KEY: ${{ secrets.CFBD_KEY }}
         run: python scripts/cfbd_pull.py
 
+      - name: Grade slates (SP+ / Elo / per-play)
+        run: |
+          if [ -f data/cfbd/sp_ratings.json ]; then python scripts/regrade.py; fi
+
       - name: Commit changes
         run: |
           git config user.name "data-bot"

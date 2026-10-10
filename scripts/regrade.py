@@ -1,46 +1,73 @@
 #!/usr/bin/env python3
-"""Grade a CFB slate vs DraftKings using SP+, Elo and EPA/success-rate matchups.
+"""Grade CFB slates vs DraftKings using SP+, Elo, a per-play screen and EPA matchups.
 
-Usage: python scripts/regrade.py 2026-10-10        (date in US Eastern)
-Writes data/boards/cfb_<date>.csv and prints the graded board.
+Usage:
+  python scripts/regrade.py                 grade every slate date on the DK board (next ~7 days)
+  python scripts/regrade.py 2026-10-10      grade one date (US Eastern)
 
-Projections (home perspective, negative spread = home favored, like DK):
-  SP+   margin = SP_home - SP_away + HFA ; total = (offH + defA - natD) + (offA + defH - natD)
-  Elo   margin = (Elo_home - Elo_away)/25 + HFA   (latest postgame Elo from CFBD games)
-Calibration: SP+ and Elo run more extreme than the market and SP+ totals run high, so each
-model is first fitted to the slate's DK lines (linear fit, big-spread/option games excluded).
-Gaps are measured against the calibrated projection = where DK breaks from its usual pattern.
-Grades (CFB edge threshold 3 pts, from the build plan):
-  PLAY  both SP+ and Elo beat the DK number by >= 3 on the same side
-  LEAN  one model >= 3 and the other >= 1 on the same side
-  PASS  otherwise (or models point opposite ways)
-  Totals: SP+ only; LEAN at >= 3, PLAY at >= 5. Option offenses and spreads >= 25 are flagged, not graded.
+Writes data/boards/cfb_<date>.json + .csv and data/boards/index.json (read by the web app).
+
+Method (see the project's handicapping checklist):
+  Sides   SP+ margin = SP_home - SP_away + HFA;  Elo margin = dElo/25 + HFA.
+          Each model is fitted to the slate's DK spreads first (they run more extreme than the
+          market), so an edge = where DK breaks from its usual relationship to the model.
+          PLAY = both >= 3 pts same side; LEAN = one >= 3 and other >= 1 same side; else PASS.
+  Totals  SP+ total and a per-play total (yds/play off vs def x pace, from CFBD season stats),
+          each de-biased to the slate's DK totals. PLAY = both >= 3 same way and one >= 5;
+          LEAN = both >= 3 same way; else PASS.
+  Adjust  Market moved >= 2 pts toward the other side since open: PLAY->LEAN, LEAN->PASS.
+          Over picks where the total fell >= 5 and rain/showers are forecast: -> PASS (models don't see weather).
+  Flags   Spreads >= 25 and option offenses (Army/Navy/Air Force) are shown but not graded.
 """
 import csv, datetime as dt, json, os, sys, unicodedata
 
-HFA, EDGE, ELO_PER_PT = 2.5, 3.0, 25.0
+HFA, EDGE, ELO_PER_PT, MOVE_AGAINST = 2.5, 3.0, 25.0, 2.0
 OPTION = {"Army", "Navy", "Air Force"}
+WET = ("rain", "shower", "storm", "thunder", "snow")
+ET = dt.timezone(dt.timedelta(hours=-4))  # EDT; good through early November
 
 def norm(s):
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
     return s.lower().replace("'", "").replace(".", "").strip()
 
 def load(name):
-    return json.load(open(f"data/cfbd/{name}.json"))["rows"]
+    d = json.load(open(f"data/cfbd/{name}.json"))
+    return d["rows"], d.get("pulled_utc")
 
-sp_rows = load("sp_ratings")
+sp_rows, CFBD_PULLED = load("sp_ratings")
 nat = next(r for r in sp_rows if r["team"] == "nationalAverages")
 SP = {r["team"]: r for r in sp_rows if r["team"] != "nationalAverages" and r.get("rating") is not None}
-ADV = {r["team"]: r for r in load("advanced_season")}
-PPA = {r["team"]: r for r in load("ppa_teams")}
-TAL = {r["team"]: r["talent"] for r in load("talent")}
+ADV = {r["team"]: r for r in load("advanced_season")[0]}
+PPA = {r["team"]: r for r in load("ppa_teams")[0]}
+TAL = {r["team"]: r["talent"] for r in load("talent")[0]}
 
-ELO = {}
-for g in sorted(load("games"), key=lambda g: g["startDate"]):
-    if g.get("completed"):
-        for side in ("home", "away"):
-            if g.get(f"{side}PostgameElo") is not None:
-                ELO[g[f"{side}Team"]] = g[f"{side}PostgameElo"]
+STATS = {}
+for r in load("season_stats")[0]:
+    STATS.setdefault(r["team"], {})[r["statName"]] = r["statValue"]
+
+def per_play(t):
+    s = STATS.get(t, {})
+    try:
+        plays = s["rushingAttempts"] + s["passAttempts"]
+        oplays = s["rushingAttemptsOpponent"] + s["passAttemptsOpponent"]
+        return {"ypp": s["totalYards"] / plays, "ypp_allowed": s["totalYardsOpponent"] / oplays,
+                "pace": plays / s["games"]}
+    except (KeyError, ZeroDivisionError):
+        return None
+
+PP = {t: v for t in STATS if (v := per_play(t))}
+LG_YPP = sum(STATS[t]["totalYards"] for t in PP) / sum(STATS[t]["rushingAttempts"] + STATS[t]["passAttempts"] for t in PP)
+
+ELO, RESULTS = {}, {}
+for g in sorted(load("games")[0], key=lambda g: g["startDate"]):
+    if g.get("completed") and g.get("homePoints") is not None:
+        for s, o in (("home", "away"), ("away", "home")):
+            if g.get(f"{s}PostgameElo") is not None:
+                ELO[g[f"{s}Team"]] = g[f"{s}PostgameElo"]
+            pf, pa = g[f"{s}Points"], g[f"{o}Points"]
+            RESULTS.setdefault(g[f"{s}Team"], []).append({
+                "wk": g["week"], "opp": g[f"{o}Team"], "site": "N" if g.get("neutralSite") else ("H" if s == "home" else "A"),
+                "res": "W" if pf > pa else "L" if pf < pa else "T", "score": f"{pf}-{pa}"})
 
 TEAMS = sorted(SP, key=lambda t: -len(t))
 ALIASES = {"miami hurricanes": "Miami", "miami (oh) redhawks": "Miami (OH)"}
@@ -55,24 +82,61 @@ def cfbd_name(display):
             return t
     return None
 
-def side(gap):
+def num(x):
+    try:
+        return float(str(x).lstrip("ou"))
+    except (TypeError, ValueError):
+        return None
+
+def rnd(x, n=1):
+    return None if x is None else round(x, n)
+
+def side_of(gap):
     return "home" if gap > 0 else "away"
 
-def grade(gs, ge):
-    if abs(gs) >= EDGE and abs(ge) >= EDGE and side(gs) == side(ge):
+def grade_side(gs, ge):
+    if ge is None:
+        ge = 0.0
+    if abs(gs) >= EDGE and abs(ge) >= EDGE and side_of(gs) == side_of(ge):
         return "PLAY"
     big, small = (gs, ge) if abs(gs) >= abs(ge) else (ge, gs)
-    if abs(big) >= EDGE and abs(small) >= 1 and side(big) == side(small):
+    if abs(big) >= EDGE and abs(small) >= 1 and side_of(big) == side_of(small):
         return "LEAN"
     return "PASS"
 
-def f(x, n=2):
-    return None if x is None else round(x, n)
+def grade_total(g1, g2):
+    if g2 is None or g1 * g2 <= 0 or min(abs(g1), abs(g2)) < 3:
+        return "PASS"
+    return "PLAY" if max(abs(g1), abs(g2)) >= 5 else "LEAN"
+
+DOWN = {"PLAY": "LEAN", "LEAN": "PASS", "PASS": "PASS"}
+
+def team_card(t):
+    p, a = PPA.get(t, {}), ADV.get(t, {})
+    po, pd, ao, ad = p.get("offense", {}), p.get("defense", {}), a.get("offense", {}), a.get("defense", {})
+    pp = PP.get(t, {})
+    s = STATS.get(t, {})
+    return {
+        "name": t, "conf": SP[t].get("conference"), "sp": rnd(SP[t]["rating"]), "sp_rank": SP[t].get("ranking"),
+        "sp_off": rnd(SP[t]["offense"]["rating"]), "sp_off_rank": SP[t]["offense"].get("ranking"),
+        "sp_def": rnd(SP[t]["defense"]["rating"]), "sp_def_rank": SP[t]["defense"].get("ranking"),
+        "elo": rnd(ELO.get(t), 0), "talent": rnd(TAL.get(t), 0),
+        "off": {"epa": rnd(po.get("overall"), 2), "rush_epa": rnd(po.get("rushing"), 2), "pass_epa": rnd(po.get("passing"), 2),
+                "sr": rnd(ao.get("successRate"), 3), "expl": rnd(ao.get("explosiveness"), 2),
+                "ppo": rnd(ao.get("pointsPerOpportunity"), 2), "stuff": rnd(ao.get("stuffRate"), 3),
+                "havoc": rnd((ao.get("havoc") or {}).get("total"), 3), "ypp": rnd(pp.get("ypp"), 2), "pace": rnd(pp.get("pace"), 1)},
+        "def": {"epa": rnd(pd.get("overall"), 2), "rush_epa": rnd(pd.get("rushing"), 2), "pass_epa": rnd(pd.get("passing"), 2),
+                "sr": rnd(ad.get("successRate"), 3), "expl": rnd(ad.get("explosiveness"), 2),
+                "ppo": rnd(ad.get("pointsPerOpportunity"), 2), "stuff": rnd(ad.get("stuffRate"), 3),
+                "havoc": rnd((ad.get("havoc") or {}).get("total"), 3), "ypp": rnd(pp.get("ypp_allowed"), 2)},
+        "turnovers": s.get("turnovers"), "takeaways": s.get("turnoversOpponent"), "games": s.get("games"),
+        "third_down": rnd(s["thirdDownConversions"] / s["thirdDowns"], 3) if s.get("thirdDowns") else None,
+        "third_down_allowed": rnd(s["thirdDownConversionsOpponent"] / s["thirdDownsOpponent"], 3) if s.get("thirdDownsOpponent") else None,
+        "results": RESULTS.get(t, []),
+    }
 
 def notes(h, a):
-    """Matchup flags in the style of the Action Network / CBS write-ups.
-    Defensive EPA/PPO are what offenses gain against that defense (higher = worse defense),
-    so a matchup's expected value is offense + defense-allowed."""
+    """Matchup flags. Defensive EPA/PPO = what offenses gain vs that D (higher = worse D)."""
     out = []
     for off, de in ((h, a), (a, h)):
         po, pd = PPA.get(off, {}).get("offense", {}), PPA.get(de, {}).get("defense", {})
@@ -88,101 +152,156 @@ def notes(h, a):
                 out.append(f"{de} {label} D shuts down {off} ({label} EPA {o:+.2f}; allows {d:+.2f})")
         hv = (ad.get("havoc") or {}).get("total")
         if hv is not None and hv >= 0.20:
-            out.append(f"{de} havoc {hv:.0%}")
+            out.append(f"{de} havoc rate {hv:.0%}")
         o, d = ao.get("pointsPerOpportunity"), ad.get("pointsPerOpportunity")
         if o is not None and d is not None and o + d >= 8.8:
             out.append(f"{off} should finish drives ({o:.1f} pts/opp; {de} allows {d:.1f})")
-    return "; ".join(out)
+    return out
 
-def _fit(x, y):
+def fit(x, y):
     mx, my = sum(x) / len(x), sum(y) / len(y)
     b = sum((a - mx) * (c - my) for a, c in zip(x, y)) / sum((a - mx) ** 2 for a in x)
     return b, my - b * mx
 
-def calibrate(rows):
-    base = [r for r in rows if not r["flags"]]
-    dk = [r["dk_home_spread"] for r in base]
-    bs, a_s = _fit([-r["sp_home_margin"] for r in base], dk)
-    eb = [r for r in base if r["elo_home_margin"] is not None]
-    be, a_e = _fit([-r["elo_home_margin"] for r in eb], [r["dk_home_spread"] for r in eb])
-    tbias = sum(r["total_gap"] for r in base) / len(base)
-    print(f"calibration: DK = {bs:.2f}*SP {a_s:+.2f} | DK = {be:.2f}*Elo {a_e:+.2f} | SP total bias {tbias:+.1f}")
-    for r in rows:
-        dk = r["dk_home_spread"]
-        r["sp_cal_spread"] = f(bs * -r["sp_home_margin"] + a_s, 1)
-        r["elo_cal_spread"] = f(be * -r["elo_home_margin"] + a_e, 1) if r["elo_home_margin"] is not None else None
-        r["gap_sp"] = f(dk - r["sp_cal_spread"], 1)
-        r["gap_elo"] = f(dk - r["elo_cal_spread"], 1) if r["elo_cal_spread"] is not None else 0.0
-        r["sp_total_cal"] = f(r["sp_total"] - tbias, 1)
-        r["total_gap"] = f(r["sp_total_cal"] - r["dk_total"], 1)
-        tg = r["total_gap"]
-        if r["side_grade"] != "FLAG":
-            r["side_grade"] = grade(r["gap_sp"], r["gap_elo"])
-            team = r["game"].split(" @ ")[1] if r["gap_sp"] > 0 else r["game"].split(" @ ")[0]
-            line = dk if r["gap_sp"] > 0 else -dk
-            r["side_pick"] = f"{team} {line:+g}" if r["side_grade"] in ("PLAY", "LEAN") else ""
-        if r["total_grade"] != "FLAG":
-            r["total_grade"] = "PLAY" if abs(tg) >= 5 else "LEAN" if abs(tg) >= 3 else "PASS"
-            r["total_pick"] = (("Over " if tg > 0 else "Under ") + str(r["dk_total"])) if r["total_grade"] in ("PLAY", "LEAN") else ""
-
-def main(day):
-    board = json.load(open("data/odds/latest_cfb.json"))
-    start = dt.datetime.fromisoformat(day + "T08:00:00+00:00")  # ~4am ET
-    end = start + dt.timedelta(hours=24)
+def build_rows(games):
     rows, unmatched = [], []
-    for g in board["games"]:
-        k = dt.datetime.fromisoformat(g["kickoff_utc"].replace("Z", "+00:00"))
-        if not (start <= k < end) or g.get("total") is None or g.get("home_spread") is None:
+    nd = nat["defense"]["rating"]
+    for g in games:
+        dk, tot = num(g.get("home_spread")), num(g.get("total"))
+        if dk is None or tot is None:
             continue
         h, a = cfbd_name(g["home_name"]), cfbd_name(g["away_name"])
         if not h or not a or h not in SP or a not in SP:
             unmatched.append(f"{g['away_name']} @ {g['home_name']}")
             continue
         hfa = 0 if g.get("neutral") else HFA
-        dk = float(g["home_spread"])
         sp_m = SP[h]["rating"] - SP[a]["rating"] + hfa
         elo_m = (ELO[h] - ELO[a]) / ELO_PER_PT + hfa if h in ELO and a in ELO else None
-        nd = nat["defense"]["rating"]
-        sp_tot = (SP[h]["offense"]["rating"] + SP[a]["defense"]["rating"] - nd) + \
-                 (SP[a]["offense"]["rating"] + SP[h]["defense"]["rating"] - nd)
-        gap_sp = dk + sp_m            # >0 means home better than DK says
-        gap_elo = dk + elo_m if elo_m is not None else 0.0
-        tgap = sp_tot - float(g["total"])
+        sp_tot = (SP[h]["offense"]["rating"] + SP[a]["defense"]["rating"] - nd) + (SP[a]["offense"]["rating"] + SP[h]["defense"]["rating"] - nd)
+        pp_tot = None
+        if h in PP and a in PP:
+            eh = PP[h]["ypp"] + PP[a]["ypp_allowed"] - LG_YPP
+            ea = PP[a]["ypp"] + PP[h]["ypp_allowed"] - LG_YPP
+            pp_tot = (eh + ea) * (PP[h]["pace"] + PP[a]["pace"]) / 2 / 14.5
         flags = []
-        if abs(dk) >= 25: flags.append("big spread")
-        if h in OPTION or a in OPTION: flags.append("option team")
-        sgrade = "FLAG" if flags else grade(gap_sp, gap_elo)
-        tgrade = "FLAG" if (h in OPTION or a in OPTION) else ("PLAY" if abs(tgap) >= 5 else "LEAN" if abs(tgap) >= 3 else "PASS")
-        pick_team = (g["home"] if side(gap_sp) == "home" else g["away"])
-        pick_line = dk if pick_team == g["home"] else -dk
+        if abs(dk) >= 25: flags.append("Big spread")
+        if h in OPTION or a in OPTION: flags.append("Option offense")
+        k = dt.datetime.fromisoformat(g["kickoff_utc"].replace("Z", "+00:00"))
         rows.append({
-            "kick_et": (k - dt.timedelta(hours=4)).strftime("%a %I:%M%p"),
-            "game": f"{g['away']} @ {g['home']}", "away": a, "home": h, "neutral": bool(g.get("neutral")),
-            "dk_home_spread": dk, "dk_home_open": g.get("home_spread_open"), "dk_total": g["total"], "dk_total_open": g.get("total_open"),
-            "sp_home_margin": f(sp_m, 1), "elo_home_margin": f(elo_m, 1), "sp_total": f(sp_tot, 1),
-            "gap_sp": f(gap_sp, 1), "gap_elo": f(gap_elo, 1), "total_gap": f(tgap, 1),
-            "side_grade": sgrade, "side_pick": f"{pick_team} {pick_line:+g}" if sgrade in ("PLAY", "LEAN") else "",
-            "total_grade": tgrade, "total_pick": (("Over " if tgap > 0 else "Under ") + str(g["total"])) if tgrade in ("PLAY", "LEAN") else "",
-            "sp_rank_away": SP[a].get("ranking"), "sp_rank_home": SP[h].get("ranking"),
-            "talent_away": f(TAL.get(a), 0), "talent_home": f(TAL.get(h), 0),
-            "weather": g.get("weather"), "temp_f": g.get("temp_f"), "flags": ", ".join(flags),
-            "matchup_notes": notes(h, a),
+            "id": g["game_id"], "kickoff_utc": g["kickoff_utc"], "kick_et": k.astimezone(ET).strftime("%-I:%M %p"),
+            "away_abbr": g["away"], "home_abbr": g["home"], "away": a, "home": h, "neutral": bool(g.get("neutral")),
+            "conference_game": g.get("conference_game"), "venue": g.get("venue"), "weather": g.get("weather"), "temp_f": g.get("temp_f"),
+            "dk": {"home_spread": dk, "home_spread_open": num(g.get("home_spread_open")),
+                   "home_spread_odds": g.get("home_spread_odds"), "away_spread_odds": g.get("away_spread_odds"),
+                   "total": tot, "total_open": num(g.get("total_open")), "over_odds": g.get("over_odds"), "under_odds": g.get("under_odds"),
+                   "home_ml": g.get("home_ml"), "away_ml": g.get("away_ml")},
+            "model": {"sp_margin": sp_m, "elo_margin": elo_m, "sp_total": sp_tot, "pp_total": pp_tot},
+            "flags": flags, "notes": notes(h, a),
         })
-    calibrate(rows)
-    os.makedirs("data/boards", exist_ok=True)
-    out = f"data/boards/cfb_{day}.csv"
-    if rows:
-        with open(out, "w", newline="") as fh:
-            w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
-            w.writeheader(); w.writerows(rows)
-    order = {"PLAY": 0, "LEAN": 1, "PASS": 2, "FLAG": 3}
-    rows.sort(key=lambda r: (min(order[r["side_grade"]], order[r["total_grade"]]), -max(abs(r["gap_sp"]), abs(r["total_gap"]))))
-    print(f"{len(rows)} games graded; DK lines pulled {board['pulled_utc']}; unmatched: {unmatched or 'none'}")
+    return rows, unmatched
+
+def grade(rows):
+    base = [r for r in rows if not r["flags"]]
+    if len(base) < 6:
+        base = rows
+    bs, a_s = fit([-r["model"]["sp_margin"] for r in base], [r["dk"]["home_spread"] for r in base])
+    eb = [r for r in base if r["model"]["elo_margin"] is not None]
+    be, a_e = fit([-r["model"]["elo_margin"] for r in eb], [r["dk"]["home_spread"] for r in eb])
+    sp_bias = sum(r["model"]["sp_total"] - r["dk"]["total"] for r in base) / len(base)
+    pb = [r for r in base if r["model"]["pp_total"] is not None]
+    pp_bias = sum(r["model"]["pp_total"] - r["dk"]["total"] for r in pb) / len(pb)
+    calib = {"spread_vs_sp": [round(bs, 2), round(a_s, 2)], "spread_vs_elo": [round(be, 2), round(a_e, 2)],
+             "sp_total_bias": round(sp_bias, 1), "pp_total_bias": round(pp_bias, 1), "n": len(base)}
     for r in rows:
-        print(f"{r['kick_et']:>10} {r['game']:16} DK {r['dk_home_spread']:+5.1f} SPc {r['sp_cal_spread']:+6.1f} "
-              f"Eloc {(r['elo_cal_spread'] if r['elo_cal_spread'] is not None else float('nan')):+6.1f} "
-              f"| {r['side_grade']:4} {r['side_pick']:11} | T {r['dk_total']:5} SPc {r['sp_total_cal']:5} {r['total_grade']:4} {r['total_pick']:12} {r['flags']}")
-    return out
+        m, d = r["model"], r["dk"]
+        sp_c = bs * -m["sp_margin"] + a_s
+        elo_c = be * -m["elo_margin"] + a_e if m["elo_margin"] is not None else None
+        gs = d["home_spread"] - sp_c
+        ge = d["home_spread"] - elo_c if elo_c is not None else None
+        sp_t = m["sp_total"] - sp_bias
+        pp_t = m["pp_total"] - pp_bias if m["pp_total"] is not None else None
+        g1, g2 = sp_t - d["total"], (pp_t - d["total"]) if pp_t is not None else None
+        m.update({"sp_spread_cal": rnd(sp_c), "elo_spread_cal": rnd(elo_c), "sp_total_cal": rnd(sp_t), "pp_total_cal": rnd(pp_t),
+                  "sp_margin": rnd(m["sp_margin"]), "elo_margin": rnd(m["elo_margin"]), "sp_total": rnd(m["sp_total"]), "pp_total": rnd(m["pp_total"])})
+        side = {"edge_sp": rnd(gs), "edge_elo": rnd(ge), "grade": "FLAG" if r["flags"] else grade_side(gs, ge), "pick": None, "adjust": []}
+        if side["grade"] in ("PLAY", "LEAN"):
+            home_pick = gs > 0
+            team = r["home_abbr"] if home_pick else r["away_abbr"]
+            line = d["home_spread"] if home_pick else -d["home_spread"]
+            side["pick"] = f"{team} {line:+g}"
+            side["pick_side"] = "home" if home_pick else "away"
+            if d["home_spread_open"] is not None:
+                moved = d["home_spread"] - d["home_spread_open"]  # + = toward away team
+                against = moved if home_pick else -moved
+                if against >= MOVE_AGAINST:
+                    side["adjust"].append(f"Line moved {against:g} pts toward the other side since open")
+                    side["grade"] = DOWN[side["grade"]]
+                    if side["grade"] == "PASS":
+                        side["pick"] = None
+        total = {"edge_sp": rnd(g1), "edge_pp": rnd(g2), "grade": "FLAG" if any(f == "Option offense" for f in r["flags"]) else grade_total(g1, g2),
+                 "pick": None, "adjust": []}
+        if total["grade"] in ("PLAY", "LEAN"):
+            over = g1 > 0
+            total["pick"] = f"{'Over' if over else 'Under'} {d['total']:g}"
+            total["pick_side"] = "over" if over else "under"
+            wet = any(w in (r.get("weather") or "").lower() for w in WET)
+            if over and wet and d["total_open"] is not None and d["total_open"] - d["total"] >= 5:
+                total["adjust"].append(f"Total fell {d['total_open'] - d['total']:g} with {r['weather'].lower()} forecast; models don't see weather")
+                total["grade"], total["pick"] = "PASS", None
+        r["side"], r["total"] = side, total
+    order = {"PLAY": 0, "LEAN": 1, "PASS": 2, "FLAG": 3}
+    rows.sort(key=lambda r: (min(order[r["side"]["grade"]], order[r["total"]["grade"]]), r["kickoff_utc"]))
+    return calib
+
+def write(day, rows, calib, unmatched, odds_pulled):
+    os.makedirs("data/boards", exist_ok=True)
+    teams = {t: team_card(t) for r in rows for t in (r["home"], r["away"])}
+    doc = {"date": day, "league": "cfb", "odds_pulled_utc": odds_pulled, "cfbd_pulled_utc": CFBD_PULLED,
+           "generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
+           "calibration": calib, "unmatched": unmatched, "games": rows, "teams": teams}
+    with open(f"data/boards/cfb_{day}.json", "w") as f:
+        json.dump(doc, f, separators=(",", ":"))
+    with open(f"data/boards/cfb_{day}.csv", "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["kick_et", "game", "dk_home_spread", "dk_open", "sp_cal", "elo_cal", "side_grade", "side_pick",
+                    "dk_total", "total_open", "sp_total_cal", "pp_total_cal", "total_grade", "total_pick", "flags", "adjustments", "notes"])
+        for r in rows:
+            w.writerow([r["kick_et"], f"{r['away_abbr']} @ {r['home_abbr']}", r["dk"]["home_spread"], r["dk"]["home_spread_open"],
+                        r["model"]["sp_spread_cal"], r["model"]["elo_spread_cal"], r["side"]["grade"], r["side"]["pick"] or "",
+                        r["dk"]["total"], r["dk"]["total_open"], r["model"]["sp_total_cal"], r["model"]["pp_total_cal"],
+                        r["total"]["grade"], r["total"]["pick"] or "", "; ".join(r["flags"]),
+                        "; ".join(r["side"]["adjust"] + r["total"]["adjust"]), "; ".join(r["notes"])])
+    return doc
+
+def main(days=None):
+    board = json.load(open("data/odds/latest_cfb.json"))
+    by_day = {}
+    for g in board["games"]:
+        k = dt.datetime.fromisoformat(g["kickoff_utc"].replace("Z", "+00:00")).astimezone(ET)
+        if g.get("status") == "pre":
+            by_day.setdefault(k.date().isoformat(), []).append(g)
+    days = days or sorted(by_day)
+    index = {"generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
+             "odds_pulled_utc": board["pulled_utc"], "cfbd_pulled_utc": CFBD_PULLED, "slates": []}
+    for day in days:
+        rows, unmatched = build_rows(by_day.get(day, []))
+        if len(rows) < 2:
+            continue
+        calib = grade(rows)
+        write(day, rows, calib, unmatched, board["pulled_utc"])
+        count = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)
+        index["slates"].append({"date": day, "games": len(rows),
+                                "plays": count("side", "PLAY") + count("total", "PLAY"),
+                                "leans": count("side", "LEAN") + count("total", "LEAN")})
+        print(f"{day}: {len(rows)} games, {index['slates'][-1]['plays']} plays, {index['slates'][-1]['leans']} leans; unmatched {unmatched or 'none'}")
+    # keep past slates listed so the app can still open them
+    if os.path.exists("data/boards/index.json"):
+        old = json.load(open("data/boards/index.json"))
+        have = {s["date"] for s in index["slates"]}
+        index["slates"] += [s for s in old.get("slates", []) if s["date"] not in have and os.path.exists(f"data/boards/cfb_{s['date']}.json")]
+    index["slates"].sort(key=lambda s: s["date"])
+    with open("data/boards/index.json", "w") as f:
+        json.dump(index, f, indent=1)
 
 if __name__ == "__main__":
-    print("wrote", main(sys.argv[1] if len(sys.argv) > 1 else dt.date.today().isoformat()))
+    main(sys.argv[1:] or None)
