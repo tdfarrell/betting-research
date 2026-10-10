@@ -4,12 +4,16 @@ on:
   schedule:
     # DraftKings lines via ESPN: every 30 min (UTC)
     - cron: "*/30 * * * *"
-    # CollegeFootballData stats: twice a day (~6am / 6pm ET)
+    # CollegeFootballData + nflverse stats: twice a day (~6am / 6pm ET)
     - cron: "7 10,22 * * *"
   workflow_dispatch:
     inputs:
       cfbd:
         description: "Also pull CFBD stats now"
+        type: boolean
+        default: true
+      nflverse:
+        description: "Also pull nflverse stats now"
         type: boolean
         default: true
 
@@ -30,6 +34,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Python packages
+        run: pip install --quiet numpy
+
       - name: DraftKings lines (ESPN)
         run: python scripts/espn_odds.py
 
@@ -39,9 +46,19 @@ jobs:
           CFBD_KEY: ${{ secrets.CFBD_KEY }}
         run: python scripts/cfbd_pull.py
 
+      - name: nflverse stats
+        continue-on-error: true
+        if: github.event.schedule == '7 10,22 * * *' || (github.event_name == 'workflow_dispatch' && inputs.nflverse)
+        run: python scripts/nflverse_pull.py
+
       - name: Grade slates (SP+ / Elo / per-play)
         run: |
           if [ -f data/cfbd/sp_ratings.json ]; then python scripts/regrade.py; fi
+
+      - name: Grade NFL weeks (EPA / Elo / points, QB adjusted) + CLV log
+        continue-on-error: true
+        run: |
+          if [ -f data/nfl/team_games.csv ]; then python scripts/regrade_nfl.py; fi
 
       - name: Commit changes
         run: |

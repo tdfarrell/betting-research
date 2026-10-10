@@ -1,0 +1,39 @@
+name: Backfill NFL DraftKings history
+
+# One-time (re-runnable) job: past NFL DraftKings opening/closing lines from ESPN, for the
+# early-line / CLV backtest. Run it from Actions -> this workflow -> Run workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      first:
+        description: "First season"
+        default: "2023"
+      last:
+        description: "Last season"
+        default: "2025"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pull-data
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pull past lines
+        run: python scripts/espn_backfill_nfl.py ${{ inputs.first }} ${{ inputs.last }}
+      - name: Commit
+        run: |
+          git config user.name "data-bot"
+          git config user.email "data-bot@users.noreply.github.com"
+          git add data/nfl
+          git diff --cached --quiet || git commit -m "data: NFL DraftKings history backfill"
+          git pull --rebase --autostash
+          git push

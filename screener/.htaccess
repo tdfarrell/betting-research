@@ -1,0 +1,14 @@
+# Ballwatcher Screener (CFB, NFL, …) — static page. The live data is fetched from GitHub in the browser.
+# Turn off the main site's rewrite rules inside this folder so Apache serves index.html directly
+# (and the site's "strip trailing slash" rule can't loop with Apache's directory slash).
+RewriteEngine Off
+DirectorySlash On
+DirectoryIndex index.html
+Options -Indexes
+
+<IfModule mod_headers.c>
+  # Always revalidate the page itself; the data it loads is already live.
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
