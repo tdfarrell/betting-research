@@ -9,15 +9,19 @@ Writes data/boards/cfb_<date>.json + .csv and data/boards/index.json (read by th
 
 Method (see the project's handicapping checklist):
   Sides   SP+ margin = SP_home - SP_away + HFA;  Elo margin = dElo/25 + HFA.
-          Each model is fitted to the slate's DK spreads first (they run more extreme than the
-          market), so an edge = where DK breaks from its usual relationship to the model.
-          PLAY = both >= 3 pts same side; LEAN = one >= 3 and other >= 1 same side; else PASS.
-  Totals  SP+ total and a per-play total (yds/play off vs def x pace, from CFBD season stats),
-          each de-biased to the slate's DK totals. PLAY = both >= 3 same way and one >= 5;
-          LEAN = both >= 3 same way; else PASS.
+          Each model is put on DK's scale using this slate's DK spreads, "fairly": we fit what the model
+          typically says for a given DK line and invert it, so an edge can't be predicted from the size of the
+          line (the old plain regression made ~80% of picks underdogs). Edges are the average of the two
+          models and are measured against the slate's usual gap (RMS of fitted model vs DK):
+          LEAN = 0.6-1.0x usual gap, PLAY = 1.0-2.0x, both models on the same side (each 1+ pt);
+          CHECK = 2x+ usual gap (lean only: usually QB/injury news the models don't have).
+  Totals  SP+ total and a per-play total (yds/play off vs def x pace, from CFBD season stats), each put on
+          DK's scale the same way; same bands, but EACH model must clear the band on its own, same direction.
   Adjust  Market moved >= 2 pts toward the other side since open: PLAY->LEAN, LEAN->PASS.
           Over picks where the total fell >= 5 and rain/showers are forecast: -> PASS (models don't see weather).
   Flags   Spreads >= 25 and option offenses (Army/Navy/Air Force) are shown but not graded.
+  Backtest (scripts/cfb_backtest.py, Elo only, 2022-25): ~50% ATS at every gap size; past SP+ can't be
+          tested with free data, so CFB grades are unproven. The fix makes them balanced, not proven.
 """
 import csv, datetime as dt, json, os, sys, unicodedata
 
@@ -94,22 +98,42 @@ def rnd(x, n=1):
 def side_of(gap):
     return "home" if gap > 0 else "away"
 
-def grade_side(gs, ge):
+# Gap bands as multiples of the slate's usual gap (how far the fitted models sit from DK on this slate).
+BAND_LEAN, BAND_PLAY, BAND_CHECK = 0.6, 1.0, 2.0   # CHECK only for extreme gaps: in the Elo backtest big CFB gaps were ~50%, not worse
+
+def grade_side(gs, ge, usual):
+    """gs / ge = SP+ and Elo edges vs DK (+ = home value). Graded on their average, both must agree."""
     if ge is None:
-        ge = 0.0
-    if abs(gs) >= EDGE and abs(ge) >= EDGE and side_of(gs) == side_of(ge):
+        return "PASS"
+    e = (gs + ge) / 2
+    if abs(e) >= BAND_CHECK * usual:
+        return "CHECK"
+    if side_of(gs) != side_of(ge) or min(abs(gs), abs(ge)) < 1:
+        return "PASS"
+    if abs(e) >= BAND_PLAY * usual:
         return "PLAY"
-    big, small = (gs, ge) if abs(gs) >= abs(ge) else (ge, gs)
-    if abs(big) >= EDGE and abs(small) >= 1 and side_of(big) == side_of(small):
+    if abs(e) >= BAND_LEAN * usual:
         return "LEAN"
     return "PASS"
 
-def grade_total(g1, g2):
-    if g2 is None or g1 * g2 <= 0 or min(abs(g1), abs(g2)) < 3:
+def grade_total(g1, g2, usual):
+    """g1 / g2 = SP+ and per-play total edges vs DK (+ = over). Both must agree."""
+    if g2 is None:
         return "PASS"
-    return "PLAY" if max(abs(g1), abs(g2)) >= 5 else "LEAN"
+    t = (g1 + g2) / 2
+    if abs(t) >= BAND_CHECK * usual:
+        return "CHECK"
+    if g1 * g2 <= 0:
+        return "PASS"
+    # each totals model must clear the band on its own (averaging two noisy totals shrinks the usual gap)
+    lo = min(abs(g1), abs(g2))
+    if lo >= BAND_PLAY * usual:
+        return "PLAY"
+    if lo >= BAND_LEAN * usual:
+        return "LEAN"
+    return "PASS"
 
-DOWN = {"PLAY": "LEAN", "LEAN": "PASS", "PASS": "PASS"}
+DOWN = {"PLAY": "LEAN", "LEAN": "PASS", "PASS": "PASS", "CHECK": "CHECK"}
 
 def team_card(t):
     p, a = PPA.get(t, {}), ADV.get(t, {})
@@ -159,9 +183,23 @@ def notes(h, a):
     return out
 
 def fit(x, y):
-    mx, my = sum(x) / len(x), sum(y) / len(y)
-    b = sum((a - mx) * (c - my) for a, c in zip(x, y)) / sum((a - mx) ** 2 for a in x)
-    return b, my - b * mx
+    """Map a model onto DK's scale so its edges are UNRELATED to the size of the line: fit what the model
+    typically says for a given DK number (model = a + b * DK) and invert it. A plain regression of DK on the
+    model pulls every prediction toward the middle, which made nearly every big favorite and every high
+    total look too big (picks were ~80% underdogs and unders). Returns (slope, intercept) model -> DK."""
+    n = len(x); mx, my = sum(x) / n, sum(y) / n
+    syy = sum((c - my) ** 2 for c in y); sxx = sum((a - mx) ** 2 for a in x)
+    if syy == 0 or sxx == 0:
+        return 0.0, my
+    b = sum((a - mx) * (c - my) for a, c in zip(x, y)) / syy   # model on DK
+    if abs(b) < 0.15:                                          # model barely tracks DK: match spreads instead
+        b = (1 if b >= 0 else -1) * (sxx / syy) ** 0.5
+    a = mx - b * my
+    return 1 / b, -a / b
+
+def rms(v):
+    v = [x for x in v if x is not None]
+    return (sum(x * x for x in v) / len(v)) ** 0.5 if v else None
 
 def build_rows(games):
     rows, unmatched = [], []
@@ -201,48 +239,64 @@ def build_rows(games):
     return rows, unmatched
 
 CALIB_FILE, MIN_FIT = "data/boards/calibration.json", 15
-DEFAULT_CALIB = {"spread_vs_sp": [0.73, -0.8], "spread_vs_elo": [0.8, -1.48], "sp_total_bias": 2.5, "pp_total_bias": -1.8}
+DEFAULT_CALIB = {"spread_vs_sp": [0.73, -0.8], "spread_vs_elo": [0.8, -1.48], "sp_total_fit": [1.0, -2.5], "pp_total_fit": [1.0, 1.8],
+                 "usual_side": 4.5, "usual_total": 7.0}
 
 def grade(rows):
     """Fit models to this slate's DK lines when it's big enough; small (midweek) slates
     reuse the fit from the most recent full slate so a 2-game Tuesday isn't graded on noise."""
     base = [r for r in rows if not r["flags"]]
     if len(base) >= MIN_FIT:
-        bs, a_s = fit([-r["model"]["sp_margin"] for r in base], [r["dk"]["home_spread"] for r in base])
+        dk = [r["dk"]["home_spread"] for r in base]
+        bs, a_s = fit([-r["model"]["sp_margin"] for r in base], dk)
         eb = [r for r in base if r["model"]["elo_margin"] is not None]
         be, a_e = fit([-r["model"]["elo_margin"] for r in eb], [r["dk"]["home_spread"] for r in eb])
-        sp_bias = sum(r["model"]["sp_total"] - r["dk"]["total"] for r in base) / len(base)
+        tk = [r["dk"]["total"] for r in base]
+        bt, at = fit([r["model"]["sp_total"] for r in base], tk)
         pb = [r for r in base if r["model"]["pp_total"] is not None]
-        pp_bias = sum(r["model"]["pp_total"] - r["dk"]["total"] for r in pb) / len(pb)
-        calib = {"spread_vs_sp": [round(bs, 2), round(a_s, 2)], "spread_vs_elo": [round(be, 2), round(a_e, 2)],
-                 "sp_total_bias": round(sp_bias, 1), "pp_total_bias": round(pp_bias, 1), "n": len(base), "source": "this slate"}
+        bp, ap = fit([r["model"]["pp_total"] for r in pb], [r["dk"]["total"] for r in pb])
+        # usual gap: how far the fitted models sit from DK on this slate (sets the LEAN / PLAY / CHECK bands)
+        us = rms([((bs * -r["model"]["sp_margin"] + a_s) + (be * -r["model"]["elo_margin"] + a_e)) / 2 - r["dk"]["home_spread"] for r in eb])
+        ut = rms([((bt * r["model"]["sp_total"] + at) + (bp * r["model"]["pp_total"] + ap)) / 2 - r["dk"]["total"] for r in pb])
+        calib = {"spread_vs_sp": [round(bs, 3), round(a_s, 2)], "spread_vs_elo": [round(be, 3), round(a_e, 2)],
+                 "sp_total_fit": [round(bt, 3), round(at, 2)], "pp_total_fit": [round(bp, 3), round(ap, 2)],
+                 "usual_side": round(us, 2), "usual_total": round(ut, 2), "n": len(base), "source": "this slate"}
         with open(CALIB_FILE, "w") as f:
             json.dump({**calib, "saved_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")}, f, indent=1)
     else:
-        saved = json.load(open(CALIB_FILE)) if os.path.exists(CALIB_FILE) else dict(DEFAULT_CALIB, saved_utc=None)
+        saved = json.load(open(CALIB_FILE)) if os.path.exists(CALIB_FILE) else {}
+        if "sp_total_fit" not in saved:
+            saved = dict(DEFAULT_CALIB, saved_utc=None)
         calib = {k: saved[k] for k in DEFAULT_CALIB}
         calib.update({"n": len(base), "source": f"last full slate ({saved.get('saved_utc') or 'default'})"})
     bs, a_s = calib["spread_vs_sp"]; be, a_e = calib["spread_vs_elo"]
-    sp_bias, pp_bias = calib["sp_total_bias"], calib["pp_total_bias"]
+    bt, at = calib["sp_total_fit"]; bp, ap = calib["pp_total_fit"]
+    us, ut = calib["usual_side"], calib["usual_total"]
+    calib["bands_side"] = [round(x * us, 1) for x in (BAND_LEAN, BAND_PLAY, BAND_CHECK)]
+    calib["bands_total"] = [round(x * ut, 1) for x in (BAND_LEAN, BAND_PLAY, BAND_CHECK)]
     for r in rows:
         m, d = r["model"], r["dk"]
         sp_c = bs * -m["sp_margin"] + a_s
         elo_c = be * -m["elo_margin"] + a_e if m["elo_margin"] is not None else None
         gs = d["home_spread"] - sp_c
         ge = d["home_spread"] - elo_c if elo_c is not None else None
-        sp_t = m["sp_total"] - sp_bias
-        pp_t = m["pp_total"] - pp_bias if m["pp_total"] is not None else None
+        sp_t = bt * m["sp_total"] + at
+        pp_t = bp * m["pp_total"] + ap if m["pp_total"] is not None else None
         g1, g2 = sp_t - d["total"], (pp_t - d["total"]) if pp_t is not None else None
         m.update({"sp_spread_cal": rnd(sp_c), "elo_spread_cal": rnd(elo_c), "sp_total_cal": rnd(sp_t), "pp_total_cal": rnd(pp_t),
                   "sp_margin": rnd(m["sp_margin"]), "elo_margin": rnd(m["elo_margin"]), "sp_total": rnd(m["sp_total"]), "pp_total": rnd(m["pp_total"])})
-        side = {"edge_sp": rnd(gs), "edge_elo": rnd(ge), "grade": "FLAG" if r["flags"] else grade_side(gs, ge), "pick": None, "adjust": []}
-        if side["grade"] in ("PLAY", "LEAN"):
-            home_pick = gs > 0
+        e_avg = (gs + ge) / 2 if ge is not None else gs
+        side = {"edge_sp": rnd(gs), "edge_elo": rnd(ge), "edge": rnd(e_avg), "grade": "FLAG" if r["flags"] else grade_side(gs, ge, us),
+                "pick": None, "adjust": []}
+        if side["grade"] in ("PLAY", "LEAN", "CHECK"):
+            home_pick = e_avg > 0
             team = r["home_abbr"] if home_pick else r["away_abbr"]
             line = d["home_spread"] if home_pick else -d["home_spread"]
             side["pick"] = f"{team} {line:+g}"
             side["pick_side"] = "home" if home_pick else "away"
-            if d["home_spread_open"] is not None:
+            if side["grade"] == "CHECK":
+                side["adjust"].append(f"Models are {abs(e_avg):.1f} pts off DK (usual gap {us:.1f}): big gaps usually mean news the models don't have. Lean only; check injuries/QB first")
+            elif d["home_spread_open"] is not None:
                 moved = d["home_spread"] - d["home_spread_open"]  # + = toward away team
                 against = moved if home_pick else -moved
                 if against >= MOVE_AGAINST:
@@ -250,18 +304,21 @@ def grade(rows):
                     side["grade"] = DOWN[side["grade"]]
                     if side["grade"] == "PASS":
                         side["pick"] = None
-        total = {"edge_sp": rnd(g1), "edge_pp": rnd(g2), "grade": "FLAG" if any(f == "Option offense" for f in r["flags"]) else grade_total(g1, g2),
-                 "pick": None, "adjust": []}
-        if total["grade"] in ("PLAY", "LEAN"):
-            over = g1 > 0
+        t_avg = (g1 + g2) / 2 if g2 is not None else g1
+        total = {"edge_sp": rnd(g1), "edge_pp": rnd(g2), "edge": rnd(t_avg),
+                 "grade": "FLAG" if any(f == "Option offense" for f in r["flags"]) else grade_total(g1, g2, ut), "pick": None, "adjust": []}
+        if total["grade"] in ("PLAY", "LEAN", "CHECK"):
+            over = t_avg > 0
             total["pick"] = f"{'Over' if over else 'Under'} {d['total']:g}"
             total["pick_side"] = "over" if over else "under"
             wet = any(w in (r.get("weather") or "").lower() for w in WET)
-            if over and wet and d["total_open"] is not None and d["total_open"] - d["total"] >= 5:
+            if total["grade"] == "CHECK":
+                total["adjust"].append(f"Models are {abs(t_avg):.1f} off the DK total (usual gap {ut:.1f}): usually weather or news the models don't have. Lean only")
+            elif over and wet and d["total_open"] is not None and d["total_open"] - d["total"] >= 5:
                 total["adjust"].append(f"Total fell {d['total_open'] - d['total']:g} with {r['weather'].lower()} forecast; models don't see weather")
                 total["grade"], total["pick"] = "PASS", None
         r["side"], r["total"] = side, total
-    order = {"PLAY": 0, "LEAN": 1, "PASS": 2, "FLAG": 3}
+    order = {"PLAY": 0, "LEAN": 1, "CHECK": 2, "PASS": 3, "FLAG": 4}
     rows.sort(key=lambda r: (min(order[r["side"]["grade"]], order[r["total"]["grade"]]), r["kickoff_utc"]))
     return calib
 
