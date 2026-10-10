@@ -1,22 +1,22 @@
 {
- "pulled_utc": "2026-10-10T02:09Z",
+ "pulled_utc": "2026-10-10T02:43Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
    "game_id": "401858254",
    "kickoff_utc": "2026-10-09T23:00Z",
-   "status": "in",
+   "status": "post",
    "away": "FSU",
    "home": "LOU",
    "away_name": "Florida State Seminoles",
    "home_name": "Louisville Cardinals",
    "away_score": "20",
-   "home_score": "35",
+   "home_score": "44",
    "neutral": false,
    "conference_game": true,
    "venue": "L&N Federal Credit Union Stadium",
-   "weather": "38",
-   "temp_f": 72
+   "weather": null,
+   "temp_f": null
   },
   {
    "game_id": "401858487",
@@ -26,13 +26,13 @@
    "home": "WASH",
    "away_name": "Iowa Hawkeyes",
    "home_name": "Washington Huskies",
-   "away_score": "20",
-   "home_score": "0",
+   "away_score": "27",
+   "home_score": "3",
    "neutral": false,
    "conference_game": true,
    "venue": "Husky Stadium",
-   "weather": "38",
-   "temp_f": 52
+   "weather": "12",
+   "temp_f": 51
   },
   {
    "game_id": "401860922",
@@ -42,13 +42,13 @@
    "home": "USU",
    "away_name": "Washington State Cougars",
    "home_name": "Utah State Aggies",
-   "away_score": "9",
+   "away_score": "16",
    "home_score": "3",
    "neutral": false,
    "conference_game": true,
    "venue": "Maverik Stadium",
-   "weather": "35",
-   "temp_f": 74
+   "weather": "38",
+   "temp_f": 72
   },
   {
    "game_id": "401864519",
@@ -64,37 +64,23 @@
    "conference_game": true,
    "venue": "CEFCU Stadium",
    "weather": "35",
-   "temp_f": 67
+   "temp_f": 65
   },
   {
    "game_id": "401856826",
    "kickoff_utc": "2026-10-10T02:30Z",
-   "status": "pre",
+   "status": "in",
    "away": "ISU",
    "home": "BYU",
    "away_name": "Iowa State Cyclones",
    "home_name": "BYU Cougars",
    "away_score": "0",
-   "home_score": "0",
+   "home_score": "7",
    "neutral": false,
    "conference_game": true,
    "venue": "LaVell Edwards Stadium",
-   "weather": "Cloudy",
-   "temp_f": 76,
-   "home_spread": "-11.5",
-   "home_spread_odds": "-108",
-   "home_spread_open": "-14.5",
-   "home_ml": "-470",
-   "home_ml_open": "-650",
-   "away_spread": "+11.5",
-   "away_spread_odds": "-112",
-   "away_spread_open": "+14.5",
-   "away_ml": "+360",
-   "away_ml_open": "+470",
-   "total": 46.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
-   "total_open": "o50.5"
+   "weather": "35",
+   "temp_f": 79
   },
   {
    "game_id": "401858481",
