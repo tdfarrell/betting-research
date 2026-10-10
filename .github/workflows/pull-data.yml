@@ -1,0 +1,48 @@
+name: Pull betting data
+
+on:
+  schedule:
+    # DraftKings lines via ESPN: every 30 min (UTC)
+    - cron: "*/30 * * * *"
+    # CollegeFootballData stats: twice a day (~6am / 6pm ET)
+    - cron: "7 10,22 * * *"
+  workflow_dispatch:
+    inputs:
+      cfbd:
+        description: "Also pull CFBD stats now"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pull-data
+  cancel-in-progress: false
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: DraftKings lines (ESPN)
+        run: python scripts/espn_odds.py
+
+      - name: CFBD stats
+        if: github.event.schedule == '7 10,22 * * *' || (github.event_name == 'workflow_dispatch' && inputs.cfbd)
+        env:
+          CFBD_KEY: ${{ secrets.CFBD_KEY }}
+        run: python scripts/cfbd_pull.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "data-bot"
+          git config user.email "data-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "data: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
