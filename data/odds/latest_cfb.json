@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-10T01:55Z",
+ "pulled_utc": "2026-10-10T02:09Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,7 +10,7 @@
    "home": "LOU",
    "away_name": "Florida State Seminoles",
    "home_name": "Louisville Cardinals",
-   "away_score": "14",
+   "away_score": "20",
    "home_score": "35",
    "neutral": false,
    "conference_game": true,
@@ -26,7 +26,7 @@
    "home": "WASH",
    "away_name": "Iowa Hawkeyes",
    "home_name": "Washington Huskies",
-   "away_score": "13",
+   "away_score": "20",
    "home_score": "0",
    "neutral": false,
    "conference_game": true,
@@ -42,12 +42,12 @@
    "home": "USU",
    "away_name": "Washington State Cougars",
    "home_name": "Utah State Aggies",
-   "away_score": "6",
+   "away_score": "9",
    "home_score": "3",
    "neutral": false,
    "conference_game": true,
    "venue": "Maverik Stadium",
-   "weather": "38",
+   "weather": "35",
    "temp_f": 74
   },
   {
@@ -58,13 +58,13 @@
    "home": "SJSU",
    "away_name": "Wyoming Cowboys",
    "home_name": "San Jos\u00e9 State Spartans",
-   "away_score": "3",
+   "away_score": "6",
    "home_score": "7",
    "neutral": false,
    "conference_game": true,
    "venue": "CEFCU Stadium",
-   "weather": "6",
-   "temp_f": 69
+   "weather": "35",
+   "temp_f": 67
   },
   {
    "game_id": "401856826",
@@ -79,7 +79,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "LaVell Edwards Stadium",
-   "weather": "Intermittent clouds",
+   "weather": "Cloudy",
    "temp_f": 76,
    "home_spread": "-11.5",
    "home_spread_odds": "-108",
