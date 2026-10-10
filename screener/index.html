@@ -204,6 +204,24 @@ tr.sep td{padding:0;height:4px}
 .pc .flags{margin-top:8px;color:var(--lotto);font-size:12px}
 .pc .flags div::before{content:"⚑ "}
 .pc .why{margin-top:6px;color:var(--muted);font-size:11.5px}
+/* props table */
+.ptw{margin-top:4px}
+table.ptable{min-width:0;width:100%;font-size:13px}
+table.ptable th{cursor:pointer;user-select:none}
+table.ptable th:hover{color:var(--ink)}
+table.ptable th.tc,table.ptable td.tc{text-align:center;padding:6px 3px;white-space:nowrap}
+table.ptable td.mono{white-space:nowrap}
+table.ptable td{padding:7px 8px}
+table.ptable tbody tr{cursor:default}
+table.ptable .first{position:sticky;left:0;z-index:2;background:var(--panel);white-space:nowrap}
+table.ptable th.first{z-index:3}
+table.ptable td.tc .c{display:inline-block;min-width:46px;padding:4px 5px;border-radius:5px;font:500 12px var(--mono);background:var(--chip)}
+table.ptable td.tc .c.m{background:transparent;border:1px solid var(--line)}
+table.ptable td.tc .c.m.r4{border-color:rgba(74,222,155,.6);color:var(--win)}table.ptable td.tc .c.m.r3{border-color:rgba(74,222,155,.35)}
+table.ptable td.tc small{display:block;color:var(--muted);font:500 10px var(--mono);margin-top:2px}
+.c.r4{background:rgba(74,222,155,.34);color:#E9FFF4}.c.r3{background:rgba(74,222,155,.18)}.c.r2{background:rgba(255,176,32,.12)}.c.r1{background:rgba(255,122,122,.10);color:#C9AFAF}.c.r0{background:rgba(255,122,122,.18);color:#D8B5B5}.c.na{background:transparent;color:#4C5566}
+.tflag{color:var(--lotto);font-size:11px;margin-left:2px}
+@media (max-width:820px){.ptw{display:block}table.ptable .opt{display:none}table.ptable td{padding:7px 6px}table.ptable .first{max-width:130px;overflow:hidden;text-overflow:ellipsis}}
 </style>
 </head>
 <body>
@@ -372,7 +390,7 @@ function addDays(d, n) { const x = new Date(d + "T12:00:00"); x.setDate(x.getDat
 function nflWx(g) { if (g.roof === "dome" || g.roof === "closed") return "Dome"; return `${g.weather || ""}${g.temp_f != null ? ` ${g.temp_f}°` : ""}`; }
 
 const state = { sport: null, index: null, slate: null, key: null, grade: "all", mkt: "both", q: "", hideFlag: false, history: {},
-  view: "lines", props: null, pf: { mk: "rec_yds", role: "all", game: "all", q: "", dis: false } };
+  view: "lines", props: null, pf: { mk: "rec_yds", role: "all", game: "all", q: "", dis: false, layout: "cards", metric: "p", sort: null, dir: -1 } };
 const S = () => SPORTS[state.sport];
 
 function hashParams() { return new URLSearchParams(location.hash.slice(1)); }
@@ -618,6 +636,7 @@ function nflDrawer(g, teams) {
 /* ------------------------------------------------------------------ props (NFL) */
 const PMK = [["rec_yds", "Rec yds"], ["rec", "Receptions"], ["rush_yds", "Rush yds"], ["rr_yds", "Rush + rec"], ["pass_yds", "Pass yds"], ["pass_td", "Pass TDs"], ["atd", "Anytime TD"]];
 const ROLES = ["all", "QB1", "RB1", "RB2", "WR1", "WR2", "WR3", "TE1"];
+const PMETRIC = [["p", "Model %"], ["season", "Season"], ["l3", "L3"], ["def", "Opp vs role"]];
 function drawViews() {
   const s = S(), v = $("#views");
   v.hidden = !s.props;
@@ -651,12 +670,20 @@ async function loadProps(key) {
         <label class="chk"><input type="checkbox" id="pDis" ${state.pf.dis ? "checked" : ""}> Hit rate vs model disagree</label>
       </div>
     </div>
+    <div class="pfilters" style="margin-top:0"><div class="row">
+      <div class="seg" id="pLayout" role="group" aria-label="Layout"><button data-v="cards" aria-pressed="${state.pf.layout === "cards"}">Cards</button><button data-v="table" aria-pressed="${state.pf.layout === "table"}">Table</button></div>
+      <div class="seg" id="pMetric" role="group" aria-label="Tier cells show" ${state.pf.layout === "table" ? "" : "hidden"}>${PMETRIC.map(([k, l]) => `<button data-v="${k}" aria-pressed="${state.pf.metric === k}">${l}</button>`).join("")}</div>
+      <span class="edge" id="pMetricHint" ${state.pf.layout === "table" ? "" : "hidden"}>Tier cells show · click a column to sort</span>
+    </div></div>
     <div id="pList"></div>
     <div class="note" style="margin-top:18px"><b>Reading a card.</b> Each column is a DraftKings-style tier (hit = reached or beat it). <b>L3</b> = last 3 games, <b>Season</b> = this season, <b>Opp vs role</b> = what this week's defense has allowed to the same role (e.g. WR1s) this season. Roles are set entering each game by volume. <b>Model</b> = simulated probability from projected volume (share of team targets/carries × team plays from the DK spread and implied total), efficiency and the defense; <b>Fair</b> = those odds with no vig. ⚑ marks tiers where the hit rate and model point opposite ways.
     ${bt ? `<br><b>Backtest ${bt.seasons[0]}–${String(bt.seasons[1]).slice(2)}</b> (${Number(bt.predictions).toLocaleString()} tier calls): the model's probabilities predicted hits better than season hit rates (Brier ${bt.brier_model} vs ${bt.brier_season_hr}, lower is better), and season hit rates beat last-3. Small samples swing hard early in the year.` : ""}</div>`;
   const bind = (id, k) => { $(id).onclick = e => { const b = e.target.closest("button"); if (!b) return; state.pf[k] = b.dataset.v;
     $(id).querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderProps(); }; };
-  bind("#pMk", "mk"); bind("#pRole", "role");
+  bind("#pMk", "mk"); bind("#pRole", "role"); bind("#pMetric", "metric");
+  $("#pLayout").onclick = e => { const b = e.target.closest("button"); if (!b) return; state.pf.layout = b.dataset.v;
+    $("#pLayout").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    $("#pMetric").hidden = $("#pMetricHint").hidden = state.pf.layout !== "table"; renderProps(); };
   $("#pGame").onchange = e => { state.pf.game = e.target.value; renderProps(); };
   $("#pQ").oninput = e => { state.pf.q = e.target.value; renderProps(); };
   $("#pDis").onchange = e => { state.pf.dis = e.target.checked; renderProps(); };
@@ -709,12 +736,68 @@ function renderProps() {
   if (q) cards = cards.filter(c => (c.name + " " + c.team + " " + c.opp).toLowerCase().includes(q));
   if (f.dis) cards = cards.filter(c => (c.markets[f.mk].disagree || []).length);
   if (!cards.length) { $("#pList").innerHTML = `<div class="empty">No players match. Passing markets are QBs only; receptions are for receivers and backs.</div>`; return; }
+  if (f.layout === "table") return renderPropTable(cards);
   const byGame = new Map();
   cards.sort((a, b) => (a.kickoff_utc || "").localeCompare(b.kickoff_utc || "") || a.game_id.localeCompare(b.game_id) || (a.home - b.home) || ROLE_ORDER[a.role] - ROLE_ORDER[b.role]);
   // keep game order by kickoff as listed on the board
   for (const c of cards) { if (!byGame.has(c.game_id)) byGame.set(c.game_id, []); byGame.get(c.game_id).push(c); }
   $("#pList").innerHTML = [...byGame.values()].map(cs => { const c = cs[0], h = c.home ? c.team : c.opp, a = c.home ? c.opp : c.team;
     return `<div class="gamehd">${esc(a)} @ ${esc(h)} <small>${c.kick_et} ET</small></div><div class="pgrid">${cs.map(x => propCard(x, f.mk)).join("")}</div>`; }).join("");
+}
+
+
+/* sortable table: one row per player for the chosen market, one column per tier */
+function tierFlagged(mk, m, t) { const lab = mk === "atd" ? "" : ` ${t}+`; return (m.disagree || []).some(d => d.startsWith(lab + ":")); }
+function tierVal(t, metric) { if (metric === "p") return t.p; const [h, n] = t[metric]; return n ? h / n : -1; }
+const P_OPT = new Set(["team", "kick", "implied", "l3avg", "def_avg"]);  // hidden on phones so the tiers sit next to the name
+function renderPropTable(cards) {
+  const f = state.pf, mk = f.mk, tiers = state.props.tiers[mk], lab = state.props.labels[mk];
+  const tl = t => mk === "atd" ? "TD" : t + "+";
+  const avgOf = (c, k) => { const m = c.markets[mk], v = k === "l3" ? m.l3_vals : null;
+    return k === "avg" ? (m.avg ?? -1) : k === "l3avg" ? (v.length ? v.reduce((a, b) => a + b, 0) / v.length : -1) : k === "proj" ? (m.proj ?? -1) : k === "def_avg" ? (m.def_avg ?? -1) : -1; };
+  const cols = [
+    { k: "name", l: "Player", v: c => c.name, txt: true },
+    { k: "role", l: "Role", v: c => ROLE_ORDER[c.role], txt: false },
+    { k: "team", l: "Team", v: c => c.team, txt: true },
+    { k: "opp", l: "Opp", v: c => c.opp, txt: true },
+    { k: "kick", l: "Kick", v: c => c.kickoff_utc || "", txt: true },
+    { k: "implied", l: "Tm imp.", v: c => c.implied ?? -1 },
+    { k: "avg", l: mk === "atd" ? "TD g" : "Avg", v: c => mk === "atd" ? c.markets[mk].season_vals.filter(x => x > 0).length : avgOf(c, "avg") },
+    { k: "l3avg", l: "L3 avg", v: c => avgOf(c, "l3avg"), hide: mk === "atd" },
+    { k: "proj", l: mk === "atd" ? "TD rate" : mk === "pass_td" ? "Proj TDs" : "Model med.", v: c => avgOf(c, "proj") },
+    { k: "def_avg", l: "Opp allows", v: c => avgOf(c, "def_avg"), hide: mk === "atd" },
+    ...tiers.map((t, i) => ({ k: "t" + i, l: tl(t), tier: i, v: c => tierVal(c.markets[mk].tiers[i], f.metric) })),
+  ].filter(c => !c.hide);
+  if (f.sort && cols.some(c => c.k === f.sort)) {
+    const col = cols.find(c => c.k === f.sort);
+    cards = [...cards].sort((a, b) => { const x = col.v(a), y = col.v(b);
+      return (col.txt ? String(x).localeCompare(String(y)) : x - y) * f.dir || a.name.localeCompare(b.name); });
+  } else {
+    cards = [...cards].sort((a, b) => (a.kickoff_utc || "").localeCompare(b.kickoff_utc || "") || a.game_id.localeCompare(b.game_id) || (a.home - b.home) || ROLE_ORDER[a.role] - ROLE_ORDER[b.role]);
+  }
+  const arrow = k => f.sort === k ? (f.dir > 0 ? " ▲" : " ▼") : "";
+  const cellFor = (c, i) => { const t = c.markets[mk].tiers[i], fl = tierFlagged(mk, c.markets[mk], t.t) ? `<span class="tflag" title="Hit rate and model disagree">⚑</span>` : "";
+    if (f.metric === "p") return `<td class="tc"><span class="c ${pcls(t.p)} m">${Math.round(t.p * 100)}%</span>${fl}<small>${fairTxt(t.fair)}</small></td>`;
+    const [h, n] = t[f.metric];
+    return `<td class="tc"><span class="c ${rcls(h, n)}">${n ? `${h}/${n}` : "—"}</span>${fl}<small>${Math.round(t.p * 100)}%</small></td>`; };
+  const num1 = x => x == null || x < 0 ? "—" : fmt(x);
+  $("#pList").innerHTML = `<div class="tablewrap ptw"><table class="ptable" aria-label="${esc(lab)} by tier">
+    <thead><tr>${cols.map(c => `<th class="${c.tier != null ? "tc" : c.k === "name" ? "first" : c.txt ? "" : "num"}${P_OPT.has(c.k) ? " opt" : ""}" data-sort="${c.k}" aria-sort="${f.sort === c.k ? (f.dir > 0 ? "ascending" : "descending") : "none"}" tabindex="0">${esc(c.l)}${arrow(c.k)}</th>`).join("")}</tr></thead>
+    <tbody>${cards.map(c => { const m = c.markets[mk];
+      return `<tr>
+        <td class="first"><span class="team">${esc(c.name)}</span>${c.status ? ` <span class="inj">${esc(c.status)}</span>` : ""}</td>
+        <td><span class="role" style="margin:0">${c.role}</span></td>
+        <td class="mono opt">${esc(c.team)}</td><td class="mono">${c.home ? "" : "@"}${esc(c.opp)}</td>
+        <td class="mono opt" style="color:var(--muted)">${esc(c.kick_et)}</td>
+        <td class="num mono opt">${num1(c.implied)}</td>
+        <td class="num mono">${mk === "atd" ? `${m.season_vals.filter(x => x > 0).length}/${m.season_vals.length}` : num1(m.avg)}</td>
+        ${mk === "atd" ? "" : `<td class="num mono opt">${m.l3_vals.length ? fmt(m.l3_vals.reduce((a, b) => a + b, 0) / m.l3_vals.length) : "—"}</td>`}
+        <td class="num mono">${mk === "atd" || mk === "pass_td" ? fmt(m.proj, 2) : num1(m.proj)}</td>
+        ${mk === "atd" ? "" : `<td class="num mono opt">${num1(m.def_avg)}</td>`}
+        ${tiers.map((_, i) => cellFor(c, i)).join("")}</tr>`; }).join("")}</tbody></table></div>
+    <div class="edge" style="margin-top:8px">${f.metric === "p" ? "Cells: model probability, fair odds underneath." : `Cells: ${f.metric === "l3" ? "last 3 games" : f.metric === "season" ? "this season" : "this defense vs the same role"} hit rate, model probability underneath.`} ⚑ = hit rate and model point opposite ways. Sorting a tier column sorts by the number shown.</div>`;
+  const sortBy = th => { const k = th.dataset.sort; if (f.sort === k) f.dir = -f.dir; else { f.sort = k; f.dir = ["name", "team", "opp", "kick", "role"].includes(k) ? 1 : -1; } renderProps(); };
+  $("#pList").querySelectorAll("th[data-sort]").forEach(th => { th.onclick = () => sortBy(th); th.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortBy(th); } }; });
 }
 
 /* ------------------------------------------------------------------ start */
