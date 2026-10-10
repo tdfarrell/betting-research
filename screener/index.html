@@ -225,6 +225,29 @@ table.ptable td.tc small{display:block;color:var(--muted);font:500 10px var(--mo
 .c.r4{background:rgba(74,222,155,.34);color:#E9FFF4}.c.r3{background:rgba(74,222,155,.18)}.c.r2{background:rgba(255,176,32,.12)}.c.r1{background:rgba(255,122,122,.10);color:#C9AFAF}.c.r0{background:rgba(255,122,122,.18);color:#D8B5B5}.c.na{background:transparent;color:#4C5566}
 .tflag{color:var(--lotto);font-size:11px;margin-left:2px}
 @media (max-width:820px){.ptw{display:block}table.ptable .opt{display:none}table.ptable td{padding:7px 6px}table.ptable .first{max-width:130px;overflow:hidden;text-overflow:ellipsis}}
+/* bet slip (admin only) */
+.addb{border:1px solid var(--line);background:var(--chip);color:var(--amber);border-radius:6px;padding:2px 7px;margin-left:6px;cursor:pointer;font:600 12px var(--mono);line-height:1.4;vertical-align:middle}
+.addb:hover{border-color:var(--amber)}
+.addb.on{background:var(--amber);color:#14110A;border-color:var(--amber)}
+.addb:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
+.addrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.addrow .addb{margin-left:0;padding:5px 9px}
+tr.addtr td{padding-top:4px}tr.addtr .addb{margin-left:0}
+table.ptable td.tc .addb{display:block;margin:3px auto 0;padding:0 6px}
+.tray{position:fixed;right:16px;bottom:16px;z-index:8;width:min(440px,calc(100% - 32px));background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.tray.empty:not(.open){width:auto}
+.trayhd{display:flex;gap:8px;align-items:center;width:100%;background:transparent;border:0;color:var(--ink);padding:11px 14px;cursor:pointer;font:800 18px var(--display);text-transform:uppercase;letter-spacing:.5px}
+.trayhd b{background:var(--amber);color:#14110A;border-radius:999px;padding:0 8px;font:700 13px var(--mono)}
+.trayhd span{font:500 11px var(--mono);color:var(--win);text-transform:none;letter-spacing:0}
+.trayhd i{margin-left:auto;font-style:normal;color:var(--muted)}
+.traybd{border-top:1px solid var(--line);padding:10px 12px 12px;max-height:60vh;overflow:auto}
+.titem{display:grid;grid-template-columns:1fr 78px auto auto;gap:6px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.tpick{font-weight:600}.tsub{color:var(--muted);font:500 11px var(--mono)}
+.todds{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:5px 6px;font:500 12px var(--mono)}
+.tbtn{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:6px;padding:6px 9px;cursor:pointer;font:600 11.5px var(--mono);white-space:nowrap}
+.tbtn.main{background:var(--amber);color:#14110A;border-color:var(--amber)}.tbtn.ghost{background:transparent;color:var(--muted)}
+.tx{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:14px}
+.tfoot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+@media (max-width:640px){.titem{grid-template-columns:1fr 70px auto}.titem .tbtn{grid-column:1/-1;justify-self:start}}
 </style>
 </head>
 <body>
@@ -313,10 +336,10 @@ function cmpRow(label, a, h, f, higherBetter) {
   return `<tr><td>${label}</td><td class="num ${ca}">${f(a)}</td><td class="num ${ch}">${f(h)}</td></tr>`;
 }
 const sect = t => `<tr><td colspan="3" class="edge" style="padding-top:10px">${t}</td></tr>`;
-function gradeCell(m) {
+function gradeCell(m, g, k) {
   const chk = m.grade === "CHECK";
   const adj = (m.adjust || []).map(a => chk ? `<span class="adj info">? Big gap — check news first</span>` : `<span class="adj">↓ ${esc(a)}</span>`).join("");
-  return `<span class="gr ${m.grade}">${m.grade}</span>${m.pick ? `<span class="pk${chk ? " lean" : ""}">${chk ? "lean " : ""}${esc(m.pick)}</span>` : ""}${adj}`;
+  return `<span class="gr ${m.grade}">${m.grade}</span>${m.pick ? `<span class="pk${chk ? " lean" : ""}">${chk ? "lean " : ""}${esc(m.pick)}</span>${pickAdd(m, g, k)}` : ""}${adj}`;
 }
 const moveTxt = (open, now, f = sgn) => open == null || now == null || open === now ? "" : `<span class="mv">open ${f(open)}</span>`;
 
@@ -340,9 +363,9 @@ const SPORTS = {
     rank: (T, t) => T[t].sp_rank,
     row(g, T) { const d = g.dk, m = g.model; return `
       <td class="num mono">${sgn(d.home_spread)}${moveTxt(d.home_spread_open, d.home_spread)}</td>
-      <td class="num mono">${sgn(m.sp_spread_cal)}</td><td class="num mono">${sgn(m.elo_spread_cal)}</td><td>${gradeCell(g.side)}</td>
+      <td class="num mono">${sgn(m.sp_spread_cal)}</td><td class="num mono">${sgn(m.elo_spread_cal)}</td><td>${gradeCell(g.side, g, "side")}</td>
       <td class="num mono">${fmt(d.total)}${moveTxt(d.total_open, d.total, fmt)}</td>
-      <td class="num mono">${fmt(m.sp_total_cal)}</td><td class="num mono">${fmt(m.pp_total_cal)}</td><td>${gradeCell(g.total)}</td>
+      <td class="num mono">${fmt(m.sp_total_cal)}</td><td class="num mono">${fmt(m.pp_total_cal)}</td><td>${gradeCell(g.total, g, "total")}</td>
       <td class="wx">${esc(g.weather || "")}${g.temp_f != null ? ` ${g.temp_f}°` : ""}</td>`; },
     mobile(g) { const d = g.dk, m = g.model; return [
       `SP+ ${sgn(m.sp_spread_cal)} · Elo ${sgn(m.elo_spread_cal)}`, `SP+ ${fmt(m.sp_total_cal)} · PP ${fmt(m.pp_total_cal)}`]; },
@@ -372,10 +395,10 @@ const SPORTS = {
     row(g, T) { const d = g.dk, m = g.model; return `
       <td class="num mono">${sgn(d.home_spread)}${moveTxt(d.home_spread_open, d.home_spread)}</td>
       <td class="num mono"><b>${sgn(m.number)}</b></td><td class="num mono">${sgn(m.epa_spread)}</td><td class="num mono">${sgn(m.sr_spread)}</td><td class="num mono">${sgn(m.pts_spread)}</td>
-      <td>${gradeCell(g.side)}${(g.side.keys || []).length ? `<span class="mv">crosses ${g.side.keys.join(" & ")}</span>` : ""}</td>
+      <td>${gradeCell(g.side, g, "side")}${(g.side.keys || []).length ? `<span class="mv">crosses ${g.side.keys.join(" & ")}</span>` : ""}</td>
       <td class="num mono ang angle">${sgn(m.last_spread)}</td><td class="num mono ang angle">${sgn(m.elo_spread)}</td>
       <td class="num mono">${fmt(d.total)}${moveTxt(d.total_open, d.total, fmt)}</td>
-      <td class="num mono"><b>${fmt(m.total_number)}</b></td><td class="num mono">${fmt(m.epa_total)}</td><td class="num mono">${fmt(m.pts_total)}</td><td>${gradeCell(g.total)}</td>
+      <td class="num mono"><b>${fmt(m.total_number)}</b></td><td class="num mono">${fmt(m.epa_total)}</td><td class="num mono">${fmt(m.pts_total)}</td><td>${gradeCell(g.total, g, "total")}</td>
       <td class="wx">${esc(nflWx(g))}</td>`; },
     mobile(g) { const m = g.model; return [
       `BW ${sgn(m.number)} · EPA ${sgn(m.epa_spread)} · SR ${sgn(m.sr_spread)} · Pts ${sgn(m.pts_spread)}<br><span class="angle">Last yr ${sgn(m.last_spread)} · Elo ${sgn(m.elo_spread)}</span>`,
@@ -487,8 +510,8 @@ function render() {
       <div class="teams">${esc(g.away)} ${g.neutral ? "vs" : "@"} ${esc(g.home)}</div>
       ${g.flags.length ? `<div style="margin:-4px 0 8px"><span class="gr FLAG">${esc(g.flags.join(", "))}</span></div>` : ""}
       <div class="lines">
-        <div class="box"><div class="k">Spread · DK ${sgn(d.home_spread)} (${esc(g.home_abbr)})</div><div class="mono edge">${a}</div>${gradeCell(g.side)}</div>
-        <div class="box"><div class="k">Total · DK ${fmt(d.total)}</div><div class="mono edge">${b}</div>${gradeCell(g.total)}</div>
+        <div class="box"><div class="k">Spread · DK ${sgn(d.home_spread)} (${esc(g.home_abbr)})</div><div class="mono edge">${a}</div>${gradeCell(g.side, g, "side")}</div>
+        <div class="box"><div class="k">Total · DK ${fmt(d.total)}</div><div class="mono edge">${b}</div>${gradeCell(g.total, g, "total")}</div>
       </div></div>`; }).join("") || `<div class="empty">No games match these filters.</div>`;
 }
 
@@ -555,7 +578,7 @@ function cfbDrawer(g, teams) {
     const lines = k === "side"
       ? [`DK ${esc(g.home_abbr)} ${sgn(d.home_spread)} (open ${sgn(d.home_spread_open)})`, `SP+ fitted ${sgn(m.sp_spread_cal)} · raw margin ${sgn(-m.sp_margin)}`, `Elo fitted ${sgn(m.elo_spread_cal)} · raw ${sgn(m.elo_margin == null ? null : -m.elo_margin)}`, `Edge vs DK: SP+ ${sgn(x.edge_sp)}, Elo ${sgn(x.edge_elo)}, average ${sgn(x.edge)} (+ = home value)`, ...(state.slate.calibration.bands_side ? [`Bands this slate: LEAN ${fmt(state.slate.calibration.bands_side[0])}+ · PLAY ${fmt(state.slate.calibration.bands_side[1])}+ · CHECK ${fmt(state.slate.calibration.bands_side[2])}+ pts`] : [])]
       : [`DK ${fmt(d.total)} (open ${fmt(d.total_open)}) · O ${esc(d.over_odds)} / U ${esc(d.under_odds)}`, `SP+ ${fmt(m.sp_total_cal)} (raw ${fmt(m.sp_total)})`, `Per-play ${fmt(m.pp_total_cal)} (raw ${fmt(m.pp_total)})`, `Edge: SP+ ${sgn(x.edge_sp)}, per-play ${sgn(x.edge_pp)}`, ...(state.slate.calibration.bands_total ? [`Bands this slate (each model): LEAN ${fmt(state.slate.calibration.bands_total[0])}+ · PLAY ${fmt(state.slate.calibration.bands_total[1])}+ · CHECK ${fmt(state.slate.calibration.bands_total[2])}+`] : [])];
-    return `<div class="panel"><h4>${k === "side" ? "Spread" : "Total"}</h4><div>${gradeCell(x)}</div><div class="mono edge" style="margin-top:6px">${lines.join("<br>")}</div></div>`; };
+    return `<div class="panel"><h4>${k === "side" ? "Spread" : "Total"}</h4><div>${gradeCell(x)}</div><div class="mono edge" style="margin-top:6px">${lines.join("<br>")}</div>${drawerAdds(g, k)}</div>`; };
   return `<div class="grid2">${why("side")}${why("total")}</div>${notesPanel(g)}${lmPanel}
     <div class="panel"><h4>Team comparison</h4><table class="cmp"><thead><tr><th></th><th class="num">${esc(g.away_abbr)}</th><th class="num">${esc(g.home_abbr)}</th></tr></thead><tbody>
       ${cmpRow("SP+ rating", A.sp, H.sp, x => fmt(x), true)}
@@ -597,12 +620,12 @@ function nflDrawer(g, teams) {
   const A = teams[g.away], H = teams[g.home], d = g.dk, m = g.model, e3 = x => x == null ? "—" : (+x).toFixed(2), p = pct, n0 = x => fmt(x, 0), rk = x => x == null ? "—" : "#" + x;
   const res = t => (t.results || []).map(r => `<span class="${r.res}">Wk${r.wk} ${r.site === "A" ? "@" : r.site === "N" ? "vs" : ""} ${esc(r.opp)} ${r.res} ${r.score}${r.ats ? ` · ATS ${r.ats}` : ""}</span>`).join("") || `<span>—</span>`;
   const sd = g.side, td = g.total;
-  const side = `<div class="panel"><h4>Spread</h4><div>${gradeCell(sd)}</div><div class="mono edge" style="margin-top:6px">
+  const side = `<div class="panel"><h4>Spread</h4><div>${gradeCell(sd)}</div>${drawerAdds(g, "side")}<div class="mono edge" style="margin-top:6px">
     DK ${esc(g.home_abbr)} ${sgn(d.home_spread)} (open ${sgn(d.home_spread_open)}) · ${esc(d.home_spread_odds)} / ${esc(d.away_spread_odds)}<br>
     <b style="color:var(--ink)">BW number ${esc(g.home_abbr)} ${sgn(m.number)}</b> · edge ${sgn(sd.edge)}<br>
     This season: EPA ${sgn(m.epa_spread)} · success ${sgn(m.sr_spread)} · points ${sgn(m.pts_spread)}<br>
     QB adjustment in all: ${sgn(m.qb_adj)} pts to ${esc(g.home_abbr)}${g.bands ? `<br>Gap bands this week: WATCH ${fmt(g.bands[0])}+ · TARGET ${fmt(g.bands[1])}+ · CHECK ${fmt(g.bands[2])}+ pts` : ""}${sd.grade === "CHECK" ? `<br><span style="color:var(--lotto)">${esc(sd.adjust[0] || "")}</span>` : ""}${(sd.keys || []).length ? `<br>Our number and DK sit on opposite sides of ${sd.keys.join(" & ")}` : ""}</div></div>`;
-  const tot = `<div class="panel"><h4>Total</h4><div>${gradeCell(td)}</div><div class="mono edge" style="margin-top:6px">
+  const tot = `<div class="panel"><h4>Total</h4><div>${gradeCell(td)}</div>${drawerAdds(g, "total")}<div class="mono edge" style="margin-top:6px">
     DK ${fmt(d.total)} (open ${fmt(d.total_open)}) · O ${esc(d.over_odds)} / U ${esc(d.under_odds)}<br>
     <b style="color:var(--ink)">BW total ${fmt(m.total_number)}</b> · edge ${sgn(td.edge)}<br>EPA × pace ${fmt(m.epa_total)} · points ${fmt(m.pts_total)}<br>Edge: EPA ${sgn(td.edge_epa)}, points ${sgn(td.edge_pts)}<br>
     ${esc(g.roof || "")}${g.surface ? " · " + esc(g.surface) : ""}</div></div>`;
@@ -728,6 +751,7 @@ function propCard(c, mk) {
         <tr class="sep"><td colspan="${m.tiers.length + 1}"></td></tr>
         <tr class="model"><td class="lab">Model</td>${m.tiers.map(t => `<td class="c ${pcls(t.p)}">${Math.round(t.p * 100)}%</td>`).join("")}</tr>
         <tr class="fairr"><td class="lab">Fair</td>${m.tiers.map(t => `<td>${fairTxt(t.fair)}</td>`).join("")}</tr>
+        ${propAddRow(c, mk)}
       </tbody></table></div>
     ${dis.length ? `<div class="flags">${dis.map(d => `<div>${esc(lab)}${esc(d)}</div>`).join("")}</div>` : ""}
     ${c.prior.dropped.length && c.prior.weight > 0 && !c.prior.dropped.includes("no prior season") ? `<div class="why">Last season ignored: ${esc(c.prior.dropped.join(", "))}</div>` : ""}
@@ -783,9 +807,10 @@ function renderPropTable(cards) {
   }
   const arrow = k => f.sort === k ? (f.dir > 0 ? " ▲" : " ▼") : "";
   const cellFor = (c, i) => { const t = c.markets[mk].tiers[i], fl = tierFlagged(mk, c.markets[mk], t.t) ? `<span class="tflag" title="Hit rate and model disagree">⚑</span>` : "";
-    if (f.metric === "p") return `<td class="tc"><span class="c ${pcls(t.p)} m">${Math.round(t.p * 100)}%</span>${fl}<small>${fairTxt(t.fair)}</small></td>`;
+    const ab = slip.admin ? addBtn(propItem(c, mk, t.t)) : "";
+    if (f.metric === "p") return `<td class="tc"><span class="c ${pcls(t.p)} m">${Math.round(t.p * 100)}%</span>${fl}<small>${fairTxt(t.fair)}</small>${ab}</td>`;
     const [h, n] = t[f.metric];
-    return `<td class="tc"><span class="c ${rcls(h, n)}">${n ? `${h}/${n}` : "—"}</span>${fl}<small>${Math.round(t.p * 100)}%</small></td>`; };
+    return `<td class="tc"><span class="c ${rcls(h, n)}">${n ? `${h}/${n}` : "—"}</span>${fl}<small>${Math.round(t.p * 100)}%</small>${ab}</td>`; };
   const num1 = x => x == null || x < 0 ? "—" : fmt(x);
   $("#pList").innerHTML = `<div class="tablewrap ptw"><table class="ptable" aria-label="${esc(lab)} by tier">
     <thead><tr>${cols.map(c => `<th class="${c.tier != null ? "tc" : c.k === "name" ? "first" : c.txt ? "" : "num"}${P_OPT.has(c.k) ? " opt" : ""}" data-sort="${c.k}" aria-sort="${f.sort === c.k ? (f.dir > 0 ? "ascending" : "descending") : "none"}" tabindex="0">${esc(c.l)}${arrow(c.k)}</th>`).join("")}</tr></thead>
@@ -806,6 +831,148 @@ function renderPropTable(cards) {
   $("#pList").querySelectorAll("th[data-sort]").forEach(th => { th.onclick = () => sortBy(th); th.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortBy(th); } }; });
 }
 
+/* ------------------------------------------------------------------ bet slip (admin only)
+   When you're logged in to the Ballwatcher admin, every graded line, both sides in the game drawer and every
+   prop tier get a "+" button. Picks collect in a slip tray (saved in this browser). From the tray you open a
+   prefilled straight slip, or a prefilled parlay from several picks, in the admin. Nothing is saved on the
+   site until you review it there and press Publish.
+   Handoff: /admin/slips/prefill?d=<base64url JSON>  { v:1, kind:"straight"|"parlay", sport, market, pick, odds,
+   game, starts_at, odds_at, reasoning, legs:[{sport, pick, game, odds, market, starts_at}] } */
+const SLIP_KEY = "bw_slip_v1", ADMIN_PREFILL = "/admin/slips/prefill", ADMIN_WHOAMI = "/admin/whoami";
+const SLIPSRC = {};   // id -> item, for the "+" buttons on screen
+let slipSeq = 0;
+const slip = { admin: false, items: [], open: false };
+try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
+function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
+
+async function detectAdmin() {
+  if (/(^|&)admin=preview(&|$)/.test(location.hash.slice(1))) { slip.admin = true; return; }  // layout preview only
+  try {
+    const r = await fetch(ADMIN_WHOAMI, { credentials: "same-origin", cache: "no-store" });
+    if (r.ok) { const j = await r.json(); slip.admin = !!(j && j.admin); }
+  } catch (e) { slip.admin = false; }
+}
+
+function regItem(it) { const id = "s" + (++slipSeq); SLIPSRC[id] = it; return id; }
+const inSlip = it => slip.items.some(x => x.key === it.key);
+function addBtn(it, label) {
+  if (!slip.admin || !it) return "";
+  const id = regItem(it), on = inSlip(it);
+  return `<button class="addb${on ? " on" : ""}" data-slip="${id}" title="${on ? "In your slip" : "Add to bet slip"}" aria-label="${on ? "In your slip" : "Add to bet slip"}: ${esc(it.pick)}">${on ? "✓" : "+"}${label ? " " + esc(label) : ""}</button>`;
+}
+const gameName = g => `${g.away_name || g.away} ${g.neutral ? "vs" : "@"} ${g.home_name || g.home}`;
+const sportOf = () => state.sport;
+
+/* line items (spreads / totals) */
+function lineItem(g, k, sideKey) {
+  const d = g.dk, sp = sportOf(), m = g.model;
+  if (k === "side") {
+    const home = sideKey === "home", ln = home ? d.home_spread : -d.home_spread;
+    if (ln == null || isNaN(ln)) return null;
+    const team = home ? g.home_abbr : g.away_abbr;
+    const why = sp === "nfl"
+      ? `BW ${g.home_abbr} ${sgn(m.number)} vs DK ${sgn(d.home_spread)} (EPA ${sgn(m.epa_spread)}, success ${sgn(m.sr_spread)}, points ${sgn(m.pts_spread)}); screener grade ${g.side.grade}`
+      : `SP+ ${g.home_abbr} ${sgn(m.sp_spread_cal)}, Elo ${sgn(m.elo_spread_cal)} vs DK ${sgn(d.home_spread)}; screener grade ${g.side.grade}`;
+    return { key: `${sp}:${g.id}:side:${sideKey}`, gid: `${sp}:${g.id}`, sport: sp, market: "Spread", pick: `${team} ${ln > 0 ? "+" : ""}${fmt(ln)}`,
+      odds: home ? d.home_spread_odds : d.away_spread_odds, game: gameName(g), starts_at: g.kickoff_utc, odds_at: state.slate.odds_pulled_utc, reasoning: why };
+  }
+  if (d.total == null) return null;
+  const over = sideKey === "over";
+  const why = sp === "nfl" ? `BW total ${fmt(m.total_number)} vs DK ${fmt(d.total)} (EPA ${fmt(m.epa_total)}, points ${fmt(m.pts_total)}); screener grade ${g.total.grade}`
+    : `SP+ total ${fmt(m.sp_total_cal)}, per-play ${fmt(m.pp_total_cal)} vs DK ${fmt(d.total)}; screener grade ${g.total.grade}`;
+  return { key: `${sp}:${g.id}:total:${sideKey}`, gid: `${sp}:${g.id}`, sport: sp, market: "Total", pick: `${over ? "Over" : "Under"} ${fmt(d.total)}`,
+    odds: over ? d.over_odds : d.under_odds, game: gameName(g), starts_at: g.kickoff_utc, odds_at: state.slate.odds_pulled_utc, reasoning: why };
+}
+// "+" next to a graded pick in the table / mobile list
+function pickAdd(m, g, k) { return m && m.pick && m.pick_side && g ? addBtn(lineItem(g, k, m.pick_side)) : ""; }
+// both sides of both markets, in the game drawer
+function drawerAdds(g, k) {
+  if (!slip.admin) return "";
+  const keys = k === "side" ? ["away", "home"] : ["over", "under"];
+  return `<div class="addrow">${keys.map(x => { const it = lineItem(g, k, x); return it ? addBtn(it, it.pick + (it.odds ? ` (${it.odds})` : "")) : ""; }).join("")}</div>`;
+}
+
+/* prop items */
+function propItem(c, mk, t) {
+  const m = c.markets[mk], lab = state.props.labels[mk];
+  const tier = m.tiers.find(x => x.t === t); if (!tier) return null;
+  const pick = mk === "atd" ? `${c.name} anytime TD` : `${c.name} ${t}+ ${lab.toLowerCase()}`;
+  const hr = ([h, n]) => n ? `${h}/${n}` : "—";
+  return { key: `nfl:prop:${c.id}:${mk}:${t}`, gid: `nfl:${c.game_id}`, sport: "nfl", market: `Player prop: ${lab}`, pick, odds: null,
+    game: `${c.home ? c.opp : c.team} @ ${c.home ? c.team : c.opp}`, starts_at: c.kickoff_utc, odds_at: null,
+    reasoning: `L3 ${hr(tier.l3)} · season ${hr(tier.season)} · ${c.opp} vs ${c.role}s ${hr(tier.def)} · model ${Math.round(tier.p * 100)}% (fair ${fairTxt(tier.fair)})` };
+}
+function propAddRow(c, mk) {
+  if (!slip.admin) return "";
+  const m = c.markets[mk];
+  return `<tr class="addtr"><td class="lab">Slip</td>${m.tiers.map(t => `<td>${addBtn(propItem(c, mk, t.t))}</td>`).join("")}</tr>`;
+}
+
+/* tray */
+function toggleItem(it) {
+  if (!it) return;
+  const i = slip.items.findIndex(x => x.key === it.key);
+  if (i >= 0) slip.items.splice(i, 1); else slip.items.push(it);
+  saveSlip(); drawTray();
+  document.querySelectorAll(".addb").forEach(b => { const x = SLIPSRC[b.dataset.slip]; if (!x) return; const on = inSlip(x);
+    b.classList.toggle("on", on); b.innerHTML = b.innerHTML.replace(/^(\+|✓)/, on ? "✓" : "+"); b.title = on ? "In your slip" : "Add to bet slip"; });
+}
+const b64u = s => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+function amToDec(o) { const n = parseFloat(o); if (isNaN(n) || n === 0) return null; return n > 0 ? 1 + n / 100 : 1 + 100 / -n; }
+function decToAm(d) { if (!d || d <= 1) return null; return d >= 2 ? "+" + Math.round((d - 1) * 100) : String(Math.round(-100 / (d - 1))); }
+function openPrefill(payload) { window.open(`${ADMIN_PREFILL}?d=${b64u(JSON.stringify({ v: 1, ...payload }))}`, "_blank"); }
+function openStraight(it) {
+  openPrefill({ kind: "straight", sport: it.sport, market: it.market, pick: it.pick, odds: it.odds || "", game: it.game,
+    starts_at: it.starts_at, odds_at: it.odds_at, reasoning: it.reasoning });
+}
+function openParlay() {
+  const legs = slip.items;
+  const sports = [...new Set(legs.map(x => x.sport))];
+  const sameGame = new Set(legs.map(x => x.gid || x.game)).size === 1;
+  const dec = legs.every(x => amToDec(x.odds)) ? legs.reduce((a, x) => a * amToDec(x.odds), 1) : null;
+  openPrefill({ kind: sameGame ? "sgp" : "parlay", sport: sports.length === 1 ? sports[0] : "", market: sameGame ? "Same game parlay" : "Parlay",
+    title: `${legs.length}-leg ${sameGame ? "SGP" : "parlay"}`, starts_at: legs.map(x => x.starts_at).filter(Boolean).sort()[0],
+    est_odds: decToAm(dec), legs: legs.map(x => ({ sport: x.sport, pick: x.pick, game: x.game, odds: x.odds || "", market: x.market, starts_at: x.starts_at })),
+    reasoning: legs.map(x => `${x.pick}: ${x.reasoning}`).join("\n") });
+}
+function drawTray() {
+  let t = $("#slipTray");
+  if (!slip.admin) { if (t) t.remove(); return; }
+  if (!t) { t = document.createElement("div"); t.id = "slipTray"; document.body.appendChild(t);
+    t.addEventListener("click", trayClick); t.addEventListener("input", trayInput); }
+  const n = slip.items.length;
+  t.className = "tray" + (slip.open ? " open" : "") + (n ? "" : " empty");
+  const dec = n > 1 && slip.items.every(x => amToDec(x.odds)) ? slip.items.reduce((a, x) => a * amToDec(x.odds), 1) : null;
+  const sameGame = n > 1 && new Set(slip.items.map(x => x.gid || x.game)).size === 1;
+  t.innerHTML = `<button class="trayhd" data-act="toggle" aria-expanded="${slip.open}">Bet slip <b>${n}</b>${n > 1 ? `<span>${sameGame ? "SGP" : "parlay"} ready</span>` : ""}<i>${slip.open ? "▾" : "▴"}</i></button>
+    ${slip.open ? `<div class="traybd">
+      ${n ? slip.items.map((x, i) => `<div class="titem">
+        <div class="tmain"><div class="tpick">${esc(x.pick)}</div><div class="tsub">${esc(x.sport.toUpperCase())} · ${esc(x.market)} · ${esc(x.game)}</div></div>
+        <input class="todds" data-i="${i}" value="${esc(x.odds || "")}" placeholder="DK odds" aria-label="DraftKings odds for ${esc(x.pick)}" inputmode="numeric">
+        <button class="tbtn" data-act="one" data-i="${i}" title="Open as a straight bet in the admin">Straight ↗</button>
+        <button class="tx" data-act="rm" data-i="${i}" aria-label="Remove ${esc(x.pick)}">✕</button></div>`).join("")
+        : `<div class="empty">Tap + on any line or prop tier to add it here.</div>`}
+      ${n ? `<div class="tfoot">
+        ${n > 1 ? `<button class="tbtn main" data-act="parlay">Build ${sameGame ? "SGP" : "parlay"} (${n} legs) ↗</button>
+          <span class="edge">${dec ? `Est. from leg odds ${decToAm(dec)} — enter DraftKings' actual parlay price in the admin` : "Enter DraftKings' parlay price in the admin"}</span>` : ""}
+        <button class="tbtn ghost" data-act="clear">Clear</button></div>
+      <div class="edge" style="margin-top:6px">Opens the admin slip form prefilled. Set units and confidence, confirm the DK price, then Publish. Props need the DK price typed in.</div>` : ""}
+    </div>` : ""}`;
+}
+function trayClick(e) {
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const a = b.dataset.act, i = +b.dataset.i;
+  if (a === "toggle") { slip.open = !slip.open; drawTray(); }
+  else if (a === "rm") { slip.items.splice(i, 1); saveSlip(); drawTray(); refreshAdds(); }
+  else if (a === "clear") { slip.items = []; saveSlip(); drawTray(); refreshAdds(); }
+  else if (a === "one") openStraight(slip.items[i]);
+  else if (a === "parlay") openParlay();
+}
+function trayInput(e) { const inp = e.target.closest(".todds"); if (!inp) return; slip.items[+inp.dataset.i].odds = inp.value.trim(); saveSlip(); }
+function refreshAdds() { document.querySelectorAll(".addb").forEach(b => { const x = SLIPSRC[b.dataset.slip]; if (!x) return; const on = inSlip(x);
+  b.classList.toggle("on", on); b.innerHTML = b.innerHTML.replace(/^(\+|✓)/, on ? "✓" : "+"); }); }
+document.addEventListener("click", e => { const b = e.target.closest(".addb"); if (!b) return; e.preventDefault(); e.stopPropagation(); toggleItem(SLIPSRC[b.dataset.slip]); }, true);
+
 /* ------------------------------------------------------------------ start */
 (function start() {
   const hp = hashParams();
@@ -814,7 +981,7 @@ function renderPropTable(cards) {
   if (!sp) { // in season, show the sport with games soonest; default NFL on Sun/Mon/Thu, CFB on Fri/Sat
     const day = new Date(Date.now() - 4 * 3600e3).getUTCDay(); sp = [5, 6].includes(day) ? "cfb" : "nfl";
   }
-  setSport(sp, key, view);
+  detectAdmin().then(() => { drawTray(); setSport(sp, key, view); });
 })();
 // links that change only the hash (e.g. #s=nfl) switch sport/slate without a reload
 window.addEventListener("hashchange", () => {
