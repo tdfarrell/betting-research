@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://ballwatcher.com/screener/">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0B0E13">
-<meta name="bw-build" content="screener 2026-10-10c">
+<meta name="bw-build" content="screener 2026-10-10d">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -839,14 +839,14 @@ function renderPropTable(cards) {
    site until you review it there and press Publish.
    Handoff: /admin/slips/prefill?d=<base64url JSON>  { v:1, kind:"straight"|"parlay", sport, market, pick, odds,
    game, starts_at, odds_at, reasoning, legs:[{sport, pick, game, odds, market, starts_at}] } */
-const SLIP_KEY = "bw_slip_v1", ADMIN_PREFILL = "/admin/slips/prefill", ADMIN_WHOAMI = "/admin/whoami";
+const SLIP_KEY = "bw_slip_v1", ADMIN_PREFILL = "/admin/slips/prefill", ADMIN_WHOAMI = "/admin/whoami", ADMIN_BULK = "/admin/bets/bulk";
 const SLIPSRC = {};   // id -> item, for the "+" buttons on screen
 let slipSeq = 0;
 const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-10c";
+const SCREENER_BUILD = "2026-10-10d";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";
@@ -963,6 +963,12 @@ function openStraight(it) {
   openPrefill({ kind: "straight", sport: it.sport, market: it.market, pick: it.pick, odds: it.odds || "", game: it.game,
     starts_at: it.starts_at, odds_at: it.odds_at, reasoning: it.reasoning });
 }
+// several picks as separate straight bets -> the admin's Bulk add singles page (review, then publish all)
+function openSingles() {
+  const items = slip.items.map(x => ({ sport: x.sport, pick: x.pick, game: x.game, odds: x.odds || "", starts_at: x.starts_at, reasoning: x.reasoning }));
+  const oddsAt = slip.items.map(x => x.odds_at).filter(Boolean).sort().pop();
+  window.open(`${ADMIN_BULK}?d=${b64u(JSON.stringify({ v: 1, kind: "singles", odds_at: oddsAt, items }))}`, "_blank");
+}
 function openParlay() {
   const legs = slip.items;
   const sports = [...new Set(legs.map(x => x.sport))];
@@ -991,7 +997,8 @@ function drawTray() {
         <button class="tx" data-act="rm" data-i="${i}" aria-label="Remove ${esc(x.pick)}">✕</button></div>`).join("")
         : `<div class="empty">Tap + on any line or prop tier to add it here.</div>${slipModeOn() ? `<button class="tbtn ghost" data-act="modeoff">Turn off bet slip in this browser</button>` : ""}`}
       ${n ? `<div class="tfoot">
-        ${n > 1 ? `<button class="tbtn main" data-act="parlay">Build ${sameGame ? "SGP" : "parlay"} (${n} legs) ↗</button>
+        ${n > 1 ? `<button class="tbtn main" data-act="singles" title="Each pick as its own straight bet, reviewed together">Singles (${n}) ↗</button>
+          <button class="tbtn main" data-act="parlay">Build ${sameGame ? "SGP" : "parlay"} (${n} legs) ↗</button>
           <span class="edge">${dec ? `Est. from leg odds ${decToAm(dec)} — enter DraftKings' actual parlay price in the admin` : "Enter DraftKings' parlay price in the admin"}</span>` : ""}
         <button class="tbtn ghost" data-act="clear">Clear</button></div>
       <div class="edge" style="margin-top:6px">Opens the admin slip form prefilled (log in if asked). Set units and confidence, confirm the DK price, then Publish. Props need the DK price typed in.</div>` : ""}
@@ -1006,6 +1013,7 @@ function trayClick(e) {
   else if (a === "clear") { slip.items = []; saveSlip(); drawTray(); refreshAdds(); }
   else if (a === "one") openStraight(slip.items[i]);
   else if (a === "parlay") openParlay();
+  else if (a === "singles") openSingles();
   else if (a === "modeoff") { try { localStorage.removeItem(SLIP_MODE_KEY); } catch (e) {} recheckAdmin(); }
 }
 function trayInput(e) { const inp = e.target.closest(".todds"); if (!inp) return; slip.items[+inp.dataset.i].odds = inp.value.trim(); saveSlip(); }
