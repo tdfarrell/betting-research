@@ -30,18 +30,19 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,5,BAL,00-0038112,C,Cam Jurgens,Concussion,Out,Did Not Participate In Practice
 2026,5,BAL,00-0038383,G,Andrew Vorhees,Foot,Questionable,Limited Participation in Practice
 2026,5,BAL,00-0039064,WR,Zay Flowers,Foot,Questionable,Limited Participation in Practice
-2026,5,BUF,00-0034827,WR,DJ Moore,,,Did Not Participate In Practice
+2026,5,BUF,00-0034827,WR,DJ Moore,Shoulder,Questionable,Limited Participation in Practice
 2026,5,BUF,00-0034832,LB,Bradley Chubb,,,Full Participation in Practice
-2026,5,BUF,00-0035230,DE,Ed Oliver,,,Did Not Participate In Practice
+2026,5,BUF,00-0035230,DE,Ed Oliver,Knee,Out,Did Not Participate In Practice
 2026,5,BUF,00-0036888,S,Damar Hamlin,,,Full Participation in Practice
-2026,5,BUF,00-0037034,CB,Dee Alford,,,Did Not Participate In Practice
-2026,5,BUF,00-0037254,LB,Terrel Bernard,,,Full Participation in Practice
-2026,5,BUF,00-0037288,CB,Christian Benford,,,Limited Participation in Practice
+2026,5,BUF,00-0036988,WR,Josh Palmer,Shoulder,Out,Did Not Participate In Practice
+2026,5,BUF,00-0037034,CB,Dee Alford,Ankle,Questionable,Limited Participation in Practice
+2026,5,BUF,00-0037254,LB,Terrel Bernard,,,Did Not Participate In Practice
+2026,5,BUF,00-0037288,CB,Christian Benford,,,Full Participation in Practice
 2026,5,BUF,00-0038557,LB,Dorian Williams,,,Full Participation in Practice
 2026,5,BUF,00-0039763,LB,Joe Andreessen,,,Full Participation in Practice
 2026,5,BUF,00-0039875,RB,Ray Davis,,,Full Participation in Practice
 2026,5,BUF,00-0039901,WR,Keon Coleman,,,Full Participation in Practice
-2026,5,BUF,00-0040132,DE,Landon Jackson,,,Limited Participation in Practice
+2026,5,BUF,00-0040132,DE,Landon Jackson,Knee,Questionable,Full Participation in Practice
 2026,5,BUF,00-0040724,DE,T.J. Sanders,,,Full Participation in Practice
 2026,5,BUF,00-0041128,G,Ar'maj Reed-Adams,,,Full Participation in Practice
 2026,5,CHI,00-0031583,DT,Grady Jarrett,,,Full Participation in Practice
@@ -154,14 +155,17 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,5,JAX,00-0038934,T,Anton Harrison,,,Full Participation in Practice
 2026,5,JAX,00-0039353,CB,Jarrian Jones,,,Limited Participation in Practice
 2026,5,JAX,00-0040238,RB,LeQuint Allen Jr.,,,Full Participation in Practice
-2026,5,LA,00-0031381,WR,Davante Adams,,,Did Not Participate In Practice
-2026,5,LA,00-0031388,DT,Aaron Donald,,,Limited Participation in Practice
-2026,5,LA,00-0036244,TE,Colby Parkinson,,,Limited Participation in Practice
-2026,5,LA,00-0036672,LB,Grant Stuard,,,Did Not Participate In Practice
-2026,5,LA,00-0037195,CB,Jaylen Watson,,,Limited Participation in Practice
-2026,5,LA,00-0037587,LB,Nate Landman,,,Did Not Participate In Practice
-2026,5,LA,00-0037841,S,Quentin Lake,,,Did Not Participate In Practice
-2026,5,LA,00-0040580,LB,Josaiah Stewart,,,Did Not Participate In Practice
+2026,5,LA,00-0031381,WR,Davante Adams,,,Full Participation in Practice
+2026,5,LA,00-0031388,DT,Aaron Donald,,,Did Not Participate In Practice
+2026,5,LA,00-0033110,TE,Tyler Higbee,,,Did Not Participate In Practice
+2026,5,LA,00-0036244,TE,Colby Parkinson,,,Full Participation in Practice
+2026,5,LA,00-0036603,T,Alaric Jackson,,,Did Not Participate In Practice
+2026,5,LA,00-0036672,LB,Grant Stuard,,,Limited Participation in Practice
+2026,5,LA,00-0037195,CB,Jaylen Watson,,,Full Participation in Practice
+2026,5,LA,00-0037587,LB,Nate Landman,,,Full Participation in Practice
+2026,5,LA,00-0037841,S,Quentin Lake,Hip,Questionable,Limited Participation in Practice
+2026,5,LA,00-0039137,LB,Byron Young,,,Did Not Participate In Practice
+2026,5,LA,00-0040580,LB,Josaiah Stewart,,,Limited Participation in Practice
 2026,5,LA,00-0040590,WR,Konata Mumpfield,,,Full Participation in Practice
 2026,5,LAC,00-0031040,DE,Khalil Mack,,,Full Participation in Practice
 2026,5,LAC,00-0033546,DT,Dalvin Tomlinson,,,Full Participation in Practice
