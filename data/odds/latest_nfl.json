@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-11T19:01Z",
+ "pulled_utc": "2026-10-11T19:33Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -11,12 +11,12 @@
    "away_name": "Chicago Bears",
    "home_name": "Green Bay Packers",
    "away_score": "7",
-   "home_score": "20",
+   "home_score": "31",
    "neutral": false,
    "conference_game": false,
    "venue": "Lambeau Field",
    "weather": "1",
-   "temp_f": 77
+   "temp_f": 79
   },
   {
    "game_id": "401872984",
@@ -26,13 +26,13 @@
    "home": "TEN",
    "away_name": "Houston Texans",
    "home_name": "Tennessee Titans",
-   "away_score": "19",
+   "away_score": "26",
    "home_score": "3",
    "neutral": false,
    "conference_game": false,
    "venue": "Nissan Stadium",
    "weather": "7",
-   "temp_f": 65
+   "temp_f": 67
   },
   {
    "game_id": "401872982",
@@ -42,12 +42,12 @@
    "home": "MIA",
    "away_name": "Cincinnati Bengals",
    "home_name": "Miami Dolphins",
-   "away_score": "21",
-   "home_score": "7",
+   "away_score": "28",
+   "home_score": "10",
    "neutral": false,
    "conference_game": false,
    "venue": "Hard Rock Stadium",
-   "weather": "3",
+   "weather": "2",
    "temp_f": 90
   },
   {
@@ -58,13 +58,13 @@
    "home": "NE",
    "away_name": "Las Vegas Raiders",
    "home_name": "New England Patriots",
-   "away_score": "7",
-   "home_score": "28",
+   "away_score": "10",
+   "home_score": "38",
    "neutral": false,
    "conference_game": false,
    "venue": "Gillette Stadium",
-   "weather": "7",
-   "temp_f": 59
+   "weather": "12",
+   "temp_f": 58
   },
   {
    "game_id": "401872987",
@@ -74,7 +74,7 @@
    "home": "NO",
    "away_name": "Minnesota Vikings",
    "home_name": "New Orleans Saints",
-   "away_score": "13",
+   "away_score": "23",
    "home_score": "13",
    "neutral": false,
    "conference_game": false,
@@ -91,7 +91,7 @@
    "away_name": "Cleveland Browns",
    "home_name": "New York Jets",
    "away_score": "6",
-   "home_score": "7",
+   "home_score": "10",
    "neutral": false,
    "conference_game": false,
    "venue": "MetLife Stadium",
@@ -106,13 +106,13 @@
    "home": "PIT",
    "away_name": "Indianapolis Colts",
    "home_name": "Pittsburgh Steelers",
-   "away_score": "16",
+   "away_score": "22",
    "home_score": "24",
    "neutral": false,
    "conference_game": false,
    "venue": "Acrisure Stadium",
-   "weather": "7",
-   "temp_f": 60
+   "weather": "6",
+   "temp_f": 63
   },
   {
    "game_id": "401872988",
@@ -122,12 +122,12 @@
    "home": "WSH",
    "away_name": "New York Giants",
    "home_name": "Washington Commanders",
-   "away_score": "6",
-   "home_score": "18",
+   "away_score": "13",
+   "home_score": "19",
    "neutral": false,
    "conference_game": false,
    "venue": "Northwest Stadium",
-   "weather": "12",
+   "weather": "7",
    "temp_f": 66
   },
   {
