@@ -34,6 +34,7 @@ import csv, datetime as dt, json, os, re, sys
 from collections import defaultdict
 sys.path.insert(0, os.path.dirname(__file__))
 import nfl_model as M
+from board_keep import merge_started
 
 ET = dt.timezone(dt.timedelta(hours=-4))  # EDT; good through early November
 ESPN_TO_NFLVERSE = {"WSH": "WAS", "LAR": "LA"}
@@ -389,6 +390,8 @@ def write(season, week, rows, teams, unmatched, calib, odds_pulled):
            "prior_weight": rnd(M.prior_weight(week), 2),
            "stats_pulled_utc": STATUS.get("pulled_utc"), "generated_utc": now_iso(), "calibration": calib,
            "unmatched": unmatched, "games": rows, "teams": teams}
+    rows, teams = merge_started(f"data/boards/nfl_{key}.json", rows, teams)  # keep games that already kicked off
+    doc["games"], doc["teams"] = rows, teams
     with open(f"data/boards/nfl_{key}.json", "w") as f:
         json.dump(doc, f, separators=(",", ":"))
     with open(f"data/boards/nfl_{key}.csv", "w", newline="") as f:
@@ -423,7 +426,7 @@ def main():
         log_flags(rows, s, w, flags)
         cnt = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)
         index["slates"].append({"key": f"{s}_wk{w:02d}", "season": s, "week": w, "label": f"Week {w}",
-                                "first_day": min(r["day_et"] for r in rows), "games": len(rows),
+                                "first_day": min(r["day_et"] for r in rows), "games": len(json.load(open(f"data/boards/nfl_{s}_wk{w:02d}.json"))["games"]),
                                 "targets": cnt("side", "TARGET") + cnt("total", "TARGET"),
                                 "watches": cnt("side", "WATCH") + cnt("total", "WATCH")})
         print(f"{s} wk{w}: {len(rows)} games, {index['slates'][-1]['targets']} targets, {index['slates'][-1]['watches']} watches; unmatched {unmatched or 'none'}")
@@ -436,7 +439,11 @@ def main():
     if os.path.exists("data/boards/nfl_index.json"):  # keep past weeks listed
         old = json.load(open("data/boards/nfl_index.json"))
         have = {x["key"] for x in index["slates"]}
-        index["slates"] += [x for x in old.get("slates", []) if x["key"] not in have and os.path.exists(f"data/boards/nfl_{x['key']}.json")]
+        for x in old.get("slates", []):
+            f = f"data/boards/nfl_{x['key']}.json"
+            if x["key"] not in have and os.path.exists(f):
+                x["games"] = len(json.load(open(f)).get("games", []))   # includes games that already kicked off
+                index["slates"].append(x)
     index["slates"].sort(key=lambda x: x["key"])
     with open("data/boards/nfl_index.json", "w") as f:
         json.dump(index, f, indent=1)

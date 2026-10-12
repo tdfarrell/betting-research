@@ -24,6 +24,8 @@ Method (see the project's handicapping checklist):
           tested with free data, so CFB grades are unproven. The fix makes them balanced, not proven.
 """
 import csv, datetime as dt, json, os, sys, unicodedata
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from board_keep import merge_started
 
 HFA, EDGE, ELO_PER_PT, MOVE_AGAINST = 2.5, 3.0, 25.0, 2.0
 OPTION = {"Army", "Navy", "Air Force"}
@@ -325,6 +327,7 @@ def grade(rows):
 def write(day, rows, calib, unmatched, odds_pulled):
     os.makedirs("data/boards", exist_ok=True)
     teams = {t: team_card(t) for r in rows for t in (r["home"], r["away"])}
+    rows, teams = merge_started(f"data/boards/cfb_{day}.json", rows, teams)  # keep games that already kicked off
     doc = {"date": day, "league": "cfb", "odds_pulled_utc": odds_pulled, "cfbd_pulled_utc": CFBD_PULLED,
            "generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
            "calibration": calib, "unmatched": unmatched, "games": rows, "teams": teams}
@@ -359,7 +362,7 @@ def main(days=None):
         calib = grade(rows)
         write(day, rows, calib, unmatched, board["pulled_utc"])
         count = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)
-        index["slates"].append({"date": day, "games": len(rows),
+        index["slates"].append({"date": day, "games": len(json.load(open(f"data/boards/cfb_{day}.json"))["games"]),
                                 "plays": count("side", "PLAY") + count("total", "PLAY"),
                                 "leans": count("side", "LEAN") + count("total", "LEAN")})
         print(f"{day}: {len(rows)} games, {index['slates'][-1]['plays']} plays, {index['slates'][-1]['leans']} leans; unmatched {unmatched or 'none'}")
@@ -367,7 +370,11 @@ def main(days=None):
     if os.path.exists("data/boards/index.json"):
         old = json.load(open("data/boards/index.json"))
         have = {s["date"] for s in index["slates"]}
-        index["slates"] += [s for s in old.get("slates", []) if s["date"] not in have and os.path.exists(f"data/boards/cfb_{s['date']}.json")]
+        for s in old.get("slates", []):
+            f = f"data/boards/cfb_{s['date']}.json"
+            if s["date"] not in have and os.path.exists(f):
+                s["games"] = len(json.load(open(f)).get("games", []))   # includes games that already kicked off
+                index["slates"].append(s)
     index["slates"].sort(key=lambda s: s["date"])
     with open("data/boards/index.json", "w") as f:
         json.dump(index, f, indent=1)

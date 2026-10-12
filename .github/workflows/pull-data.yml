@@ -42,6 +42,10 @@ jobs:
       - name: DraftKings lines (ESPN)
         run: python scripts/espn_odds.py
 
+      - name: Final scores + box scores (ESPN) for auto-grading
+        continue-on-error: true
+        run: python scripts/results_pull.py
+
       - name: CFBD stats
         if: github.event.schedule == '7 10,22 * * *' || (github.event_name == 'workflow_dispatch' && inputs.cfbd)
         env:
@@ -66,6 +70,10 @@ jobs:
         continue-on-error: true
         if: github.event.schedule == '7 10,22 * * *' || github.event.schedule == '17 15 * * 0' || (github.event_name == 'workflow_dispatch' && inputs.nflverse)
         run: python scripts/nfl_props.py
+
+      - name: Screener grades its own picks (kickoff snapshots, results, day-by-day record)
+        continue-on-error: true
+        run: python scripts/grade_screener.py
 
       - name: Commit changes
         run: |
