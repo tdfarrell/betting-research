@@ -1,23 +1,23 @@
 {
  "spread_vs_sp": [
-  0.838,
-  -0.26
+  0.854,
+  -0.37
  ],
  "spread_vs_elo": [
-  1.04,
-  0.09
+  1.046,
+  -0.05
  ],
  "sp_total_fit": [
-  0.733,
-  12.36
+  0.758,
+  10.9
  ],
  "pp_total_fit": [
-  0.935,
-  5.24
+  0.959,
+  3.94
  ],
- "usual_side": 3.21,
- "usual_total": 2.42,
+ "usual_side": 3.33,
+ "usual_total": 2.66,
  "n": 46,
  "source": "this slate",
- "saved_utc": "2026-10-12T18:10+00:00"
+ "saved_utc": "2026-10-12T18:13+00:00"
 }
