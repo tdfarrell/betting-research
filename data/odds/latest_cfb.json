@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-12T19:12Z",
+ "pulled_utc": "2026-10-12T19:46Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -1432,12 +1432,12 @@
    "home_spread": "-2.5",
    "home_spread_odds": "-115",
    "home_spread_open": "-3",
-   "home_ml": "-148",
+   "home_ml": "-135",
    "home_ml_open": "-155",
    "away_spread": "+2.5",
    "away_spread_odds": "-105",
    "away_spread_open": "+3",
-   "away_ml": "+124",
+   "away_ml": "+114",
    "away_ml_open": "+130",
    "total": 45.5,
    "over_odds": "-105",
