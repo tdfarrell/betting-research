@@ -456,7 +456,9 @@ def current_week_cards(D):
                     implied = tot / 2 + (sp / 2 if home else -sp / 2) if not pd.isna(tot) else None
                     spr = (-sp if home else sp) if not pd.isna(sp) else None
                 cand = roster[(roster.team == team) & (roster.status == "ACT") & roster.position.isin(list(ROLE_SLOTS))]
-                cand = cand[~cand.player_id.map(lambda p: inj_status.get(p) == "Out")]
+                if cand.empty:
+                    print(f"  no roster rows for {team}; skipped"); continue
+                cand = cand[~cand.player_id.map(lambda p: inj_status.get(p) == "Out").astype(bool)]
                 qb_id = r.home_qb_id if home else r.away_qb_id
                 roles = assign_roles(wk, cand[["team", "player_id", "position"]], {team: qb_id} if isinstance(qb_id, str) else None)
                 for pid, role in roles.items():
@@ -466,9 +468,20 @@ def current_week_cards(D):
         key = f"{S_}_wk{W:02d}"
         doc = {"key": key, "season": S_, "week": W, "generated_utc": now(), "odds_pulled_utc": board["pulled_utc"],
                "prior_weight": prior_weight(W), "tiers": TIERS, "labels": LABEL, "cards": cards}
-        with open(f"{OUT}/nfl_props_{key}.json", "w") as f:
+        path = f"{OUT}/nfl_props_{key}.json"
+        if os.path.exists(path):   # keep players whose game already kicked off (frozen as they were)
+            try:
+                have = {(c["id"], c["game_id"]) for c in cards}
+                nowz = now()
+                for c in json.load(open(path)).get("cards", []):
+                    if (c["id"], c["game_id"]) not in have and c.get("kickoff_utc", "9999") <= nowz:
+                        c["started"] = True; cards.append(c)
+                doc["cards"] = cards
+            except Exception:
+                pass
+        with open(path, "w") as f:
             json.dump(doc, f, separators=(",", ":"))
-        idx["weeks"].append({"key": key, "season": S_, "week": W, "players": len(cards), "flags": sum(1 for c in cards if c["flags"])})
+        idx["weeks"].append({"key": key, "season": S_, "week": W, "players": len(doc["cards"]), "flags": sum(1 for c in cards if c["flags"])})
         print(f"props {key}: {len(cards)} players, {idx['weeks'][-1]['flags']} with hit-rate/model disagreements")
     if os.path.exists("data/props/backtest_summary.json"):
         idx["backtest"] = json.load(open("data/props/backtest_summary.json")).get("headline")
@@ -524,7 +537,16 @@ def make_card(D, wk, roles_hist, pid, name, pos, role, team, opp, home, implied,
             "model": {"targets": rnd(p["mu_t"], 1), "carries": rnd(p["mu_c"], 1), "attempts": rnd(p.get("mu_a"), 1), "td_rate": rnd(p["lam_td"], 2),
                       "team_att": rnd(p["team_att"], 1), "team_car": rnd(p["team_car"], 1), "team_td": rnd(p["team_td"], 2)},
             "prior": {"weight": prior_weight(wk.W), "dropped": p["drop"]},
-            "markets": mkts, "flags": flags}
+            "markets": mkts, "flags": flags,
+            # deep dive: every game this season, and this week's defense vs the same role, game by game
+            "log": [{"wk": int(x.week), "opp": x.opp, "tgt": int(x.targets), "rec": int(x.receptions), "rec_yds": int(x.receiving_yards),
+                     "car": int(x.carries), "rush_yds": int(x.rushing_yards), "att": int(x.attempts), "cmp": int(x.completions),
+                     "pass_yds": int(x.passing_yards), "pass_td": int(x.passing_tds), "int": int(x.interceptions), "td": int(x.tds),
+                     "rz": int(x.rz_tgt + x.rz_car), "snap": rnd(pd.to_numeric(x.snap_pct, errors="coerce"), 2),
+                     "tgt_share": rnd(x.targets / x.tm_targets, 3) if x.tm_targets else None} for x in games.itertuples()],
+            "def_log": [{"wk": int(x.week), "vs": x.team, "name": x.name, "tgt": int(x.targets), "rec": int(x.receptions),
+                         "rec_yds": int(x.receiving_yards), "car": int(x.carries), "rush_yds": int(x.rushing_yards),
+                         "pass_yds": int(x.passing_yards), "pass_td": int(x.passing_tds), "td": int(x.tds)} for x in dv.itertuples()]}
 
 def rnd(x, n=1):
     try:

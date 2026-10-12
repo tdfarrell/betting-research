@@ -170,11 +170,14 @@ def players(season, rz):
 def current_roster(season):
     """Latest weekly roster rows for skill players (who is active, depth chart, headshot)."""
     ros = list(rows_of(fetch(f"roster_weekly_{season}.csv", f"{REL}/weekly_rosters/roster_weekly_{season}.csv")))
-    wk = max(i(r["week"]) for r in ros)
-    return [{"season": season, "week": wk, "team": r["team"], "player_id": r["gsis_id"], "name": r["full_name"],
+    # each team's latest listed week (a team on a bye isn't in that week's roster)
+    last = {}
+    for r in ros:
+        last[r["team"]] = max(last.get(r["team"], 0), i(r["week"]))
+    return [{"season": season, "week": i(r["week"]), "team": r["team"], "player_id": r["gsis_id"], "name": r["full_name"],
              "position": "RB" if r["position"] == "FB" else r["position"], "depth_chart_position": r["depth_chart_position"],
              "status": r["status"], "headshot": r["headshot_url"]}
-            for r in ros if i(r["week"]) == wk and r["position"] in ("QB", "RB", "FB", "WR", "TE") and r.get("gsis_id")]
+            for r in ros if i(r["week"]) == last[r["team"]] and r["position"] in ("QB", "RB", "FB", "WR", "TE") and r.get("gsis_id")]
 
 def write(name, rows, cols=None):
     os.makedirs(OUT, exist_ok=True)
@@ -233,7 +236,7 @@ def main(first, last_season):
         write("player_games.csv", PG, PCOLS)
     try:
         rc = current_roster(CUR); write("roster_current.csv", rc)
-        print(f"ok   roster week {rc[0]['week']}: {len(rc)} skill players")
+        print(f"ok   roster: {len(rc)} skill players, {len({r['team'] for r in rc})} teams")
     except Exception as e:
         status["errors"].append(f"roster: {type(e).__name__}: {e}")
     try:
