@@ -1,0 +1,17 @@
+name: Probe ESPN (temporary)
+on:
+  push:
+    branches: [probe-espn]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python probe/probe.py
+      - run: |
+          git config user.name "data-bot"; git config user.email "data-bot@users.noreply.github.com"
+          git add probe/out && git commit -m "probe output" && git push origin HEAD:probe-espn
