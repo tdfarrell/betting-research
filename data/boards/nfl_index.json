@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-13T17:33+00:00",
- "odds_pulled_utc": "2026-10-13T17:33Z",
+ "generated_utc": "2026-10-13T21:22+00:00",
+ "odds_pulled_utc": "2026-10-13T21:22Z",
  "stats_pulled_utc": "2026-10-13T17:33+00:00",
  "slates": [
   {
@@ -20,8 +20,8 @@
    "label": "Week 6",
    "first_day": "2026-10-15",
    "games": 14,
-   "targets": 2,
-   "watches": 3
+   "targets": 3,
+   "watches": 2
   }
  ],
  "flag_record": {
