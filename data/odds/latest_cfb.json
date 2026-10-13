@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-13T16:09Z",
+ "pulled_utc": "2026-10-13T17:33Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -58,8 +58,8 @@
    "away_ml": "+124",
    "away_ml_open": "+124",
    "total": 43.5,
-   "over_odds": "-112",
-   "under_odds": "-108",
+   "over_odds": "-108",
+   "under_odds": "-112",
    "total_open": "o45.5"
   },
   {
@@ -435,7 +435,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Spartan Stadium",
-   "weather": "Sunny",
+   "weather": "Mostly sunny",
    "temp_f": 47,
    "home_spread": "+7.5",
    "home_spread_odds": "-110",
@@ -869,9 +869,9 @@
    "away_spread_open": "+6",
    "away_ml": "+185",
    "away_ml_open": "+190",
-   "total": 58.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
+   "total": 59.5,
+   "over_odds": "-105",
+   "under_odds": "-115",
    "total_open": "o57.5"
   },
   {
@@ -977,7 +977,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Michigan Stadium",
-   "weather": "Sunny",
+   "weather": "Mostly sunny",
    "temp_f": 52,
    "home_spread": "-6.5",
    "home_spread_odds": "-118",
@@ -1067,7 +1067,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Rynearson Stadium",
-   "weather": "Sunny",
+   "weather": "Mostly sunny",
    "temp_f": 51,
    "home_spread": "+6.5",
    "home_spread_odds": "-110",
@@ -1260,8 +1260,8 @@
    "away_ml": "+185",
    "away_ml_open": "+170",
    "total": 50.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "over_odds": "-105",
+   "under_odds": "-115",
    "total_open": "o50.5"
   },
   {
@@ -1499,9 +1499,9 @@
    "away_spread_open": "+3.5",
    "away_ml": "+160",
    "away_ml_open": "+136",
-   "total": 61.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
+   "total": 62.5,
+   "over_odds": "-108",
+   "under_odds": "-112",
    "total_open": "o57.5"
   },
   {
