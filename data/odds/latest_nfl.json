@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-13T01:28Z",
+ "pulled_utc": "2026-10-13T02:59Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,13 +10,13 @@
    "home": "LAR",
    "away_name": "Buffalo Bills",
    "home_name": "Los Angeles Rams",
-   "away_score": "13",
-   "home_score": "7",
+   "away_score": "27",
+   "home_score": "27",
    "neutral": false,
    "conference_game": false,
    "venue": "SoFi Stadium",
-   "weather": "6",
-   "temp_f": 65
+   "weather": "35",
+   "temp_f": 63
   },
   {
    "game_id": "401872995",
@@ -34,18 +34,18 @@
    "weather": "Mostly cloudy",
    "temp_f": 46,
    "home_spread": "+3",
-   "home_spread_odds": "-120",
+   "home_spread_odds": "-118",
    "home_spread_open": "+2.5",
    "home_ml": "+130",
    "home_ml_open": "+110",
    "away_spread": "-3",
-   "away_spread_odds": "+100",
+   "away_spread_odds": "-102",
    "away_spread_open": "-2.5",
    "away_ml": "-155",
    "away_ml_open": "-130",
-   "total": 41.5,
-   "over_odds": "-102",
-   "under_odds": "-118",
+   "total": 40.5,
+   "over_odds": "-118",
+   "under_odds": "-102",
    "total_open": "o43.5"
   },
   {
