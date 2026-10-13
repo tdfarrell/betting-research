@@ -1,22 +1,22 @@
 {
- "pulled_utc": "2026-10-13T02:59Z",
+ "pulled_utc": "2026-10-13T08:03Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
    "game_id": "401872994",
    "kickoff_utc": "2026-10-13T00:15Z",
-   "status": "in",
+   "status": "post",
    "away": "BUF",
    "home": "LAR",
    "away_name": "Buffalo Bills",
    "home_name": "Los Angeles Rams",
-   "away_score": "27",
-   "home_score": "27",
+   "away_score": "37",
+   "home_score": "34",
    "neutral": false,
    "conference_game": false,
    "venue": "SoFi Stadium",
-   "weather": "35",
-   "temp_f": 63
+   "weather": null,
+   "temp_f": null
   },
   {
    "game_id": "401872995",
@@ -302,7 +302,21 @@
    "conference_game": false,
    "venue": "SoFi Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 89
+   "temp_f": 89,
+   "home_spread": "-13.5",
+   "home_spread_odds": "-105",
+   "home_spread_open": "-13.5",
+   "home_ml": "-900",
+   "home_ml_open": "-700",
+   "away_spread": "+13.5",
+   "away_spread_odds": "-115",
+   "away_spread_open": "+13.5",
+   "away_ml": "+600",
+   "away_ml_open": "+500",
+   "total": 52.5,
+   "over_odds": "-105",
+   "under_odds": "-115",
+   "total_open": "o46.5"
   },
   {
    "game_id": "401873006",
@@ -348,7 +362,21 @@
    "conference_game": false,
    "venue": "Allegiant Stadium",
    "weather": "Sunny",
-   "temp_f": 78
+   "temp_f": 78,
+   "home_spread": "+6",
+   "home_spread_odds": "-110",
+   "home_spread_open": "+6.5",
+   "home_ml": "+230",
+   "home_ml_open": "+230",
+   "away_spread": "-6",
+   "away_spread_odds": "-110",
+   "away_spread_open": "-6.5",
+   "away_ml": "-285",
+   "away_ml_open": "-285",
+   "total": 53.5,
+   "over_odds": "-105",
+   "under_odds": "-115",
+   "total_open": "o47.5"
   },
   {
    "game_id": "401873007",

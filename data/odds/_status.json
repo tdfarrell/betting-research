@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-13T02:59Z",
+ "pulled_utc": "2026-10-13T08:03Z",
  "status": {
   "cfb": {
    "games": 65,
@@ -8,7 +8,7 @@
   },
   "nfl": {
    "games": 15,
-   "with_dk_line": 12,
+   "with_dk_line": 14,
    "mode": "per-day"
   }
  },
