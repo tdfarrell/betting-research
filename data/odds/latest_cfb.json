@@ -1,38 +1,38 @@
 {
- "pulled_utc": "2026-10-14T01:09Z",
+ "pulled_utc": "2026-10-14T05:05Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
    "game_id": "401871067",
    "kickoff_utc": "2026-10-13T23:00Z",
-   "status": "in",
+   "status": "post",
    "away": "DEL",
    "home": "MTSU",
    "away_name": "Delaware Blue Hens",
    "home_name": "Middle Tennessee Blue Raiders",
-   "away_score": "16",
-   "home_score": "19",
+   "away_score": "30",
+   "home_score": "33",
    "neutral": false,
    "conference_game": true,
    "venue": "Johnny \"Red\" Floyd Stadium",
-   "weather": "33",
-   "temp_f": 79
+   "weather": null,
+   "temp_f": null
   },
   {
    "game_id": "401871053",
    "kickoff_utc": "2026-10-14T00:00Z",
-   "status": "in",
+   "status": "post",
    "away": "FIU",
    "home": "JXST",
    "away_name": "Florida International Panthers",
    "home_name": "Jacksonville State Gamecocks",
-   "away_score": "10",
-   "home_score": "17",
+   "away_score": "24",
+   "home_score": "27",
    "neutral": false,
    "conference_game": true,
    "venue": "AmFirst Stadium",
-   "weather": "33",
-   "temp_f": 69
+   "weather": null,
+   "temp_f": null
   },
   {
    "game_id": "401871054",
