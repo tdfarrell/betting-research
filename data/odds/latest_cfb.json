@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-14T00:24Z",
+ "pulled_utc": "2026-10-14T01:09Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,13 +10,13 @@
    "home": "MTSU",
    "away_name": "Delaware Blue Hens",
    "home_name": "Middle Tennessee Blue Raiders",
-   "away_score": "10",
-   "home_score": "12",
+   "away_score": "16",
+   "home_score": "19",
    "neutral": false,
    "conference_game": true,
    "venue": "Johnny \"Red\" Floyd Stadium",
    "weather": "33",
-   "temp_f": 87
+   "temp_f": 79
   },
   {
    "game_id": "401871053",
@@ -26,13 +26,13 @@
    "home": "JXST",
    "away_name": "Florida International Panthers",
    "home_name": "Jacksonville State Gamecocks",
-   "away_score": "0",
-   "home_score": "7",
+   "away_score": "10",
+   "home_score": "17",
    "neutral": false,
    "conference_game": true,
    "venue": "AmFirst Stadium",
    "weather": "33",
-   "temp_f": 81
+   "temp_f": 69
   },
   {
    "game_id": "401871054",
@@ -1191,13 +1191,13 @@
    "venue": "Hard Rock Stadium",
    "weather": "Mostly cloudy",
    "temp_f": 81,
-   "home_spread": "-21",
-   "home_spread_odds": "-115",
+   "home_spread": "-21.5",
+   "home_spread_odds": "-105",
    "home_spread_open": "-16.5",
    "home_ml": "-1650",
    "home_ml_open": "-950",
-   "away_spread": "+21",
-   "away_spread_odds": "-105",
+   "away_spread": "+21.5",
+   "away_spread_odds": "-115",
    "away_spread_open": "+16.5",
    "away_ml": "+950",
    "away_ml_open": "+625",
