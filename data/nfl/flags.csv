@@ -40,3 +40,4 @@ game_id,season,week,kickoff_utc,game,market,pick_side,pick,first_grade,best_grad
 401873010,2026,7,2026-10-23T00:15Z,NE @ CHI,side,away,NE +1.5,WATCH,WATCH,2026-10-15T00:28+00:00,1.5,-110,0.4,,,,,,open
 401873010,2026,7,2026-10-23T00:15Z,NE @ CHI,total,under,Under 48.5,CHECK,CHECK,2026-10-15T00:28+00:00,48.5,-115,43.7,,,,,,open
 401872997,2026,6,2026-10-18T17:00Z,BAL @ CLE,total,over,Over 40.5,TARGET,TARGET,2026-10-15T19:16+00:00,40.5,-118,44.8,,,,,,open
+401872997,2026,6,2026-10-18T17:00Z,BAL @ CLE,side,away,BAL -3.5,CHECK,CHECK,2026-10-15T22:30+00:00,-3.5,-115,7.8,,,,,,open
