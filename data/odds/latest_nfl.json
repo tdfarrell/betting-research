@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-16T00:18Z",
+ "pulled_utc": "2026-10-16T00:35Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,7 +10,7 @@
    "home": "DEN",
    "away_name": "Seattle Seahawks",
    "home_name": "Denver Broncos",
-   "away_score": "0",
+   "away_score": "3",
    "home_score": "0",
    "neutral": false,
    "conference_game": false,
@@ -336,12 +336,12 @@
    "home_spread": "+4.5",
    "home_spread_odds": "-108",
    "home_spread_open": "+6.5",
-   "home_ml": "+185",
+   "home_ml": "+180",
    "home_ml_open": "+230",
    "away_spread": "-4.5",
    "away_spread_odds": "-112",
    "away_spread_open": "-6.5",
-   "away_ml": "-225",
+   "away_ml": "-218",
    "away_ml_open": "-285",
    "total": 53.5,
    "over_odds": "-110",
