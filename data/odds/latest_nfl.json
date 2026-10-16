@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-16T14:28Z",
+ "pulled_utc": "2026-10-16T14:46Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -62,7 +62,7 @@
    "conference_game": false,
    "venue": "Mercedes-Benz Stadium",
    "weather": "Sunny",
-   "temp_f": 59,
+   "temp_f": 60,
    "home_spread": "+1.5",
    "home_spread_odds": "-115",
    "home_spread_open": "+3",
@@ -122,7 +122,7 @@
    "conference_game": false,
    "venue": "Lucas Oil Stadium",
    "weather": "Sunny",
-   "temp_f": 58,
+   "temp_f": 57,
    "home_spread": "-7",
    "home_spread_odds": "-105",
    "home_spread_open": "-3.5",

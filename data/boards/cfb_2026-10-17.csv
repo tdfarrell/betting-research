@@ -1,13 +1,13 @@
 kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total,total_open,sp_total_cal,pp_total_cal,total_grade,total_pick,flags,adjustments,notes
 12:00 PM,NU @ MSU,7.0,8.5,12.0,9.2,PLAY,NU -7,49.5,47.5,51.8,49.3,PASS,,,,Northwestern pass edge (pass EPA +0.55; Michigan State allows +0.29)
 12:00 PM,CIN @ WVU,-1.5,-1.5,2.6,2.9,PLAY,CIN +1.5,63.5,61.5,64.9,67.6,PASS,,,,Cincinnati pass edge (pass EPA +0.30; West Virginia allows +0.47)
-3:30 PM,ALA @ TENN,7.5,1.5,3.0,6.4,PASS,,50.5,56.5,55.2,53.2,PLAY,Over 50.5,,Line moved 6 pts toward the other side since open,Tennessee havoc rate 22%
+3:30 PM,ALA @ TENN,7.5,1.5,3.0,6.4,PASS,,50.5,56.5,55.2,53.1,PLAY,Over 50.5,,Line moved 6 pts toward the other side since open,Tennessee havoc rate 22%
 3:30 PM,UNC @ DUKE,-3.0,-4.5,-5.3,-11.3,PLAY,DUKE -3,46.5,54.5,49.4,46.7,PASS,,,,
 3:30 PM,PSU @ MICH,-7.0,-6.5,-5.5,0.9,PLAY,PSU +7,42.5,51.5,40.0,39.0,LEAN,Under 42.5,,,
 3:30 PM,TOL @ EMU,6.5,6.5,5.4,9.8,PASS,,52.5,52.5,47.1,49.1,PLAY,Under 52.5,,,Toledo pass edge (pass EPA +0.33; Eastern Michigan allows +0.25)
 3:30 PM,AKR @ M-OH,-10.0,-9.5,-16.3,-18.3,CHECK,M-OH -10,46.5,46.5,49.3,52.9,PLAY,Over 46.5,,Models are 7.3 pts off DK (usual gap 3.5): big gaps usually mean news the models don't have. Lean only; check injuries/QB first,Miami (OH) pass edge (pass EPA +0.42; Akron allows +0.44)
 5:00 PM,TROY @ UL,-3.0,-3.5,-6.2,-3.1,PASS,,49.5,47.5,53.1,52.2,PLAY,Over 49.5,,,
-7:00 PM,KENT @ USF,-20.5,-18.5,-22.5,-27.8,PLAY,USF -20.5,45.5,49.5,46.3,43.2,PASS,,,,South Florida should finish drives (4.3 pts/opp; Kent State allows 4.6)
+7:00 PM,KENT @ USF,-20.5,-18.5,-22.5,-27.8,PLAY,USF -20.5,45.5,49.5,46.3,43.1,PASS,,,,South Florida should finish drives (4.3 pts/opp; Kent State allows 4.6)
 10:30 PM,FRES @ SDSU,7.5,8.5,9.5,13.5,PLAY,FRES -7.5,45.5,43.5,46.4,45.0,PASS,,,,Fresno State pass edge (pass EPA +0.41; San Diego State allows +0.31)
 12:00 PM,OSU @ IU,3.5,0.0,-0.1,-4.3,LEAN,IU +3.5,50.5,48.5,51.1,52.2,PASS,,,Line moved 3.5 pts toward the other side since open,Indiana pass edge (pass EPA +0.70; Ohio State allows -0.08); Ohio State pass edge (pass EPA +0.56; Indiana allows +0.06)
 12:00 PM,FLA @ TEX,-11.5,-9.5,-14.1,-15.2,LEAN,TEX -11.5,51.5,53.5,53.6,50.5,PASS,,,,Texas pass edge (pass EPA +0.23; Florida allows +0.28); Florida pass edge (pass EPA +0.44; Texas allows +0.01); Texas havoc rate 21%
@@ -15,7 +15,7 @@ kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total
 12:00 PM,PITT @ BC,6.5,7.0,10.8,8.6,LEAN,PITT -6.5,42.5,46.5,41.9,46.3,PASS,,,,
 12:00 PM,GAST @ JMU,-10.5,-12.5,-14.7,-19.5,LEAN,JMU -10.5,57.5,54.5,56.9,55.4,PASS,,,Line moved 2 pts toward the other side since open,Georgia State havoc rate 20%; Georgia State pass edge (pass EPA +0.54; James Madison allows +0.09)
 1:30 PM,WMU @ CMU,7.0,7.0,9.2,9.1,LEAN,WMU -7,43.5,42.5,41.3,39.8,LEAN,Under 43.5,,,
-3:30 PM,MIZ @ MISS,-5.5,-6.0,-0.7,-4.9,PASS,,58.5,57.5,56.5,53.7,LEAN,Under 58.5,,,Ole Miss pass edge (pass EPA +0.47; Missouri allows +0.05); Missouri havoc rate 22%; Missouri pass edge (pass EPA +0.43; Ole Miss allows +0.27)
+3:30 PM,MIZ @ MISS,-5.5,-6.0,-0.7,-4.9,PASS,,58.5,57.5,56.5,53.6,LEAN,Under 58.5,,,Ole Miss pass edge (pass EPA +0.47; Missouri allows +0.05); Missouri havoc rate 22%; Missouri pass edge (pass EPA +0.43; Ole Miss allows +0.27)
 3:30 PM,ASU @ TTU,-15.5,-12.5,-18.0,-19.5,LEAN,TTU -15.5,50.5,52.5,49.0,50.8,PASS,,,,
 3:30 PM,GT @ VT,-10.0,-10.0,-9.6,-2.3,PASS,,56.5,55.5,54.1,51.6,LEAN,Under 56.5,,,Virginia Tech pass edge (pass EPA +0.41; Georgia Tech allows +0.37); Georgia Tech pass edge (pass EPA +0.25; Virginia Tech allows +0.23); Virginia Tech havoc rate 24%
 7:00 PM,NEV @ NDSU,-14.5,-14.5,-13.6,-10.6,PASS,,42.5,46.5,40.6,40.3,LEAN,Under 42.5,,,North Dakota State pass edge (pass EPA +0.27; Nevada allows +0.18)
