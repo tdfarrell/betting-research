@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-16T05:12Z",
+ "pulled_utc": "2026-10-16T09:57Z",
  "status": {
   "cfb": {
    "games": 70,
@@ -14,6 +14,6 @@
  },
  "errors": [
   "cfb range: HTTPError: HTTP Error 400: Bad Request",
-  "nfl range: HTTPError: HTTP Error 400: Bad Request"
+  "nfl range: HTTPError: HTTP Error 502: Bad Gateway"
  ]
 }
