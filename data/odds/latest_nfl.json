@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-17T00:22Z",
+ "pulled_utc": "2026-10-17T01:44Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -196,14 +196,14 @@
    "conference_game": false,
    "venue": "Lincoln Financial Field",
    "weather": "Sunny",
-   "temp_f": 55,
+   "temp_f": 56,
    "home_spread": "+3",
-   "home_spread_odds": "-102",
+   "home_spread_odds": "-105",
    "home_spread_open": "-6.5",
    "home_ml": "+142",
    "home_ml_open": "-285",
    "away_spread": "-3",
-   "away_spread_odds": "-118",
+   "away_spread_odds": "-115",
    "away_spread_open": "+6.5",
    "away_ml": "-170",
    "away_ml_open": "+230",
@@ -237,9 +237,9 @@
    "away_spread_open": "+1.5",
    "away_ml": "-148",
    "away_ml_open": "+105",
-   "total": 39.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
+   "total": 38.5,
+   "over_odds": "-118",
+   "under_odds": "-102",
    "total_open": "o45.5"
   },
   {
