@@ -1,15 +1,15 @@
 kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total,total_open,sp_total_cal,pp_total_cal,total_grade,total_pick,flags,adjustments,notes
 12:00 AM,HOU @ UTAH,-6.5,-6.5,-9.5,-15.8,PLAY,UTAH -6.5,56.5,50.5,57.0,58.8,PASS,,,,Utah pass edge (pass EPA +0.45; Houston allows +0.20); Utah should finish drives (4.8 pts/opp; Houston allows 4.8); Houston pass edge (pass EPA +0.54; Utah allows +0.00)
-12:00 AM,IOWA @ MINN,4.5,4.5,6.3,15.3,PLAY,IOWA -4.5,42.5,42.5,41.8,43.2,PASS,,,,Iowa run D shuts down Minnesota (run EPA -0.15; allows -0.16); Minnesota pass edge (pass EPA +0.20; Iowa allows +0.35); Minnesota havoc rate 22%
-12:00 PM,PITT @ MIA,-23.5,-23.5,-17.2,-17.1,PLAY,PITT +23.5,53.5,53.5,49.2,57.6,PASS,,,,Miami pass edge (pass EPA +0.71; Pittsburgh allows +0.15)
-12:00 PM,IU @ MICH,8.5,6.5,9.3,13.3,PASS,,44.5,52.5,41.0,40.8,PLAY,Under 44.5,,,Indiana pass edge (pass EPA +0.70; Michigan allows -0.08)
+12:00 AM,IOWA @ MINN,4.5,4.5,6.3,15.3,PLAY,IOWA -4.5,42.5,42.5,41.7,43.1,PASS,,,,Iowa run D shuts down Minnesota (run EPA -0.15; allows -0.16); Minnesota pass edge (pass EPA +0.20; Iowa allows +0.35); Minnesota havoc rate 22%
+12:00 PM,PITT @ MIA,-23.5,-23.5,-17.2,-17.1,PLAY,PITT +23.5,53.5,53.5,49.2,57.5,PASS,,,,Miami pass edge (pass EPA +0.71; Pittsburgh allows +0.15)
+12:00 PM,IU @ MICH,8.5,6.5,9.3,13.3,PASS,,44.5,52.5,41.0,40.7,PLAY,Under 44.5,,,Indiana pass edge (pass EPA +0.70; Michigan allows -0.08)
 7:30 PM,VAN @ UK,-9.5,-9.5,-8.2,-0.8,PLAY,VAN +9.5,52.5,52.5,57.5,49.3,PASS,,,,
-12:00 AM,VT @ CLEM,1.5,1.5,3.9,-4.7,PASS,,49.5,49.5,45.3,47.5,LEAN,Under 49.5,,,Virginia Tech havoc rate 24%
+12:00 AM,VT @ CLEM,1.5,1.5,3.9,-4.7,PASS,,49.5,49.5,45.3,47.4,LEAN,Under 49.5,,,Virginia Tech havoc rate 24%
 3:30 PM,TENN @ SC,1.5,2.5,3.4,0.7,PASS,,51.5,51.5,55.5,53.6,LEAN,Over 51.5,,,Tennessee havoc rate 22%
-7:30 PM,USC @ WIS,1.5,1.5,1.0,2.9,PASS,,52.5,52.5,50.8,50.9,LEAN,Under 52.5,,,Wisconsin pass edge (pass EPA +0.17; USC allows +0.40)
-10:00 PM,NDSU @ UNM,-4.5,-3.5,-5.5,-5.1,PASS,,46.5,46.5,40.5,39.0,CHECK,Under 46.5,,Models are 6.8 off the DK total (usual gap 2.7): usually weather or news the models don't have. Lean only,New Mexico havoc rate 26%
-12:00 AM,BYU @ UCF,7.5,9.5,12.5,9.2,PASS,,45.5,45.5,44.8,45.5,PASS,,,Line moved 2 pts toward the other side since open,BYU havoc rate 20%; BYU pass edge (pass EPA +0.33; UCF allows +0.14)
-12:00 AM,ISU @ ARIZ,-10.0,-10.0,-14.5,-5.7,PASS,,50.5,50.5,51.3,52.2,PASS,,,,Arizona pass edge (pass EPA +0.45; Iowa State allows +0.20)
-12:00 PM,LSU @ AUB,6.5,6.5,6.8,5.4,PASS,,50.5,50.5,44.5,50.0,PASS,,,,LSU havoc rate 21%; LSU pass edge (pass EPA +0.39; Auburn allows +0.09)
-3:30 PM,TA&M @ ALA,-15.5,-2.5,-15.2,-13.3,PASS,,53.5,54.5,53.1,52.4,PASS,,,,Alabama pass edge (pass EPA +0.42; Texas A&M allows +0.20)
-7:30 PM,MISS @ TEX,-6.5,-9.5,-9.7,-4.5,PASS,,53.5,54.5,57.0,48.0,PASS,,,,Texas pass edge (pass EPA +0.23; Ole Miss allows +0.27); Ole Miss pass edge (pass EPA +0.47; Texas allows +0.01); Texas havoc rate 21%
+7:30 PM,USC @ WIS,1.5,1.5,1.0,2.9,PASS,,52.5,52.5,50.8,50.8,LEAN,Under 52.5,,,Wisconsin pass edge (pass EPA +0.17; USC allows +0.40)
+10:00 PM,NDSU @ UNM,-4.5,-3.5,-5.5,-5.1,PASS,,46.5,46.5,40.4,39.0,CHECK,Under 46.5,,Models are 6.8 off the DK total (usual gap 2.7): usually weather or news the models don't have. Lean only,New Mexico havoc rate 26%
+12:00 AM,BYU @ UCF,7.5,9.5,12.5,9.2,PASS,,45.5,45.5,44.8,45.4,PASS,,,Line moved 2 pts toward the other side since open,BYU havoc rate 20%; BYU pass edge (pass EPA +0.33; UCF allows +0.14)
+12:00 AM,ISU @ ARIZ,-10.0,-10.0,-14.5,-5.7,PASS,,50.5,50.5,51.3,52.1,PASS,,,,Arizona pass edge (pass EPA +0.45; Iowa State allows +0.20)
+12:00 PM,LSU @ AUB,6.5,6.5,6.8,5.4,PASS,,50.5,50.5,44.4,49.9,PASS,,,,LSU havoc rate 21%; LSU pass edge (pass EPA +0.39; Auburn allows +0.09)
+3:30 PM,TA&M @ ALA,-15.5,-2.5,-15.2,-13.3,PASS,,53.5,54.5,53.1,52.3,PASS,,,,Alabama pass edge (pass EPA +0.42; Texas A&M allows +0.20)
+7:30 PM,MISS @ TEX,-6.5,-9.5,-9.7,-4.5,PASS,,53.5,54.5,57.0,47.9,PASS,,,,Texas pass edge (pass EPA +0.23; Ole Miss allows +0.27); Ole Miss pass edge (pass EPA +0.47; Texas allows +0.01); Texas havoc rate 21%
