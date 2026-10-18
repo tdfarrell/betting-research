@@ -1,6 +1,6 @@
 kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total,total_open,sp_total_cal,pp_total_cal,total_grade,total_pick,flags,adjustments,notes
-7:00 PM,DUKE @ UVA,-2.5,-6.5,-2.8,-3.4,PASS,,48.5,53.5,51.4,48.6,PASS,,,,Virginia pass edge (pass EPA +0.28; Duke allows +0.23); Duke pass edge (pass EPA +0.34; Virginia allows +0.20)
-7:00 PM,MASS @ CONN,-15.5,-15.5,-9.5,-21.9,PASS,,49.5,49.5,53.6,49.3,PASS,,,,Massachusetts pass edge (pass EPA +0.26; UConn allows +0.23)
-10:30 PM,NCSU @ STAN,7.5,7.5,9.0,8.5,PASS,,55.5,55.5,56.2,56.7,PASS,,,,Stanford pass edge (pass EPA +0.24; NC State allows +0.41); NC State pass edge (pass EPA +0.42; Stanford allows +0.41); NC State should finish drives (4.2 pts/opp; Stanford allows 5.4)
-8:30 PM,ARMY @ TLSA,-1.5,-1.5,1.0,7.4,FLAG,,50.5,50.5,52.2,55.7,FLAG,,Option offense,,
-9:00 PM,AFA @ WYO,6.5,6.5,10.3,1.2,FLAG,,42.5,42.5,41.9,48.6,FLAG,,Option offense,,Air Force run edge (run EPA +0.31; Wyoming allows +0.20)
+7:00 PM,MASS @ CONN,-16.5,-15.5,-9.3,-21.5,PASS,,47.5,49.5,53.2,48.8,CHECK,Over 47.5,,Models are 3.5 off the DK total (usual gap 1.6): usually weather or news the models don't have. Lean only,Massachusetts pass edge (pass EPA +0.26; UConn allows +0.23)
+7:00 PM,DUKE @ UVA,-2.5,-6.5,-2.7,-3.3,PASS,,48.5,53.5,51.0,48.0,PASS,,,,Virginia pass edge (pass EPA +0.28; Duke allows +0.23); Duke pass edge (pass EPA +0.34; Virginia allows +0.20)
+10:30 PM,NCSU @ STAN,7.5,7.5,8.9,8.4,PASS,,55.5,55.5,55.8,56.7,PASS,,,,Stanford pass edge (pass EPA +0.24; NC State allows +0.41); NC State pass edge (pass EPA +0.42; Stanford allows +0.41); NC State should finish drives (4.2 pts/opp; Stanford allows 5.4)
+8:30 PM,ARMY @ TLSA,-1.5,-1.5,1.0,7.4,FLAG,,52.5,50.5,51.8,55.7,FLAG,,Option offense,,
+9:00 PM,AFA @ WYO,7.5,6.5,10.2,1.2,FLAG,,43.5,42.5,41.5,48.1,FLAG,,Option offense,,Air Force run edge (run EPA +0.31; Wyoming allows +0.20)
