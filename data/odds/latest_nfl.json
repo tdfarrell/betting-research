@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-18T17:40Z",
+ "pulled_utc": "2026-10-18T18:04Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -11,7 +11,7 @@
    "away_name": "Chicago Bears",
    "home_name": "Atlanta Falcons",
    "away_score": "14",
-   "home_score": "0",
+   "home_score": "7",
    "neutral": false,
    "conference_game": false,
    "venue": "Mercedes-Benz Stadium",
@@ -43,12 +43,12 @@
    "away_name": "Tennessee Titans",
    "home_name": "Indianapolis Colts",
    "away_score": "0",
-   "home_score": "0",
+   "home_score": "7",
    "neutral": false,
    "conference_game": false,
    "venue": "Lucas Oil Stadium",
    "weather": "1",
-   "temp_f": 58
+   "temp_f": 59
   },
   {
    "game_id": "401873001",
@@ -80,7 +80,7 @@
    "conference_game": false,
    "venue": "MetLife Stadium",
    "weather": "1",
-   "temp_f": 55
+   "temp_f": 56
   },
   {
    "game_id": "401872998",
@@ -96,7 +96,7 @@
    "conference_game": false,
    "venue": "Lincoln Financial Field",
    "weather": "1",
-   "temp_f": 56
+   "temp_f": 57
   },
   {
    "game_id": "401873002",
@@ -107,12 +107,12 @@
    "away_name": "Pittsburgh Steelers",
    "home_name": "Tampa Bay Buccaneers",
    "away_score": "0",
-   "home_score": "3",
+   "home_score": "10",
    "neutral": false,
    "conference_game": false,
    "venue": "Raymond James Stadium",
    "weather": "1",
-   "temp_f": 82
+   "temp_f": 81
   },
   {
    "game_id": "401872996",
@@ -148,12 +148,12 @@
    "home_spread": "-12.5",
    "home_spread_odds": "-112",
    "home_spread_open": "-13.5",
-   "home_ml": "-800",
+   "home_ml": "-750",
    "home_ml_open": "-700",
    "away_spread": "+12.5",
    "away_spread_odds": "-108",
    "away_spread_open": "+13.5",
-   "away_ml": "+550",
+   "away_ml": "+525",
    "away_ml_open": "+500",
    "total": 51.5,
    "over_odds": "-115",
