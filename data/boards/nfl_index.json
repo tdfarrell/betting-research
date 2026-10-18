@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-18T14:56+00:00",
- "odds_pulled_utc": "2026-10-18T14:56Z",
+ "generated_utc": "2026-10-18T17:40+00:00",
+ "odds_pulled_utc": "2026-10-18T17:40Z",
  "stats_pulled_utc": "2026-10-18T13:57+00:00",
  "slates": [
   {
@@ -20,7 +20,7 @@
    "label": "Week 6",
    "first_day": "2026-10-18",
    "games": 14,
-   "targets": 2,
+   "targets": 1,
    "watches": 1
   },
   {
@@ -36,55 +36,55 @@
  ],
  "flag_record": {
   "TARGET_side": {
-   "n": 5,
-   "avg_clv": 0.1,
-   "beat_close": 1,
+   "n": 7,
+   "avg_clv": 0.29,
+   "beat_close": 2,
    "lost_close": 0,
    "w": 3,
    "l": 2,
    "p": 0
   },
   "TARGET_total": {
-   "n": 4,
-   "avg_clv": 0.0,
+   "n": 5,
+   "avg_clv": -0.2,
    "beat_close": 1,
-   "lost_close": 1,
+   "lost_close": 2,
    "w": 4,
    "l": 0,
    "p": 0
   },
   "WATCH_side": {
-   "n": 1,
-   "avg_clv": 0.0,
-   "beat_close": 0,
+   "n": 3,
+   "avg_clv": 0.5,
+   "beat_close": 1,
    "lost_close": 0,
    "w": 1,
    "l": 0,
    "p": 0
   },
   "WATCH_total": {
-   "n": 4,
-   "avg_clv": 0.75,
-   "beat_close": 2,
+   "n": 5,
+   "avg_clv": 1.0,
+   "beat_close": 3,
    "lost_close": 0,
    "w": 2,
-   "l": 1,
+   "l": 2,
    "p": 0
   },
   "CHECK_side": {
-   "n": 7,
-   "avg_clv": 0.07,
-   "beat_close": 1,
-   "lost_close": 1,
+   "n": 9,
+   "avg_clv": 0.61,
+   "beat_close": 2,
+   "lost_close": 2,
    "w": 1,
-   "l": 5,
+   "l": 6,
    "p": 0
   },
   "CHECK_total": {
-   "n": 0,
-   "avg_clv": null,
+   "n": 3,
+   "avg_clv": -2.67,
    "beat_close": 0,
-   "lost_close": 0,
+   "lost_close": 2,
    "w": 0,
    "l": 0,
    "p": 0
