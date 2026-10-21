@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-21T00:12Z",
+ "pulled_utc": "2026-10-21T00:33Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,7 +10,7 @@
    "home": "FIU",
    "away_name": "Middle Tennessee Blue Raiders",
    "home_name": "Florida International Panthers",
-   "away_score": "10",
+   "away_score": "13",
    "home_score": "8",
    "neutral": false,
    "conference_game": true,
@@ -26,13 +26,13 @@
    "home": "DEL",
    "away_name": "Missouri State Bears",
    "home_name": "Delaware Blue Hens",
-   "away_score": "20",
-   "home_score": "21",
+   "away_score": "28",
+   "home_score": "24",
    "neutral": false,
    "conference_game": true,
    "venue": "Delaware Stadium",
    "weather": "33",
-   "temp_f": 60
+   "temp_f": 53
   },
   {
    "game_id": "401871092",
@@ -43,12 +43,12 @@
    "away_name": "South Alabama Jaguars",
    "home_name": "Marshall Thundering Herd",
    "away_score": "3",
-   "home_score": "0",
+   "home_score": "3",
    "neutral": false,
    "conference_game": true,
    "venue": "Joan C. Edwards Stadium",
    "weather": "33",
-   "temp_f": 62
+   "temp_f": 63
   },
   {
    "game_id": "401871070",
@@ -1366,8 +1366,8 @@
    "away_ml": "-130",
    "away_ml_open": "-120",
    "total": 58.5,
-   "over_odds": "-118",
-   "under_odds": "-102",
+   "over_odds": "-115",
+   "under_odds": "-105",
    "total_open": "o55.5"
   },
   {
@@ -1385,13 +1385,13 @@
    "venue": "DKR-Texas Memorial Stadium",
    "weather": "Intermittent clouds",
    "temp_f": 83,
-   "home_spread": "-3",
-   "home_spread_odds": "-118",
+   "home_spread": "-3.5",
+   "home_spread_odds": "-102",
    "home_spread_open": "-9.5",
    "home_ml": "-162",
    "home_ml_open": "-340",
-   "away_spread": "+3",
-   "away_spread_odds": "-102",
+   "away_spread": "+3.5",
+   "away_spread_odds": "-118",
    "away_spread_open": "+9.5",
    "away_ml": "+136",
    "away_ml_open": "+270",
