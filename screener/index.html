@@ -52,6 +52,7 @@ h1{font:800 46px/1 var(--display);letter-spacing:.5px;margin:6px 0 6px;text-tran
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--win);margin-right:6px;box-shadow:0 0 0 3px rgba(74,222,155,.18)}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:16px 0 4px}
 .tab{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:8px 14px;border-radius:8px;cursor:pointer;white-space:nowrap;font:600 13px var(--mono);letter-spacing:.4px}
+.tab.pastbtn{background:transparent;border-style:dashed;color:var(--muted)}.tab.pastbtn[aria-expanded="true"]{color:var(--amber);border-color:var(--amber)}
 .tab[aria-selected="true"]{background:var(--amber);color:#14110A;border-color:var(--amber)}
 .tab small{opacity:.75;margin-left:6px;font-weight:500}
 main{padding:12px 0 40px}
@@ -416,6 +417,7 @@ const SPORTS = {
     index: "data/boards/index.json", history: "data/odds/history_cfb.csv",
     slateKey: s => s.date, slateFile: k => `data/boards/cfb_${k}.json`,
     tabLabel: s => `${dayLabel(s.date)}<small>${s.games} games</small>`,
+    done: (x, today) => x.date < today,   // a CFB slate is one day
     defaultSlate(slates) { const t = new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10); const up = slates.filter(s => s.date >= t);
       return (up.sort((a, b) => b.games - a.games)[0] || slates[slates.length - 1]).date; },
     grades: ["PLAY", "LEAN"], topWord: "Plays", bothWord: "Plays + Leans", bestTitle: "Best bets", stats: ["Plays", "Leans"],
@@ -445,6 +447,8 @@ const SPORTS = {
     index: "data/boards/nfl_index.json", history: "data/odds/history_nfl.csv",
     slateKey: s => s.key, slateFile: k => `data/boards/nfl_${k}.json`,
     tabLabel: s => `${s.label}<small>${s.games} games</small>`,
+    // an NFL week is done once Monday night is over (first day + 5) or the next week has started
+    done: (x, today, all) => addDays(x.first_day, 5) < today || all.some(y => y.first_day > x.first_day && y.first_day <= today),
     defaultSlate(slates) { const t = new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
       const up = slates.filter(s => s.first_day >= t || s.games > 1).filter(s => s.first_day >= addDays(t, -6));
       return (up.sort((a, b) => b.games - a.games || a.key.localeCompare(b.key))[0] || slates[slates.length - 1]).key; },
@@ -514,16 +518,38 @@ async function setSport(sp, key, view) {
   if (sp !== state.sport) return;
   const slates = state.index.slates || [];
   if (!slates.length) { $("#meta").innerHTML = `<span class="pill">No ${esc(s.label)} games on the DraftKings board right now.</span>`; $("#tbl tbody").innerHTML = ""; return; }
-  $("#tabs").innerHTML = slates.map(x => `<button class="tab" role="tab" data-k="${esc(s.slateKey(x))}">${s.tabLabel(x)}</button>`).join("");
-  const want = key && slates.some(x => s.slateKey(x) === key) ? key : s.defaultSlate(slates);
+  const { past, cur } = slateSplit();
+  const want = key && slates.some(x => s.slateKey(x) === key) ? key : s.defaultSlate(cur.length ? cur : slates);
+  state.showPast = past.some(x => s.slateKey(x) === want);   // a deep link to a completed week opens the fold
+  drawTabs(want);
   await load(want);
 }
-$("#tabs").onclick = e => { const b = e.target.closest(".tab"); if (b) load(b.dataset.k); };
+/* slate tabs: completed weeks/days fold into a "Past" button so only current and upcoming ones show.
+   Opening a past slate (button or deep link) unfolds them. */
+function slateSplit() {
+  const s = S(), slates = (state.index && state.index.slates) || [];
+  const today = new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
+  const past = s.done ? slates.filter(x => s.done(x, today, slates)) : [];
+  let cur = slates.filter(x => !past.includes(x));
+  if (!cur.length && past.length) cur = [past.pop()];   // off-season: keep the latest one in view
+  return { past, cur };
+}
+function drawTabs(selected) {
+  const s = S(), { past, cur } = slateSplit();
+  const btn = x => `<button class="tab" role="tab" data-k="${esc(s.slateKey(x))}" aria-selected="${s.slateKey(x) === selected}">${s.tabLabel(x)}</button>`;
+  const unit = state.sport === "cfb" ? "day" : "week";
+  $("#tabs").innerHTML = (past.length ? `<button class="tab pastbtn" id="pastTog" aria-expanded="${!!state.showPast}" title="${state.showPast ? "Hide" : "Show"} completed ${unit}s">${state.showPast ? "◂ Hide past" : `Past ${unit}s ▸`}<small>${past.length} completed</small></button>` : "")
+    + (state.showPast ? past.map(btn).join("") : "") + cur.map(btn).join("");
+}
+$("#tabs").onclick = e => {
+  if (e.target.closest("#pastTog")) { state.showPast = !state.showPast; drawTabs(state.key); return; }
+  const b = e.target.closest(".tab"); if (b) load(b.dataset.k);
+};
 
 async function load(key) {
   const sp = state.sport, s = S();
   state.key = key; setHash();
-  document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.k === key));
+  drawTabs(key);
   $("#linesView").hidden = state.view !== "lines"; $("#propsView").hidden = state.view !== "props";
   $("#resultsView").hidden = state.view !== "results"; $("#how").hidden = state.view !== "lines"; $("#tabs").hidden = state.view === "results";
   if (state.view === "props") return loadProps(key);
@@ -1053,7 +1079,7 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-22a";
+const SCREENER_BUILD = "2026-10-22b";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";
