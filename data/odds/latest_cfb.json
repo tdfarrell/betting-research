@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-22T23:17Z",
+ "pulled_utc": "2026-10-22T23:24Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -42,7 +42,7 @@
    "home": "KENN",
    "away_name": "Liberty Flames",
    "home_name": "Kennesaw State Owls",
-   "away_score": "0",
+   "away_score": "7",
    "home_score": "0",
    "neutral": false,
    "conference_game": true,

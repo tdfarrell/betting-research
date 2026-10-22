@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-22T23:17Z",
+ "pulled_utc": "2026-10-22T23:24Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -186,8 +186,8 @@
    "home": "PHI",
    "away_name": "Cleveland Cavaliers",
    "home_name": "Philadelphia 76ers",
-   "away_score": "6",
-   "home_score": "5",
+   "away_score": "13",
+   "home_score": "11",
    "neutral": false,
    "conference_game": false,
    "venue": "Xfinity Mobile Arena",
