@@ -1,19 +1,25 @@
 {
- "pulled_utc": "2026-10-22T22:23Z",
+ "pulled_utc": "2026-10-22T23:17Z",
  "status": {
   "cfb": {
    "games": 59,
-   "with_dk_line": 52,
+   "with_dk_line": 50,
    "mode": "per-day"
   },
   "nfl": {
    "games": 15,
    "with_dk_line": 15,
    "mode": "per-day"
+  },
+  "nba": {
+   "games": 68,
+   "with_dk_line": 13,
+   "mode": "per-day"
   }
  },
  "errors": [
   "cfb range: HTTPError: HTTP Error 400: Bad Request",
-  "nfl range: HTTPError: HTTP Error 400: Bad Request"
+  "nfl range: HTTPError: HTTP Error 400: Bad Request",
+  "nba range: HTTPError: HTTP Error 400: Bad Request"
  ]
 }
