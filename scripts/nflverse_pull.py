@@ -176,7 +176,7 @@ def current_roster(season):
         last[r["team"]] = max(last.get(r["team"], 0), i(r["week"]))
     return [{"season": season, "week": i(r["week"]), "team": r["team"], "player_id": r["gsis_id"], "name": r["full_name"],
              "position": "RB" if r["position"] == "FB" else r["position"], "depth_chart_position": r["depth_chart_position"],
-             "status": r["status"], "headshot": r["headshot_url"]}
+             "status": r["status"], "headshot": r["headshot_url"], "espn_id": (r.get("espn_id") or "").split(".")[0]}
             for r in ros if i(r["week"]) == last[r["team"]] and r["position"] in ("QB", "RB", "FB", "WR", "TE") and r.get("gsis_id")]
 
 def write(name, rows, cols=None):

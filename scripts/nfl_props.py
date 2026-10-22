@@ -444,6 +444,10 @@ def current_week_cards(D):
         D["role_means"] = role_means(D, S_, D["roles_prev"])
         wk = D["wk_cache"].get((S_, W)) or Week(D, S_, W)
         rng = np.random.default_rng(S_ * 100 + W)
+        D["si"] = D.get("si") or sched_info(sched)
+        mates = team_mates(pg, S_, W, inj_status, roster)
+        played = played_index(pg, [S_ - 1, S_])
+        dvp = dvp_ranks(wk, roles_hist)
         cards = []
         for g, r in games:
             for team, opp, home in ((r.home_team, r.away_team, True), (r.away_team, r.home_team, False)):
@@ -463,11 +467,16 @@ def current_week_cards(D):
                 roles = assign_roles(wk, cand[["team", "player_id", "position"]], {team: qb_id} if isinstance(qb_id, str) else None)
                 for pid, role in roles.items():
                     pr = cand[cand.player_id == pid].iloc[0]
-                    cards.append(make_card(D, wk, roles_hist, pid, pr["name"], pr.position, role, team, opp, home, implied, spr, coef, rng,
-                                           g, r, headshot=pr.headshot if isinstance(pr.headshot, str) else "", status=inj_status.get(pid)))
+                    c = make_card(D, wk, roles_hist, pid, pr["name"], pr.position, role, team, opp, home, implied, spr, coef, rng,
+                                  g, r, headshot=pr.headshot if isinstance(pr.headshot, str) else "", status=inj_status.get(pid))
+                    c["glog"] = game_log(pg, pid, S_, W, D["si"], mates.get(team, []), played)
+                    for mk, m in c["markets"].items():
+                        m["dvp"] = dvp.get((opp, role, mk))
+                    cards.append(c)
         key = f"{S_}_wk{W:02d}"
         doc = {"key": key, "season": S_, "week": W, "generated_utc": now(), "odds_pulled_utc": board["pulled_utc"],
-               "prior_weight": prior_weight(W), "tiers": TIERS, "labels": LABEL, "cards": cards}
+               "prior_weight": prior_weight(W), "tiers": TIERS, "labels": LABEL,
+               "glog_cols": GLOG_COLS, "mates": mates, "cards": cards}
         path = f"{OUT}/nfl_props_{key}.json"
         if os.path.exists(path):   # keep players whose game already kicked off (frozen as they were)
             try:
@@ -498,6 +507,93 @@ def num1(x):
     except (TypeError, ValueError):
         return None
 
+# ------------------------------------------------------------------ game logs, splits, defense vs position
+GLOG_COLS = ["season", "wk", "team", "opp", "home", "rest", "div", "tgt", "rec", "rec_yds", "car", "rush_yds", "rr_yds",
+             "att", "cmp", "pass_yds", "pass_td", "td", "snap", "out"]
+DVP_STAT = {mk: STAT[mk] for mk in TIERS}
+
+def sched_info(sched):
+    """game_id -> (home team, home rest, away rest, divisional)."""
+    return {r.game_id: (r.home_team, r.home_rest, r.away_rest, int(r.div_game) if not pd.isna(r.div_game) else 0)
+            for r in sched.itertuples()}
+
+def team_mates(pg, S, W, inj_status, roster, n=7):
+    """Per team: the players a 'without X' filter is useful for. Top touches/game this season (or last season early on)
+    plus the QB with the most attempts, including players who are Out this week."""
+    cur = pg[(pg.season == S) & (pg.week < W)]
+    if cur.empty:
+        cur = pg[pg.season == S - 1]
+    name = dict(zip(roster.player_id, roster["name"]))
+    out = {}
+    for team, grp in cur.groupby("team"):
+        a = grp.groupby("player_id").agg(g=("game_id", "nunique"), tch=("targets", "sum"), car=("carries", "sum"),
+                                        att=("attempts", "sum"), pos=("position", "last"), nm=("name", "last"))
+        a["tpg"] = (a.tch + a.car) / a.g
+        qb = a[a.pos == "QB"].sort_values("att").tail(1)
+        sk = a[(a.pos != "QB") & (a.tpg >= 2.5)].sort_values("tpg", ascending=False).head(n - len(qb))
+        rows = []
+        for pid, r in pd.concat([qb, sk]).iterrows():
+            rows.append({"id": pid, "name": name.get(pid, r.nm), "pos": r.pos, "tpg": round(float(r.tpg), 1),
+                         "status": inj_status.get(pid)})
+        out[team] = rows
+    return out
+
+def played_index(pg, seasons):
+    """(game_id, team) -> set of player_ids who played; (season, team) -> set of players who played for that team."""
+    g = pg[pg.season.isin(seasons)]
+    snaps = pd.to_numeric(g.snaps, errors="coerce").fillna(0)
+    touched = (g.targets + g.carries + g.attempts) > 0
+    g = g[(snaps > 0) | touched]
+    by_game = g.groupby(["game_id", "team"]).player_id.agg(set).to_dict()
+    by_season = g.groupby(["season", "team"]).player_id.agg(set).to_dict()
+    return by_game, by_season
+
+def game_log(pg, pid, S, W, si, mates, played):
+    """Every game this season (before W) and last season, compact rows in GLOG_COLS order."""
+    by_game, by_season = played
+    rows = pg[(pg.player_id == pid) & ((pg.season == S - 1) | ((pg.season == S) & (pg.week < W)))].sort_values(["season", "week"])
+    out = []
+    for x in rows.itertuples():
+        h = si.get(x.game_id)
+        home = int(h[0] == x.team) if h else None
+        rest = None
+        if h:
+            rv = h[1] if home else h[2]
+            rest = int(rv) if not pd.isna(rv) else None
+        mask = 0
+        on_field = by_game.get((x.game_id, x.team), set())
+        for i, m in enumerate(mates):   # mates of the player's team this week
+            if m["id"] == pid:
+                continue
+            # out = on this team that season but did not play this game
+            if m["id"] in by_season.get((int(x.season), x.team), set()) and m["id"] not in on_field:
+                mask |= 1 << i
+        snap = pd.to_numeric(x.snap_pct, errors="coerce")
+        out.append([int(x.season), int(x.week), x.team, x.opp, home, rest, h[3] if h else None,
+                    int(x.targets), int(x.receptions), int(x.receiving_yards), int(x.carries), int(x.rushing_yards), int(x.rr_yds),
+                    int(x.attempts), int(x.completions), int(x.passing_yards), int(x.passing_tds), int(x.tds),
+                    None if pd.isna(snap) else round(float(snap), 2), mask])
+    return out
+
+def dvp_ranks(wk, roles_hist):
+    """(opp, role, market) -> {rank 1-32 (32 = allows the most), avg allowed per game, games}. Current season only."""
+    cur = wk.cur.copy()
+    if cur.empty:
+        return {}
+    cur["role"] = [roles_hist.get((wk.S, int(w), q)) for w, q in zip(cur.week, cur.player_id)]
+    cur = cur[cur.role.notna()]
+    out = {}
+    for mk, col in DVP_STAT.items():
+        a = cur.groupby(["role", "opp"])[col].agg(["mean", "count"]).reset_index()
+        for role, grp in a.groupby("role"):
+            grp = grp.sort_values("mean")
+            n = len(grp)
+            # average rank for ties, 1 = fewest allowed
+            rk = grp["mean"].rank(method="average")
+            for (_, r), k in zip(grp.iterrows(), rk):
+                out[(r.opp, role, mk)] = {"rank": round(float(k)), "of": n, "avg": round(float(r["mean"]), 1), "n": int(r["count"])}
+    return out
+
 def now():
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")
 
@@ -524,6 +620,11 @@ def make_card(D, wk, roles_hist, pid, name, pos, role, team, opp, home, implied,
                     "l3_opps": l3.opp.tolist(), "season_vals": [int(v) for v in sv], "def_avg": round(float(np.mean(dvv)), 1) if dvv else None,
                     "def_n": len(dvv), "proj": round(float(np.median(sims[mk])), 1) if mk in sims else
                     round(p["lam_td"] if mk == "atd" else p["lam_ptd"], 2), "disagree": dis}
+        # full model distribution, so the page can price any DraftKings line (not just the tiers)
+        if mk in ("rec_yds", "rush_yds", "rr_yds", "pass_yds") and mk in sims:
+            mkts[mk]["q"] = [int(round(x)) for x in np.quantile(sims[mk], np.linspace(0, 1, 41))]
+        elif mk == "rec" and mk in sims:
+            mkts[mk]["ge"] = [round(float((sims[mk] >= k).mean()), 3) for k in range(16)]
     tgt_share = (games.targets.sum() / games.tm_targets.sum()) if len(games) and games.tm_targets.sum() else None
     car_share = (games.carries.sum() / games.tm_carries.sum()) if len(games) and games.tm_carries.sum() else None
     snap = pd.to_numeric(games.snap_pct, errors="coerce").dropna()

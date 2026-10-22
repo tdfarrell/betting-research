@@ -42,6 +42,10 @@ jobs:
       - name: DraftKings lines (ESPN)
         run: python scripts/espn_odds.py
 
+      - name: DraftKings player prop lines (ESPN)
+        continue-on-error: true
+        run: python scripts/espn_props.py
+
       - name: Final scores + box scores (ESPN) for auto-grading
         continue-on-error: true
         run: python scripts/results_pull.py
