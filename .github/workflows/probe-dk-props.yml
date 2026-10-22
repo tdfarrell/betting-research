@@ -18,8 +18,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Probe ESPN propBets + DraftKings sportsbook JSON
-        run: python scripts/probe_dk_props.py
+      - name: Probes (DK prop lines, NBA sources)
+        run: python scripts/probe_dk_props.py && python scripts/probe_nba.py
       - name: Commit result
         run: |
           git config user.name "data-bot"
