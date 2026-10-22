@@ -46,6 +46,12 @@ jobs:
         continue-on-error: true
         run: python scripts/espn_props.py
 
+      - name: NBA box scores + injuries (ESPN), DK NBA prop lines
+        continue-on-error: true
+        run: |
+          python scripts/nba_pull.py
+          python scripts/espn_props_nba.py
+
       - name: Final scores + box scores (ESPN) for auto-grading
         continue-on-error: true
         run: python scripts/results_pull.py
@@ -74,6 +80,11 @@ jobs:
         continue-on-error: true
         if: github.event.schedule == '7 10,22 * * *' || github.event.schedule == '17 15 * * 0' || (github.event_name == 'workflow_dispatch' && inputs.nflverse)
         run: python scripts/nfl_props.py
+
+      - name: Grade NBA slates + prop cards
+        continue-on-error: true
+        run: |
+          if [ -f data/nba/team_games.csv ]; then python scripts/regrade_nba.py && python scripts/nba_props.py; fi
 
       - name: Screener grades its own picks (kickoff snapshots, results, day-by-day record)
         continue-on-error: true

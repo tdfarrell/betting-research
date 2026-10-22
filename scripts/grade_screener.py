@@ -26,7 +26,7 @@ PICK_COLS = ["league", "slate", "day_et", "game_id", "kickoff_utc", "game", "awa
 PROP_COLS = ["season", "week", "slate", "day_et", "game_id", "kickoff_utc", "player_id", "name", "team", "opp", "role", "market",
              "tiers", "probs", "season_hr", "l3_hr", "disagree", "last_seen_utc", "actual", "status"]
 FLAGGED = {"PLAY", "LEAN", "TARGET", "WATCH", "CHECK"}
-TIER_ORDER = {"cfb": ["PLAY", "LEAN", "CHECK"], "nfl": ["TARGET", "WATCH", "CHECK"]}
+TIER_ORDER = {"cfb": ["PLAY", "LEAN", "CHECK"], "nfl": ["TARGET", "WATCH", "CHECK"], "nba": ["TARGET", "WATCH", "CHECK"]}
 
 def now_utc():
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes").replace("+00:00", "Z")
@@ -76,7 +76,7 @@ def snapshot_board(doc, league, slate, picks, at):
                 edge = s.get("edge") if s.get("edge") is not None else s.get("edge_sp")
                 lean = None if edge is None or edge == 0 else ("home" if edge > 0 else "away")
                 lean_line = None if lean is None else (hs if lean == "home" else -hs)
-                model = m.get("number") if league == "nfl" else m.get("sp_spread_cal")
+                model = m.get("number") if league in ("nfl", "nba") else m.get("sp_spread_cal")
             else:
                 tot = d.get("total")
                 if tot is None:
@@ -84,7 +84,7 @@ def snapshot_board(doc, league, slate, picks, at):
                 edge = s.get("edge") if s.get("edge") is not None else s.get("edge_sp")
                 lean = None if edge is None or edge == 0 else ("over" if edge > 0 else "under")
                 lean_line = tot
-                model = m.get("total_number") if league == "nfl" else (
+                model = m.get("total_number") if league in ("nfl", "nba") else (
                     ((m.get("sp_total_cal") or 0) + (m.get("pp_total_cal") or 0)) / 2 if m.get("pp_total_cal") is not None else m.get("sp_total_cal"))
             key = (league, str(g["id"]), mk)
             r = picks.get(key) or {"league": league, "game_id": str(g["id"]), "market": mk, "first_seen_utc": at, "status": "open"}
@@ -145,7 +145,7 @@ def wlp(x):
     return "" if x is None else ("W" if x > 0 else "L" if x < 0 else "P")
 
 def settle_picks(picks):
-    F = {lg: finals(lg) for lg in ("cfb", "nfl")}
+    F = {lg: finals(lg) for lg in ("cfb", "nfl", "nba")}
     for r in picks.values():
         if r.get("status") == "final":
             continue
@@ -272,8 +272,10 @@ def props_metrics(rows):
 
 def summarize(picks, props):
     out = {"generated_utc": now_utc(), "leagues": {}}
-    for lg in ("cfb", "nfl"):
+    for lg in ("cfb", "nfl", "nba"):
         rows = [r for r in picks.values() if r["league"] == lg]
+        if not rows and lg == "nba":
+            continue
         days = defaultdict(list)
         for r in rows:
             days[r["day_et"]].append(r)
@@ -318,6 +320,9 @@ def boards():
     for p in glob.glob("data/boards/nfl_*.json"):
         if "index" not in p:
             yield "nfl", re.search(r"nfl_(.+)\.json", p).group(1), p
+    for p in glob.glob("data/boards/nba_*.json"):
+        if "index" not in p:
+            yield "nba", re.search(r"nba_(.+)\.json", p).group(1), p
 
 def run():
     picks, props = load_csv(PICKS, PICK_COLS), load_csv(PROPS, PROP_COLS)
@@ -344,7 +349,7 @@ def backfill(since):
         at = dt.datetime.fromisoformat(when).astimezone(dt.timezone.utc).isoformat(timespec="minutes").replace("+00:00", "Z")
         files = subprocess.run(["git", "ls-tree", "--name-only", sha, "data/boards/", "data/props/"], capture_output=True, text=True).stdout.split()
         for f in files:
-            m = re.search(r"data/boards/(cfb|nfl)_(.+)\.json$", f)
+            m = re.search(r"data/boards/(cfb|nfl|nba)_(.+)\.json$", f)
             if m and "index" not in f:
                 doc = json.loads(subprocess.run(["git", "show", f"{sha}:{f}"], capture_output=True, text=True).stdout)
                 snapshot_board(doc, m.group(1), m.group(2), picks, at)

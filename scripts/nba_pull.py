@@ -23,6 +23,8 @@ PCOLS = ["season", "date", "game_id", "team", "opp", "home", "player_id", "name"
 TCOLS = ["season", "date", "game_id", "team", "opp", "home", "pts", "opp_pts", "fgm", "fga", "tpm", "tpa", "ftm", "fta",
          "oreb", "dreb", "reb", "ast", "tov", "stl", "blk", "poss", "min", "ot", "rest"]
 LCOLS = ["season", "date", "game_id", "home", "away", "home_spread", "total", "home_score", "away_score", "provider"]
+NBA_TEAMS = {"ATL", "BOS", "BKN", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GS", "HOU", "IND", "LAC", "LAL", "MEM", "MIA", "MIL", "MIN",
+             "NO", "NY", "OKC", "ORL", "PHI", "PHX", "POR", "SA", "SAC", "TOR", "UTAH", "WSH"}   # skips All-Star games
 errors = []
 
 def get(url):
@@ -136,6 +138,8 @@ def pull_days(days, want_season=None):
             if not (st.get("completed") and st.get("state") == "post"):
                 continue
             gid, season = ev["id"], sn.get("year")
+            if {c["team"]["abbreviation"] for c in ev["competitions"][0]["competitors"]} - NBA_TEAMS:
+                continue
             date = dt.datetime.fromisoformat(ev["date"].replace("Z", "+00:00")).astimezone(ET).date().isoformat()
             try:
                 lc = dk_close(ev)
