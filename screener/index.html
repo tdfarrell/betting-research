@@ -221,6 +221,7 @@ table.ptable tbody tr{cursor:default}
 table.ptable .first{position:sticky;left:0;z-index:2;background:var(--panel);white-space:nowrap}
 table.ptable th.first{z-index:3}
 table.ptable td.tc .c{display:inline-block;min-width:46px;padding:4px 5px;border-radius:5px;font:500 12px var(--mono);background:var(--chip)}
+table.ptable td.tc .c.r4{background:rgba(74,222,155,.34);color:#E9FFF4}table.ptable td.tc .c.r3{background:rgba(74,222,155,.18)}table.ptable td.tc .c.r2{background:rgba(255,176,32,.12)}table.ptable td.tc .c.r1{background:rgba(255,122,122,.10);color:#C9AFAF}table.ptable td.tc .c.r0{background:rgba(255,122,122,.18);color:#D8B5B5}table.ptable td.tc .c.na{background:transparent;color:#4C5566}
 table.ptable td.tc .c.m{background:transparent;border:1px solid var(--line)}
 table.ptable td.tc .c.m.r4{border-color:rgba(74,222,155,.6);color:var(--win)}table.ptable td.tc .c.m.r3{border-color:rgba(74,222,155,.35)}
 table.ptable td.tc small{display:block;color:var(--muted);font:500 10px var(--mono);margin-top:2px}
@@ -272,6 +273,43 @@ tr.dimrow td{color:var(--muted)}
 .pc[data-pid]:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
 .linkbtn{background:none;border:0;padding:0;color:var(--ink);font:600 13px var(--body);cursor:pointer;text-align:left}.linkbtn:hover{color:var(--amber);text-decoration:underline}
 .dh .hs{width:52px;height:52px;border-radius:50%;background:var(--chip);object-fit:cover;flex:none;display:grid;place-items:center;font:700 15px var(--display);color:var(--muted);overflow:hidden}
+
+/* trends explorer (player drawer): hit-rate pills, per-game bars against a movable line, split filters */
+.px .seg{flex-wrap:wrap;max-width:100%}
+.px .ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.px .ln{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.px .ln button{border:0;background:var(--panel2);color:var(--ink);width:32px;height:34px;cursor:pointer;font:600 15px var(--mono)}
+.px .ln input{width:70px;height:34px;border:0;border-left:1px solid var(--line);border-right:1px solid var(--line);background:var(--panel);color:var(--amber);text-align:center;font:600 14px var(--mono)}
+.px .ln span{padding:0 10px;color:var(--muted);font:600 11px var(--mono);text-transform:uppercase;letter-spacing:.4px}
+.px .pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(74px,1fr));gap:6px;margin:6px 0 10px}
+.px .hp{border:1px solid var(--line);border-radius:8px;padding:6px 4px;background:var(--panel2);cursor:pointer;color:var(--muted);font:600 10.5px var(--mono);text-transform:uppercase;letter-spacing:.4px;text-align:center}
+.px .hp b{display:block;font:600 17px var(--display);letter-spacing:.3px;color:var(--ink);text-transform:none}
+.px .hp small{display:block;font:500 10px var(--mono);color:var(--muted);text-transform:none}
+.px .hp[aria-pressed="true"]{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber) inset}
+.px .hp.r4 b,.px .hp.r3 b{color:var(--win)}.px .hp.r1 b,.px .hp.r0 b{color:var(--loss)}.px .hp.r2 b{color:var(--amber)}.px .hp.na b{color:#4C5566}
+.px .chart{overflow-x:auto;padding-bottom:2px}
+.px .plot{position:relative;display:flex;align-items:flex-end;gap:4px;height:150px;min-width:100%;width:max-content;padding-top:16px;border-bottom:1px solid var(--line)}
+.px .bar{flex:0 0 26px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.px .bar .v{font:600 10px var(--mono);color:var(--ink);margin-bottom:2px}
+.px .bar i{display:block;width:100%;min-height:2px;border-radius:3px 3px 0 0;background:var(--loss);opacity:.85}
+.px .bar.h i{background:var(--win)}
+.px .bar.old i{opacity:.45}
+.px .bar.sep{margin-left:10px}
+.px .lineh{position:absolute;left:0;right:0;border-top:2px dashed var(--amber);pointer-events:none}
+.px .lineh span{position:absolute;right:0;top:-17px;font:600 10px var(--mono);color:var(--amber);background:var(--panel);padding:0 3px}
+.px .labs{display:flex;gap:4px;width:max-content;min-width:100%}
+.px .labs div{flex:0 0 26px;text-align:center;font:500 9px/1.25 var(--mono);color:var(--muted)}
+.px .labs div.sep{margin-left:10px}
+.px .sum{margin-top:8px;color:var(--muted);font-size:13px}.px .sum b{color:var(--ink)}
+.px .flt{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.px .flt .seg button{padding:6px 9px;font-size:11px}
+.px .flt select.sel{padding:6px 8px;font-size:13px;max-width:100%}
+.px .rng{display:flex;align-items:center;gap:6px;color:var(--muted);font:600 11px var(--mono)}
+.px .rng input{accent-color:var(--amber);width:120px}
+.px .reset{border:0;background:none;color:var(--amber);cursor:pointer;font:600 11px var(--mono);text-transform:uppercase}
+.dvp{font:600 11px var(--mono);padding:1px 6px;border-radius:5px;white-space:nowrap}
+.dvp.soft{background:var(--win-bg);color:var(--win)}.dvp.mid{background:var(--chip);color:var(--muted)}.dvp.tough{background:var(--loss-bg);color:var(--loss)}
+.c.st{font:600 11px var(--mono)}
 </style>
 </head>
 <body>
@@ -693,7 +731,8 @@ function nflDrawer(g, teams) {
 /* ------------------------------------------------------------------ props (NFL) */
 const PMK = [["rec_yds", "Rec yds"], ["rec", "Receptions"], ["rush_yds", "Rush yds"], ["rr_yds", "Rush + rec"], ["pass_yds", "Pass yds"], ["pass_td", "Pass TDs"], ["atd", "Anytime TD"]];
 const ROLES = ["all", "QB1", "RB1", "RB2", "WR1", "WR2", "WR3", "TE1"];
-const PMETRIC = [["p", "Model %"], ["season", "Season"], ["l3", "L3"], ["def", "Opp vs role"]];
+const PMETRIC = [["p", "Model %"], ["season", "Season"], ["l5", "L5"], ["l10", "L10"], ["l20", "L20"], ["last", "Last szn"], ["h2h", "H2H"], ["l3", "L3"], ["def", "Opp vs role"], ["streak", "Streak"]];
+const PMETRIC_LOG = new Set(["l5", "l10", "l20", "last", "h2h", "streak"]);
 function drawViews() {
   const s = S(), v = $("#views");
   v.hidden = false;
@@ -712,8 +751,11 @@ async function loadProps(key) {
   catch (e) { $("#propsView").innerHTML = `<div class="empty">No prop cards for this week yet. They're built with each data pull.</div>`; return; }
   if (sp !== state.sport || key !== state.key || state.view !== "props") return;
   state.props = doc;
+  try { const L = await getJSON("data/props/dk_lines_nfl.json"); state.dkLines = L; } catch (e) { state.dkLines = null; }
+  if (sp !== state.sport || key !== state.key || state.view !== "props") return;
+  if (state.pf.layout === "lines" && !dkAny()) state.pf.layout = "cards";
   if (!state.propsIndex) { try { state.propsIndex = await getJSON("data/props/index.json"); } catch (e) { state.propsIndex = {}; } }
-  $("#meta").innerHTML = `<span class="pill"><span class="dot"></span>Built <b>${ago(doc.generated_utc)}</b></span><span class="pill">DK lines (implied totals) <b>${ago(doc.odds_pulled_utc)}</b></span><span class="pill"><b>${doc.cards.length}</b> players</span>`;
+  $("#meta").innerHTML = `<span class="pill"><span class="dot"></span>Built <b>${ago(doc.generated_utc)}</b></span><span class="pill">DK lines (implied totals) <b>${ago(doc.odds_pulled_utc)}</b></span><span class="pill"><b>${doc.cards.length}</b> players</span>${dkAny() ? `<span class="pill">DK prop lines <b>${ago(state.dkLines.pulled_utc)}</b></span>` : ""}`;
   const games = [...new Map(doc.cards.map(c => [c.game_id, c])).values()].map(c => { const h = c.home ? c.team : c.opp, a = c.home ? c.opp : c.team; return [c.game_id, `${a} @ ${h}`]; });
   const bt = state.propsIndex && state.propsIndex.backtest;
   $("#propsView").innerHTML = `
@@ -728,8 +770,8 @@ async function loadProps(key) {
       </div>
     </div>
     <div class="pfilters" style="margin-top:0"><div class="row">
-      <div class="seg" id="pLayout" role="group" aria-label="Layout"><button data-v="cards" aria-pressed="${state.pf.layout === "cards"}">Cards</button><button data-v="table" aria-pressed="${state.pf.layout === "table"}">Table</button></div>
-      <div class="seg" id="pMetric" role="group" aria-label="Tier cells show" ${state.pf.layout === "table" ? "" : "hidden"}>${PMETRIC.map(([k, l]) => `<button data-v="${k}" aria-pressed="${state.pf.metric === k}">${l}</button>`).join("")}</div>
+      <div class="seg" id="pLayout" role="group" aria-label="Layout"><button data-v="cards" aria-pressed="${state.pf.layout === "cards"}">Cards</button><button data-v="table" aria-pressed="${state.pf.layout === "table"}">Tiers table</button>${dkAny() ? `<button data-v="lines" aria-pressed="${state.pf.layout === "lines"}">DK lines</button>` : ""}</div>
+      <div class="seg" id="pMetric" role="group" aria-label="Tier cells show" ${state.pf.layout === "table" ? "" : "hidden"}>${PMETRIC.filter(([k]) => !PMETRIC_LOG.has(k) || (doc.glog_cols && doc.cards.some(c => c.glog))).map(([k, l]) => `<button data-v="${k}" aria-pressed="${state.pf.metric === k}">${l}</button>`).join("")}</div>
       <span class="edge" id="pMetricHint" ${state.pf.layout === "table" ? "" : "hidden"}>Tier cells show · click a column to sort</span>
     </div></div>
     <div id="pList"></div>
@@ -751,6 +793,51 @@ const rcls = (h, n) => { if (!n) return "na"; const r = h / n; return r >= .75 ?
 const pcls = p => p >= .7 ? "r4" : p >= .5 ? "r3" : p >= .3 ? "r2" : p >= .12 ? "r1" : "r0";
 const fairTxt = o => o == null ? "—" : (o > 0 ? "+" : "") + o;
 const ROLE_ORDER = { QB1: 0, RB1: 1, RB2: 2, WR1: 3, WR2: 4, WR3: 5, TE1: 6 };
+
+/* ------------------------------------------------------------------ trends: game logs, splits, defense vs position
+   Each card carries every game this season (before this week) and last season as compact rows (doc.glog_cols),
+   with home/away, rest days, divisional and a bitmask of which teammates in doc.mates[team] missed the game.
+   Everything below is worked out in the browser, so any combination of filters works. */
+const GSTAT = { rec_yds: "rec_yds", rush_yds: "rush_yds", rr_yds: "rr_yds", pass_yds: "pass_yds", rec: "rec", pass_td: "pass_td", atd: "td" };
+const hasLog = c => !!(c && c.glog && state.props && state.props.glog_cols);
+function glog(c) {
+  if (c._g) return c._g;
+  const cols = state.props.glog_cols || [];
+  return (c._g = (c.glog || []).map(r => Object.fromEntries(cols.map((k, i) => [k, r[i]]))));
+}
+// windows: L5/L10/L20 run back across seasons (like props.cash); H2H = this week's opponent, both seasons
+function winOf(rows, win, c) {
+  const S = state.props.season;
+  switch (win) {
+    case "l3": return rows.slice(-3); case "l5": return rows.slice(-5); case "l10": return rows.slice(-10); case "l20": return rows.slice(-20);
+    case "season": return rows.filter(x => x.season === S); case "last": return rows.filter(x => x.season === S - 1);
+    case "h2h": return rows.filter(x => x.opp === c.opp); default: return rows;
+  }
+}
+const GL_WIN = new Set(["l5", "l10", "l20", "last", "h2h"]);
+function hitAt(rows, mk, min) { const k = GSTAT[mk]; return [rows.filter(x => x[k] >= min).length, rows.length]; }
+// [hits, games] at tier t for a table metric; card-side metrics come from the card, the rest from the game log
+function tierHR(c, mk, i, metric) {
+  const t = c.markets[mk].tiers[i];
+  if (!GL_WIN.has(metric)) return t[metric];
+  return hasLog(c) ? hitAt(winOf(glog(c), metric, c), mk, t.t) : [0, 0];
+}
+// consecutive games at/over (+) or under (-) tier t, most recent first, across seasons
+function tierStreak(c, mk, t) {
+  if (!hasLog(c)) return 0;
+  const g = glog(c), k = GSTAT[mk]; let n = 0, d = 0;
+  for (let i = g.length - 1; i >= 0; i--) { const h = g[i][k] >= t ? 1 : -1; if (!d) d = h; if (h !== d) break; n++; }
+  return d * n;
+}
+const stCls = v => v >= 3 ? "r4" : v > 0 ? "r3" : v <= -3 ? "r0" : v < 0 ? "r1" : "na";
+const stTxt = v => v ? `${Math.abs(v)}${v > 0 ? "✓" : "✗"}` : "—";
+const ord = n => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
+// defense vs position: rank 1 = allows the fewest to this role, 32 = the most (soft matchup)
+function dvpTag(m, c, long) {
+  const d = m && m.dvp; if (!d) return long ? "" : `<span class="dvp mid">—</span>`;
+  const r = d.rank, of = d.of || 32, cls = r > of * 2 / 3 ? "soft" : r <= of / 3 ? "tough" : "mid";
+  return `<span class="dvp ${cls}" title="${esc(c.opp)} rank ${r} of ${of} in this stat allowed to ${esc(c.role)}s (${of} = allows the most) · ${fmt(d.avg)} per game">${long ? `${ord(r)} of ${of}` : r}</span>`;
+}
 
 function tierTable(c, mk) {
   const m = c.markets[mk], lab = state.props.labels[mk];
@@ -784,8 +871,8 @@ function propCard(c, mk) {
   return `<div class="pc ${dis.length ? "dis" : ""}" data-pid="${esc(c.id)}" data-gid="${esc(c.game_id)}" tabindex="0" role="button" aria-label="Open ${esc(c.name)} details">
     <div class="top">${hs}<div style="min-width:0"><div class="nm">${esc(c.name)}<span class="role">${c.role}</span>${c.status ? `<span class="inj">${esc(c.status)}</span>` : ""}</div>
       <div class="sub">${esc(c.team)} ${c.home ? "vs" : "@"} ${esc(c.opp)} · ${c.kick_et} · ${esc(c.team)} implied ${fmt(c.implied)}</div></div></div>
-    <div class="facts"><span>${avgTxt}</span><span>L3 <b>${l3}</b></span><span>${projTxt}</span>
-      <span>${esc(c.opp)} allows <b>${m.def_avg == null ? "—" : fmt(m.def_avg)}</b> to ${c.role}s${m.def_n ? ` (${m.def_n} g)` : ""}</span>
+    <div class="facts">${dkFact(c, mk)}<span>${avgTxt}</span><span>L3 <b>${l3}</b></span><span>${projTxt}</span>
+      <span>${esc(c.opp)} allows <b>${m.def_avg == null ? "—" : fmt(m.def_avg)}</b> to ${c.role}s${m.def_n ? ` (${m.def_n} g)` : ""}${m.dvp ? ` ${dvpTag(m, c, true)}` : ""}</span>
       <span>${vol}</span>${u.snap_pct != null ? `<span>Snaps <b>${pct(u.snap_pct)}</b></span>` : ""}</div>
     ${tierTable(c, mk)}
     ${dis.length ? `<div class="flags">${dis.map(d => `<div>${esc(lab)}${esc(d)}</div>`).join("")}</div>` : ""}
@@ -802,6 +889,7 @@ function renderProps() {
   if (f.dis) cards = cards.filter(c => (c.markets[f.mk].disagree || []).length);
   if (!cards.length) { $("#pList").innerHTML = `<div class="empty">No players match. Passing markets are QBs only; receptions are for receivers and backs.</div>`; return; }
   if (f.layout === "table") return renderPropTable(cards);
+  if (f.layout === "lines") return renderPropLines(cards);
   const byGame = new Map();
   cards.sort((a, b) => (a.kickoff_utc || "").localeCompare(b.kickoff_utc || "") || a.game_id.localeCompare(b.game_id) || (a.home - b.home) || ROLE_ORDER[a.role] - ROLE_ORDER[b.role]);
   // keep game order by kickoff as listed on the board
@@ -811,9 +899,91 @@ function renderProps() {
 }
 
 
+/* ------------------------------------------------------------------ DraftKings prop lines (ESPN, provider 100)
+   data/props/dk_lines_nfl.json: {lines: {player_id: {market: {line, open, updated, game_id}}}}. Lines only, no prices. */
+const dkAny = () => !!(state.dkLines && state.dkLines.lines && Object.keys(state.dkLines.lines).length);
+function dkLine(c, mk) {
+  const L = state.dkLines && state.dkLines.lines && state.dkLines.lines[c.id], x = L && L[mk];
+  return x && String(x.game_id) === String(c.game_id) ? x : null;
+}
+// model probability of going OVER a .5 line, from the card's tiers, its simulated distribution, or Poisson for pass TDs
+function modelOver(m, mk, L) {
+  const k = Math.floor(L) + 1, t = m.tiers.find(x => x.t === k);
+  if (t) return t.p;
+  if (m.q) { const q = m.q, n = q.length - 1; if (L < q[0]) return 1; if (L >= q[n]) return 0;
+    let i = 0; while (i < n && q[i + 1] <= L) i++;
+    return 1 - (i + (q[i + 1] > q[i] ? (L - q[i]) / (q[i + 1] - q[i]) : 0)) / n; }
+  if (m.ge) return k < m.ge.length ? m.ge[k] : 0;
+  if (mk === "pass_td" && m.proj != null) { let c = 0, f = 1; for (let j = 0; j < k; j++) { if (j) f *= j; c += Math.exp(-m.proj) * m.proj ** j / f; } return 1 - c; }
+  return null;
+}
+const fairOf = p => p == null || p <= .005 || p >= .995 ? null : Math.round(p >= .5 ? -100 * p / (1 - p) : 100 * (1 - p) / p);
+function dkFact(c, mk) {
+  const d = mk !== "atd" && dkLine(c, mk); if (!d) return "";
+  const p = modelOver(c.markets[mk], mk, d.line), mv = d.open != null && d.open !== d.line ? ` <span style="color:var(--muted)">(open ${fmt(d.open)})</span>` : "";
+  return `<span>DK O/U <b style="color:var(--amber)">${fmt(d.line)}</b>${mv}${p != null ? ` · model over <b>${pct(p)}</b>` : ""}</span>`;
+}
+// props.cash-style dashboard: one row per player with a DK line in this market; hit rates at that line
+const LN_WINS = [["l5", "L5"], ["l10", "L10"], ["l20", "L20"], ["season", "Season"], ["last", "Last szn"], ["h2h", "H2H"]];
+const LN_OPT = new Set(["opp", "open", "dvp", "last"]);
+// bet-slip item for the over at DK's line (the site's auto-grader reads "Name over 249.5 passing yards")
+function lineOverItem(r, mk, lab) {
+  const c = r.c, hr = ([h, n]) => n ? `${h}/${n}` : "—";
+  return { key: `nfl:propline:${c.id}:${mk}:${r.d.line}`, gid: `nfl:${c.game_id}`, sport: "nfl", market: `Player prop: ${lab}`,
+    pick: `${c.name} over ${fmt(r.d.line)} ${lab.toLowerCase()}`, odds: null, game: `${c.home ? c.opp : c.team} @ ${c.home ? c.team : c.opp}`,
+    starts_at: c.kickoff_utc, odds_at: null,
+    reasoning: `Over ${fmt(r.d.line)} in ${hr(r.hr.l10)} of his last 10 and ${hr(r.hr.season)} this season. Our model: ${r.p == null ? "—" : pct(r.p)}, median ${fmt(r.m.proj)}.` };
+}
+function renderPropLines(cards) {
+  const f = state.pf, mk = f.mk, lab = state.props.labels[mk];
+  if (mk === "atd") { $("#pList").innerHTML = `<div class="empty">Anytime TD has no over/under line; use Cards or the tiers table.</div>`; return; }
+  const rows = cards.map(c => { const d = dkLine(c, mk); if (!d) return null;
+    const m = c.markets[mk], min = Math.floor(d.line) + 1, p = modelOver(m, mk, d.line);
+    const hr = {}; for (const [w] of LN_WINS) hr[w] = hasLog(c) ? hitAt(winOf(glog(c), w, c), mk, min) : [0, 0];
+    return { c, m, d, min, p, hr, diff: m.proj != null ? m.proj - d.line : null, streak: tierStreak(c, mk, min) }; }).filter(Boolean);
+  if (!rows.length) { $("#pList").innerHTML = `<div class="empty">No DraftKings ${esc(lab.toLowerCase())} lines for these players yet. ESPN usually posts them a few days before kickoff.</div>`; return; }
+  const rate = ([h, n]) => n ? h / n + n / 1e4 : -1;
+  const cols = [
+    { k: "name", l: "Player", v: r => r.c.name, txt: true }, { k: "role", l: "Role", v: r => ROLE_ORDER[r.c.role] },
+    { k: "opp", l: "Opp", v: r => r.c.opp, txt: true },
+    { k: "line", l: "DK line", v: r => r.d.line }, { k: "open", l: "Open", v: r => r.d.open ?? -1 },
+    { k: "proj", l: mk === "pass_td" ? "Proj" : "Model med.", v: r => r.m.proj ?? -1 }, { k: "diff", l: "Diff", v: r => r.diff ?? -999 },
+    { k: "p", l: "Model over", v: r => r.p ?? -1 }, { k: "streak", l: "Streak", v: r => r.streak },
+    { k: "dvp", l: "D vs pos", v: r => (r.m.dvp || {}).rank ?? -1 },
+    ...LN_WINS.map(([w, l]) => ({ k: w, l, v: r => rate(r.hr[w]) })),
+  ];
+  let list = rows;
+  if (f.sort && cols.some(c => c.k === f.sort)) { const col = cols.find(c => c.k === f.sort);
+    list = [...rows].sort((a, b) => { const x = col.v(a), y = col.v(b); return (col.txt ? String(x).localeCompare(String(y)) : x - y) * f.dir || a.c.name.localeCompare(b.c.name); }); }
+  else list = [...rows].sort((a, b) => Math.abs((b.p ?? .5) - .5) - Math.abs((a.p ?? .5) - .5));   // strongest model lean, over or under, first
+  const arrow = k => f.sort === k ? (f.dir > 0 ? " ▲" : " ▼") : "";
+  const dp = mk === "pass_td" || mk === "rec" ? 1 : 0;
+  const hrCell = ([h, n]) => `<td class="tc"><span class="c ${rcls(h, n)}">${n ? Math.round(h / n * 100) + "%" : "—"}</span><small>${n ? `${h}/${n}` : ""}</small></td>`;
+  $("#pList").innerHTML = `<div class="tablewrap ptw"><table class="ptable" aria-label="${esc(lab)} at the DraftKings line">
+    <thead><tr>${cols.map(c => `<th class="${c.k === "name" ? "first" : LN_WINS.some(([w]) => w === c.k) || ["p", "streak"].includes(c.k) ? "tc" : c.txt ? "" : "num"}${LN_OPT.has(c.k) ? " opt" : ""}" data-sort="${c.k}" aria-sort="${f.sort === c.k ? (f.dir > 0 ? "ascending" : "descending") : "none"}" tabindex="0">${esc(c.l)}${arrow(c.k)}</th>`).join("")}</tr></thead>
+    <tbody>${list.map(r => { const c = r.c, mv = r.d.open != null ? r.d.line - r.d.open : 0;
+      return `<tr>
+        <td class="first"><button class="linkbtn" data-pid="${esc(c.id)}" data-gid="${esc(c.game_id)}">${esc(c.name)}</button>${c.status ? ` <span class="inj">${esc(c.status)}</span>` : ""}${slip.admin ? " " + addBtn(lineOverItem(r, mk, lab)) : ""}</td>
+        <td><span class="role" style="margin:0">${c.role}</span></td>
+        <td class="mono opt">${c.home ? "" : "@"}${esc(c.opp)}</td>
+        <td class="num mono" style="color:var(--amber)">${fmt(r.d.line)}${mv ? `<small style="display:block;color:${mv > 0 ? "var(--win)" : "var(--loss)"}">${mv > 0 ? "▲" : "▼"} ${fmt(Math.abs(mv))}</small>` : ""}</td>
+        <td class="num mono opt">${r.d.open == null ? "—" : fmt(r.d.open)}</td>
+        <td class="num mono">${r.m.proj == null ? "—" : fmt(r.m.proj, dp)}</td>
+        <td class="num mono" style="color:${r.diff == null ? "inherit" : r.diff > 0 ? "var(--win)" : "var(--loss)"}">${r.diff == null ? "—" : sgn(+r.diff.toFixed(1))}</td>
+        <td class="tc"><span class="c ${r.p == null ? "na" : pcls(r.p)} m">${r.p == null ? "—" : pct(r.p)}</span><small>${fairTxt(fairOf(r.p))}</small></td>
+        <td class="tc"><span class="c st ${stCls(r.streak)}">${stTxt(r.streak)}</span></td>
+        <td class="num opt">${dvpTag(r.m, c)}</td>
+        ${LN_WINS.map(([w]) => hrCell(r.hr[w])).join("")}</tr>`; }).join("")}</tbody></table></div>
+    <div class="edge" style="margin-top:8px">DraftKings over/under lines from ESPN (lines only; check the price in the DK app). Hit rates count games <b>over</b> the line (${esc(lab.toLowerCase())}). <b>Diff</b> = model median − line (green = model above the line). Default order: the strongest model lean, over or under. <b>Model over</b> = simulated chance of the over, fair odds underneath. <b>Streak</b> = games in a row over (✓) or under (✗). L5/L10/L20 run back into last season; H2H = vs this opponent, this season and last. Backtest: the model beat season hit rates, which beat recent ones, so treat the hit-rate columns as context. Not yet tested against DraftKings' lines: on the first slate the model leaned under on most receiving lines.</div>`;
+  const sortBy = th => { const k = th.dataset.sort; if (f.sort === k) f.dir = -f.dir; else { f.sort = k; f.dir = ["name", "opp", "role"].includes(k) ? 1 : -1; } renderProps(); };
+  $("#pList").querySelectorAll("th[data-sort]").forEach(th => { th.onclick = () => sortBy(th); th.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortBy(th); } }; });
+}
+
 /* sortable table: one row per player for the chosen market, one column per tier */
 function tierFlagged(mk, m, t) { const lab = mk === "atd" ? "" : ` ${t}+`; return (m.disagree || []).some(d => d.startsWith(lab + ":")); }
-function tierVal(t, metric) { if (metric === "p") return t.p; const [h, n] = t[metric]; return n ? h / n : -1; }
+function tierVal(c, mk, i, metric) { const t = c.markets[mk].tiers[i]; if (metric === "p") return t.p; if (metric === "streak") return tierStreak(c, mk, t.t);
+  const [h, n] = tierHR(c, mk, i, metric); return n ? h / n + n / 1e4 : -1; }
+const METRIC_TXT = { l3: "last 3 games", season: "this season", def: "this defense vs the same role", l5: "last 5 games", l10: "last 10 games", l20: "last 20 games (runs back into last season)", last: "last season", h2h: "vs this opponent, this season and last" };
 const P_OPT = new Set(["team", "kick", "implied", "l3avg", "def_avg"]);  // hidden on phones so the tiers sit next to the name
 function renderPropTable(cards) {
   const f = state.pf, mk = f.mk, tiers = state.props.tiers[mk], lab = state.props.labels[mk];
@@ -831,7 +1001,8 @@ function renderPropTable(cards) {
     { k: "l3avg", l: "L3 avg", v: c => avgOf(c, "l3avg"), hide: mk === "atd" },
     { k: "proj", l: mk === "atd" ? "TD rate" : mk === "pass_td" ? "Proj TDs" : "Model med.", v: c => avgOf(c, "proj") },
     { k: "def_avg", l: "Opp allows", v: c => avgOf(c, "def_avg"), hide: mk === "atd" },
-    ...tiers.map((t, i) => ({ k: "t" + i, l: tl(t), tier: i, v: c => tierVal(c.markets[mk].tiers[i], f.metric) })),
+    { k: "dvp", l: "D vs pos", v: c => (c.markets[mk].dvp || {}).rank ?? -1, hide: !state.props.cards.some(x => x.markets[mk] && x.markets[mk].dvp) },
+    ...tiers.map((t, i) => ({ k: "t" + i, l: tl(t), tier: i, v: c => tierVal(c, mk, i, f.metric) })),
   ].filter(c => !c.hide);
   if (f.sort && cols.some(c => c.k === f.sort)) {
     const col = cols.find(c => c.k === f.sort);
@@ -844,7 +1015,8 @@ function renderPropTable(cards) {
   const cellFor = (c, i) => { const t = c.markets[mk].tiers[i], fl = tierFlagged(mk, c.markets[mk], t.t) ? `<span class="tflag" title="Hit rate and model disagree">⚑</span>` : "";
     const ab = slip.admin ? addBtn(propItem(c, mk, t.t)) : "";
     if (f.metric === "p") return `<td class="tc"><span class="c ${pcls(t.p)} m">${Math.round(t.p * 100)}%</span>${fl}<small>${fairTxt(t.fair)}</small>${ab}</td>`;
-    const [h, n] = t[f.metric];
+    if (f.metric === "streak") { const v = tierStreak(c, mk, t.t); return `<td class="tc"><span class="c st ${stCls(v)}">${stTxt(v)}</span>${fl}<small>${Math.round(t.p * 100)}%</small>${ab}</td>`; }
+    const [h, n] = tierHR(c, mk, i, f.metric);
     return `<td class="tc"><span class="c ${rcls(h, n)}">${n ? `${h}/${n}` : "—"}</span>${fl}<small>${Math.round(t.p * 100)}%</small>${ab}</td>`; };
   const num1 = x => x == null || x < 0 ? "—" : fmt(x);
   $("#pList").innerHTML = `<div class="tablewrap ptw"><table class="ptable" aria-label="${esc(lab)} by tier">
@@ -860,8 +1032,9 @@ function renderPropTable(cards) {
         ${mk === "atd" ? "" : `<td class="num mono opt">${m.l3_vals.length ? fmt(m.l3_vals.reduce((a, b) => a + b, 0) / m.l3_vals.length) : "—"}</td>`}
         <td class="num mono">${mk === "atd" || mk === "pass_td" ? fmt(m.proj, 2) : num1(m.proj)}</td>
         ${mk === "atd" ? "" : `<td class="num mono opt">${num1(m.def_avg)}</td>`}
+        ${cols.some(x => x.k === "dvp") ? `<td class="num">${dvpTag(m, c)}</td>` : ""}
         ${tiers.map((_, i) => cellFor(c, i)).join("")}</tr>`; }).join("")}</tbody></table></div>
-    <div class="edge" style="margin-top:8px">${f.metric === "p" ? "Cells: model probability, fair odds underneath." : `Cells: ${f.metric === "l3" ? "last 3 games" : f.metric === "season" ? "this season" : "this defense vs the same role"} hit rate, model probability underneath.`} ⚑ = hit rate and model point opposite ways. Sorting a tier column sorts by the number shown.</div>`;
+    <div class="edge" style="margin-top:8px">${f.metric === "p" ? "Cells: model probability, fair odds underneath." : f.metric === "streak" ? "Cells: games in a row at or over (✓) or under (✗) the tier, most recent first (runs back into last season); model probability underneath." : `Cells: ${METRIC_TXT[f.metric]} hit rate, model probability underneath.`} <b>D vs pos</b> = this week's defense's rank in that stat allowed to the role (32 = allows the most; green = soft, red = tough). ⚑ = hit rate and model point opposite ways. Sorting a tier column sorts by the number shown.</div>`;
   const sortBy = th => { const k = th.dataset.sort; if (f.sort === k) f.dir = -f.dir; else { f.sort = k; f.dir = ["name", "team", "opp", "kick", "role"].includes(k) ? 1 : -1; } renderProps(); };
   $("#pList").querySelectorAll("th[data-sort]").forEach(th => { th.onclick = () => sortBy(th); th.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortBy(th); } }; });
 }
@@ -880,7 +1053,7 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-12b";
+const SCREENER_BUILD = "2026-10-22a";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";
@@ -1161,6 +1334,94 @@ const DEF_COLS = {
   WR: [["Tgt", x => x.tgt], ["Rec", x => x.rec], ["Rec yds", x => x.rec_yds], ["TD", x => x.td]],
 };
 DEF_COLS.TE = DEF_COLS.WR;
+/* trends explorer in the player drawer: pick a market and a line, see every game as a bar (green = over),
+   hit rates for each window at that line, and narrow the games with split filters (props.cash-style). */
+const PX_VOL = { QB: ["att", "Pass att"], RB: ["car", "Carries"], WR: ["tgt", "Targets"], TE: ["tgt", "Targets"] };
+const PX_STEP = { rec_yds: 5, rush_yds: 5, rr_yds: 5, pass_yds: 10, rec: 1, pass_td: 1, atd: 1 };
+const PX_WINS = [["l5", "L5"], ["l10", "L10"], ["l20", "L20"], ["season", "This szn"], ["last", "Last szn"], ["h2h", "H2H"], ["all", "All"]];
+const PX_REST = [["any", "Any rest"], ["short", "Short ≤6"], ["norm", "Normal 7"], ["long", "Extra 8+"]];
+let px = null;
+const PX_H = 112;   // px for the tallest bar (plot is 150px: 16 top padding + value labels)
+function pxLineFor(c, mk) {   // start at DraftKings' line when there is one, else the coin-flip tier as an over/under line
+  if (mk === "atd") return 0.5;
+  const d = dkLine(c, mk); if (d) return d.line;
+  const m = c.markets[mk]; let b = m.tiers[0];
+  for (const t of m.tiers) if (Math.abs(t.p - .5) < Math.abs(b.p - .5)) b = t;
+  return b.t - 0.5;
+}
+function pxReset(c, mk) { px = { pid: c.id, gid: c.game_id, mk, line: pxLineFor(c, mk), win: "l10", ha: "all", rest: "any", div: false, mate: "", vmin: 0 }; }
+function pxFiltered(c) {   // situational filters first; the window (L10 etc.) is then taken from what's left
+  const mates = (state.props.mates || {})[c.team] || [];
+  const mi = mates.findIndex(m => m.id === px.mate), vk = (PX_VOL[c.pos] || PX_VOL.WR)[0];
+  return glog(c).filter(x => (px.ha === "all" || (px.ha === "home" ? x.home === 1 : x.home === 0))
+    && (px.rest === "any" || (x.rest != null && (px.rest === "short" ? x.rest <= 6 : px.rest === "norm" ? x.rest === 7 : x.rest >= 8)))
+    && (!px.div || x.div === 1) && (mi < 0 || (x.out & (1 << mi))) && x[vk] >= px.vmin);
+}
+const pxActive = () => px.ha !== "all" || px.rest !== "any" || px.div || px.mate || px.vmin > 0;
+function renderPX(c) {
+  const el = $("#px"); if (!el || !hasLog(c)) return;
+  const mk = px.mk, k = GSTAT[mk], S = state.props.season, lab = state.props.labels[mk];
+  const min = Math.floor(px.line) + 1;           // over x.5 = at least x+1
+  const base = pxFiltered(c), rows = winOf(base, px.win, c);
+  const pills = PX_WINS.map(([w, l]) => { const r = winOf(base, w, c), [h, n] = hitAt(r, mk, min);
+    return `<button class="hp ${rcls(h, n)}" data-pxw="${w}" aria-pressed="${px.win === w}">${l}<b>${n ? Math.round(h / n * 100) + "%" : "—"}</b><small>${n ? `${h}/${n}` : "no games"}</small></button>`; }).join("");
+  const vals = rows.map(x => x[k]), top = Math.max(px.line * 1.25, ...vals, 1);
+  const bars = rows.map((x, i) => { const v = x[k], hit = v >= min, sep = i > 0 && rows[i - 1].season !== x.season;
+    return `<div class="bar ${hit ? "h" : ""}${x.season < S ? " old" : ""}${sep ? " sep" : ""}" title="${x.season} Wk ${x.wk} ${x.home ? "vs" : "@"} ${esc(x.opp)}: ${v}${x.rest != null ? ` · ${x.rest} days rest` : ""}${x.div ? " · divisional" : ""}">
+      <span class="v">${v}</span><i style="height:${(Math.max(0, v) / top * PX_H).toFixed(1)}px"></i></div>`; }).join("");
+  const labs = rows.map((x, i) => `<div class="${i > 0 && rows[i - 1].season !== x.season ? "sep" : ""}">${x.home ? "" : "@"}${esc(x.opp)}<br>${x.season < S ? "’" + String(x.season).slice(2) + " " : ""}${x.wk}</div>`).join("");
+  const [h, n] = hitAt(rows, mk, min);
+  const avg = n ? vals.reduce((a, b) => a + b, 0) / n : null, med = n ? [...vals].sort((a, b) => a - b)[Math.floor((n - 1) / 2)] : null;
+  const pOver = modelOver(c.markets[mk], mk, px.line);
+  const mates = ((state.props.mates || {})[c.team] || []).filter(m => m.id !== c.id);
+  const all = glog(c);
+  const mateOpts = mates.map(m => { const i = ((state.props.mates || {})[c.team] || []).indexOf(m), g = all.filter(x => x.out & (1 << i)).length;
+    return `<option value="${esc(m.id)}" ${px.mate === m.id ? "selected" : ""} ${g ? "" : "disabled"}>Without ${esc(m.name)} (${esc(m.pos)})${m.status ? " · " + esc(m.status) + " this week" : ""} · ${g} g</option>`; }).join("");
+  const [vk, vl] = PX_VOL[c.pos] || PX_VOL.WR, vmax = Math.max(1, ...all.map(x => x[vk]));
+  const dk = mk !== "atd" && dkLine(c, mk);
+  const lineCtl = mk === "atd" ? `<span class="edge">Anytime TD (1+)</span>`
+    : `<div class="ln"><button data-pxl="-1" aria-label="Lower the line">−</button><input id="pxLine" type="number" step="0.5" value="${px.line}" aria-label="Line"><button data-pxl="1" aria-label="Raise the line">+</button><span>Over ${px.line} = ${min}+</span></div>${dk ? `<button class="hp" data-pxdk="1" aria-pressed="${dk.line === px.line}" style="padding:6px 10px">DK line <b style="font-size:14px;color:var(--amber)">${fmt(dk.line)}</b></button>` : ""}`;
+  el.innerHTML = `<div class="ctl"><div class="seg" role="group" aria-label="Market">${Object.keys(c.markets).map(m => `<button data-pxm="${m}" aria-pressed="${m === mk}">${esc(state.props.labels[m])}</button>`).join("")}</div></div>
+    <div class="ctl">${lineCtl}</div>
+    <div class="pills">${pills}</div>
+    ${rows.length ? `<div class="chart"><div class="plot">${mk === "atd" ? "" : `<div class="lineh" style="bottom:${(Math.min(px.line / top, 1) * PX_H).toFixed(1)}px"><span>${px.line}</span></div>`}${bars}</div><div class="labs">${labs}</div></div>` : `<div class="empty">No games match these filters.</div>`}
+    <div class="sum">${mk === "atd" ? "Scored" : `Over ${px.line}`} in <b>${h} of ${n}</b>${n ? ` (${Math.round(h / n * 100)}%)` : ""}${mk === "atd" ? "" : ` · avg <b>${fmt(avg)}</b> · median <b>${med ?? "—"}</b>`}${pOver != null ? ` · model <b>${pct(pOver)}</b> (fair ${fairTxt(fairOf(pOver))})` : ""}${dk && dk.line === px.line ? ` · <span style="color:var(--amber)">DK line</span>` : ""}${pxActive() ? ` · <span style="color:var(--amber)">filtered</span>` : ""}</div>
+    <div class="flt">
+      <div class="seg" role="group" aria-label="Home or away">${[["all", "All"], ["home", "Home"], ["away", "Away"]].map(([v, l]) => `<button data-pxh="${v}" aria-pressed="${px.ha === v}">${l}</button>`).join("")}</div>
+      <div class="seg" role="group" aria-label="Rest">${PX_REST.map(([v, l]) => `<button data-pxr="${v}" aria-pressed="${px.rest === v}">${l}</button>`).join("")}</div>
+      <label class="chk"><input type="checkbox" id="pxDiv" ${px.div ? "checked" : ""}> Divisional only</label>
+      ${mates.length ? `<select class="sel" id="pxMate" aria-label="Teammate out"><option value="">Any teammates</option>${mateOpts}</select>` : ""}
+      <label class="rng">${vl} ≥ <b id="pxVv">${px.vmin}</b><input type="range" id="pxVol" min="0" max="${vmax}" step="1" value="${px.vmin}" aria-label="Minimum ${vl.toLowerCase()}"></label>
+      ${pxActive() ? `<button class="reset" id="pxClear">Clear filters</button>` : ""}
+    </div>
+    <div class="edge" style="margin-top:8px">This season and last (faded bars). L5/L10/L20 run back into last season; H2H = games vs ${esc(c.opp)}. Filters narrow the games first, then the window applies. Hit rates are history: the model % is the steadier number (backtest), and small filtered samples swing hard.</div>`;
+}
+function bindPX(c) {
+  const el = $("#px"); if (!el) return;
+  const redraw = () => renderPX(c);
+  el.onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.pxm) { px.mk = b.dataset.pxm; px.line = pxLineFor(c, px.mk); }
+    else if (b.dataset.pxl) px.line = Math.max(0.5, px.line + (+b.dataset.pxl) * PX_STEP[px.mk]);
+    else if (b.dataset.pxw) px.win = b.dataset.pxw;
+    else if (b.dataset.pxdk) { const d = dkLine(c, px.mk); if (d) px.line = d.line; }
+    else if (b.dataset.pxh) px.ha = b.dataset.pxh;
+    else if (b.dataset.pxr) px.rest = b.dataset.pxr;
+    else if (b.id === "pxClear") Object.assign(px, { ha: "all", rest: "any", div: false, mate: "", vmin: 0 });
+    else return;
+    redraw();
+  };
+  el.onchange = e => {
+    if (e.target.id === "pxLine") { const v = parseFloat(e.target.value); if (!isNaN(v) && v >= 0) px.line = Math.floor(v) + 0.5; }
+    else if (e.target.id === "pxDiv") px.div = e.target.checked;
+    else if (e.target.id === "pxMate") px.mate = e.target.value;
+    else if (e.target.id === "pxVol") px.vmin = +e.target.value;
+    else return;
+    redraw();
+  };
+  el.oninput = e => { if (e.target.id === "pxVol") $("#pxVv").textContent = e.target.value; };
+}
+
 function openPlayer(pid, gid) {
   const c = state.props && state.props.cards.find(x => x.id === pid && (!gid || x.game_id === gid)); if (!c) return;
   const u = c.usage, md = c.model, lab = state.props.labels;
@@ -1189,6 +1450,7 @@ function openPlayer(pid, gid) {
       <button class="iconbtn x" onclick="closeDrawer()" aria-label="Close">✕</button></div>
     <div class="db">
       ${c.flags.length ? `<div class="panel" style="border-left:3px solid var(--lotto)"><h4 style="color:var(--lotto)">Hit rate vs model disagree</h4><ul class="notes">${c.flags.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>` : ""}
+      ${hasLog(c) ? `<div class="panel px"><h4>Trends · hit rate at any line</h4><div id="px"></div></div>` : ""}
       <div class="panel"><h4>Role, volume and the model's inputs</h4><table class="cmp"><tbody>${facts.map(([k, v]) => `<tr><td>${k}</td><td class="num">${v}</td></tr>`).join("")}</tbody></table>
         <div class="edge" style="margin-top:6px">${prior} Role is set entering the game by volume per game.</div></div>
       <div class="panel"><h4>Every market</h4>${mks.map(mk => {
@@ -1198,6 +1460,7 @@ function openPlayer(pid, gid) {
       <div class="panel"><h4>${esc(c.opp)} vs ${esc(c.role)}s · this season</h4>${dlog}</div>
       <div class="panel"><h4>Before you bet</h4><ul class="notes"><li>Check the final inactives ~90 minutes before kickoff.</li><li>Prices aren't shown here; compare the fair odds to DraftKings' ladder.</li></ul></div>
     </div>`;
+  if (hasLog(c)) { if (!px || px.pid !== c.id || px.gid !== c.game_id) pxReset(c, c.markets[state.pf.mk] ? state.pf.mk : mks[0]); renderPX(c); bindPX(c); }
   $("#drawer").classList.add("on"); $("#scrim").classList.add("on"); $("#drawer").setAttribute("aria-hidden", "false");
 }
 document.addEventListener("click", e => {
