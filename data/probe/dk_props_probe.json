@@ -1,10 +1,10 @@
 {
- "run_utc": "2026-10-22T22:16+00:00",
+ "run_utc": "2026-10-22T22:50+00:00",
  "tries": [
   {
    "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401873010/competitions/401873010/odds",
    "status": 200,
-   "bytes": 5832,
+   "bytes": 5821,
    "providers": [
     {
      "id": "100",
@@ -15,8 +15,8 @@
   {
    "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401873010/competitions/401873010/odds/100/propBets?lang=en&region=us&limit=1000",
    "status": 200,
-   "bytes": 575094,
-   "count": 1831,
+   "bytes": 575133,
+   "count": 1821,
    "sample_items": [
     {
      "competition": {
@@ -88,7 +88,7 @@
       "id": "8",
       "name": "Total Passing Yards (incl. overtime)"
      },
-     "lastUpdated": "2026-10-23T00:45Z",
+     "lastUpdated": "2026-10-23T01:37Z",
      "current": {
       "target": {
        "value": 246.5,
@@ -116,7 +116,7 @@
       "id": "8",
       "name": "Total Passing Yards (incl. overtime)"
      },
-     "lastUpdated": "2026-10-23T00:45Z",
+     "lastUpdated": "2026-10-23T01:37Z",
      "current": {
       "target": {
        "value": 246.5,
@@ -143,7 +143,7 @@
     "Total Passing Attempts (incl. overtime)": 4,
     "Longest Passing Completion (incl. overtime)": 4,
     "Total Passing Plus Rushing Yards (incl. overtime)": 4,
-    "Longest Reception (incl. overtime)": 26,
+    "Longest Reception (incl. overtime)": 25,
     "Total Rushing Plus Receiving Yards (incl. overtime)": 8,
     "Longest Rush (incl. overtime)": 12,
     "Total Kicking Points (incl. overtime)": 4,
@@ -181,36 +181,36 @@
     "Will There Be Overtime?": 2,
     "First Team Touchdown Scorer": 28,
     "1st Half Total Passing Yards": 4,
-    "1st Half Total Receiving Yards": 19,
+    "1st Half Total Receiving Yards": 17,
     "1st Half Total Rushing Yards": 12,
     "1st Quarter Total Passing Yards": 4,
     "1st Quarter Total Receiving Yards": 19,
     "1st Quarter Total Rushing Yards": 12,
     "Passing Yards Milestones": 52,
-    "Receiving Yards Milestones": 213,
+    "Receiving Yards Milestones": 210,
     "Rushing Yards Milestones": 86,
-    "Rushing + Receiving Yards Milestones": 26
+    "Rushing + Receiving Yards Milestones": 32
    }
   },
   {
    "url": "https://sportsbook-nash.draftkings.com/api/sportscontent/dkusnj/v1/leagues/88808",
    "status": 403,
-   "error": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;sportsbook&#45;nash&#46;draftkings&#46;com&#47;api&#47;sportscontent&#47;dkusnj&#47;v1&#47;leagues&#47;88808\" on this server.<P>\nReference&#32;&#35;18&#46;b325c017&#46;1792707383&#46;2a06cb59\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;b325c017"
+   "error": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;sportsbook&#45;nash&#46;draftkings&#46;com&#47;api&#47;sportscontent&#47;dkusnj&#47;v1&#47;leagues&#47;88808\" on this server.<P>\nReference&#32;&#35;18&#46;a725c017&#46;1792709428&#46;7d0d0c\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;a725c017&#"
   },
   {
    "url": "https://sportsbook-nash.draftkings.com/api/sportscontent/dkusny/v1/leagues/88808",
    "status": 403,
-   "error": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;sportsbook&#45;nash&#46;draftkings&#46;com&#47;api&#47;sportscontent&#47;dkusny&#47;v1&#47;leagues&#47;88808\" on this server.<P>\nReference&#32;&#35;18&#46;b325c017&#46;1792707384&#46;2a06cdcb\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;b325c017"
+   "error": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;sportsbook&#45;nash&#46;draftkings&#46;com&#47;api&#47;sportscontent&#47;dkusny&#47;v1&#47;leagues&#47;88808\" on this server.<P>\nReference&#32;&#35;18&#46;a725c017&#46;1792709428&#46;7d102e\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;a725c017&#"
   },
   {
    "url": "https://sportsbook-nash.draftkings.com/api/sportscontent/dkuspa/v1/leagues/88808",
    "status": 403,
-   "error": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;sportsbook&#45;nash&#46;draftkings&#46;com&#47;api&#47;sportscontent&#47;dkuspa&#47;v1&#47;leagues&#47;88808\" on this server.<P>\nReference&#32;&#35;18&#46;b325c017&#46;1792707384&#46;2a06cf82\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;b325c017"
+   "error": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;sportsbook&#45;nash&#46;draftkings&#46;com&#47;api&#47;sportscontent&#47;dkuspa&#47;v1&#47;leagues&#47;88808\" on this server.<P>\nReference&#32;&#35;18&#46;a725c017&#46;1792709428&#46;7d13b6\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;a725c017&#"
   },
   {
    "url": "https://sportsbook.draftkings.com/sites/US-SB/api/v5/eventgroups/88808?format=json",
    "status": 403,
-   "error": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;sportsbook&#46;draftkings&#46;com&#47;sites&#47;US&#45;SB&#47;api&#47;v5&#47;eventgroups&#47;88808&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;ae25c017&#46;1792707384&#46;d2caa8d1\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;ae25c017&#46;"
+   "error": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n \nYou don't have permission to access \"http&#58;&#47;&#47;sportsbook&#46;draftkings&#46;com&#47;sites&#47;US&#45;SB&#47;api&#47;v5&#47;eventgroups&#47;88808&#63;\" on this server.<P>\nReference&#32;&#35;18&#46;ae25c017&#46;1792709429&#46;d3de55ee\n<P>https&#58;&#47;&#47;errors&#46;edgesuite&#46;net&#47;18&#46;ae25c017&#46;"
   }
  ],
  "event": "401873010"
