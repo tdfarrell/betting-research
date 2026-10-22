@@ -1,0 +1,37 @@
+name: Backfill NBA history (ESPN box scores)
+
+on:
+  workflow_dispatch:
+    inputs:
+      seasons:
+        description: "ESPN season years, space separated (2026 = 2025-26)"
+        default: "2025 2026 2027"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pull-data
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Box scores, closing lines
+        run: |
+          for s in ${{ inputs.seasons }}; do python scripts/nba_pull.py backfill $s; done
+          python scripts/nba_pull.py
+      - name: Commit
+        run: |
+          git config user.name "data-bot"
+          git config user.email "data-bot@users.noreply.github.com"
+          git add data/nba
+          git diff --cached --quiet || git commit -m "data: NBA backfill"
+          git pull --rebase
+          git push

@@ -10,6 +10,7 @@ import csv, datetime as dt, json, os, urllib.request
 LEAGUES = {
     "cfb": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?groups=80&limit=300&dates={d}",
     "nfl": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates={d}",
+    "nba": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates={d}",
 }
 OUT = "data/odds"
 now = dt.datetime.now(dt.timezone.utc)
