@@ -6,6 +6,7 @@ on:
       seasons:
         description: "ESPN season years, space separated (2026 = 2025-26)"
         default: "2025 2026 2027"
+        required: false
 
 permissions:
   contents: write
@@ -27,6 +28,7 @@ jobs:
         run: |
           for s in ${{ inputs.seasons }}; do python scripts/nba_pull.py backfill $s; done
           python scripts/nba_pull.py
+          python scripts/nba_pull.py lines
       - name: Commit
         run: |
           git config user.name "data-bot"

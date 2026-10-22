@@ -173,6 +173,42 @@ def pull_days(days, want_season=None):
     write("lines_close.csv", L.values(), LCOLS, lambda r: (str(r["date"]), str(r["game_id"])))
     return new_games
 
+CORE = "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba"
+
+def core_lines(max_games=4000):
+    """Closing DK spread/total for finished games that the scoreboard didn't carry odds for (ESPN keeps them on the
+    core API's odds endpoint, listed per provider)."""
+    T = read("team_games.csv", lambda r: (r["game_id"], r["team"]))
+    L = read("lines_close.csv", lambda r: r["game_id"])
+    games = {}
+    for r in T.values():
+        g = games.setdefault(r["game_id"], {"season": r["season"], "date": r["date"]})
+        g["home" if str(r["home"]) == "1" else "away"] = r["team"]
+        g["home_score" if str(r["home"]) == "1" else "away_score"] = r["pts"]
+    todo = [gid for gid in sorted(games, key=lambda k: games[k]["date"], reverse=True) if gid not in L][:max_games]
+    got = 0
+    for gid in todo:
+        try:
+            d = get(f"{CORE}/events/{gid}/competitions/{gid}/odds?limit=20")
+        except Exception as e:
+            errors.append(f"core odds {gid}: {type(e).__name__}: {e}"); continue
+        items = d.get("items", [])
+        it = next((x for x in items if "draft" in ((x.get("provider") or {}).get("name") or "").lower()), None) or (items[0] if items else None)
+        if not it:
+            continue
+        hs = it.get("spread")
+        hto = it.get("homeTeamOdds") or {}
+        if hs is None:
+            hs = ((hto.get("close") or {}).get("pointSpread") or {}).get("value")
+        g = games[gid]
+        L[gid] = {"season": g["season"], "date": g["date"], "game_id": gid, "home": g.get("home"), "away": g.get("away"),
+                  "home_spread": num(hs) if hs is not None else "", "total": it.get("overUnder", ""),
+                  "home_score": g.get("home_score"), "away_score": g.get("away_score"), "provider": (it.get("provider") or {}).get("name", "")}
+        got += 1
+        time.sleep(0.1)
+    write("lines_close.csv", L.values(), LCOLS, lambda r: (str(r["date"]), str(r["game_id"])))
+    return got
+
 def injuries():
     try:
         d = get(f"{SITE}/injuries")
@@ -199,6 +235,8 @@ def main():
         days = [start + dt.timedelta(days=i) for i in range((end - start).days + 1)]
         n = pull_days(days, want_season=season)
         print(f"backfill {season}: {n} new games")
+    elif len(sys.argv) > 1 and sys.argv[1] == "lines":
+        print(f"closing lines: {core_lines()} games added")
     else:
         T = read("team_games.csv", lambda r: (r["game_id"], r["team"]))
         last = max((dt.date.fromisoformat(r["date"]) for r in T.values()), default=today - dt.timedelta(days=4))
@@ -206,6 +244,8 @@ def main():
         days = [start + dt.timedelta(days=i) for i in range((today - start).days + 1)]
         n = pull_days(days)
         k = injuries()
+        if n:
+            core_lines(60)
         print(f"nba: {n} new games, {k} injury rows")
     json.dump({"pulled_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"), "errors": errors[:40]},
               open(f"{OUT}/_status.json", "w"), indent=1)
