@@ -173,6 +173,15 @@ def simulate(p, rng, n=N_SIM, disp=None):
     out["min"] = m
     return out
 
+def ge_compact(v):
+    """P(stat >= k) in thousandths, only where it's between 0.1% and 99.9%: {"ge0": first k, "ge": [...]}."""
+    ks = np.arange(0, int(v.max()) + 2)
+    p = np.array([(v >= k).mean() for k in ks])
+    keep = np.where((p < 0.999) & (p > 0.001))[0]
+    if not len(keep):
+        return {"ge0": 0, "ge": []}
+    return {"ge0": int(keep[0]), "ge": [int(round(1000 * x)) for x in p[keep[0]:keep[-1] + 1]]}
+
 def tier_probs(sims, mk):
     return [float((sims[mk] >= t).mean()) for t in TIERS[mk]]
 
@@ -274,7 +283,7 @@ def build_cards(pg, tg, S, day_str, games, lines, inj):
                                 "avg": rnd(np.mean(sv)) if sv else None, "l3_vals": [int(v) for v in l3v], "l3_opps": l3.opp.tolist(),
                                 "season_vals": [int(v) for v in sv], "def_avg": rnd(np.mean(dvv)) if dvv else None, "def_n": len(dvv),
                                 "proj": rnd(float(np.median(sims[mk]))), "mean": rnd(float(np.mean(sims[mk]))), "disagree": dis,
-                                "ge": [round(float((sims[mk] >= k).mean()), 3) for k in range(int(max(tiers) * 1.6) + 1)],
+                                **ge_compact(sims[mk]),
                                 "dvp": dvp_rank.get((opp, pos, mk))}
                 k = dt.datetime.fromisoformat(b["kickoff_utc"].replace("Z", "+00:00")).astimezone(ET)
                 glog = game_log(pg, pid, S, day_str, mates, tgb, rest_map)
@@ -303,7 +312,11 @@ def main():
     idx_path = f"{OUT}/nba_index.json"
     idx = json.load(open(idx_path)) if os.path.exists(idx_path) else {"days": []}
     days = {d["key"]: d for d in idx.get("days", [])}
-    for day in sorted(by_day):
+    ahead = sorted(by_day)[:3]   # DK posts player lines a day or so out; later slates get cards as they come up
+    for old in sorted(by_day)[3:]:
+        if os.path.exists(f"{OUT}/nba_props_{old}.json"):
+            os.remove(f"{OUT}/nba_props_{old}.json")
+    for day in ahead:
         cards, mates = build_cards(pg, tg, S, day, by_day[day], L, inj)
         path = f"{OUT}/nba_props_{day}.json"
         if os.path.exists(path):   # keep players whose game already started

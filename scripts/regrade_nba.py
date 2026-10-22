@@ -73,7 +73,7 @@ def games_of(T):
                         "hrest": h["rest"], "arest": a["rest"]})
     return sorted(out, key=lambda g: (g["date"], g["id"]))
 
-def solve(rows, teams, prior, k):
+def solve(rows, teams, prior, k, mu_prior=None, hca_prior=None, k_mu=60.0, k_hca=400.0):
     """Least squares y = mu + X_off[team] - X_def[opp] + hca*home with ridge pseudo-games toward prior.
     rows: (team, opp, home, y). prior: {team: (o, d)} in units of y around mu. Returns mu, hca, {team: (o, d)}."""
     idx = {t: i for i, t in enumerate(teams)}
@@ -92,6 +92,11 @@ def solve(rows, teams, prior, k):
     x = np.zeros(P); x[2:2 + n] = 10; A.append(x); b.append(0.0)
     x = np.zeros(P); x[2 + n:] = 10; A.append(x); b.append(0.0)
     x = np.zeros(P); x[0] = 0.01; A.append(x); b.append(0.01 * mu0)
+    # league average and home court lean on last season until enough games pile up (a few dozen games can't pin them down)
+    if mu_prior is not None:
+        x = np.zeros(P); x[0] = math.sqrt(k_mu); A.append(x); b.append(math.sqrt(k_mu) * mu_prior)
+    if hca_prior is not None:
+        x = np.zeros(P); x[1] = math.sqrt(k_hca); A.append(x); b.append(math.sqrt(k_hca) * hca_prior)
     sol = np.linalg.lstsq(np.array(A), np.array(b), rcond=None)[0]
     return float(sol[0]), float(sol[1]), {t: (float(sol[2 + idx[t]]), float(sol[2 + n + idx[t]])) for t in teams}
 
@@ -118,8 +123,8 @@ class Ratings:
         for g in cur:
             self.n_games[g["home"]] += 1; self.n_games[g["away"]] += 1
         pe = prior_end or {}
-        sh = lambda key: {t: (PRIOR_SHRINK * pe[t][key][0], PRIOR_SHRINK * pe[t][key][1]) for t in teams if t in pe}
-        shp = {t: PRIOR_SHRINK * pe[t]["pace"] for t in teams if t in pe}
+        sh = lambda key: {t: (PRIOR_SHRINK * pe[t][key][0], PRIOR_SHRINK * pe[t][key][1]) for t in teams if t in pe and t != "_league"}
+        shp = {t: PRIOR_SHRINK * pe[t]["pace"] for t in teams if t in pe and t != "_league"}
         k = PRIOR_GAMES if pe else 2.0
         # efficiency: points per 100 possessions (overtime possessions included; fine at this scale)
         eff_rows, pace_rows, pts_rows = [], [], []
@@ -130,14 +135,19 @@ class Ratings:
             pace_rows.append((g["home"], g["away"], per48))
             sc = 48 / (48 + 5 * g["ot"])
             pts_rows += [(g["home"], g["away"], 1, g["hpts"] * sc), (g["away"], g["home"], 0, g["apts"] * sc)]
-        self.mu_e, self.hca_e, self.eff = solve(eff_rows, teams, sh("eff"), k)
+        c = (prior_end or {}).get("_league", {})
+        self.mu_e, self.hca_e, self.eff = solve(eff_rows, teams, sh("eff"), k, c.get("mu_e"), c.get("hca_e", 1.8))
         self.mu_p, self.pace = solve_sum(pace_rows, teams, shp, k)
-        self.mu_s, self.hca_s, self.pts = solve(pts_rows, teams, sh("pts"), k)
+        if c.get("mu_p") and len(cur) < 100:   # pace level early: blend toward last season's
+            w = len(cur) / 100; self.mu_p = w * self.mu_p + (1 - w) * c["mu_p"]
+        self.mu_s, self.hca_s, self.pts = solve(pts_rows, teams, sh("pts"), k, c.get("mu_s"), c.get("hca_s", 1.8))
         if not cur:   # nothing played yet: league-average constants from last season's shape
             self.mu_e, self.hca_e, self.mu_p, self.mu_s, self.hca_s = 114.0, 1.2, 99.0, 114.0, 1.2
 
     def export(self):
-        return {t: {"eff": self.eff[t], "pace": self.pace[t], "pts": self.pts[t]} for t in self.teams}
+        out = {t: {"eff": self.eff[t], "pace": self.pace[t], "pts": self.pts[t]} for t in self.teams}
+        out["_league"] = {"mu_e": self.mu_e, "hca_e": self.hca_e, "mu_s": self.mu_s, "hca_s": self.hca_s, "mu_p": self.mu_p}
+        return out
 
     def project(self, h, a, hrest=None, arest=None):
         pace = self.mu_p + self.pace.get(h, 0) + self.pace.get(a, 0)
