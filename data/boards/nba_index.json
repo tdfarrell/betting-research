@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-22T23:43+00:00",
- "odds_pulled_utc": "2026-10-22T23:42Z",
+ "generated_utc": "2026-10-23T00:36+00:00",
+ "odds_pulled_utc": "2026-10-23T00:35Z",
  "season": 2027,
  "slates": [
   {
@@ -50,6 +50,12 @@
    "games": 3,
    "targets": 0,
    "watches": 0
+  },
+  {
+   "date": "2026-10-30",
+   "games": 10,
+   "targets": 3,
+   "watches": 1
   }
  ],
  "backtest": {

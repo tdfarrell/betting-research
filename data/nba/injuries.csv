@@ -19,10 +19,10 @@ player_id,name,team,status,detail,date
 4593125,Santi Aldama,DAL,Out,Aldama (knee) has been ruled out for Friday's game against the Pacers.,2026-10-22
 5148538,Tarik Biberovic,DAL,Out,Biberovic (heel) is out for Friday's game against Indiana.,2026-10-22
 4432181,Julian Strawther,DEN,Out,"Strawther (knee) was diagnosed with a left knee sprain Friday and will be re-evaluated in six weeks, Vinny Benedetto of The Denver Gazette reports.",2026-10-17
-4592427,Spencer Jones,DEN,Day-To-Day,Jones (hamstring) is questionable for Thursday's season opener against the Thunder.,2026-10-21
+4592427,Spencer Jones,DEN,Out,"Jones (hamstring) has been ruled out for Thursday's game against Oklahoma City, Justin Martinez of The Oklahoman reports.",2026-10-23
 2990962,Taurean Prince,DET,Day-To-Day,Prince (personal) is listed as probable for Friday's game against the Heat.,2026-10-22
-4709138,Brandin Podziemski,GS,Day-To-Day,Podziemski (back) has been ruled out for Wednesday's game against the Lakers.,2026-10-22
-4397886,Charles Bassey,GS,Day-To-Day,Bassey (knee) is out for Wednesday's season opener versus the Lakers.,2026-10-22
+4709138,Brandin Podziemski,GS,Day-To-Day,Podziemski (back) is questionable for Friday's game against the Grizzlies.,2026-10-23
+4397886,Charles Bassey,GS,Day-To-Day,Bassey (knee) is listed as questionable for Friday's game against Memphis.,2026-10-23
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis is contemplating his future in basketball as he deals with recurring symptoms from the autoimmune condition termed as postural orthostatic tachycardia,2026-10-21
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
@@ -36,11 +36,11 @@ player_id,name,team,status,detail,date
 4396818,Jordan Miller,LAC,Out,"Miller underwent surgery Wednesday to repair a torn left rotator cuff and will be re-evaluated in six months, per Law Murray of The Athletic.",2026-08-26
 4065778,Max Strus,LAC,Out,"Strus has been diagnosed with a partially torn plantar fascia in his right foot and he will be re-evaluated in four weeks, Ohm Youngmisuk of ESPN.com reports.",2026-10-05
 5108024,Yanic Konan Niederhauser,LAC,Out,"Niederhauser (foot) won't be ready for the start of the season, Law Murray of The Athletic reports.",2026-09-28
-5060631,Adou Thiero,LAL,Day-To-Day,"Head coach JJ Redick said Thiero (knee), who is out for Wednesday's game against Golden State, will begin ramping up soon and can be considered day-to-day movin",2026-10-22
-5113969,Cameron Carr,LAL,Day-To-Day,"Head coach JJ Redick said Carr (oblique), who is out for Wednesday's game against Golden State, is ""ramping up"" and can be considered day-to-day moving forward,",2026-10-22
-4277811,Collin Sexton,LAL,Day-To-Day,"Head coach JJ Redick said that Sexton (calf) did not experience a setback, but the Lakers will sit him out of Wednesday's regular-season opener against the Warr",2026-10-22
-4592691,Jake LaRavia,LAL,Day-To-Day,"LaRavia logged 10 points (4-5 FG, 2-3 3Pt), two rebounds, two assists and one steal in 18 minutes during Wednesday's 127-105 win over the Warriors.",2026-10-22
-4432810,Isaiah Stewart,MEM,Day-To-Day,Stewart (ankle) has been ruled out for Wednesday's game against the Jazz.,2026-10-22
+5060631,Adou Thiero,LAL,Out,Thiero (knee) is out for Friday's game against the Clippers.,2026-10-23
+5113969,Cameron Carr,LAL,Out,Carr (oblique) is out for Friday's game against the Clippers.,2026-10-23
+4592691,Jake LaRavia,LAL,Day-To-Day,LaRavia (ankle) is listed as questionable for Friday's game against the Clippers.,2026-10-23
+4903027,Cedric Coward,MEM,Day-To-Day,Coward is doubtful for Friday's game against the Warriors due to a left wrist sprain.,2026-10-23
+4432810,Isaiah Stewart,MEM,Day-To-Day,Stewart (ankle) is questionable for Friday's game against the Warriors.,2026-10-23
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
 5159925,Nikola Topic,OKC,Out,Topic (back) won't play in Thursday's game against the Nuggets.,2026-10-21
 5106270,Otega Oweh,OKC,Out,"Oweh (Achilles) underwent surgery Wednesday and will miss the entirety of the 2026-27 season, Brandon Rahbar of DailyThunder.com reports.",2026-10-15
@@ -53,11 +53,11 @@ player_id,name,team,status,detail,date
 3912848,Dean Wade,PHI,Out,Wade (ankle) is out for Thursday's game against the Cavaliers.,2026-10-22
 4870562,Dominick Barlow,PHI,Out,"Barlow will miss at least the next two weeks of action due to a lumbar spine bone stress response, Adam Aaronson of PhillyVoice.com reports.",2026-10-19
 3904625,Tacko Fall,PHI,Out,Fall (quadriceps) is out for Thursday's game against Cleveland.,2026-10-21
-3913174,Luke Kennard,PHX,Day-To-Day,"Kennard (knee) won't play Wednesday versus Portland, Duane Rankin of The Arizona Republic reports.",2026-10-22
+3913174,Luke Kennard,PHX,Day-To-Day,"Kennard (knee) won't play Wednesday versus Portland, Duane Rankin of The Arizona Republic reports.",2026-10-23
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
 4601023,Oso Ighodaro,PHX,Day-To-Day,"Ighodaro (hip) didn't return to Wednesday's 124-83 loss to Portland, Duane Rankin reports. He finished with eight points (4-7 FG, 0-2 FT), three rebounds and th",2026-10-22
-4592435,Branden Carlson,POR,Day-To-Day,Carlson (concussion) has been ruled out for Wednesday's game against the Suns.,2026-10-22
-4706557,Chris Youngblood,POR,Day-To-Day,Youngblood is out for Wednesday's regular-season opener against Phoenix due to left ankle soreness.,2026-10-22
+4592435,Branden Carlson,POR,Out,Carlson (concussion) has been ruled out for Friday's game against Sacramento.,2026-10-22
+4706557,Chris Youngblood,POR,Out,Youngblood (ankle) is out for Friday's game against the Kings.,2026-10-22
 4914336,Shaedon Sharpe,POR,Out,"Sharpe suffered a torn meniscus in his knee and is expected to miss six months, per Shams Charania of ESPN.",2026-08-24
 4066259,De'Aaron Fox,SA,Day-To-Day,Fox (wrist) is questionable to play in Friday's game against the Rockets.,2026-10-22
 5101845,Jayden Quaintance,SA,Out,"Quaintance has been around the team but has not yet been cleared for basketball activities, Matt Guzman of SI.com reports.",2026-10-05
@@ -65,7 +65,7 @@ player_id,name,team,status,detail,date
 6440,Tobias Harris,SA,Out,Harris (calf) is out for Friday's game against the Rockets.,2026-10-22
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
 4433174,Dylan Cardwell,SAC,Out,"Cardwell (calf) is expected to miss at least the first five or six games of the regular season, with a longer absence possible, Frankie Cartoscelli of KHTK Sact",2026-10-15
-4066262,Malik Monk,SAC,Day-To-Day,Monk (ankle) won't play Wednesday versus the Clippers.,2026-10-22
+4066262,Malik Monk,SAC,Day-To-Day,Monk (ankle) is probable for Friday's game against Portland.,2026-10-22
 4898371,Maxime Raynaud,SAC,Out,"Raynaud (knee) is expected to miss at least the first five or six games of the regular season, and potentially longer, Frankie Cartoscelli of KHTK Sactown Sport",2026-10-15
 3913176,Brandon Ingram,TOR,Out,"Ingram won't be ready for the start of the season due to a partially torn Achilles, per Joey Linn of SI.com.",2026-09-28
 4432586,Nate Bittle,TOR,Out,Bittle (foot) is out for Wednesday's season opener against the Bulls.,2026-10-20
