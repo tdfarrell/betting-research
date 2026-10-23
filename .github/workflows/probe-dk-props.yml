@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Probes (DK prop lines, NBA sources)
-        run: python scripts/probe_dk_props.py && python scripts/probe_nba.py
+        run: python scripts/probe_props_history.py
       - name: Commit result
         run: |
           git config user.name "data-bot"
