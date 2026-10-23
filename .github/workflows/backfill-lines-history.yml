@@ -1,0 +1,36 @@
+name: Backfill game lines history (ESPN, open + close)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pull-data
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Opening and closing lines on finished games
+        run: |
+          python scripts/lines_history_pull.py nba 2025 2026 2027
+          python scripts/lines_history_pull.py nfl 2022 2023 2024 2025 2026
+          python scripts/lines_history_pull.py cfb 2022 2023 2024 2025
+          python scripts/lines_history_pull.py cbb 2025 2026
+      - name: Commit
+        if: always()
+        run: |
+          git config user.name "data-bot"
+          git config user.email "data-bot@users.noreply.github.com"
+          git add data/lines_hist
+          git diff --cached --quiet || git commit -m "data: game lines history (open + close)"
+          git pull --rebase -X theirs || (git rebase --abort; git pull --no-rebase -X ours)
+          git push
