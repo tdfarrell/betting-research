@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-23T02:08+00:00",
- "odds_pulled_utc": "2026-10-23T02:08Z",
+ "generated_utc": "2026-10-23T04:58+00:00",
+ "odds_pulled_utc": "2026-10-23T04:57Z",
  "season": 2027,
  "slates": [
   {
@@ -12,50 +12,50 @@
   {
    "date": "2026-10-23",
    "games": 12,
-   "targets": 3,
-   "watches": 2
+   "plays": 8,
+   "leans": 1
   },
   {
    "date": "2026-10-24",
    "games": 8,
-   "targets": 0,
-   "watches": 0
+   "plays": 0,
+   "leans": 0
   },
   {
    "date": "2026-10-25",
    "games": 7,
-   "targets": 0,
-   "watches": 0
+   "plays": 0,
+   "leans": 0
   },
   {
    "date": "2026-10-26",
    "games": 9,
-   "targets": 0,
-   "watches": 0
+   "plays": 0,
+   "leans": 0
   },
   {
    "date": "2026-10-27",
    "games": 4,
-   "targets": 0,
-   "watches": 0
+   "plays": 0,
+   "leans": 0
   },
   {
    "date": "2026-10-28",
    "games": 12,
-   "targets": 0,
-   "watches": 0
+   "plays": 0,
+   "leans": 0
   },
   {
    "date": "2026-10-29",
    "games": 3,
-   "targets": 0,
-   "watches": 0
+   "plays": 0,
+   "leans": 0
   },
   {
    "date": "2026-10-30",
    "games": 10,
-   "targets": 3,
-   "watches": 1
+   "plays": 0,
+   "leans": 0
   }
  ],
  "backtest": {
