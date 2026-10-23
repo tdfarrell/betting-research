@@ -1,0 +1,38 @@
+name: Backfill CBB history (ESPN scores + closing lines)
+
+on:
+  workflow_dispatch:
+    inputs:
+      seasons:
+        description: "ESPN season years, space separated (2026 = 2025-26)"
+        default: "2025 2026"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pull-data
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scores, closing lines
+        run: |
+          for s in ${{ inputs.seasons }}; do python scripts/cbb_pull.py backfill $s; done
+          python scripts/cbb_pull.py lines
+      - name: Commit
+        run: |
+          git config user.name "data-bot"
+          git config user.email "data-bot@users.noreply.github.com"
+          git add data/cbb
+          git diff --cached --quiet || git commit -m "data: CBB backfill"
+          git pull --rebase
+          git push
