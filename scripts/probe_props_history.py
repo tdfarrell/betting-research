@@ -14,9 +14,9 @@ def get(url):
     except Exception as e:
         rec.update(status=None, error=str(e)); d = None
     out["tries"].append(rec); return d, rec
-CASES = [("nba", "basketball/nba", "401809243", "2025-26 opener"), ("nba", "basketball/nba", "401810330", "2025-26 Jan"),
-         ("nba", "basketball/nba", "401704627", "2024-25 opener"), ("nfl", "football/nfl", "401772510", "2025 wk1"),
-         ("nfl", "football/nfl", "401773000", "2025 midseason?")]
+CASES = [("nba", "basketball", "401809243", "2025-26 opener"), ("nba", "basketball", "401810330", "2025-26 Jan"),
+         ("nba", "basketball", "401704627", "2024-25 opener"), ("nfl", "football", "401772510", "2025 wk1"),
+         ("nfl", "football", "401773000", "2025 midseason?")]
 for lg, path, ev, lab in CASES:
     base = f"https://sports.core.api.espn.com/v2/sports/{path}/leagues/{lg}/events/{ev}/competitions/{ev}/odds"
     d, rec = get(base); rec["label"] = lab
