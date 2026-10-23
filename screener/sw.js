@@ -2,8 +2,8 @@
    - The page itself: network first (so updates show up right away), cached copy if offline.
    - Data (JSON/CSV from GitHub): network first, cached copy if offline, so the last boards still open.
    - Icons, fonts: cache first. */
-const VERSION = "screener-2026-10-23f";
-const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png"];
+const VERSION = "screener-2026-10-23g";
+const SHELL = ["./", "./index.html", "./app.js?v=2026-10-23g", "./app.css?v=2026-10-23g", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
 });
@@ -42,5 +42,6 @@ self.addEventListener("fetch", e => {
   if (u.pathname.includes("/admin")) return;                      // never touch the site's admin
   if (req.mode === "navigate") { e.respondWith(networkFirst(req).catch(() => caches.match("./index.html"))); return; }
   if (u.hostname === "raw.githubusercontent.com" || /\.(json|csv)$/.test(u.pathname)) { e.respondWith(networkFirst(req)); return; }
+  if (u.origin === location.origin && /\.(js|css)$/.test(u.pathname)) { e.respondWith(networkFirst(req)); return; }   // app.js / app.css
   if (/fonts\.(googleapis|gstatic)\.com$/.test(u.hostname) || /\/icons\//.test(u.pathname) || u.hostname.endsWith("espncdn.com")) { e.respondWith(cacheFirst(req)); return; }
 });

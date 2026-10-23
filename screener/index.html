@@ -19,7 +19,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Screener">
-<meta name="bw-build" content="screener 2026-10-23f">
+<meta name="bw-build" content="screener 2026-10-23g">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -418,6 +418,7 @@ b.up{color:var(--win)}b.dn{color:var(--loss)}b.amb{color:var(--amber)}
 .dvp.soft{background:var(--win-bg);color:var(--win)}.dvp.mid{background:var(--chip);color:var(--muted)}.dvp.tough{background:var(--loss-bg);color:var(--loss)}
 .c.st{font:600 11px var(--mono)}
 </style>
+<link rel="stylesheet" href="app.css?v=2026-10-23g">
 </head>
 <body>
 <div class="sitebar"><div class="wrap">
@@ -486,6 +487,11 @@ b.up{color:var(--win)}b.dn{color:var(--loss)}b.amb{color:var(--amber)}
 <div class="scrim" id="scrim"></div>
 <aside id="drawer" aria-hidden="true"></aside>
 
+<div id="app" hidden></div>
+<div class="ap-scrim" id="apScrim"></div>
+<section id="apSheet" class="ap-sheet" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Details"><div class="ap-grab" id="apGrab"><i></i></div><div id="apSheetBody"></div></section>
+<div class="ap-toast" id="apToast" role="status" aria-live="polite"></div>
+<script src="app.js?v=2026-10-23g"></script>
 <script>
 const $ = s => document.querySelector(s);
 const fmt = (x, d = 1) => x == null ? "—" : (+x).toFixed(d).replace(/\.0+$/, "");
@@ -1540,7 +1546,7 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-23f";
+const SCREENER_BUILD = "2026-10-23g";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";
@@ -2005,7 +2011,7 @@ async function gatherToday() {
         if ((g.day_et || day) !== day) continue;
         for (const k of GAME_MODEL[sp] ? ["side", "total"] : []) {
           const m = g[k]; if (!m || !m.pick) continue;
-          out.games.push({ sp, key: S_.slateKey(x), g, k, m, tag: m.grade, teams: sl.teams });
+          out.games.push({ sp, key: S_.slateKey(x), g, k, m, tag: m.grade, teams: sl.teams, sl });
         }
       }
       // props for the same slate
@@ -2021,7 +2027,7 @@ async function gatherToday() {
         if (cday < day || cday > addDays(day, 6)) continue;   // today, plus the rest of this week's slate (shown as "Next up")
         for (const mk of Object.keys(c.markets)) {
           const pk = propPick(c, mk); if (!pk) continue;
-          out.props.push({ sp, key: S_.slateKey(x), c, mk, pk, label: doc.labels[mk], tag: pk.tag, cday, cal: doc._cal });
+          out.props.push({ sp, key: S_.slateKey(x), c, mk, pk, label: doc.labels[mk], tag: pk.tag, cday, cal: doc._cal, doc, L });
         }
       }
       state.props = keep.props; state.dkLines = keep.dk;
@@ -2264,6 +2270,8 @@ $("#installBtn").onclick = async () => {
 
 /* ------------------------------------------------------------------ start */
 (function start() {
+  if (window.BWAPP && BWAPP.want()) { BWAPP.start(); return; }   // phones and the installed app: app.js
+  if (window.BWAPP) BWAPP.deskLink();
   const hp = hashParams();
   let sp = hp.get("s"), key = hp.get("k") || hp.get("d"), view = hp.get("v");
   if (!SPORTS[sp] || SPORTS[sp].soon) sp = hp.get("d") ? "cfb" : (location.hash.match(/nfl/i) ? "nfl" : null);
@@ -2272,6 +2280,7 @@ $("#installBtn").onclick = async () => {
 })();
 // links that change only the hash (e.g. #s=nfl) switch sport/slate without a reload
 window.addEventListener("hashchange", () => {
+  if (window.BWAPP && BWAPP.on) return;
   if (/^#today/.test(location.hash)) { if (state.sport !== "today") showToday(); return; }
   const hp = hashParams(), sp = hp.get("s"), key = hp.get("k");
   const v = ["props", "results"].includes(hp.get("v")) ? hp.get("v") : "lines";
