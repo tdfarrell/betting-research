@@ -20,7 +20,7 @@ player_id,name,team,status,detail,date
 5148538,Tarik Biberovic,DAL,Out,Biberovic (heel) is out for Friday's game against Indiana.,2026-10-22
 3138196,Cameron Johnson,DEN,Day-To-Day,"Johnson (ankle) didn't return to Thursday's game against Oklahoma City. He ended with five points (2-3 FG, 1-1 3Pt), two rebounds and one assist in 11 minutes.",2026-10-23
 4432181,Julian Strawther,DEN,Out,"Strawther (knee) was diagnosed with a left knee sprain Friday and will be re-evaluated in six weeks, Vinny Benedetto of The Denver Gazette reports.",2026-10-17
-4592427,Spencer Jones,DEN,Out,"Jones (hamstring) has been ruled out for Thursday's game against Oklahoma City, Justin Martinez of The Oklahoman reports.",2026-10-23
+4592427,Spencer Jones,DEN,Day-To-Day,"Jones (hamstring) has been ruled out for Thursday's game against Oklahoma City, Justin Martinez of The Oklahoman reports.",2026-10-23
 2990962,Taurean Prince,DET,Day-To-Day,Prince (personal) is listed as probable for Friday's game against the Heat.,2026-10-22
 4709138,Brandin Podziemski,GS,Day-To-Day,Podziemski (back) is questionable for Friday's game against the Grizzlies.,2026-10-23
 4397886,Charles Bassey,GS,Day-To-Day,Bassey (knee) is listed as questionable for Friday's game against Memphis.,2026-10-23
@@ -51,9 +51,9 @@ player_id,name,team,status,detail,date
 4065654,Jonathan Isaac,ORL,Out,Isaac (knee) is out for Friday's game against Minnesota.,2026-10-22
 5214637,Noah Penda,ORL,Out,"Penda was diagnosed with a partially torn right hamstring Saturday, Jason Beede of the Orlando Sentinel reports.",2026-10-17
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
-3912848,Dean Wade,PHI,Out,Wade (ankle) is out for Thursday's game against the Cavaliers.,2026-10-22
+3912848,Dean Wade,PHI,Day-To-Day,Wade (ankle) is out for Thursday's game against the Cavaliers.,2026-10-23
 4870562,Dominick Barlow,PHI,Out,"Barlow will miss at least the next two weeks of action due to a lumbar spine bone stress response, Adam Aaronson of PhillyVoice.com reports.",2026-10-19
-3904625,Tacko Fall,PHI,Out,Fall (quadriceps) is out for Thursday's game against Cleveland.,2026-10-21
+3904625,Tacko Fall,PHI,Day-To-Day,Fall (quadriceps) is out for Thursday's game against Cleveland.,2026-10-23
 3913174,Luke Kennard,PHX,Day-To-Day,"Kennard (knee) won't play Wednesday versus Portland, Duane Rankin of The Arizona Republic reports.",2026-10-23
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
 4601023,Oso Ighodaro,PHX,Day-To-Day,"Ighodaro (hip) didn't return to Wednesday's 124-83 loss to Portland, Duane Rankin reports. He finished with eight points (4-7 FG, 0-2 FT), three rebounds and th",2026-10-22
