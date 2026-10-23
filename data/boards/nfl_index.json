@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-23T04:58+00:00",
- "odds_pulled_utc": "2026-10-23T04:57Z",
+ "generated_utc": "2026-10-23T05:03+00:00",
+ "odds_pulled_utc": "2026-10-23T05:03Z",
  "stats_pulled_utc": "2026-10-23T00:35+00:00",
  "slates": [
   {
@@ -28,7 +28,7 @@
    "season": 2026,
    "week": 7,
    "label": "Week 7",
-   "first_day": "2026-10-25",
+   "first_day": "2026-10-22",
    "games": 14,
    "plays": 2,
    "leans": 5
