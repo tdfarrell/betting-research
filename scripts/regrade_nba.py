@@ -343,8 +343,10 @@ def team_card(t, R, G, season, date, L, P, INJ, name):
             m = my - op + mine
             ats = "P" if m == 0 else ("W" if m > 0 else "L")
             aw += ats == "W"; al += ats == "L"
+        tl = num(ln.get("total")); tp = my + op
+        ou = None if tl is None else ("P" if tp == tl else "O" if tp > tl else "U")
         res.append({"date": g["date"], "opp": g["away"] if home else g["home"], "site": "H" if home else "A",
-                    "res": "W" if win else "L", "score": f"{int(my)}-{int(op)}", "ats": ats})
+                    "res": "W" if win else "L", "score": f"{int(my)}-{int(op)}", "ats": ats, "ou": ou, "line": hs if home else (-hs if hs is not None else None), "tl": tl})
     o, d = R.eff.get(t, (0, 0))
     return {"abbr": t, "name": name, "record": f"{w}-{l}", "ats": f"{aw}-{al}" if aw + al else "—", "games": len(rows),
             "ortg": rnd(R.mu_e + o), "drtg": rnd(R.mu_e - d), "net": rnd(o + d), "pace": rnd(R.mu_p + 2 * R.pace.get(t, 0)),
@@ -370,6 +372,11 @@ def build_slate(day, games, G, L, season, past_rows, P, INJ, odds_pulled):
         hs, tot = num(b.get("home_spread")), num(b.get("total"))
         rows.append({"b": b, **p, "hrest": hr, "arest": ar, "close": -hs if hs is not None else None, "close_total": tot})
     f = calibrate(past_rows, rows)
+    try:   # v3 game model inputs (scripts/nba_games_v3.py, games_live.py)
+        import nba_games_v3 as NV3
+        TF = NV3.live_team_feats(day, season, INJ)
+    except Exception as e:
+        print("v3 team features failed:", e); TF = None
     ranks = {t: i + 1 for i, t in enumerate(sorted(R.teams, key=lambda t: -sum(R.eff[t])))}
     teams, out = {}, []
     for r in rows:
@@ -433,12 +440,17 @@ def build_slate(day, games, G, L, season, past_rows, P, INJ, odds_pulled):
         if R.n_games[h] < 5 or R.n_games[a] < 5:
             notes.append(f"Early season: ratings are mostly last season's ({min(R.n_games[h], R.n_games[a])} games played)")
         k = dt.datetime.fromisoformat(b["kickoff_utc"].replace("Z", "+00:00")).astimezone(ET)
+        v3feats = NV3.live_feats(r, h, a, min(R.n_games[h], R.n_games[a]), TF) if TF is not None else None
         out.append({"id": b["game_id"], "kickoff_utc": b["kickoff_utc"], "kick_et": k.strftime("%a %-I:%M %p"), "day_et": day,
                     "away_abbr": a, "home_abbr": h, "away": a, "home": h, "away_name": b.get("away_name"), "home_name": b.get("home_name"),
                     "neutral": bool(b.get("neutral")), "venue": b.get("venue"), "rest": {"home": r["hrest"], "away": r["arest"]},
                     "dk": dk, "model": model, "side": side, "total": total, "flags": flags, "notes": notes,
                     "bands": [rnd(x) for x in bands(r["side_sd"])] if f else None,
                     "tbands": [rnd(x) for x in bands(r["tot_sd"])] if f and r["tot_sd"] else None})
+        if v3feats:
+            import games_live
+            games_live.attach("nba", out[-1], v3feats)
+            out[-1]["v3"]["inputs"] = {k: rnd(v, 2) for k, v in v3feats.items() if v is not None}
         for t, nm in ((h, b.get("home_name")), (a, b.get("away_name"))):
             teams[t] = team_card(t, R, G, season, day, L, P, INJ, nm)
             teams[t]["net_rank"] = ranks.get(t)

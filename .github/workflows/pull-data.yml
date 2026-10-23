@@ -37,7 +37,7 @@ jobs:
           python-version: "3.12"
 
       - name: Python packages
-        run: pip install --quiet numpy pandas
+        run: pip install --quiet numpy pandas scikit-learn lightgbm
 
       - name: DraftKings lines (ESPN)
         run: python scripts/espn_odds.py

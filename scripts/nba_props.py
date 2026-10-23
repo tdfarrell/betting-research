@@ -323,6 +323,11 @@ def main():
             os.remove(f"{OUT}/nba_props_{old}.json")
     for day in ahead:
         cards, mates = build_cards(pg, tg, S, day, by_day[day], L, inj)
+        try:   # v3 model: predicted percentiles per market (scripts/nba_props_live.py)
+            import nba_props_live
+            nba_props_live.enrich(cards, day, S, by_day[day], inj)
+        except Exception as e:
+            print("v3 enrich failed:", e)
         path = f"{OUT}/nba_props_{day}.json"
         if os.path.exists(path):   # keep players whose game already started
             try:

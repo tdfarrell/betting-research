@@ -2,7 +2,7 @@
    - The page itself: network first (so updates show up right away), cached copy if offline.
    - Data (JSON/CSV from GitHub): network first, cached copy if offline, so the last boards still open.
    - Icons, fonts: cache first. */
-const VERSION = "screener-2026-10-23d";
+const VERSION = "screener-2026-10-23e";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

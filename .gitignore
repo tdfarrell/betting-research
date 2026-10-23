@@ -3,3 +3,5 @@ __pycache__/
 ballwatcher-screener.zip
 data/props_hist/nba_features.csv.gz
 data/props_hist/nba_v2_walk.csv.gz
+data/props_hist/nba_v3_preds.csv.gz
+data/props_hist/nba_v3_table.csv.gz

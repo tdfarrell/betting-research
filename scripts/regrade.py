@@ -363,6 +363,14 @@ def main(days=None):
         if len(rows) < 2:
             continue
         calib = grade(rows)
+        try:   # v3 game model (scripts/cfb_games_v3.py, games_live.py)
+            import cfb_games_v3, games_live
+            for r in rows:
+                f = cfb_games_v3.live_feats(day, r["home"], r["away"], r.get("neutral"), r.get("conference_game"), ELO.get(r["home"]), ELO.get(r["away"]))
+                games_live.attach("cfb", r, f)
+                r["v3"]["inputs"] = {k: rnd(v, 2) for k, v in f.items()}
+        except Exception as e:
+            print("v3 attach failed:", e)
         finalize_rows(rows, "cfb", (calib.get("bands_side") or [None, None])[1])   # every game gets a pick; PLAY / LEAN tags, the rest untagged; backtest confidence
         write(day, rows, calib, unmatched, board["pulled_utc"])
         count = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)

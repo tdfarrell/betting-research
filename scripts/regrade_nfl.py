@@ -120,7 +120,8 @@ def results(team, week):
             ats = "W" if m > 0 else "L" if m < 0 else "P"
         out.append({"wk": g["week"], "opp": g["away_team"] if home else g["home_team"],
                     "site": "N" if g["neutral"] else ("H" if home else "A"),
-                    "res": "W" if pf > pa else "L" if pf < pa else "T", "score": f"{int(pf)}-{int(pa)}", "ats": ats})
+                    "res": "W" if pf > pa else "L" if pf < pa else "T", "score": f"{int(pf)}-{int(pa)}", "ats": ats,
+                    "ou": (lambda tl: None if tl is None else ("P" if pf + pa == tl else "O" if pf + pa > tl else "U"))(M.fnum(g.get("total_line")))})
     return sorted(out, key=lambda r: r["wk"])
 
 def team_card(t, name, week, W, qb_id):
@@ -308,6 +309,18 @@ def build(games, season, week):
             "side": side_d, "total": tot_d, "flags": flags, "notes": [], "bands": [rnd(x) for x in side_bands(r.get("side_sd"))],
         })
         rows[-1]["notes"] = notes(h, a, teams, g, r)
+        try:   # v3 game model (scripts/nfl_games_v3.py, games_live.py)
+            import games_live
+            dome = 1 if g.get("roof") in ("dome", "closed") else 0
+            hr_, ar_ = M.fnum(g["home_rest"]) or 7, M.fnum(g["away_rest"]) or 7
+            v3f = {k_: r.get(k_) for k_ in ("epa_cal", "sr_cal", "pts_cal", "last_cal", "elo_cal", "mkt_cal", "qb_adj", "blend", "epa_tot_cal", "pts_tot_cal")}
+            v3f.update({"home_rest": hr_, "away_rest": ar_, "rest_diff": hr_ - ar_, "div_game": int(g.get("div_game") == "1"), "dome": dome,
+                        "temp": 70 if dome else (M.fnum(g.get("temp")) or num(bg.get("temp_f")) or 60),
+                        "wind": 0 if dome else (M.fnum(g.get("wind")) or wind_mph(bg.get("weather") or "") or 5), "week": week})
+            games_live.attach("nfl", rows[-1], v3f)
+            rows[-1]["v3"]["inputs"] = {k_: rnd(v_, 2) for k_, v_ in v3f.items() if v_ is not None}
+        except Exception as e:
+            print("v3 attach failed:", e)
     order = {"TARGET": 0, "WATCH": 1, "CHECK": 2, "PASS": 3, "FLAG": 4}
     rows.sort(key=lambda x: (min(order[x["side"]["grade"]], order[x["total"]["grade"]]), x["kickoff_utc"]))
     calib = next((r["calib"] for r in ROWS if r["season"] == season and r["week"] == week and r.get("calib")), None)

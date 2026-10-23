@@ -10,10 +10,9 @@ The page (screener/index.html) applies the same prop rule, so tags match what ge
 """
 import json, math, os
 
-# Game-line models that passed the Oct 23 walk-forward test at real prices (scripts/game_models_eval.py). None did,
-# so no game-line picks are recorded or shown (screener GAME_MODEL mirrors this). Flip one to True only after a
-# rebuilt model passes.
-GAME_MODELS = {"cfb": False, "nfl": False, "nba": False, "cbb": False}
+# Game-line picks recorded and shown per sport (screener GAME_MODEL mirrors this). Since the v3 rebuild every game
+# gets a Pick from the v3 model with its calibrated chance; no Lean / Play tags on game lines.
+GAME_MODELS = {"cfb": True, "nfl": True, "nba": True, "cbb": True}
 
 TAG = {"PLAY": "PLAY", "TARGET": "PLAY", "LEAN": "LEAN", "WATCH": "LEAN"}
 
@@ -24,18 +23,26 @@ def _pick_text(abbr, line):
     return f"{abbr} pk" if line == 0 else f"{abbr} {line:+g}"
 
 def finalize_market(g, mk):
-    """Give a board market (g['side'] or g['total']) a pick and a PLAY / LEAN / PICK tag."""
-    s, d = g.get(mk) or {}, g.get("dk") or {}
-    edge = s.get("edge")
-    if edge is None:
-        return
+    """Give a board market (g['side'] or g['total']) a pick. Since the Oct 23 rebuild, game lines get Picks only
+    (no Lean / Play tags): the side the v3 model's calibrated chance favors (g['v3'], scripts/games_live.py),
+    with that chance shown for context. Boards without v3 fall back to the old model's side."""
+    s, d = g.setdefault(mk, {}), g.get("dk") or {}
+    v = g.get("v3") or {}
     old = s.get("grade") or "PASS"
-    tag = tag_of(old)
     if mk == "side":
         hs = d.get("home_spread")
         if hs is None:
             return
-        home = edge >= 0
+        if v.get("margin") is not None:
+            gap = v["margin"] + hs                      # + = model likes the home side vs DK
+            p = v.get("p_home")
+            home = (p > 0.5) if p is not None and p != 0.5 else gap >= 0
+            ch = (p if home else 1 - p) if p is not None else 0.5
+            s["edge"], s["chance"] = round(gap, 1), round(ch, 3)
+        elif s.get("edge") is not None:
+            home = s["edge"] >= 0
+        else:
+            return
         line = hs if home else -hs
         s.update(pick_side="home" if home else "away", line=line,
                  pick=_pick_text(g.get("home_abbr") if home else g.get("away_abbr"), line),
@@ -44,16 +51,21 @@ def finalize_market(g, mk):
         tot = d.get("total")
         if tot is None:
             return
-        over = edge >= 0
+        if v.get("total") is not None:
+            gap = v["total"] - tot
+            p = v.get("p_over")
+            over = (p > 0.5) if p is not None and p != 0.5 else gap >= 0
+            ch = (p if over else 1 - p) if p is not None else 0.5
+            s["edge"], s["chance"] = round(gap, 1), round(ch, 3)
+        elif s.get("edge") is not None:
+            over = s["edge"] >= 0
+        else:
+            return
         s.update(pick_side="over" if over else "under", line=tot, pick=f"{'Over' if over else 'Under'} {tot:g}",
                  odds=d.get("over_odds") if over else d.get("under_odds"))
-    if tag == "PICK" and old != "PASS":
-        s["why_untagged"] = {"CHECK": "Big gap vs DraftKings: usually news the model doesn't have",
-                             "FLAG": "; ".join(g.get("flags") or []) or "Flagged"}.get(old, old)
-    elif tag == "PICK" and s.get("adjust"):
-        s["why_untagged"] = "; ".join(s["adjust"])
     s["was"] = old
-    s["grade"] = tag
+    s["grade"] = "PICK"
+    s.pop("why_untagged", None)
 
 # ------------------------------------------------------------------ confidence (scripts/confidence.py)
 _CONF = None
@@ -97,12 +109,9 @@ def finalize_rows(rows, league=None, usual=None):
             continue
         for mk in ("side", "total"):
             finalize_market(g, mk)
-            if league:
-                c = conf_for(league, mk, _gap(g, mk, league, usual))
-                if c:
-                    g[mk].update(c)
-    order = {"PLAY": 0, "LEAN": 1, "PICK": 2}
-    rows.sort(key=lambda g: (min(order.get(g["side"].get("grade"), 3), order.get(g["total"].get("grade"), 3)), g.get("kickoff_utc", "")))
+            if g[mk].get("chance") is not None:
+                g[mk]["conf"] = g[mk]["chance"]       # the page's "confidence" = the v3 model's calibrated chance
+    rows.sort(key=lambda g: g.get("kickoff_utc", ""))
     return rows
 
 # ------------------------------------------------------------------ props
@@ -174,29 +183,44 @@ def calibrated_over(mk, p):
     p = min(max(p, 0.01), 0.99)
     return 1 / (1 + math.exp(-(c["a"] + c["b"] * math.log(p / (1 - p)))))
 
+_NBA_CFG = None
+def nba_cfg():
+    global _NBA_CFG
+    if _NBA_CFG is None:
+        try:
+            _NBA_CFG = json.load(open(os.path.join(os.path.dirname(__file__), "..", "data", "models", "nba_props_v3.json")))
+        except Exception:
+            _NBA_CFG = {}
+    return _NBA_CFG
+
+NFL_LEAN = 0.60   # calibrated chance; walk-forward 62.4%
 def prop_pick(m, mk, rec):
-    """rec = DK line record {line, open, over, under}. NFL only; returns the pick dict or None (no pick)."""
+    """rec = DK line record {line, open, over, under}. Every line gets a pick (the side the calibrated chance favors);
+    LEAN when the chance clears the bar: NBA 56%+ (v3 model, walk-forward 57.4%), NFL 60%+ (62.4%).
+    Passing TDs: pick shown, never a Lean (priced far from even)."""
     line = rec.get("line")
-    if line is None or mk in NBA_MK or mk in (nfl_cal().get("no_pick") or []):
+    if line is None:
         return None
-    p_raw = model_over(m, mk, float(line))
-    if p_raw is None:
-        return None
-    p = calibrated_over(mk, p_raw)
-    if p is None:
-        return None
-    over = p >= 0.5
-    chance = p if over else 1 - p
-    t = nfl_cal().get("tags") or {"play": 0.60, "lean": 0.57}
-    tag = "PLAY" if chance >= t["play"] else "LEAN" if chance >= t["lean"] else None
-    if tag is None:
-        return None
+    if mk in NBA_MK:
+        cfg = nba_cfg()
+        if not cfg or not m.get("v3q"):
+            return None
+        import nba_props_live as NL
+        x = NL.pick(cfg, mk, m["v3q"], float(line))
+        p, chance, over, tag = x["p_over"], x["chance"], x["side"] == "over", x["tag"]
+        p_raw = None
+    else:
+        p_raw = model_over(m, mk, float(line))
+        if p_raw is None:
+            return None
+        p = calibrated_over(mk, p_raw)
+        if p is None:
+            return None
+        over = p >= 0.5
+        chance = p if over else 1 - p
+        tag = "LEAN" if chance >= NFL_LEAN and mk not in (nfl_cal().get("no_pick") or []) else "PICK"
     nv = novig_over(rec)
-    edge = chance - 0.5
-    why = None
-    out = {"side": "over" if over else "under", "line": float(line), "p_over": round(p, 3), "p_raw": round(p_raw, 3), "chance": round(chance, 3),
-           "novig_over": round(nv, 3) if nv is not None else None, "edge": round(edge, 3), "tag": tag,
+    out = {"side": "over" if over else "under", "line": float(line), "p_over": round(p, 3), "p_raw": None if p_raw is None else round(p_raw, 3),
+           "chance": round(chance, 3), "novig_over": round(nv, 3) if nv is not None else None, "edge": round(chance - 0.5, 3), "tag": tag,
            "odds": rec.get("over" if over else "under")}
-    if why:
-        out["why_untagged"] = why
     return out

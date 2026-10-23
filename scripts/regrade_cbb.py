@@ -77,6 +77,8 @@ class Ratings:
     def __init__(self, G, season, date, prior=None):
         cur = [g for g in G if g["season"] == season and g["date"] < date]
         teams = sorted({g["h"] for g in G if g["season"] == season} | {g["a"] for g in G if g["season"] == season})
+        if not teams and prior:   # before the season's first game: rate everyone from last season's ratings
+            teams = sorted(prior)
         self.teams, self.n = teams, defaultdict(int)
         last = {}
         for g in cur:
@@ -234,8 +236,10 @@ def team_card(tid, R, G, season, date, ranks):
         if g["close"] is not None:
             m = (my - op) - (g["close"] if home else -g["close"])
             ats = "P" if m == 0 else ("W" if m > 0 else "L"); aw += ats == "W"; al += ats == "L"
+        tl = g.get("close_total"); tp = my + op
+        ou = None if tl is None else ("P" if tp == tl else "O" if tp > tl else "U")
         res.append({"date": g["date"], "opp": g["aabbr"] if home else g["habbr"], "site": "N" if g["neutral"] else ("H" if home else "A"),
-                    "res": "W" if win else "L", "score": f"{int(my)}-{int(op)}", "ats": ats})
+                    "res": "W" if win else "L", "score": f"{int(my)}-{int(op)}", "ats": ats, "ou": ou})
     o, d = R.r.get(tid, (0, 0)); ro, rd = R.rr.get(tid, (0, 0))
     return {"id": tid, "abbr": abbr, "name": name, "record": f"{w}-{l}", "ats": f"{aw}-{al}" if aw + al else "—", "games": len(rows),
             "off": rnd(R.mu + o), "def": rnd(R.mu - d), "net": rnd(o + d), "recent_net": rnd(ro + rd), "net_rank": ranks.get(tid),
@@ -261,6 +265,12 @@ def main():
     ab2id = {}
     for g in G:
         ab2id[g["habbr"]] = g["h"]; ab2id[g["aabbr"]] = g["a"]
+    def rest_of(t, day):
+        prev = [g["date"] for g in G if g["season"] == season and g["date"] < day and t in (g["h"], g["a"])]
+        return min((dt.date.fromisoformat(day) - dt.date.fromisoformat(max(prev))).days, 10) if prev else 7
+    def form_of(t, day):
+        ms = [(g["hpts"] - g["apts"]) * (1 if g["h"] == t else -1) for g in G if g["season"] == season and g["date"] < day and t in (g["h"], g["a"])]
+        return float(np.mean(ms[-5:])) if ms else 0.0
     for day in sorted(by_day):
         R = Ratings(G, season, day, prior_for(G, season))
         ranks = {t: i + 1 for i, t in enumerate(sorted(R.teams or list(R.r), key=lambda t: -sum(R.r[t])))}
@@ -306,6 +316,9 @@ def main():
             if R.n[r["h"]] < 5 or R.n[r["a"]] < 5:
                 notes.append(f"Early season: ratings lean on last season ({min(R.n[r['h']], R.n[r['a']])} games played); rosters turn over a lot in college")
             k = dt.datetime.fromisoformat(b["kickoff_utc"].replace("Z", "+00:00")).astimezone(ET)
+            v3f = {"eff_margin": r["eff_margin"], "pts_margin": r["pts_margin"], "eff_total": r["eff_total"], "pts_total": r["pts_total"],
+                   "gp": min(R.n[r["h"]], R.n[r["a"]]), "neutral": int(bool(b.get("neutral"))), "conf": int(bool(b.get("conference_game"))),
+                   "h_rest": rest_of(r["h"], day), "a_rest": rest_of(r["a"], day), "h_form": form_of(r["h"], day), "a_form": form_of(r["a"], day)}
             rows.append({"id": b["game_id"], "kickoff_utc": b["kickoff_utc"], "kick_et": k.strftime("%a %-I:%M %p"), "day_et": day,
                          "away_abbr": b["away"], "home_abbr": b["home"], "away": b["away"], "home": b["home"],
                          "away_name": b.get("away_name"), "home_name": b.get("home_name"), "neutral": bool(b.get("neutral")),
@@ -313,6 +326,12 @@ def main():
                          "dk": dk, "model": model, "side": side, "total": total, "flags": [], "notes": notes,
                          "bands": [rnd(x) for x in bands(r["side_sd"])] if f else None,
                          "tbands": [rnd(x) for x in bands(r["tot_sd"])] if f and r.get("tot_sd") else None})
+            try:   # v3 game model (scripts/cbb_games_v3.py, games_live.py)
+                import games_live
+                games_live.attach("cbb", rows[-1], v3f)
+                rows[-1]["v3"]["inputs"] = {k_: rnd(v_, 2) for k_, v_ in v3f.items()}
+            except Exception as e:
+                print("v3 attach failed:", e)
             for tid, ab in ((r["h"], b["home"]), (r["a"], b["away"])):
                 teams[ab] = team_card(tid, R, G, season, day, ranks)
         if not rows:

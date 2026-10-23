@@ -22,12 +22,12 @@ PICKS, PROPS, SUMMARY = f"{OUT}/screener_picks.csv", f"{OUT}/props_picks.csv", f
 ET = dt.timezone(dt.timedelta(hours=-4))
 PICK_COLS = ["league", "slate", "day_et", "game_id", "kickoff_utc", "game", "away", "home", "market", "grade", "pick", "pick_side",
              "line", "odds", "model", "edge", "lean_side", "lean_line", "first_seen_utc", "last_seen_utc",
-             "flag_grade", "flag_side", "flag_line", "flag_utc", "away_score", "home_score", "result", "lean_result", "clv", "status"]
+             "flag_grade", "flag_side", "flag_line", "flag_utc", "away_score", "home_score", "result", "lean_result", "clv", "status", "chance"]
 PROP_COLS = ["season", "week", "slate", "day_et", "game_id", "kickoff_utc", "player_id", "name", "team", "opp", "role", "market",
              "tiers", "probs", "season_hr", "l3_hr", "disagree", "last_seen_utc", "actual", "status"]
 sys.path.insert(0, os.path.dirname(__file__))
 from picks import tag_of, prop_pick
-FLAGGED = {"PLAY", "LEAN"}   # tags (Oct 23): every game has a pick; PLAY / LEAN are the tagged ones
+FLAGGED = {"PLAY", "LEAN"}   # tags: since the v3 rebuild only props get LEAN; game lines are all PICK (older rows may say PLAY)
 TIER_ORDER = {lg: ["PLAY", "LEAN"] for lg in ("cfb", "nfl", "nba", "cbb")}
 LEAGUES = ("cfb", "nfl", "nba", "cbb")
 PROP_PICKS = f"{OUT}/prop_picks.csv"
@@ -85,7 +85,7 @@ def snapshot_board(doc, league, slate, picks, at):
                 edge = s.get("edge") if s.get("edge") is not None else s.get("edge_sp")
                 lean = None if edge is None or edge == 0 else ("home" if edge > 0 else "away")
                 lean_line = None if lean is None else (hs if lean == "home" else -hs)
-                model = m.get("number") if league != "cfb" else m.get("sp_spread_cal")
+                model = (g.get("v3") or {}).get("home_spread", m.get("number") if league != "cfb" else m.get("sp_spread_cal"))
             else:
                 tot = d.get("total")
                 if tot is None:
@@ -93,8 +93,8 @@ def snapshot_board(doc, league, slate, picks, at):
                 edge = s.get("edge") if s.get("edge") is not None else s.get("edge_sp")
                 lean = None if edge is None or edge == 0 else ("over" if edge > 0 else "under")
                 lean_line = tot
-                model = m.get("total_number") if league != "cfb" else (
-                    ((m.get("sp_total_cal") or 0) + (m.get("pp_total_cal") or 0)) / 2 if m.get("pp_total_cal") is not None else m.get("sp_total_cal"))
+                model = (g.get("v3") or {}).get("total") or (m.get("total_number") if league != "cfb" else (
+                    ((m.get("sp_total_cal") or 0) + (m.get("pp_total_cal") or 0)) / 2 if m.get("pp_total_cal") is not None else m.get("sp_total_cal")))
             key = (league, str(g["id"]), mk)
             r = picks.get(key) or {"league": league, "game_id": str(g["id"]), "market": mk, "first_seen_utc": at, "status": "open"}
             if r.get("status") == "final":
@@ -105,7 +105,8 @@ def snapshot_board(doc, league, slate, picks, at):
                       "grade": grade, "pick": s.get("pick") or "", "pick_side": side or "",
                       "line": s.get("line") if side else "", "odds": s.get("odds") or "",
                       "model": round(model, 1) if isinstance(model, (int, float)) else "", "edge": edge if edge is not None else "",
-                      "lean_side": lean or "", "lean_line": lean_line if lean_line is not None else "", "last_seen_utc": at})
+                      "lean_side": lean or "", "lean_line": lean_line if lean_line is not None else "", "last_seen_utc": at,
+                      "chance": s.get("chance") if s.get("chance") is not None else ""})
             if side:
                 ln = s.get("line")
                 if ln is None:
