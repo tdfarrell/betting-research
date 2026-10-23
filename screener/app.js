@@ -146,7 +146,7 @@
   }
   function drawNav() {
     const nav = q("#apNav"); if (!nav) return;
-    const tabs = [["today", "Today"], ["games", "Games"], ["props", "Props"], ...(signedIn() ? [["card", "My card"]] : []), ["record", "Record"]];
+    const tabs = [["today", "Today"], ["games", "Games"], ["props", "Props"], ["card", "My card"], ["record", "Record"]];
     const live = A.card ? (A.card.live || []).length : 0;
     nav.innerHTML = tabs.map(([k, l]) => `<button type="button" data-ap="tab" data-v="${k}" ${A.tab === k ? 'aria-current="page"' : ""}><span class="bd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">${ICON[k]}</svg>${k === "card" && live ? `<i>${live}</i>` : ""}</span>${l}</button>`).join("");
     drawSlipBar();
@@ -632,7 +632,7 @@
 
   /* ---------------------------------------------------------------- sign in, help */
   function signInForm(why) {
-    return `<div class="ap-form"><p style="margin:6px 0 0;color:var(--ap-muted);font-size:14px">${H(why)} Use your ballwatcher.com admin email and password; you stay signed in on this device.</p>
+    return `<div class="ap-form"><p style="margin:6px 0 0;color:var(--ap-muted);font-size:14px">${H(why)} Use your Ballwatcher account email and password. You stay signed in on this device.</p>
       <label class="ap-fl"><span>Email</span><input class="ap-in txt" type="email" id="apEm" autocomplete="username" value="${H(LS.get("bw_app_email", ""))}"></label>
       <label class="ap-fl"><span>Password</span><input class="ap-in txt" type="password" id="apPw" autocomplete="current-password"></label>
       <div id="apSiMsg"></div>
@@ -665,7 +665,7 @@
   async function renderCard(quiet) {
     const v = q("#apView"); if (!v || A.tab !== "card") return;
     const top = `${head("My card", todayLong())}<div style="padding:0 20px"><button type="button" class="ap-btn" data-ap="build">+ Build a bet</button></div>`;
-    if (!signedIn()) { v.innerHTML = head("My card") + signInForm("My card tracks the bets you log."); return; }
+    if (!signedIn()) { v.innerHTML = head("My card") + signInForm("Sign in to log bets, build parlays and watch them graded live."); return; }
     if (!A.card || !quiet) { if (!A.card) v.innerHTML = top + `<div class="ap-empty">Loading your card…</div>`; }
     try { A.card = await api("card"); A.cardAt = Date.now(); }
     catch (e) { if (e.status === 401) { drawNav(); v.innerHTML = head("My card") + signInForm("Your sign-in expired."); return; } if (!A.card) { v.innerHTML = top + `<div class="ap-err" style="margin:16px 20px">${H(e.message)}</div>`; return; } }
@@ -803,7 +803,7 @@
         refreshBuilder(`<div class="ap-ok">Added ${H(it.label)}. Build another leg, or review your slip.</div>`); return; }
       case "signin": doSignIn(); return;
       case "signinsheet": openSheet(sheetHead("Sign in", "") + signInForm("Sign in to log bets and track them on My card."), "signin"); return;
-      case "signout": api("logout").catch(() => {}); setToken(null); A.card = null; closeSheet(); toast("Signed out"); if (A.tab === "card") go("today"); else render(); return;
+      case "signout": api("logout").catch(() => {}); setToken(null); A.card = null; closeSheet(); toast("Signed out"); render(); return;
       case "desk": LS.set("bw_layout", "desk"); location.reload(); return;
       case "del": delBet(el); return;
       case "rwho": A.recWho = v; render(); return;
