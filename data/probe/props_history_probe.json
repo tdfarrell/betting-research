@@ -1,0 +1,59 @@
+{
+ "tries": [
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401809243/competitions/401809243/odds",
+   "status": 404,
+   "label": "2025-26 opener",
+   "providers": []
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401809243/competitions/401809243/odds/100/propBets?lang=en&region=us&limit=1000",
+   "status": 404,
+   "label": "2025-26 opener"
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401810330/competitions/401810330/odds",
+   "status": 404,
+   "label": "2025-26 Jan",
+   "providers": []
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401810330/competitions/401810330/odds/100/propBets?lang=en&region=us&limit=1000",
+   "status": 404,
+   "label": "2025-26 Jan"
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401704627/competitions/401704627/odds",
+   "status": 404,
+   "label": "2024-25 opener",
+   "providers": []
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401704627/competitions/401704627/odds/100/propBets?lang=en&region=us&limit=1000",
+   "status": 404,
+   "label": "2024-25 opener"
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/football/nfl/leagues/nfl/events/401772510/competitions/401772510/odds",
+   "status": 404,
+   "label": "2025 wk1",
+   "providers": []
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/football/nfl/leagues/nfl/events/401772510/competitions/401772510/odds/100/propBets?lang=en&region=us&limit=1000",
+   "status": 404,
+   "label": "2025 wk1"
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/football/nfl/leagues/nfl/events/401773000/competitions/401773000/odds",
+   "status": 404,
+   "label": "2025 midseason?",
+   "providers": []
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/football/nfl/leagues/nfl/events/401773000/competitions/401773000/odds/100/propBets?lang=en&region=us&limit=1000",
+   "status": 404,
+   "label": "2025 midseason?"
+  }
+ ]
+}
