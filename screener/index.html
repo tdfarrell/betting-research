@@ -19,7 +19,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Screener">
-<meta name="bw-build" content="screener 2026-10-23e">
+<meta name="bw-build" content="screener 2026-10-23f">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,15 +130,17 @@ td.mono:first-child{white-space:nowrap;color:var(--muted)}
 }
 .scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.2s;z-index:9}
 .scrim.on{opacity:1;pointer-events:auto}
-aside{position:fixed;top:0;right:0;height:100%;width:min(720px,100%);background:var(--bg);border-left:1px solid var(--line);
-  transform:translateX(100%);transition:transform .22s ease;overflow:auto;z-index:10;box-shadow:-20px 0 50px rgba(0,0,0,.5)}
+aside{position:fixed;top:0;right:0;bottom:0;height:100%;height:100dvh;width:min(720px,100%);background:var(--bg);border-left:1px solid var(--line);
+  transform:translateX(100%);transition:transform .22s ease;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  z-index:10;box-shadow:-20px 0 50px rgba(0,0,0,.5)}
+body.drawer-open{position:fixed;left:0;right:0;overflow:hidden}
 aside.on{transform:none}
-.dh{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:14px 18px;display:flex;align-items:flex-start;gap:12px;z-index:2}
+.dh{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:calc(14px + env(safe-area-inset-top)) calc(18px + env(safe-area-inset-right)) 14px 18px;display:flex;align-items:flex-start;gap:12px;z-index:2}
 .dh h3{font:800 28px/1.02 var(--display);margin:0;text-transform:uppercase;letter-spacing:.4px}
 .dh .sub{color:var(--muted);font-size:12px;margin-top:4px}
 .iconbtn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit}
 .dh .x{margin-left:auto}
-.db{padding:14px 18px 40px}
+.db{padding:14px 18px calc(40px + env(safe-area-inset-bottom))}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px}
 .panel h4{margin:0 0 8px;font:600 10.5px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--amber)}
@@ -955,7 +957,12 @@ document.addEventListener("click", e => { const el = e.target.closest("[data-id]
 document.addEventListener("keydown", e => { const el = e.target.closest && e.target.closest(".gc"); if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openGame(el.dataset.id); } });
 $("#scrim").onclick = closeDrawer;
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
-function closeDrawer() { $("#drawer").classList.remove("on"); $("#scrim").classList.remove("on"); $("#drawer").setAttribute("aria-hidden", "true"); }
+/* the page behind an open drawer is pinned in place, so touches scroll the drawer, not the page (iPhone home-screen app) */
+let lockY = 0;
+function lockPage() { if (document.body.classList.contains("drawer-open")) return; lockY = window.scrollY; document.body.style.top = `-${lockY}px`; document.body.classList.add("drawer-open"); }
+function unlockPage() { if (!document.body.classList.contains("drawer-open")) return; document.body.classList.remove("drawer-open"); document.body.style.top = ""; window.scrollTo(0, lockY); }
+function showDrawer() { const d = $("#drawer"); d.scrollTop = 0; d.classList.add("on"); $("#scrim").classList.add("on"); d.setAttribute("aria-hidden", "false"); lockPage(); }
+function closeDrawer() { $("#drawer").classList.remove("on"); $("#scrim").classList.remove("on"); $("#drawer").setAttribute("aria-hidden", "true"); unlockPage(); }
 
 async function loadHistory() {
   const sp = state.sport;
@@ -993,7 +1000,7 @@ async function openGame(id) {
       ${g.flags.length ? `<div style="margin-top:6px"><span class="gr FLAG">${esc(g.flags.join(", "))}</span></div>` : ""}</div>
       <button class="iconbtn x" onclick="closeDrawer()" aria-label="Close">✕</button></div>`;
   $("#drawer").innerHTML = head + `<div class="db">${S().drawer(g, state.slate.teams)}</div>`;
-  $("#drawer").classList.add("on"); $("#scrim").classList.add("on"); $("#drawer").setAttribute("aria-hidden", "false");
+  showDrawer();
   const Hs = await loadHistory(); const pts = Hs[g.id] || [];
   const lm = $("#lm"); if (lm) lm.innerHTML = lineChart(pts, "home_spread", `${g.home_abbr} spread`) + lineChart(pts, "total", "Total");
 }
@@ -1533,7 +1540,7 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-23e";
+const SCREENER_BUILD = "2026-10-23f";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";
@@ -1970,7 +1977,7 @@ function openPlayer(pid, gid) {
       <div class="panel"><h4>Before you bet</h4><ul class="notes">${nba ? `<li>Check the injury report and starting lineups ~30 minutes before tip (load management and late scratches move minutes).</li><li>Confirm the price in the DraftKings app; ESPN's prices can lag.</li>` : `<li>Check the final inactives ~90 minutes before kickoff.</li><li>Prices aren't shown here; compare the fair odds to DraftKings' ladder.</li>`}</ul></div>
     </div>`;
   if (hasLog(c)) { if (!px || px.pid !== c.id || px.gid !== c.game_id) pxReset(c, c.markets[state.pf.mk] ? state.pf.mk : mks[0]); renderPX(c); bindPX(c); }
-  $("#drawer").classList.add("on"); $("#scrim").classList.add("on"); $("#drawer").setAttribute("aria-hidden", "false");
+  showDrawer();
 }
 document.addEventListener("click", e => {
   if (state.view !== "props" || e.target.closest("aside") || e.target.closest(".addb")) return;
