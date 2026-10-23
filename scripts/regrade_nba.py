@@ -279,10 +279,12 @@ def backtest(seasons):
     # every graded game, for the confidence tables (scripts/confidence.py)
     import csv as _csv
     with open(f"{D}/backtest_games.csv", "w", newline="") as fh:
-        w = _csv.writer(fh); w.writerow(["season", "date", "side_edge", "side_sd", "side_res", "tot_edge", "tot_sd", "tot_res"])
+        w = _csv.writer(fh); w.writerow(["season", "date", "side_edge", "side_sd", "side_res", "tot_edge", "tot_sd", "tot_res",
+                                          "game_id", "number", "total_number", "close", "close_total", "margin", "total"])
         for r in out:
             w.writerow([r["season"], r["date"], rnd(r["number"] - r["close"], 2), rnd(r["side_sd"], 2), r.get("side_res"),
-                        rnd(r["total_number"] - r["close_total"], 2) if r.get("tot_res") is not None else "", rnd(r.get("tot_sd"), 2) if r.get("tot_sd") else "", r.get("tot_res")])
+                        rnd(r["total_number"] - r["close_total"], 2) if r.get("tot_res") is not None else "", rnd(r.get("tot_sd"), 2) if r.get("tot_sd") else "", r.get("tot_res"),
+                        r["id"], rnd(r["number"], 2), rnd(r.get("total_number"), 2), r["close"], r.get("close_total"), r["margin"], r["total"]])
     summ = {"seasons": [min(seasons), max(seasons)], "games": len(out), "line": "DraftKings close (ESPN)",
             "params": {"prior_games": PRIOR_GAMES, "prior_shrink": PRIOR_SHRINK, "b2b": B2B},
             "rmse": {k: rnd(math.sqrt(np.mean([(r[k] - r["margin"]) ** 2 for r in out])), 2) for k in ("close", "number", "eff_margin_cal", "pts_margin_cal")} if out else {},

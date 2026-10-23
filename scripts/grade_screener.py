@@ -67,6 +67,9 @@ def save_csv(path, rows, cols):
 
 # ------------------------------------------------------------------ 1. line snapshots
 def snapshot_board(doc, league, slate, picks, at):
+    from picks import GAME_MODELS
+    if not GAME_MODELS.get(league):
+        return   # model retired (failed the Oct 23 walk-forward test): no new game-line picks are recorded
     for g in doc.get("games", []):
         if g.get("started") or not g.get("kickoff_utc") or iso_le(g["kickoff_utc"], at):
             continue
@@ -356,21 +359,11 @@ def snapshot_prop_picks(doc, league, lines, pp, at):
                 r.update({"first_side": pk["side"], "first_line": pk["line"], "first_utc": at})
             pp[key] = r
 
-def retag_open_prop_picks(pp):
-    """Open picks the latest pass didn't re-pick (line pulled from the feed) keep the current tag rule (picks.prop_pick)."""
-    from picks import NBA_MK, NFL_UNDER
-    for r in pp.values():
-        if r.get("status") != "open":
-            continue
-        try:
-            po = float(r.get("p_over"))
-        except (TypeError, ValueError):
-            continue
-        if r["market"] in NBA_MK or r.get("side") == "over":
-            r["tag"] = "PICK"
-        else:
-            ch = 1 - po
-            r["tag"] = "PLAY" if ch >= NFL_UNDER["play"] else "LEAN" if ch >= NFL_UNDER["lean"] else "PICK"
+def drop_unstarted_prop_picks(pp, at):
+    """Open picks for games not yet started are rebuilt from scratch each run (scripts/picks.py prop_pick), so a pick
+    the model no longer makes, or whose line was pulled, disappears instead of keeping an old tag."""
+    for k in [k for k, r in pp.items() if r.get("status") == "open" and r.get("kickoff_utc") and not iso_le(r["kickoff_utc"], at)]:
+        del pp[k]
 
 def settle_prop_picks(pp):
     nba = {}
@@ -440,7 +433,7 @@ def summarize_prop_picks(pp):
                     continue
                 for b in ((r["tag"],) if r["tag"] in FLAGGED else ()) + ("ALL",):
                     for A in (agg, season):
-                        rec_add(A[b], r["result"], r["odds"] or -110)
+                        rec_add(A[b], r["result"], r["odds"] or (-120 if lg == "nfl" else -110))
                         if r.get("clv") not in ("", None):
                             A[b]["clv_sum"] += float(r["clv"]); A[b]["clv_n"] += 1
             day_list.append({"day": day, "picks": len(rs), "final": sum(1 for r in rs if r["status"] == "final"),
@@ -483,12 +476,12 @@ def run():
     for p in glob.glob("data/props/nfl_props_*.json"):
         snapshot_props(json.load(open(p)), props, at)
     pp = load_pp()
+    drop_unstarted_prop_picks(pp, at)
     for lg in ("nfl", "nba"):
         lp = f"data/props/dk_lines_{lg}.json"
         lines = json.load(open(lp)).get("lines", {}) if os.path.exists(lp) else {}
         for p in glob.glob(f"data/props/{lg}_props_*.json"):
             snapshot_prop_picks(json.load(open(p)), lg, lines, pp, at)
-    retag_open_prop_picks(pp)
     settle_picks(picks); settle_props(props); settle_prop_picks(pp)
     save_csv(PICKS, picks, PICK_COLS); save_csv(PROPS, props, PROP_COLS); save_pp(pp)
     summ = summarize(picks, props)

@@ -141,7 +141,7 @@ def nfl(seasons):
     by_espn = {str(r.espn).split(".")[0]: r for r in sched.itertuples() if not pd.isna(r.espn)}
     all_roles = {}
     for S in range(min(seasons) - 1, max(seasons) + 1):
-        all_roles.update(F.season_roles(D, S, 19))
+        all_roles.update(F.season_roles(D, S, 19, prior_only=True))
     pgi = {(r.game_id, r.player_id): r for r in D["pg"].itertuples()}
     by_week = defaultdict(list)
     for r in lines:

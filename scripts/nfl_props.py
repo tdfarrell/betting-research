@@ -227,16 +227,21 @@ def assign_roles(wk, cands, qb1=None):
             roles[p] = f"{pos}{k}"
     return roles
 
-def season_roles(D, S, upto):
-    """Entering-game roles for every game of season S before week `upto` (for hit-rate splits)."""
+def season_roles(D, S, upto, prior_only=False):
+    """Entering-game roles for every game of season S before week `upto` (for hit-rate splits).
+    prior_only (backtests): the starting QB is last game's QB1, not who threw the most passes in this game,
+    so the backtest doesn't know about in-game QB changes or surprise starts."""
     pg = D["pg"]; out = {}
+    last_qb1 = {}
     for w in range(1, upto):
         games = pg[(pg.season == S) & (pg.week == w)]
         if games.empty:
             continue
         wk = Week(D, S, w) if (S, w) not in D["wk_cache"] else D["wk_cache"][(S, w)]
         D["wk_cache"][(S, w)] = wk
-        qb1 = games[games.position == "QB"].sort_values("attempts").groupby("team").player_id.last().to_dict()
+        this_qb1 = games[games.position == "QB"].sort_values("attempts").groupby("team").player_id.last().to_dict()
+        qb1 = {t: last_qb1.get(t) for t in this_qb1} if prior_only else this_qb1
+        last_qb1.update(this_qb1)
         for pid, role in assign_roles(wk, games[["team", "player_id", "position"]], qb1).items():
             out[(S, w, pid)] = role
     return out

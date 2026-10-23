@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 ballwatcher-screener.zip
+data/props_hist/nba_features.csv.gz
+data/props_hist/nba_v2_walk.csv.gz

@@ -4,12 +4,16 @@ Every spread and total on a board gets a pick: the side the model's number favor
 Picks are tagged PLAY or LEAN when they clear that sport's bands; everything else is an untagged PICK
 (including the old CHECK / big-gap games and FLAG games: they keep their side, graded like the rest).
 
-Props: every player with a DraftKings over/under line gets an over or under pick (the side the model favors
-  vs DK's no-vig chance, or vs 50% when DK shows no prices). Tags come from the prop backtest (see prop_pick):
-  NFL unders only, PLAY at 78%+ model chance, LEAN 70-78%. NBA props and NFL overs are untagged for now.
+Props (rebuilt Oct 23, see prop_pick): NFL only, from the recalibrated model; PLAY 60%+, LEAN 57-60%, otherwise
+  no pick. NBA props have no model pick (it didn't beat the line).
 The page (screener/index.html) applies the same prop rule, so tags match what gets graded.
 """
 import json, math, os
+
+# Game-line models that passed the Oct 23 walk-forward test at real prices (scripts/game_models_eval.py). None did,
+# so no game-line picks are recorded or shown (screener GAME_MODEL mirrors this). Flip one to True only after a
+# rebuilt model passes.
+GAME_MODELS = {"cfb": False, "nfl": False, "nba": False, "cbb": False}
 
 TAG = {"PLAY": "PLAY", "TARGET": "PLAY", "LEAN": "LEAN", "WATCH": "LEAN"}
 
@@ -145,39 +149,52 @@ def model_over(m, mk, line):
         return 1 - sum(math.exp(-lam) * lam ** j / math.factorial(j) for j in range(k))
     return None
 
-# Prop tags, from the backtest against real sportsbook lines (scripts/props_backtest.py, Oct 23 2026):
-#  NBA (2024-26, 107k main lines): the model adds almost nothing beyond the line itself (win 50.7%, ROI -5.6% at
-#      every edge size), so NBA props are picked and graded but never tagged until the model earns it.
-#  NFL (2024-25, 15k lines, graded at -110): overs never beat the line (49.7%); unders did, more so the surer
-#      the model: 70-78% model chance won ~57%, 78%+ won ~63% in both seasons. So PLAY = under at 78%+,
-#      LEAN = under at 70-78%. Overs are picked and graded, untagged.
+# Props after the Oct 23 rebuild (claude/model-research-and-redesign.md):
+#  NBA: the model couldn't beat the book's line in walk-forward tests (107k real lines, 2024-26; best versions -3% to
+#       +2% ROI, nothing consistent), so per the rule "a model that doesn't beat the line doesn't ship", NBA props get
+#       no model pick at all. The cards keep lines, hit rates and game logs.
+#  NFL: the simulation's chance is recalibrated per market (data/models/nfl_props_calib.json, scripts/nfl_props_calib.py).
+#       Walk-forward (passing TDs excluded), calibrated 60%+ won 62.4%, 57-60% won 57.2%, in both 2024 and 2025.
+#       PLAY 60%+, LEAN 57-60%; below that, no pick. Passing TDs never picked (priced far from even).
 NBA_MK = {"pts", "reb", "ast", "tpm", "pra", "pr", "pa", "ra", "stl", "blk"}
-NFL_UNDER = {"play": 0.78, "lean": 0.70}
-PRICED = {"play": None, "lean": None}     # kept for reference: no priced (NBA) prop is tagged
-UNPRICED = NFL_UNDER
+_NFL_CAL = None
+def nfl_cal():
+    global _NFL_CAL
+    if _NFL_CAL is None:
+        try:
+            _NFL_CAL = json.load(open(os.path.join(os.path.dirname(__file__), "..", "data", "models", "nfl_props_calib.json")))
+        except Exception:
+            _NFL_CAL = {}
+    return _NFL_CAL
+
+def calibrated_over(mk, p):
+    c = (nfl_cal().get("markets") or {}).get(mk)
+    if not c:
+        return None
+    p = min(max(p, 0.01), 0.99)
+    return 1 / (1 + math.exp(-(c["a"] + c["b"] * math.log(p / (1 - p)))))
 
 def prop_pick(m, mk, rec):
-    """rec = DK line record {line, open, over, under}. Returns the pick dict or None."""
+    """rec = DK line record {line, open, over, under}. NFL only; returns the pick dict or None (no pick)."""
     line = rec.get("line")
-    if line is None:
+    if line is None or mk in NBA_MK or mk in (nfl_cal().get("no_pick") or []):
         return None
-    p = model_over(m, mk, float(line))
+    p_raw = model_over(m, mk, float(line))
+    if p_raw is None:
+        return None
+    p = calibrated_over(mk, p_raw)
     if p is None:
         return None
-    nv = novig_over(rec)
-    over = p >= (nv if nv is not None else 0.5)
+    over = p >= 0.5
     chance = p if over else 1 - p
-    edge = abs(p - nv) if nv is not None else chance - 0.5
+    t = nfl_cal().get("tags") or {"play": 0.60, "lean": 0.57}
+    tag = "PLAY" if chance >= t["play"] else "LEAN" if chance >= t["lean"] else None
+    if tag is None:
+        return None
+    nv = novig_over(rec)
+    edge = chance - 0.5
     why = None
-    if mk in NBA_MK:
-        tag = "PICK"
-        why = "NBA prop model hasn't beaten the line in the backtest yet: picked and graded, not tagged"
-    elif over:
-        tag = "PICK"
-        why = "Overs haven't beaten the line in the backtest: picked and graded, not tagged"
-    else:
-        tag = "PLAY" if chance >= NFL_UNDER["play"] else "LEAN" if chance >= NFL_UNDER["lean"] else "PICK"
-    out = {"side": "over" if over else "under", "line": float(line), "p_over": round(p, 3), "chance": round(chance, 3),
+    out = {"side": "over" if over else "under", "line": float(line), "p_over": round(p, 3), "p_raw": round(p_raw, 3), "chance": round(chance, 3),
            "novig_over": round(nv, 3) if nv is not None else None, "edge": round(edge, 3), "tag": tag,
            "odds": rec.get("over" if over else "under")}
     if why:
