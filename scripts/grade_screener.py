@@ -356,6 +356,22 @@ def snapshot_prop_picks(doc, league, lines, pp, at):
                 r.update({"first_side": pk["side"], "first_line": pk["line"], "first_utc": at})
             pp[key] = r
 
+def retag_open_prop_picks(pp):
+    """Open picks the latest pass didn't re-pick (line pulled from the feed) keep the current tag rule (picks.prop_pick)."""
+    from picks import NBA_MK, NFL_UNDER
+    for r in pp.values():
+        if r.get("status") != "open":
+            continue
+        try:
+            po = float(r.get("p_over"))
+        except (TypeError, ValueError):
+            continue
+        if r["market"] in NBA_MK or r.get("side") == "over":
+            r["tag"] = "PICK"
+        else:
+            ch = 1 - po
+            r["tag"] = "PLAY" if ch >= NFL_UNDER["play"] else "LEAN" if ch >= NFL_UNDER["lean"] else "PICK"
+
 def settle_prop_picks(pp):
     nba = {}
     if os.path.exists("data/nba/player_games.csv"):
@@ -472,6 +488,7 @@ def run():
         lines = json.load(open(lp)).get("lines", {}) if os.path.exists(lp) else {}
         for p in glob.glob(f"data/props/{lg}_props_*.json"):
             snapshot_prop_picks(json.load(open(p)), lg, lines, pp, at)
+    retag_open_prop_picks(pp)
     settle_picks(picks); settle_props(props); settle_prop_picks(pp)
     save_csv(PICKS, picks, PICK_COLS); save_csv(PROPS, props, PROP_COLS); save_pp(pp)
     summ = summarize(picks, props)
