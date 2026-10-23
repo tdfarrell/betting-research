@@ -21,9 +21,10 @@ jobs:
           python-version: "3.12"
       - name: NFL and NBA prop lines on finished games
         run: |
-          python scripts/props_history_pull.py nfl 2024 2025
-          python scripts/props_history_pull.py nba 2025 2026
+          python scripts/props_history_pull.py nfl 2024 2025 --fresh
+          python scripts/props_history_pull.py nba 2025 2026 --fresh
       - name: nflverse player ids (ESPN -> gsis)
+        if: hashFiles('data/props_hist/nfl_player_ids.csv') == ''
         run: |
           mkdir -p data/props_hist
           curl -sSL https://github.com/nflverse/nflverse-data/releases/download/players/players.csv | python -c "

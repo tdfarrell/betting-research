@@ -8,8 +8,9 @@ for DraftKings' (books' prop lines sit within a half point or so of each other);
   python scripts/props_history_pull.py nba 2025 2026     NBA seasons (ESPN years: 2026 = 2025-26)
   python scripts/props_history_pull.py nfl 2024 2025     NFL seasons
 
-Writes data/props_hist/<league>_<season>.csv.gz:
-  game_id, date, athlete_id (ESPN), market, line, over (American), under, provider
+Writes data/props_hist/<league>_<season>.csv.gz, one row per board item (alternate lines included):
+  game_id, date, athlete_id (ESPN), market, line, side (over/under/blank), price (American), open_line, provider, updated
+The backtest picks each player's MAIN line from these (scripts/props_backtest.py).
 NBA markets: pts reb ast tpm pra pr pa ra stl blk.  NFL: pass_yds pass_td rush_yds rec_yds rec rr_yds (lines only).
 """
 import csv, gzip, json, os, re, sys, time, urllib.request, urllib.error
@@ -57,7 +58,7 @@ def one_game(lg, ev, date):
             page += 1
         if not items:
             continue
-        recs, seen = {}, {}
+        rows = []
         for it in items:
             mk = market(lg, (it.get("type") or {}).get("name"))
             m = re.search(r"/athletes/(\d+)", (it.get("athlete") or {}).get("$ref", ""))
@@ -67,16 +68,11 @@ def one_game(lg, ev, date):
                 tgt = ((it.get("open") or {}).get("target") or {}).get("value")
             if not mk or not m or tgt is None:
                 continue
-            key = (m.group(1), mk)
-            price = ((it.get("odds") or {}).get("american") or {}).get("value")
-            side = "over" if "over" in cur else "under" if "under" in cur else None
-            if side is None:
-                n = seen.get(key, 0); seen[key] = n + 1
-                side = "over" if n == 0 else "under" if n == 1 else None
-            r = recs.setdefault(key, {"line": float(tgt)})
-            if side and price is not None and side not in r:
-                r[side] = price
-        return [[ev, date, a, mk, r["line"], r.get("over", ""), r.get("under", ""), pid] for (a, mk), r in recs.items()]
+            side = "over" if "over" in cur else "under" if "under" in cur else ""
+            am = ((it.get("odds") or {}).get("american") or {})
+            rows.append([ev, date, m.group(1), mk, float(tgt), side, am.get("value", ""),
+                         ((it.get("open") or {}).get("target") or {}).get("value", ""), pid, it.get("lastUpdated", "")])
+        return rows
     return []
 
 def games_for(lg, season):
@@ -95,9 +91,11 @@ def games_for(lg, season):
 def main():
     lg = sys.argv[1]
     os.makedirs(OUT, exist_ok=True)
-    for season in sys.argv[2:]:
+    for season in [a for a in sys.argv[2:] if not a.startswith("--")]:
         games = games_for(lg, season)
         path = f"{OUT}/{lg}_{season}.csv.gz"
+        if os.path.exists(path) and "--fresh" in sys.argv:
+            os.remove(path)
         done = set()
         rows = []
         if os.path.exists(path):
@@ -111,7 +109,7 @@ def main():
                 if res:
                     rows += res; n_with += 1
         with gzip.open(path, "wt", newline="") as f:
-            w = csv.writer(f); w.writerow(["game_id", "date", "athlete_id", "market", "line", "over", "under", "provider"]); w.writerows(rows)
+            w = csv.writer(f); w.writerow(["game_id", "date", "athlete_id", "market", "line", "side", "price", "open_line", "provider", "updated"]); w.writerows(rows)
         print(f"{lg} {season}: {len(games)} games, {n_with} new with props, {len(rows)} lines total ({time.time() - t0:.0f}s)")
 
 if __name__ == "__main__":
