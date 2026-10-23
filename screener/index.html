@@ -19,7 +19,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Screener">
-<meta name="bw-build" content="screener 2026-10-23h">
+<meta name="bw-build" content="screener 2026-10-23i">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -418,7 +418,7 @@ b.up{color:var(--win)}b.dn{color:var(--loss)}b.amb{color:var(--amber)}
 .dvp.soft{background:var(--win-bg);color:var(--win)}.dvp.mid{background:var(--chip);color:var(--muted)}.dvp.tough{background:var(--loss-bg);color:var(--loss)}
 .c.st{font:600 11px var(--mono)}
 </style>
-<link rel="stylesheet" href="app.css?v=2026-10-23h">
+<link rel="stylesheet" href="app.css?v=2026-10-23i">
 </head>
 <body>
 <div class="sitebar"><div class="wrap">
@@ -491,7 +491,7 @@ b.up{color:var(--win)}b.dn{color:var(--loss)}b.amb{color:var(--amber)}
 <div class="ap-scrim" id="apScrim"></div>
 <section id="apSheet" class="ap-sheet" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Details"><div class="ap-grab" id="apGrab"><i></i></div><div id="apSheetBody"></div></section>
 <div class="ap-toast" id="apToast" role="status" aria-live="polite"></div>
-<script src="app.js?v=2026-10-23h"></script>
+<script src="app.js?v=2026-10-23i"></script>
 <script>
 const $ = s => document.querySelector(s);
 const fmt = (x, d = 1) => x == null ? "—" : (+x).toFixed(d).replace(/\.0+$/, "");
@@ -1546,7 +1546,7 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-23h";
+const SCREENER_BUILD = "2026-10-23i";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";

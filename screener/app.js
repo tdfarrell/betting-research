@@ -9,7 +9,7 @@
   "use strict";
   const A = { on: false, tab: "today", tsp: "all", tShow: 4, today: null, gsp: null, gkey: {}, psp: null, pmk: {}, pq: "", pleans: true, pShow: 40,
     slates: {}, props: {}, card: null, cardAt: 0, rec: {}, recWho: "mine", recPer: "30", items: [], slip: [], slipMode: "straight", par: { odds: "", units: "1" },
-    bld: null, timer: null, sheet: null };
+    bld: null, timer: null, sheet: null, me: null, cfg: { model_record: true } };
   const LS = {
     get(k, d = null) { try { const v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } },
     set(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} },
@@ -38,7 +38,7 @@
   const API = LS.get("bw_api") || (/(^|\.)ballwatcher\.com$/.test(location.hostname) ? "/admin/app/" : "https://ballwatcher.com/admin/app/");
   let TOKEN = LS.get("bw_app_token");
   const signedIn = () => !!TOKEN;
-  function setToken(t, name) { TOKEN = t || null; LS.set("bw_app_token", TOKEN); LS.set("bw_app_name", t ? (name || "") : null); drawNav(); }
+  function setToken(t, name) { TOKEN = t || null; LS.set("bw_app_token", TOKEN); LS.set("bw_app_name", t ? (name || "") : null); if (!t) { A.me = null; A.card = null; } drawNav(); }
   async function api(action, body) {
     let r;
     try {
@@ -131,9 +131,18 @@
     try { if (location.hash) history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
     loadGrades().then(ok => { if (ok && (A.tab === "today" || A.tab === "games")) render(); });
     go(tab);
-    if (signedIn()) api("me").catch(() => {});   // drops an expired sign-in quietly
+    loadConfig();
+    if (signedIn()) api("me").then(m => { A.me = m; LS.set("bw_app_name", m.name); }).catch(() => {});   // also drops an expired sign-in quietly
   }
-  function deskLink() {   // the desktop page gets a way into the phone layout (My card, bet slip, Record)
+  // what the site owner has chosen to show (Settings): the model's record can be hidden from everyone but admins
+  async function loadConfig() {
+    try { A.cfg = await api("config"); } catch (e) { return A.cfg; }
+    if (A.on && A.tab === "record") render();
+    document.body.classList.toggle("no-model-record", A.cfg.model_record === false);
+    return A.cfg;
+  }
+  function deskLink() {
+    loadConfig();   // the desktop page gets a way into the phone layout (My card, bet slip, Record)
     const r = document.getElementById("installRow"); if (!r) return;
     const b = document.createElement("button"); b.type = "button"; b.className = "linkbtn"; b.style.marginLeft = "14px";
     b.textContent = "Open the app layout (My card, bet slip, Record)";
@@ -643,28 +652,50 @@
     if (b) { b.disabled = true; b.textContent = "Signing in…"; }
     try {
       const r = await api("login", { email: em, password: pw });
-      LS.set("bw_app_email", em); setToken(r.token, r.name);
+      LS.set("bw_app_email", em); setToken(r.token, r.name); A.me = { name: r.name, role: r.role, visibility: r.visibility }; loadConfig();
       toast(`Signed in${r.name ? " as " + r.name : ""}`);
       if (A.sheet === "slip") openSlip(); else { closeSheet(); go("card"); }
     } catch (e) { if (out) out.innerHTML = `<div class="ap-err">${H(e.message)}</div>`; if (b) { b.disabled = false; b.textContent = "Sign in"; } }
   }
-  function openHelp() {
+  function openHelp(acMsg) {
     const html = sheetHead("How to use it", "") + `<div class="ap-form ap-help"><ol>
         <li><span>1</span><div><b>Today</b> shows the strongest prop Leans first, then every game with our spread and total picks. The % is how often picks like it won in testing.</div></li>
         <li><span>2</span><div>Tap any pick or game to research it: DraftKings vs our number, matchups, injuries, trends and line movement. Sections open when you tap them.</div></li>
         <li><span>3</span><div>${signedIn() ? "Tap <b>+ Add to slip</b> on a pick, or build any bet (alt lines, team totals, parlays) from <b>My card</b>. Log it and it's graded live." : "Signed in, you can add picks to a bet slip, log straight bets and parlays, and watch them graded live on <b>My card</b>."}</div></li>
-        <li><span>4</span><div><b>Record</b> shows ${signedIn() ? "your bets and " : ""}how the model's picks have done.</div></li></ol>
-      ${signedIn() ? `<p class="ap-cap" style="margin-top:18px">Signed in${LS.get("bw_app_name") ? " as " + H(LS.get("bw_app_name")) : ""}.</p><button type="button" class="ap-btn" data-ap="signout">Sign out on this device</button>`
+        <li><span>4</span><div><b>Record</b> shows ${[...(signedIn() ? ["your bets"] : []), "the leaderboard", ...(A.cfg.model_record !== false ? ["how the model's picks have done"] : [])].join(", ").replace(/, ([^,]*)$/, " and $1")}.</div></li></ol>
+      ${signedIn() ? accountHtml(acMsg)
         : `<button type="button" class="ap-btn main" data-ap="signinsheet" style="margin-top:18px">Sign in to My card</button>`}
       <button type="button" class="ap-btn ghost" data-ap="desk">Use the full desktop layout</button>
       <p class="ap-cap">21+ · Gambling problem? Call 1-800-GAMBLER · Not affiliated with DraftKings · Lines: DraftKings at time of pull.</p></div>`;
     openSheet(html, "help");
   }
 
+  function accountHtml(msg) {
+    const me = A.me || { name: LS.get("bw_app_name") || "", role: "member", visibility: "private" }, admin = me.role === "admin";
+    return `<h2 class="ap-h2" style="margin:24px 0 8px">YOUR ACCOUNT</h2>
+      <p style="margin:0;font-size:14.5px">Signed in as <b>${H(me.name)}</b>${admin ? " · admin" : ""}.</p>
+      ${admin ? `<p class="ap-cap">Bets you log are Ballwatcher's picks: they go on Today's Card, The Record and the leaderboard.</p>`
+        : `<p class="ap-cap" style="margin-top:12px">Who can see your bets</p>
+          <div style="margin:6px -20px 0">${segHtml("vis", [["private", "Only me"], ["public", "Public + leaderboard"]], me.visibility === "public" ? "public" : "private")}</div>
+          <p class="ap-cap">${me.visibility === "public" ? "Your record and bets show on the public leaderboard on ballwatcher.com and in the app." : "Your bets are private. Nobody else can see them."}</p>`}
+      <label class="ap-fl"><span>Display name${admin ? "" : " (shown on the leaderboard)"}</span><div class="ap-g2" style="grid-template-columns:minmax(0,1fr) auto"><input class="ap-in txt" id="apNm" value="${H(me.name)}" maxlength="60"><button type="button" class="ap-btn" data-ap="savename" style="margin:0;width:auto;padding:0 16px;height:48px">Save</button></div></label>
+      <details class="ap-det" style="margin:14px 0 0"><summary>Change password</summary><div class="in">
+        <label class="ap-fl" style="margin-top:0"><span>Current password</span><input class="ap-in txt" type="password" id="apPw0" autocomplete="current-password"></label>
+        <label class="ap-fl"><span>New password (8+ characters)</span><input class="ap-in txt" type="password" id="apPw1" autocomplete="new-password"></label>
+        <button type="button" class="ap-btn" data-ap="savepw">Change password</button></div></details>
+      <div id="apAcMsg">${msg || ""}</div>
+      <button type="button" class="ap-btn" data-ap="signout" style="margin-top:16px">Sign out on this device</button>`;
+  }
+  async function saveAccount(body, okMsg) {
+    try { const r = await api("account", body); A.me = { ...(A.me || {}), name: r.name, role: r.role, visibility: r.visibility }; LS.set("bw_app_name", r.name); openHelp(`<div class="ap-ok">${H(okMsg)}</div>`); }
+    catch (e) { const m = q("#apAcMsg"); if (m) m.innerHTML = `<div class="ap-err">${H(e.message)}</div>`; }
+  }
+
   /* ---------------------------------------------------------------- My card */
   async function renderCard(quiet) {
     const v = q("#apView"); if (!v || A.tab !== "card") return;
-    const top = `${head("My card", todayLong())}<div style="padding:0 20px"><button type="button" class="ap-btn" data-ap="build">+ Build a bet</button></div>`;
+    const me = A.me || {}, note = !signedIn() ? "" : me.role === "admin" ? "Ballwatcher's picks · on Today's Card" : me.visibility === "public" ? "Public · on the leaderboard" : "Private · only you see these";
+    const top = `${head("My card", todayLong())}${note ? `<p class="ap-note" style="margin-top:4px">${H(note)} · <button type="button" class="ap-more" data-ap="help" style="display:inline;min-height:0;padding:0">change</button></p>` : ""}<div style="padding:0 20px"><button type="button" class="ap-btn" data-ap="build">+ Build a bet</button></div>`;
     if (!signedIn()) { v.innerHTML = head("My card") + signInForm("Sign in to log bets, build parlays and watch them graded live."); return; }
     if (!A.card || !quiet) { if (!A.card) v.innerHTML = top + `<div class="ap-empty">Loading your card…</div>`; }
     try { A.card = await api("card"); A.cardAt = Date.now(); }
@@ -696,7 +727,7 @@
     if (lv.pct != null && lv.line) bar = `<div class="ap-trk"><i class="${cls}" style="width:${Math.min(100, lv.pct / 1.5 * 100).toFixed(1)}%"></i><u style="left:${(100 / 1.5).toFixed(1)}%"></u></div>`;
     return `${bar}<div class="ap-lt"><span>${H(lv.score || "")}</span><b class="${lv.now === "winning" ? "up" : lv.now === "losing" ? "dn" : ""}">${H(lv.text || "")}</b></div>`;
   }
-  function betHtml(b) {
+  function betHtml(b, view) {
     const [cls, txt] = chipOf(b);
     const par = b.kind !== "straight";
     const title = par ? `${b.legs.length}-leg ${b.kind === "sgp" ? "SGP" : "parlay"} · ${mn(b.odds_txt)}` : mn(b.label);
@@ -706,7 +737,7 @@
       const right = l.status !== "pending" ? (l.status === "won" ? "Hit" : l.status === "lost" ? "Missed" : "Push") : lv ? (lv.state === "pre" ? whenTxt(b.starts_at) : lv.text || lv.detail) : "";
       return `<div class="ap-leg"><i class="${st}"></i><span>${H(mn(l.pick))}${lv && lv.state === "in" && lv.score ? `<small>${H(lv.score)} · ${H(lv.detail || "")}</small>` : ""}</span><em class="${lv && l.status === "pending" ? lv.now || "" : ""}">${H(right || "")}</em></div>`; }).join("")}</div>`;
     const note = b.status !== "pending" && b.note ? `<div class="ap-gn">${H(b.note.replace(/^Auto: /, ""))}</div>` : "";
-    const rm = !b.started && b.status === "pending" ? `<button type="button" class="ap-rm" data-ap="del" data-v="${b.id}">Delete this bet</button>` : "";
+    const rm = !view && !b.started && b.status === "pending" ? `<button type="button" class="ap-rm" data-ap="del" data-v="${b.id}">Delete this bet</button>` : "";
     return `<section class="ap-bet"><div class="ap-top"><span class="ap-chip ${cls}">${H(txt)}</span><span class="ap-when">${par ? (b.kind === "sgp" ? "Same game parlay" : "Parlay") : H(b.sport + (b.market ? " · " + b.market : ""))}</span></div>
       <h3>${H(title)}</h3><div class="s">${sub}</div>${par ? "" : trackHtml(b.live)}${legs}${note}${rm}</section>`;
   }
@@ -719,10 +750,13 @@
   /* ---------------------------------------------------------------- Record */
   async function renderRecord() {
     const v = q("#apView"); if (!v) return;
-    const who = signedIn() ? A.recWho : "model";
-    let html = head("Record") + (signedIn() ? segHtml("rwho", [["mine", "My bets"], ["model", "Model picks"]], who) : "")
+    const modelOk = A.cfg.model_record !== false;
+    const opts = [...(signedIn() ? [["mine", "My bets"]] : []), ["board", "Leaderboard"], ...(modelOk ? [["model", "Model picks"]] : [])];
+    let who = opts.some(o => o[0] === A.recWho) ? A.recWho : opts[0][0];
+    let html = head("Record") + segHtml("rwho", opts, who)
       + `<div class="ap-chips">${[["7", "7 days"], ["30", "30 days"], ["season", "Season"], ["all", "All"]].map(([k, l]) => `<button type="button" data-ap="rper" data-v="${k}" aria-pressed="${A.recPer === k}">${l}</button>`).join("")}</div>`;
-    if (who === "model") { await loadGrades(); if (A.tab === "record") v.innerHTML = html + modelRecord(); return; }
+    if (who === "model") { await loadGrades(); if (A.tab === "record") v.innerHTML = html + (A.cfg.model_record_hidden ? `<p class="ap-note" style="margin-top:12px">Hidden from everyone else (Settings in the admin). Admins still see it.</p>` : "") + modelRecord(); return; }
+    if (who === "board") return renderBoard(v, html);
     v.innerHTML = html + `<div class="ap-empty">Loading your record…</div>`;
     let r;
     try { r = await api("record", { period: A.recPer }); } catch (e) { if (A.tab === "record") v.innerHTML = html + (e.status === 401 ? signInForm("Your sign-in expired.") : `<div class="ap-err" style="margin:16px 20px">${H(e.message)}</div>`); return; }
@@ -733,6 +767,32 @@
     if ((r.by_type || []).length) html += `<h2 class="ap-h2">BY TYPE</h2><div class="ap-list">${r.by_type.map(x => `<div class="ap-rrow"><span>${H(x.label)}</span><span>${H(x.record)}</span><b class="${x.net > 0 ? "up" : x.net < 0 ? "dn" : ""}">${H(x.units)}</b></div>`).join("")}</div>`;
     html += `<h2 class="ap-h2">RECENT</h2><div class="ap-list">${(r.recent || []).map(b => `<div class="ap-rrow"><span>${H(mn(b.kind === "straight" ? b.label : `${b.legs.length}-leg ${b.kind === "sgp" ? "SGP" : "parlay"}`))}<small>${H(new Date(b.starts_at).toLocaleDateString([], { month: "short", day: "numeric" }))}${b.note ? " · " + H(b.note.replace(/^Auto: /, "")) : ""}</small></span><span>${H(UP(b.status))}</span><b class="${b.result_units > 0 ? "up" : b.result_units < 0 ? "dn" : ""}">${b.result_units == null ? "—" : (b.result_units > 0 ? "+" : "") + mn(num(b.result_units, 2)) + "u"}</b></div>`).join("") || `<div class="ap-empty">No graded bets in this period.</div>`}</div>`;
     v.innerHTML = html;
+  }
+  async function renderBoard(v, html) {
+    v.innerHTML = html + `<div class="ap-empty">Loading the leaderboard…</div>`;
+    let r; try { r = await api("leaderboard", { period: A.recPer }); } catch (e) { if (A.tab === "record") v.innerHTML = html + `<div class="ap-err" style="margin:16px 20px">${H(e.message)}</div>`; return; }
+    if (A.tab !== "record") return;
+    let rank = 0;
+    const rows = (r.rows || []).map(x => { if (x.n) rank++; return `<button type="button" class="ap-row" data-ap="bettor" data-v="${H(x.id)}">
+        <span class="ap-rank">${x.n ? rank : "–"}</span>
+        <span style="min-width:0"><span class="ap-rt">${H(x.name)}${x.house ? '<span class="ap-tag">OUR PICKS</span>' : ""}${x.me && !x.house ? '<span class="ap-tag fin">YOU</span>' : ""}${x.private ? '<span class="ap-tag fin">PRIVATE</span>' : ""}</span>
+        <span class="ap-rs">${H(x.n ? x.record : "No graded bets")}${x.n ? ` · ${H(x.pct)} · ROI ${H(x.roi)}` : ""}</span></span>
+        <span class="ap-pct ${x.net > 0 ? "" : x.net < 0 ? "dn" : "acc"}">${H(mn(x.units))}</span>${ICON.chev}</button>`; }).join("");
+    const meRow = (r.rows || []).find(x => x.me && x.private);
+    v.innerHTML = html + `<h2 class="ap-h2">RANKED BY UNITS</h2><div class="ap-list">${rows}</div>
+      <p class="ap-note">${meRow ? "You're private: only you see your row. Change it under ? → Your account. " : ""}Members choose whether their bets are public.</p>`;
+  }
+  async function openBettor(id) {
+    openSheet(sheetHead("Loading…", "") + `<div class="ap-empty">Loading…</div>`, "bettor");
+    let r; try { r = await api("bettor", { id, period: A.recPer }); } catch (e) { openSheet(sheetHead("Card", "") + `<div class="ap-err" style="margin:16px 20px">${H(e.message)}</div>`, "bettor"); return; }
+    if (A.sheet !== "bettor") return;
+    const t = r.total || {};
+    let html = sheetHead(H(r.name), id === "ballwatcher" ? "Ballwatcher's picks" : "")
+      + `<section class="ap-sum four"><div><i>Units</i><b class="${t.net > 0 ? "up" : t.net < 0 ? "dn" : ""}">${H(t.units || "0u")}</b></div><div><i>Record</i><b>${H(t.record || "0-0")}</b></div><div><i>Win rate</i><b>${H(t.pct || "—")}</b></div><div><i>ROI</i><b>${H(t.roi || "—")}</b></div></section>`;
+    if ((r.open || []).length) html += `<h2 class="ap-h2">OPEN BETS</h2>${r.open.map(b => betHtml(b, true)).join("")}`;
+    if ((r.timeline || []).length > 1) html += `<h2 class="ap-h2">UNITS OVER TIME</h2>${unitsChart(r.timeline)}`;
+    html += `<h2 class="ap-h2">RECENT</h2><div class="ap-list">${(r.recent || []).map(b => `<div class="ap-rrow"><span>${H(mn(b.kind === "straight" ? b.label : `${b.legs.length}-leg ${b.kind === "sgp" ? "SGP" : "parlay"}`))}<small>${H(new Date(b.starts_at).toLocaleDateString([], { month: "short", day: "numeric" }))}</small></span><span>${H(UP(b.status))}</span><b class="${b.result_units > 0 ? "up" : b.result_units < 0 ? "dn" : ""}">${b.result_units == null ? "—" : (b.result_units > 0 ? "+" : "") + mn(num(b.result_units, 2)) + "u"}</b></div>`).join("") || `<div class="ap-empty">Nothing graded in this period.</div>`}</div>`;
+    openSheet(html, "bettor");
   }
   function unitsChart(tl) {
     const W = 340, Hh = 110, ys = [0, ...tl.map(x => x.cum)], y0 = Math.min(...ys), y1 = Math.max(...ys), sp = (y1 - y0) || 1;
@@ -767,7 +827,7 @@
     const a = el.dataset.ap, v = el.dataset.v;
     switch (a) {
       case "tab": if (A.sheet) closeSheet(); if (v === A.tab) { window.scrollTo(0, 0); if (v === "card") renderCard(true); return; } go(v); return;
-      case "help": openHelp(); return;
+      case "help": openHelp(); if (signedIn()) api("me").then(m => { A.me = m; }).catch(() => {}); return;
       case "close": closeSheet(); return;
       case "tsp": A.tsp = v; A.tShow = 4; render(); return;
       case "tmore": A.tShow += 10; render(); return;
@@ -806,6 +866,12 @@
       case "signout": api("logout").catch(() => {}); setToken(null); A.card = null; closeSheet(); toast("Signed out"); render(); return;
       case "desk": LS.set("bw_layout", "desk"); location.reload(); return;
       case "del": delBet(el); return;
+      case "bettor": openBettor(v); return;
+      case "vis": saveAccount({ visibility: v }, v === "public" ? "Your bets are public now and you're on the leaderboard." : "Your bets are private now."); return;
+      case "savename": saveAccount({ name: (q("#apNm") || {}).value || "" }, "Name saved."); return;
+      case "savepw": { const a = (q("#apPw0") || {}).value || "", b = (q("#apPw1") || {}).value || "";
+        api("password", { current: a, new: b }).then(() => openHelp(`<div class="ap-ok">Password changed. You're still signed in here; other devices were signed out.</div>`))
+          .catch(e2 => { const m = q("#apAcMsg"); if (m) m.innerHTML = `<div class="ap-err">${H(e2.message)}</div>`; }); return; }
       case "rwho": A.recWho = v; render(); return;
       case "rper": A.recPer = v; render(); return;
     }
