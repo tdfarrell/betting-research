@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-23T00:35Z",
+ "pulled_utc": "2026-10-23T02:08Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,13 +10,13 @@
    "home": "APP",
    "away_name": "James Madison Dukes",
    "home_name": "App State Mountaineers",
-   "away_score": "14",
-   "home_score": "10",
+   "away_score": "24",
+   "home_score": "21",
    "neutral": false,
    "conference_game": true,
    "venue": "Kidd Brewer Stadium",
    "weather": "33",
-   "temp_f": 53
+   "temp_f": 49
   },
   {
    "game_id": "401871056",
@@ -26,13 +26,13 @@
    "home": "KENN",
    "away_name": "Liberty Flames",
    "home_name": "Kennesaw State Owls",
-   "away_score": "14",
+   "away_score": "34",
    "home_score": "3",
    "neutral": false,
    "conference_game": true,
    "venue": "Walens Family Field at Fifth Third Stadium",
    "weather": "33",
-   "temp_f": 66
+   "temp_f": 61
   },
   {
    "game_id": "401862807",
@@ -42,13 +42,13 @@
    "home": "MEM",
    "away_name": "East Carolina Pirates",
    "home_name": "Memphis Tigers",
-   "away_score": "10",
-   "home_score": "3",
+   "away_score": "24",
+   "home_score": "10",
    "neutral": false,
    "conference_game": true,
    "venue": "Simmons Bank Liberty Stadium",
    "weather": "33",
-   "temp_f": 70
+   "temp_f": 69
   },
   {
    "game_id": "401858271",
@@ -256,8 +256,8 @@
    "away_ml": "-290",
    "away_ml_open": "-258",
    "total": 42.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
+   "over_odds": "-115",
+   "under_odds": "-105",
    "total_open": "o52.5"
   },
   {
@@ -335,13 +335,13 @@
    "venue": "Gerald J. Ford Stadium",
    "weather": "Mostly sunny",
    "temp_f": 74,
-   "home_spread": "-19.5",
-   "home_spread_odds": "-105",
+   "home_spread": "-18.5",
+   "home_spread_odds": "-115",
    "home_spread_open": "-16.5",
    "home_ml": "-1100",
    "home_ml_open": "-800",
-   "away_spread": "+19.5",
-   "away_spread_odds": "-115",
+   "away_spread": "+18.5",
+   "away_spread_odds": "-105",
    "away_spread_open": "+16.5",
    "away_ml": "+700",
    "away_ml_open": "+550",
@@ -496,8 +496,8 @@
    "away_ml": "-135",
    "away_ml_open": "-120",
    "total": 53.5,
-   "over_odds": "-105",
-   "under_odds": "-115",
+   "over_odds": "-115",
+   "under_odds": "-105",
    "total_open": "o54.5"
   },
   {
@@ -585,9 +585,9 @@
    "away_spread_open": "-12.5",
    "away_ml": "-355",
    "away_ml_open": "-425",
-   "total": 50.5,
-   "over_odds": "-105",
-   "under_odds": "-115",
+   "total": 49.5,
+   "over_odds": "-115",
+   "under_odds": "-105",
    "total_open": "o51.5"
   },
   {
@@ -1025,13 +1025,13 @@
    "venue": "Mackay Stadium",
    "weather": "Sunny",
    "temp_f": 57,
-   "home_spread": "-6.5",
-   "home_spread_odds": "-118",
+   "home_spread": "-7",
+   "home_spread_odds": "-105",
    "home_spread_open": "-5.5",
    "home_ml": "-265",
    "home_ml_open": "-192",
-   "away_spread": "+6.5",
-   "away_spread_odds": "-102",
+   "away_spread": "+7",
+   "away_spread_odds": "-115",
    "away_spread_open": "+5.5",
    "away_ml": "+215",
    "away_ml_open": "+160",
@@ -1155,9 +1155,9 @@
    "away_spread_open": "-3",
    "away_ml": "-115",
    "away_ml_open": "-162",
-   "total": 63.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
+   "total": 62.5,
+   "over_odds": "-112",
+   "under_odds": "-108",
    "total_open": "o59.5"
   },
   {
@@ -1216,8 +1216,8 @@
    "away_ml": "+120",
    "away_ml_open": "-112",
    "total": 49.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "over_odds": "-105",
+   "under_odds": "-115",
    "total_open": "o49.5"
   },
   {

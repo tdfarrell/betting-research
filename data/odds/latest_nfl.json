@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-23T00:35Z",
+ "pulled_utc": "2026-10-23T02:08Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,13 +10,13 @@
    "home": "CHI",
    "away_name": "New England Patriots",
    "home_name": "Chicago Bears",
-   "away_score": "0",
-   "home_score": "3",
+   "away_score": "14",
+   "home_score": "27",
    "neutral": false,
    "conference_game": false,
    "venue": "Soldier Field",
    "weather": "33",
-   "temp_f": 62
+   "temp_f": 61
   },
   {
    "game_id": "401873011",
@@ -184,12 +184,12 @@
    "weather": "Mostly sunny",
    "temp_f": 63,
    "home_spread": "-3",
-   "home_spread_odds": "-120",
+   "home_spread_odds": "-115",
    "home_spread_open": "+1.5",
    "home_ml": "-162",
    "home_ml_open": "-102",
    "away_spread": "+3",
-   "away_spread_odds": "+100",
+   "away_spread_odds": "-105",
    "away_spread_open": "-1.5",
    "away_ml": "+136",
    "away_ml_open": "-118",
