@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-23T14:27Z",
+ "pulled_utc": "2026-10-23T14:30Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -394,7 +394,7 @@
    "conference_game": true,
    "venue": "Amon G. Carter Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 71,
+   "temp_f": 72,
    "home_spread": "-10.5",
    "home_spread_odds": "-115",
    "home_spread_open": "-7",
@@ -454,7 +454,7 @@
    "conference_game": true,
    "venue": "Glass Bowl",
    "weather": "Mostly sunny",
-   "temp_f": 57,
+   "temp_f": 56,
    "home_spread": "-3",
    "home_spread_odds": "-120",
    "home_spread_open": "-1.5",
@@ -1084,7 +1084,7 @@
    "conference_game": true,
    "venue": "Joe Aillet Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 84,
+   "temp_f": 85,
    "home_spread": "-13.5",
    "home_spread_odds": "-110",
    "home_spread_open": "-8.5",
@@ -1354,7 +1354,7 @@
    "conference_game": true,
    "venue": "Casino Del Sol Stadium",
    "weather": "Partly sunny",
-   "temp_f": 75,
+   "temp_f": 74,
    "home_spread": "-10",
    "home_spread_odds": "-108",
    "home_spread_open": "-10",
