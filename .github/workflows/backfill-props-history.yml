@@ -1,0 +1,43 @@
+name: Backfill prop lines history (ESPN)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pull-data
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: NFL and NBA prop lines on finished games
+        run: |
+          python scripts/props_history_pull.py nfl 2024 2025
+          python scripts/props_history_pull.py nba 2025 2026
+      - name: nflverse player ids (ESPN -> gsis)
+        run: |
+          mkdir -p data/props_hist
+          curl -sSL https://github.com/nflverse/nflverse-data/releases/download/players/players.csv | python -c "
+          import csv,sys
+          r=csv.DictReader(sys.stdin); w=csv.writer(open('data/props_hist/nfl_player_ids.csv','w',newline=''))
+          w.writerow(['espn_id','gsis_id','name'])
+          for x in r:
+              if x.get('espn_id') and x.get('gsis_id'): w.writerow([x['espn_id'].split('.')[0], x['gsis_id'], x.get('display_name','')])
+          "
+      - name: Commit
+        run: |
+          git config user.name "data-bot"
+          git config user.email "data-bot@users.noreply.github.com"
+          git add data/props_hist
+          git diff --cached --quiet || git commit -m "data: prop lines history"
+          git pull --rebase
+          git push
