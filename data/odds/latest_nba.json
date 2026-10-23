@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-23T15:05Z",
+ "pulled_utc": "2026-10-23T15:14Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -150,8 +150,8 @@
    "away_ml": "+215",
    "away_ml_open": "+170",
    "total": 240.5,
-   "over_odds": "-105",
-   "under_odds": "-115",
+   "over_odds": "-110",
+   "under_odds": "-110",
    "total_open": "o234.5"
   },
   {
@@ -269,9 +269,9 @@
    "away_spread_open": "+5.5",
    "away_ml": "+170",
    "away_ml_open": "+185",
-   "total": 225.5,
-   "over_odds": "-105",
-   "under_odds": "-115",
+   "total": 224.5,
+   "over_odds": "-115",
+   "under_odds": "-105",
    "total_open": "o225.5"
   },
   {
@@ -318,21 +318,7 @@
    "conference_game": false,
    "venue": "Chase Center",
    "weather": null,
-   "temp_f": null,
-   "home_spread": "-4.5",
-   "home_spread_odds": "-108",
-   "home_spread_open": "-3.5",
-   "home_ml": "-180",
-   "home_ml_open": "-155",
-   "away_spread": "+4.5",
-   "away_spread_odds": "-112",
-   "away_spread_open": "+3.5",
-   "away_ml": "+150",
-   "away_ml_open": "+130",
-   "total": 236.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
-   "total_open": "o235.5"
+   "temp_f": null
   },
   {
    "game_id": "401909851",
@@ -352,16 +338,16 @@
    "home_spread": "-9.5",
    "home_spread_odds": "-105",
    "home_spread_open": "-9.5",
-   "home_ml": "-380",
+   "home_ml": "-375",
    "home_ml_open": "-380",
    "away_spread": "+9.5",
    "away_spread_odds": "-115",
    "away_spread_open": "+9.5",
-   "away_ml": "+300",
+   "away_ml": "+295",
    "away_ml_open": "+300",
    "total": 225.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
+   "over_odds": "-112",
+   "under_odds": "-108",
    "total_open": "o229.5"
   },
   {

@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-23T15:05Z",
+ "pulled_utc": "2026-10-23T15:14Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -575,13 +575,13 @@
    "venue": "Gies Memorial Stadium",
    "weather": "Mostly sunny",
    "temp_f": 71,
-   "home_spread": "+9.5",
-   "home_spread_odds": "-112",
+   "home_spread": "+8.5",
+   "home_spread_odds": "-108",
    "home_spread_open": "+12.5",
    "home_ml": "+280",
    "home_ml_open": "+330",
-   "away_spread": "-9.5",
-   "away_spread_odds": "-108",
+   "away_spread": "-8.5",
+   "away_spread_odds": "-112",
    "away_spread_open": "-12.5",
    "away_ml": "-355",
    "away_ml_open": "-425",
@@ -1598,7 +1598,7 @@
    "conference_game": true,
    "venue": "DATCU Stadium",
    "weather": "Intermittent clouds",
-   "temp_f": 77
+   "temp_f": 74
   },
   {
    "game_id": "401869963",
