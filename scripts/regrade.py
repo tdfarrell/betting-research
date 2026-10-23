@@ -363,7 +363,7 @@ def main(days=None):
         if len(rows) < 2:
             continue
         calib = grade(rows)
-        finalize_rows(rows)   # every game gets a pick; PLAY / LEAN tags, the rest untagged
+        finalize_rows(rows, "cfb", (calib.get("bands_side") or [None, None])[1])   # every game gets a pick; PLAY / LEAN tags, the rest untagged; backtest confidence
         write(day, rows, calib, unmatched, board["pulled_utc"])
         count = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)
         index["slates"].append({"date": day, "games": len(json.load(open(f"data/boards/cfb_{day}.json"))["games"]),

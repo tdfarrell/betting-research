@@ -1,0 +1,279 @@
+{
+ "shrink_games": 60.0,
+ "note": "Win rate against the closing line for picks in the same gap band, shrunk toward 50%.",
+ "tables": {
+  "nfl_side": {
+   "unit": "z",
+   "source": "NFL 2022-25 vs nflverse closing lines",
+   "games": 1058,
+   "bands": [
+    {
+     "lo": 0,
+     "hi": 0.3,
+     "n": 239,
+     "w": 117,
+     "raw": 0.49,
+     "conf": 0.492
+    },
+    {
+     "lo": 0.3,
+     "hi": 0.6,
+     "n": 240,
+     "w": 132,
+     "raw": 0.55,
+     "conf": 0.54
+    },
+    {
+     "lo": 0.6,
+     "hi": 1.0,
+     "n": 225,
+     "w": 121,
+     "raw": 0.538,
+     "conf": 0.53
+    },
+    {
+     "lo": 1.0,
+     "hi": null,
+     "n": 354,
+     "w": 157,
+     "raw": 0.444,
+     "conf": 0.452
+    }
+   ]
+  },
+  "nfl_total": {
+   "unit": "pts",
+   "source": "NFL 2022-25 vs nflverse closing lines",
+   "games": 1079,
+   "bands": [
+    {
+     "lo": 0,
+     "hi": 1.5,
+     "n": 338,
+     "w": 158,
+     "raw": 0.467,
+     "conf": 0.472
+    },
+    {
+     "lo": 1.5,
+     "hi": 2.0,
+     "n": 107,
+     "w": 58,
+     "raw": 0.542,
+     "conf": 0.527
+    },
+    {
+     "lo": 2.0,
+     "hi": 4.5,
+     "n": 389,
+     "w": 193,
+     "raw": 0.496,
+     "conf": 0.497
+    },
+    {
+     "lo": 4.5,
+     "hi": null,
+     "n": 245,
+     "w": 124,
+     "raw": 0.506,
+     "conf": 0.505
+    }
+   ]
+  },
+  "nba_side": {
+   "unit": "z",
+   "source": "NBA backtest vs closing lines",
+   "games": 1246,
+   "bands": [
+    {
+     "lo": 0,
+     "hi": 0.3,
+     "n": 345,
+     "w": 174,
+     "raw": 0.504,
+     "conf": 0.504
+    },
+    {
+     "lo": 0.3,
+     "hi": 0.6,
+     "n": 273,
+     "w": 138,
+     "raw": 0.505,
+     "conf": 0.505
+    },
+    {
+     "lo": 0.6,
+     "hi": 1.0,
+     "n": 275,
+     "w": 129,
+     "raw": 0.469,
+     "conf": 0.475
+    },
+    {
+     "lo": 1.0,
+     "hi": null,
+     "n": 353,
+     "w": 177,
+     "raw": 0.501,
+     "conf": 0.501
+    }
+   ]
+  },
+  "nba_total": {
+   "unit": "z",
+   "source": "NBA backtest vs closing lines",
+   "games": 1245,
+   "bands": [
+    {
+     "lo": 0,
+     "hi": 0.3,
+     "n": 289,
+     "w": 142,
+     "raw": 0.491,
+     "conf": 0.493
+    },
+    {
+     "lo": 0.3,
+     "hi": 0.6,
+     "n": 284,
+     "w": 143,
+     "raw": 0.504,
+     "conf": 0.503
+    },
+    {
+     "lo": 0.6,
+     "hi": 1.0,
+     "n": 299,
+     "w": 147,
+     "raw": 0.492,
+     "conf": 0.493
+    },
+    {
+     "lo": 1.0,
+     "hi": null,
+     "n": 373,
+     "w": 194,
+     "raw": 0.52,
+     "conf": 0.517
+    }
+   ]
+  },
+  "cbb_side": {
+   "unit": "z",
+   "source": "CBB backtest vs closing lines",
+   "games": 5705,
+   "bands": [
+    {
+     "lo": 0,
+     "hi": 0.3,
+     "n": 1362,
+     "w": 697,
+     "raw": 0.512,
+     "conf": 0.511
+    },
+    {
+     "lo": 0.3,
+     "hi": 0.6,
+     "n": 1256,
+     "w": 589,
+     "raw": 0.469,
+     "conf": 0.47
+    },
+    {
+     "lo": 0.6,
+     "hi": 1.0,
+     "n": 1293,
+     "w": 650,
+     "raw": 0.503,
+     "conf": 0.503
+    },
+    {
+     "lo": 1.0,
+     "hi": null,
+     "n": 1794,
+     "w": 898,
+     "raw": 0.501,
+     "conf": 0.501
+    }
+   ]
+  },
+  "cbb_total": {
+   "unit": "z",
+   "source": "CBB backtest vs closing lines",
+   "games": 5690,
+   "bands": [
+    {
+     "lo": 0,
+     "hi": 0.3,
+     "n": 1385,
+     "w": 707,
+     "raw": 0.51,
+     "conf": 0.51
+    },
+    {
+     "lo": 0.3,
+     "hi": 0.6,
+     "n": 1264,
+     "w": 640,
+     "raw": 0.506,
+     "conf": 0.506
+    },
+    {
+     "lo": 0.6,
+     "hi": 1.0,
+     "n": 1283,
+     "w": 631,
+     "raw": 0.492,
+     "conf": 0.492
+    },
+    {
+     "lo": 1.0,
+     "hi": null,
+     "n": 1758,
+     "w": 870,
+     "raw": 0.495,
+     "conf": 0.495
+    }
+   ]
+  },
+  "cfb_side": {
+   "unit": "z",
+   "source": "CFB 2022-25, Elo screen vs closing lines",
+   "games": 2554,
+   "bands": [
+    {
+     "lo": 0,
+     "hi": 0.6,
+     "n": 1186,
+     "w": 577,
+     "raw": 0.487,
+     "conf": 0.487
+    },
+    {
+     "lo": 0.6,
+     "hi": 1.0,
+     "n": 587,
+     "w": 289,
+     "raw": 0.492,
+     "conf": 0.493
+    },
+    {
+     "lo": 1.0,
+     "hi": 2.0,
+     "n": 653,
+     "w": 330,
+     "raw": 0.505,
+     "conf": 0.505
+    },
+    {
+     "lo": 2.0,
+     "hi": null,
+     "n": 128,
+     "w": 62,
+     "raw": 0.484,
+     "conf": 0.489
+    }
+   ]
+  }
+ }
+}

@@ -4,14 +4,12 @@ Every spread and total on a board gets a pick: the side the model's number favor
 Picks are tagged PLAY or LEAN when they clear that sport's bands; everything else is an untagged PICK
 (including the old CHECK / big-gap games and FLAG games: they keep their side, graded like the rest).
 
-Props: every player with a DraftKings over/under line gets an over or under pick.
-  With prices (NBA): edge = model chance - DK no-vig chance for the side the model prefers.
-      PLAY 8%+, LEAN 4-8%, untagged below 4% and at 15%+ (gaps that big are usually news the model lacks).
-  Without prices (NFL): model chance for the side it prefers.
-      PLAY 62%+, LEAN 56-62%, untagged below 56% and at 75%+.
+Props: every player with a DraftKings over/under line gets an over or under pick (the side the model favors
+  vs DK's no-vig chance, or vs 50% when DK shows no prices). Tags come from the prop backtest (see prop_pick):
+  NFL unders only, PLAY at 78%+ model chance, LEAN 70-78%. NBA props and NFL overs are untagged for now.
 The page (screener/index.html) applies the same prop rule, so tags match what gets graded.
 """
-import math
+import json, math, os
 
 TAG = {"PLAY": "PLAY", "TARGET": "PLAY", "LEAN": "LEAN", "WATCH": "LEAN"}
 
@@ -53,12 +51,52 @@ def finalize_market(g, mk):
     s["was"] = old
     s["grade"] = tag
 
-def finalize_rows(rows):
+# ------------------------------------------------------------------ confidence (scripts/confidence.py)
+_CONF = None
+def _conf_tables():
+    global _CONF
+    if _CONF is None:
+        p = os.path.join(os.path.dirname(__file__), "..", "data", "grades", "confidence.json")
+        try:
+            _CONF = json.load(open(p)).get("tables", {})
+        except Exception:
+            _CONF = {}
+    return _CONF
+
+def conf_for(league, mk, x):
+    """Backtest win rate (shrunk) for a pick whose gap is x (z units or points, per the table)."""
+    t = _conf_tables().get(f"{league}_{mk}")
+    if not t or x is None:
+        return None
+    for b in t["bands"]:
+        if x >= b["lo"] and (b["hi"] is None or x < b["hi"]):
+            return {"conf": b["conf"], "conf_n": b["n"], "conf_raw": b["raw"]}
+    return None
+
+def _gap(g, mk, league, usual):
+    e = (g.get(mk) or {}).get("edge")
+    if e is None:
+        return None
+    t = _conf_tables().get(f"{league}_{mk}") or {}
+    if t.get("unit") == "pts":
+        return abs(e)
+    if league == "cfb":
+        return abs(e) / usual if usual else None
+    b = g.get("bands") if mk == "side" else g.get("tbands")
+    sd = b[2] if b and len(b) > 2 and b[2] else None
+    return abs(e) / sd if sd else None
+
+def finalize_rows(rows, league=None, usual=None):
+    """usual: CFB's slate-level usual gap for sides (calibration bands_side[1])."""
     for g in rows:
         if g.get("started"):
             continue
         for mk in ("side", "total"):
             finalize_market(g, mk)
+            if league:
+                c = conf_for(league, mk, _gap(g, mk, league, usual))
+                if c:
+                    g[mk].update(c)
     order = {"PLAY": 0, "LEAN": 1, "PICK": 2}
     rows.sort(key=lambda g: (min(order.get(g["side"].get("grade"), 3), order.get(g["total"].get("grade"), 3)), g.get("kickoff_utc", "")))
     return rows
@@ -107,8 +145,16 @@ def model_over(m, mk, line):
         return 1 - sum(math.exp(-lam) * lam ** j / math.factorial(j) for j in range(k))
     return None
 
-PRICED = {"play": 0.08, "lean": 0.04, "too_big": 0.15}
-UNPRICED = {"play": 0.62, "lean": 0.56, "too_big": 0.75}
+# Prop tags, from the backtest against real sportsbook lines (scripts/props_backtest.py, Oct 23 2026):
+#  NBA (2024-26, 107k main lines): the model adds almost nothing beyond the line itself (win 50.7%, ROI -5.6% at
+#      every edge size), so NBA props are picked and graded but never tagged until the model earns it.
+#  NFL (2024-25, 15k lines, graded at -110): overs never beat the line (49.7%); unders did, more so the surer
+#      the model: 70-78% model chance won ~57%, 78%+ won ~63% in both seasons. So PLAY = under at 78%+,
+#      LEAN = under at 70-78%. Overs are picked and graded, untagged.
+NBA_MK = {"pts", "reb", "ast", "tpm", "pra", "pr", "pa", "ra", "stl", "blk"}
+NFL_UNDER = {"play": 0.78, "lean": 0.70}
+PRICED = {"play": None, "lean": None}     # kept for reference: no priced (NBA) prop is tagged
+UNPRICED = NFL_UNDER
 
 def prop_pick(m, mk, rec):
     """rec = DK line record {line, open, over, under}. Returns the pick dict or None."""
@@ -119,18 +165,18 @@ def prop_pick(m, mk, rec):
     if p is None:
         return None
     nv = novig_over(rec)
-    if nv is not None:
-        over = p >= nv
-        edge = abs(p - nv)
-        tag = "PICK" if edge >= PRICED["too_big"] else "PLAY" if edge >= PRICED["play"] else "LEAN" if edge >= PRICED["lean"] else "PICK"
-        why = "Big gap vs DraftKings: usually minutes, role or injury news the model doesn't have" if edge >= PRICED["too_big"] else None
-        chance = p if over else 1 - p
+    over = p >= (nv if nv is not None else 0.5)
+    chance = p if over else 1 - p
+    edge = abs(p - nv) if nv is not None else chance - 0.5
+    why = None
+    if mk in NBA_MK:
+        tag = "PICK"
+        why = "NBA prop model hasn't beaten the line in the backtest yet: picked and graded, not tagged"
+    elif over:
+        tag = "PICK"
+        why = "Overs haven't beaten the line in the backtest: picked and graded, not tagged"
     else:
-        over = p >= 0.5
-        chance = p if over else 1 - p
-        edge = chance - 0.5
-        tag = "PICK" if chance >= UNPRICED["too_big"] else "PLAY" if chance >= UNPRICED["play"] else "LEAN" if chance >= UNPRICED["lean"] else "PICK"
-        why = "Model far from DraftKings' line: usually news the model doesn't have" if chance >= UNPRICED["too_big"] else None
+        tag = "PLAY" if chance >= NFL_UNDER["play"] else "LEAN" if chance >= NFL_UNDER["lean"] else "PICK"
     out = {"side": "over" if over else "under", "line": float(line), "p_over": round(p, 3), "chance": round(chance, 3),
            "novig_over": round(nv, 3) if nv is not None else None, "edge": round(edge, 3), "tag": tag,
            "odds": rec.get("over" if over else "under")}

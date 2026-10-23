@@ -19,7 +19,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Screener">
-<meta name="bw-build" content="screener 2026-10-23b">
+<meta name="bw-build" content="screener 2026-10-23c">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -284,6 +284,47 @@ tr.dimrow td{color:var(--muted)}
 .dh .hs{width:52px;height:52px;border-radius:50%;background:var(--chip);object-fit:cover;flex:none;display:grid;place-items:center;font:700 15px var(--display);color:var(--muted);overflow:hidden}
 
 @media (display-mode: standalone){.sitebar{padding-top:env(safe-area-inset-top)}}
+/* Today front page (option A) */
+.td-rec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:6px 0 4px}
+.td-rec>div{background:var(--panel);padding:10px 14px}.td-rec>div+div{border-left:1px solid var(--line)}
+.td-rec span{display:block;font:600 11px var(--mono);letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.td-rec b{display:block;font:700 28px/1.15 var(--display);letter-spacing:.3px}
+b.up{color:var(--win)}b.dn{color:var(--loss)}b.amb{color:var(--amber)}
+.td-sec{margin-top:28px}.td-sec h2{margin:0 0 12px}
+.td-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}.td-head h2{margin-bottom:0}
+.td-link{background:none;border:0;color:var(--amber);font:600 12px var(--mono);cursor:pointer;padding:6px 0;text-decoration:none}
+.td-hint{margin:6px 0 0;color:var(--muted);font-size:13px}
+.td-hero{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;min-width:0}
+.td-hero.big{border-color:rgba(74,222,155,.45)}.td-hero:hover{border-color:#2E3846}.td-hero.big:hover{border-color:rgba(74,222,155,.7)}
+.td-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.td-when{font:500 12px var(--mono);color:var(--muted)}
+.td-pick{margin-top:10px;font:700 26px/1.05 var(--display);letter-spacing:.2px;overflow-wrap:anywhere}
+.td-hero.big .td-pick{font-size:40px}
+.td-odds{font:500 14px var(--mono);color:var(--muted)}
+.td-sub{margin-top:6px;font-size:14px;color:#B7C0CE}
+.td-stats{margin-top:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.td-stats span{background:var(--panel2);border-radius:8px;padding:7px 9px;min-width:0}
+.td-stats i{display:block;font:600 10px var(--mono);letter-spacing:.5px;text-transform:uppercase;color:var(--muted);font-style:normal}
+.td-stats b{display:block;font:600 14px var(--mono);margin-top:2px;overflow-wrap:anywhere}
+.td-hero.big .td-stats b{font-size:16px}
+.td-note{margin-top:10px;font-size:13px;color:var(--muted)}
+.td-pair{margin-top:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.td-pair .td-stats{grid-template-columns:1fr}
+@media (min-width:900px){.td-pair .td-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.td-tag{display:inline-block;font:600 11px/1 var(--mono);letter-spacing:.7px;padding:5px 7px;border-radius:4px;white-space:nowrap}
+.td-tag.PLAY{color:var(--win);border:1px solid rgba(74,222,155,.45)}.td-hero .td-tag.PLAY{background:var(--win);color:#0B0E13;border-color:var(--win)}
+.td-tag.LEAN{color:var(--amber);border:1px solid rgba(255,176,32,.45)}.td-tag.PICK{color:var(--muted);border:1px solid var(--line)}
+.td-list{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+.td-line{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;cursor:pointer;border-bottom:1px solid var(--line)}
+.td-line:last-child{border-bottom:0}.td-line:hover{background:var(--row-hover)}.td-line:focus-visible{outline:2px solid var(--amber);outline-offset:-2px}
+.td-t{font:500 12px var(--mono);color:var(--muted)}
+.td-main{min-width:0;display:flex;flex-direction:column;gap:2px}
+.td-p{font-weight:600;font-size:15px;overflow-wrap:anywhere}.td-s{font-size:12.5px;color:var(--muted)}
+.td-m{font:500 12px var(--mono);color:#B7C0CE;overflow-wrap:anywhere}.td-m b{font-weight:600}
+.td-more{display:block;width:100%;margin-top:10px;padding:13px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--amber);font:600 12px var(--mono);letter-spacing:.6px;text-transform:uppercase;cursor:pointer}
+#todayView .note{font-size:13px}
+.td-t{white-space:nowrap}
+@media (max-width:600px){.td-line{grid-template-columns:54px minmax(0,1fr) auto;gap:8px;padding:12px}.td-t{font-size:11px}.td-hero.big .td-pick{font-size:34px}.td-pair{grid-template-columns:1fr}.td-pair .td-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .tsub{font:600 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
 .tcard{cursor:pointer}.tcard .tag .gr{margin-right:4px;min-width:0;padding:3px 6px}
 /* definitions: dotted underline + a small popover on hover (desktop) or tap (phone) */
@@ -1144,18 +1185,17 @@ const impl = o => { const x = parseFloat(String(o || "").replace("+", "")); if (
 // DraftKings' no-vig chance of the over (NBA lines come with prices; NFL ones don't)
 const novigOver = d => { const a = impl(d && d.over), b = impl(d && d.under); return a != null && b != null ? a / (a + b) : null; };
 /* prop picks (mirror of scripts/picks.py prop_pick): every player with a DK line gets an over or under pick */
-const PP_PRICED = { play: .08, lean: .04, big: .15 }, PP_UNPRICED = { play: .62, lean: .56, big: .75 };
+// prop tags = scripts/picks.py prop_pick (backtest Oct 23): NFL unders only, PLAY 78%+, LEAN 70-78%; NBA props and overs untagged
+const NBA_MK = new Set(["pts", "reb", "ast", "tpm", "pra", "pr", "pa", "ra", "stl", "blk"]), NFL_UNDER = { play: .78, lean: .70 };
 function propPick(c, mk) {
   const d = mk !== "atd" && dkLine(c, mk); if (!d) return null;
   const m = c.markets[mk], p = modelOver(m, mk, d.line); if (p == null) return null;
-  const nv = novigOver(d);
-  let over, edge, tag, chance, why = "";
-  if (nv != null) { over = p >= nv; edge = Math.abs(p - nv); chance = over ? p : 1 - p;
-    tag = edge >= PP_PRICED.big ? "PICK" : edge >= PP_PRICED.play ? "PLAY" : edge >= PP_PRICED.lean ? "LEAN" : "PICK";
-    if (edge >= PP_PRICED.big) why = "Big gap vs DraftKings: usually minutes, role or injury news the model doesn't have"; }
-  else { over = p >= .5; chance = over ? p : 1 - p; edge = chance - .5;
-    tag = chance >= PP_UNPRICED.big ? "PICK" : chance >= PP_UNPRICED.play ? "PLAY" : chance >= PP_UNPRICED.lean ? "LEAN" : "PICK";
-    if (chance >= PP_UNPRICED.big) why = "Model far from DraftKings' line: usually news the model doesn't have"; }
+  const nv = novigOver(d), over = p >= (nv != null ? nv : .5), chance = over ? p : 1 - p;
+  const edge = nv != null ? Math.abs(p - nv) : chance - .5;
+  let tag = "PICK", why = "";
+  if (NBA_MK.has(mk)) why = "NBA prop model hasn't beaten the line in the backtest yet: picked and graded, not tagged";
+  else if (over) why = "Overs haven't beaten the line in the backtest: picked and graded, not tagged";
+  else tag = chance >= NFL_UNDER.play ? "PLAY" : chance >= NFL_UNDER.lean ? "LEAN" : "PICK";
   return { side: over ? "over" : "under", line: d.line, p, nv, edge, chance, tag, why, odds: over ? d.over : d.under, d };
 }
 const fairOf = p => p == null || p <= .005 || p >= .995 ? null : Math.round(p >= .5 ? -100 * p / (1 - p) : 100 * (1 - p) / p);
@@ -1248,7 +1288,7 @@ function renderPropLines(cards) {
         <td class="tc"><span class="c st ${stCls(r.streak)}">${stTxt(r.streak)}</span></td>
         <td class="num opt">${dvpTag(r.m, c)}</td>
         ${LN_WINS.map(([w]) => hrCell(r.hr[w])).join("")}</tr>`; }).join("")}</tbody></table></div>
-    <div class="edge" style="margin-top:8px">DraftKings over/under lines from ESPN (${priced ? "with prices, read in the order ESPN lists them (over, then under); <b>Edge</b> = model chance minus DK's no-vig chance for the side the model prefers; 15%+ is marked <span style='color:var(--lotto)'>Check</span> because gaps that big usually mean a minutes limit, role change or injury the model doesn't know about" : "lines only; check the price in the DK app"}). Hit rates count games <b>over</b> the line (${esc(lab.toLowerCase())}). <b>Diff</b> = model median − line (green = model above the line). <b>Pick</b> = the model's side at DK's line: <b>PLAY</b> ${priced ? "8%+ edge over DK's no-vig chance" : "62%+ model chance"}, <b>LEAN</b> ${priced ? "4–8%" : "56–62%"}, otherwise untagged (and untagged at ${priced ? "15%+" : "75%+"}, where the gap usually means news the model lacks). Every pick is graded in Results. Default order: Plays, Leans, then the rest. <b>Model over</b> = simulated chance of the over, fair odds underneath. <b>Streak</b> = games in a row over (✓) or under (✗). L5/L10/L20 run back into last season; H2H = vs this opponent, this season and last. Backtest: the model beat season hit rates, which beat recent ones, so treat the hit-rate columns as context. ${state.sport === "nba" ? "NBA model backtest (2025-26): calibrated within about 2 points in every band, and it beat both season and last-10 hit rates; not yet graded against DraftKings' prices." : "Not yet tested against DraftKings' lines: on the first slate the model leaned under on most receiving lines."}</div>`;
+    <div class="edge" style="margin-top:8px">DraftKings over/under lines from ESPN (${priced ? "with prices, read in the order ESPN lists them (over, then under); <b>Edge</b> = model chance minus DK's no-vig chance for the side the model prefers" : "lines only; check the price in the DK app"}). Hit rates count games <b>over</b> the line (${esc(lab.toLowerCase())}). <b>Diff</b> = model median − line (green = model above the line). <b>Pick</b> = the model's side at DK's line: ${state.sport === "nba" ? "no NBA prop is tagged for now: against 107,000 real main lines from 2024-26 the model won 50.7% and lost about 5.6% to the juice at every edge size, so it hasn't shown it beats the line" : "<b>PLAY</b> = under with 78%+ model chance, <b>LEAN</b> = under at 70–78%; overs are never tagged (in the 2024-25 backtest against real lines, overs won 49.7%, unders at 70–78% won about 57% and at 78%+ about 63%, graded at -110)"}. Every pick is graded in Results. Default order: Plays, Leans, then the rest. <b>Model over</b> = simulated chance of the over, fair odds underneath. <b>Streak</b> = games in a row over (✓) or under (✗). L5/L10/L20 run back into last season; H2H = vs this opponent, this season and last. Backtest: the model beat season hit rates, which beat recent ones, so treat the hit-rate columns as context. The prop backtest used ESPN BET's lines (ESPN's book until it switched to DraftKings), which sit close to DraftKings'.</div>`;
   const sortBy = th => { const k = th.dataset.sort; if (f.sort === k) f.dir = -f.dir; else { f.sort = k; f.dir = ["name", "opp", "role"].includes(k) ? 1 : -1; } renderProps(); };
   $("#pList").querySelectorAll("th[data-sort]").forEach(th => { th.onclick = () => sortBy(th); th.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortBy(th); } }; });
 }
@@ -1327,7 +1367,7 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-23b";
+const SCREENER_BUILD = "2026-10-23c";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";
@@ -1776,6 +1816,7 @@ document.addEventListener("keydown", e => {
 
 /* ------------------------------------------------------------------ Today: every Play and Lean, all sports, one view */
 const TODAY_SPORTS = ["nfl", "cfb", "nba", "cbb"];
+const PROPCONF_FILE = "data/grades/prop_confidence.json";
 const todayET = () => new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
 const tState = { tag: "both", kind: "all", sp: "all", data: null };
 async function gatherToday() {
@@ -1786,6 +1827,7 @@ async function gatherToday() {
     const slates = (idx.slates || []).filter(x => sp === "nfl" ? (x.first_day <= day && addDays(x.first_day, 6) >= day) : x.date === day);
     for (const x of slates) {
       let sl; try { sl = normalizeSlate(await getJSON(S_.slateFile(S_.slateKey(x)))); } catch (e) { continue; }
+      if (sl.odds_pulled_utc && (!out.pulled || sl.odds_pulled_utc > out.pulled)) out.pulled = sl.odds_pulled_utc;
       for (const g of sl.games) {
         if ((g.day_et || day) !== day) continue;
         for (const k of ["side", "total"]) {
@@ -1820,62 +1862,104 @@ async function showToday() {
   drawSports();
   $("#views").hidden = true; $("#tabs").hidden = true; $("#linesView").hidden = true; $("#propsView").hidden = true; $("#resultsView").hidden = true;
   $("#how").hidden = true; $("#early").innerHTML = ""; $("#todayView").hidden = false;
-  $("#kicker").textContent = "All sports · DraftKings lines"; $("#title").textContent = "Today";
-  $("#lede").textContent = "Every Play and Lean from every sport for today, game lines and player props, in one place. Tap any pick to open it in its sport's board.";
+  const dd = new Date(todayET() + "T12:00:00");
+  $("#kicker").textContent = dd.toLocaleDateString("en-US", { weekday: "long" }) + " · " + dd.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  $("#title").textContent = "Today's card"; $("#lede").textContent = "Gathering every sport's board…";
+  tView.allLines = false; tView.props = 10;
   document.title = "Today | Ballwatcher Screener";
   $("#meta").innerHTML = `<span class="pill">Loading today's picks…</span>`;
-  $("#todayView").innerHTML = `<div class="empty">Gathering every sport's board…</div>`;
-  const d = await gatherToday();
+  $("#todayView").innerHTML = `<div class="empty">Loading today's card…</div>`;
+  const [d] = await Promise.all([gatherToday(), loadGrades(),
+    state.propConf ? null : getJSON(PROPCONF_FILE).then(j => { state.propConf = j; }).catch(() => { state.propConf = {}; })]);
   if (state.sport !== "today") return;
   tState.data = d;
-  $("#meta").innerHTML = `<span class="pill"><span class="dot"></span>${dayLabel(d.day)}</span><span class="pill"><b>${d.games.length}</b> game picks · <b>${d.props.length}</b> prop picks on the board</span>`;
+  $("#meta").innerHTML = `<span class="pill"><span class="dot"></span>Lines updated <b>${ago(d.pulled)}</b></span>`;
   renderToday();
 }
+/* Today = the front page (option A, "The Card", Oct 23): header + record strip, Top plays (the three best by expected
+   value), every game-line Play and Lean, and the ten strongest props. Every pick shows the model's number and its
+   confidence: how often picks like it won in the backtest (game lines: same sport, market and gap band vs the closing
+   line; props: same edge band vs real sportsbook lines). */
+const tView = { allLines: false, props: 10 };
+const profitOf = o => { const x = parseFloat(String(o || "").replace("+", "")); return isFinite(x) && x ? (x > 0 ? x / 100 : 100 / -x) : 100 / 110; };
+const evOf = (conf, odds) => conf == null ? null : conf * profitOf(odds) - (1 - conf);
+function propConf(sp, pk) {
+  const T = state.propConf && state.propConf.tables && state.propConf.tables[sp]; if (!T || !T.sides || !pk) return null;
+  const x = pk.chance, b = (T.sides[pk.side] || []).find(b => x >= b.lo && (b.hi == null || x < b.hi));
+  return b ? { conf: b.conf, n: b.n } : null;
+}
+function modelLine(x) {   // the model's own number for the side we picked
+  const g = x.g, m = x.m, d = g.dk || {};
+  if (m.edge == null) return null;
+  if (x.k === "total") return d.total == null ? null : `Model ${fmt(d.total + m.edge)}`;
+  if (d.home_spread == null) return null;
+  const home = m.pick_side === "home", mh = d.home_spread - m.edge, mine = home ? mh : -mh;
+  return `Model ${esc(home ? g.home_abbr : g.away_abbr)} ${mine > 0 ? "+" : ""}${fmt(mine)}`;
+}
+const confTxt = c => c == null ? "—" : pct(c);
+const tagChip = t => `<span class="td-tag ${t}">${t}</span>`;
 function renderToday() {
   const d = tState.data; if (!d) return;
-  const okTag = t => tState.tag === "both" ? (t === "PLAY" || t === "LEAN") : tState.tag === "all" ? true : t === tState.tag;
-  const okSp = sp => tState.sp === "all" || tState.sp === sp;
-  const G = d.games.filter(x => okTag(x.tag) && okSp(x.sp) && tState.kind !== "props");
-  const P = d.props.filter(x => okTag(x.tag) && okSp(x.sp) && tState.kind !== "games");
-  const ord = t => ({ PLAY: 0, LEAN: 1 }[t] ?? 2);
-  G.sort((a, b) => ord(a.tag) - ord(b.tag) || (a.g.kickoff_utc || "").localeCompare(b.g.kickoff_utc || ""));
-  P.sort((a, b) => ord(a.tag) - ord(b.tag) || b.pk.edge - a.pk.edge);
-  const count = (arr, t) => arr.filter(x => x.tag === t).length;
-  const sportsHere = TODAY_SPORTS.filter(sp => d.games.some(x => x.sp === sp) || d.props.some(x => x.sp === sp));
-  const segB = (id, cur, opts) => `<div class="seg" id="${id}" role="group">${opts.map(([v, l]) => `<button data-v="${v}" aria-pressed="${cur === v}">${l}</button>`).join("")}</div>`;
-  const gCard = x => { const g = x.g, m = x.m, started = g.started;
-    return `<div class="card tcard" data-tgo="g" data-sp="${x.sp}" data-key="${esc(x.key)}" data-id="${esc(g.id)}" role="button" tabindex="0">
-      <div class="tag"><span class="gr ${x.tag}">${x.tag}</span> ${SPORTS[x.sp].label} · ${x.k === "side" ? "Spread" : "Total"}</div>
-      <div class="pick">${esc(m.pick)}${m.odds ? ` <span class="mono" style="font-size:14px;color:var(--muted)">${esc(m.odds)}</span>` : ""}</div>
-      <div class="sub">${esc(g.away)} ${g.neutral ? "vs" : "@"} ${esc(g.home)} · ${esc(g.kick_et)}${started ? ` · <b>${esc(gameScore(g) || "started")}</b>` : ""}</div>
-      <div class="why mono">${SPORTS[x.sp].cardWhy(g, x.k)}</div>
-      ${m.why_untagged ? `<div class="why" style="color:var(--lotto)">${esc(m.why_untagged)}</div>` : g.notes && g.notes[0] ? `<div class="why">${esc(g.notes[0])}</div>` : ""}</div>`; };
-  const pCard = x => { const c = x.c, pk = x.pk, ch = pk.side === "over" ? pk.p : 1 - pk.p;
-    return `<div class="card tcard" data-tgo="p" data-sp="${x.sp}" data-key="${esc(x.key)}" data-pid="${esc(c.id)}" data-gid="${esc(c.game_id)}" role="button" tabindex="0">
-      <div class="tag"><span class="gr ${x.tag}">${x.tag}</span> ${SPORTS[x.sp].label} · ${esc(x.label)}</div>
-      <div class="pick">${esc(c.name)} ${pk.side === "over" ? "Over" : "Under"} ${fmt(pk.line)}${pk.odds ? ` <span class="mono" style="font-size:14px;color:var(--muted)">${esc(pk.odds)}</span>` : ""}</div>
-      <div class="sub">${esc(c.team)} ${c.home ? "vs" : "@"} ${esc(c.opp)} · ${esc(c.kick_et)}</div>
-      <div class="why mono">Model ${pct(ch)} ${pk.side} · projects ${fmt(c.markets[x.mk].proj, 1)}${pk.nv != null ? ` · DK no-vig ${pct(pk.side === "over" ? pk.nv : 1 - pk.nv)} · edge ${fmt(pk.edge * 100, 1)}%` : ""}</div></div>`; };
-  const bySport = sp => { const g = G.filter(x => x.sp === sp), p = P.filter(x => x.sp === sp);
-    if (!g.length && !p.length) return "";
-    return `<h2>${SPORTS[sp].label} <small class="muted" style="font:500 13px var(--mono)">${count(g.concat(p), "PLAY")} plays · ${count(g.concat(p), "LEAN")} leans</small></h2>
-      ${g.length ? `<h3 class="tsub">Game lines</h3><div class="best">${g.map(gCard).join("")}</div>` : ""}
-      ${p.length ? `<h3 class="tsub">Player props</h3><div class="best">${p.slice(0, 60).map(pCard).join("")}</div>${p.length > 60 ? `<div class="muted small">+${p.length - 60} more in the ${SPORTS[sp].label} props view</div>` : ""}` : ""}`; };
-  const all = G.concat(P);
+  const G = d.games.map(x => ({ ...x, kind: "g", conf: x.m.conf, ev: evOf(x.m.conf, x.m.odds), when: x.g.kickoff_utc || "" }));
+  const P = d.props.map(x => { const c = propConf(x.sp, x.pk); return { ...x, kind: "p", conf: c ? c.conf : null, confN: c ? c.n : null, ev: evOf(c ? c.conf : null, x.pk.odds || -110), when: x.c.kickoff_utc || "" }; });
+  const tagged = a => a.filter(x => x.tag === "PLAY" || x.tag === "LEAN");
+  const plays = [...G, ...P].filter(x => x.tag === "PLAY" && !(x.kind === "g" ? x.g.started : x.c.started));
+  plays.sort((a, b) => (b.ev ?? -9) - (a.ev ?? -9));
+  const top = plays.slice(0, 3);
+  const gl = (tView.allLines ? G : tagged(G)).slice().sort((a, b) => a.when.localeCompare(b.when) || ({ PLAY: 0, LEAN: 1 }[a.tag] ?? 2) - ({ PLAY: 0, LEAN: 1 }[b.tag] ?? 2));
+  const pp = tagged(P).sort((a, b) => ({ PLAY: 0, LEAN: 1 }[a.tag] - { PLAY: 0, LEAN: 1 }[b.tag]) || (b.ev ?? -9) - (a.ev ?? -9));
+  const sports = TODAY_SPORTS.filter(sp => d.games.some(x => x.sp === sp));
+  const nGames = new Set(d.games.map(x => x.sp + x.g.id)).size;
+  const nPlayG = G.filter(x => x.tag === "PLAY").length, nLeanG = G.filter(x => x.tag === "LEAN").length;
+  // record strip from Results: every sport's tagged game lines + prop picks
+  const R = state.grades || {}, add = (a, r) => { if (r) { a.w += r.w || 0; a.l += r.l || 0; } return a; };
+  const rec = t => { const a = { w: 0, l: 0 }; for (const L of Object.values(R.leagues || {})) for (const mk of ["side", "total"]) add(a, (L.season[mk] || {})[t]);
+    for (const L of Object.values(R.prop_picks || {})) add(a, (L.season || {})[t]); return a; };
+  const yday = addDays(d.day, -1), yr = { w: 0, l: 0 };
+  for (const L of Object.values(R.leagues || {})) for (const x of L.days || []) if (x.day === yday) for (const mk of ["side", "total"]) for (const t of ["PLAY", "LEAN"]) add(yr, (x[mk] || {})[t]);
+  for (const L of Object.values(R.prop_picks || {})) for (const x of L.days || []) if (x.day === yday) for (const t of ["PLAY", "LEAN"]) add(yr, (x.rec || {})[t]);
+  const wl = r => r.w + r.l ? `${r.w}-${r.l}` : "—";
+  const sub = x => x.kind === "g" ? `${esc(x.g.away)} ${x.g.neutral ? "vs" : "@"} ${esc(x.g.home)} · ${x.k === "side" ? "spread" : "total"}`
+    : `${esc(x.c.team)} ${x.c.home ? "vs" : "@"} ${esc(x.c.opp)} · ${esc(x.label)}`;
+  const pickTxt = x => x.kind === "g" ? esc(x.m.pick) : `${esc(x.c.name)} ${x.pk.side === "over" ? "Over" : "Under"} ${fmt(x.pk.line)}`;
+  const odds = x => x.kind === "g" ? x.m.odds : x.pk.odds;
+  const model = x => x.kind === "g" ? (modelLine(x) || "Model —") : `Model ${(() => { const v = x.c.markets[x.mk].mean ?? x.c.markets[x.mk].proj; return v == null ? "—" : (+v).toFixed(1); })()} ${esc((x.label || "").toLowerCase())}`;
+  const edgeTxt = x => x.kind === "g" ? (x.m.edge == null ? "" : `Edge ${fmt(Math.abs(x.m.edge))} pts`) : (x.pk.nv != null ? `Edge ${fmt(x.pk.edge * 100, 1)}%` : `Model ${pct(x.pk.chance)}`);
+  const timeOf = x => (x.kind === "g" ? x.g.kick_et : x.c.kick_et || "").replace(/^\w+ /, "");
+  const go = x => x.kind === "g" ? `data-tgo="g" data-sp="${x.sp}" data-key="${esc(x.key)}" data-id="${esc(x.g.id)}"` : `data-tgo="p" data-sp="${x.sp}" data-key="${esc(x.key)}" data-pid="${esc(x.c.id)}" data-gid="${esc(x.c.game_id)}"`;
+  const stats = x => `<div class="td-stats"><span><i data-def="Model number">Model</i><b>${model(x).replace(/^Model /, "")}</b></span><span><i data-def="Confidence">Confidence</i><b class="${x.conf == null ? "" : x.conf >= .53 ? "up" : x.conf < .5 ? "dn" : ""}">${confTxt(x.conf)}</b></span><span><i>${x.kind === "g" ? "Edge" : x.pk.nv != null ? "Edge" : "Model chance"}</i><b>${edgeTxt(x).replace(/^Edge |^Model /, "")}</b></span></div>`;
+  const hero = (x, i) => `<article class="td-hero ${i === 0 ? "big" : ""}" ${go(x)} role="button" tabindex="0">
+      <div class="td-row"><span class="td-tag PLAY">PLAY · #${i + 1}</span><span class="td-when">${SPORTS[x.sp].label} · ${esc(timeOf(x))}</span></div>
+      <div class="td-pick">${pickTxt(x)}${odds(x) ? ` <span class="td-odds">${esc(odds(x))}</span>` : ""}</div>
+      <div class="td-sub">${sub(x)}</div>${stats(x)}
+      ${i === 0 && x.kind === "g" && (x.m.why_untagged || (x.g.notes || [])[0]) ? `<div class="td-note">${esc(x.m.why_untagged || x.g.notes[0])}</div>` : ""}</article>`;
+  const row = x => `<button type="button" class="td-line" ${go(x)}>
+      <span class="td-t">${esc(timeOf(x))}</span>
+      <span class="td-main"><span class="td-p">${pickTxt(x)}${odds(x) ? ` <span class="td-odds">${esc(odds(x))}</span>` : ""}</span><span class="td-s">${sub(x)} · ${SPORTS[x.sp].label}</span>
+        <span class="td-m">${model(x)} · conf <b class="${x.conf == null ? "" : x.conf >= .53 ? "up" : x.conf < .5 ? "dn" : ""}">${confTxt(x.conf)}</b> · ${edgeTxt(x)}</span></span>
+      ${tagChip(x.tag)}</button>`;
+  const lede = `${nGames} game${nGames === 1 ? "" : "s"}${sports.length ? " across " + sports.map(sp => SPORTS[sp].label).join(" and ") : ""}. ${nPlayG} play${nPlayG === 1 ? "" : "s"} and ${nLeanG} lean${nLeanG === 1 ? "" : "s"} on game lines${pp.length ? `, and the ${Math.min(tView.props, pp.length)} strongest props below` : ""}.`;
+  $("#lede").textContent = nGames ? lede : "No games on today's DraftKings boards yet.";
   $("#todayView").innerHTML = `
-    <section class="summary">
-      <div class="stat play"><div class="k">Plays today</div><div class="v">${count(d.games, "PLAY") + count(d.props, "PLAY")}</div><div class="s">${count(d.games, "PLAY")} game lines · ${count(d.props, "PLAY")} props</div></div>
-      <div class="stat lean"><div class="k">Leans today</div><div class="v">${count(d.games, "LEAN") + count(d.props, "LEAN")}</div><div class="s">${count(d.games, "LEAN")} game lines · ${count(d.props, "LEAN")} props</div></div>
-      <div class="stat"><div class="k">Sports with games</div><div class="v">${sportsHere.length}</div><div class="s">${sportsHere.map(sp => SPORTS[sp].label).join(" · ") || "none today"}</div></div>
-      <div class="stat"><div class="k">Every pick on the board</div><div class="v">${d.games.length + d.props.length}</div><div class="s">all graded in Results</div></div>
+    <section class="td-rec" aria-label="Record">
+      <div><span>Plays · season</span><b class="up">${wl(rec("PLAY"))}</b></div>
+      <div><span>Leans · season</span><b class="amb">${wl(rec("LEAN"))}</b></div>
+      <div><span>Yesterday</span><b>${wl(yr)}</b></div>
     </section>
-    <div class="controls">${segB("tTag", tState.tag, [["both", "Plays + Leans"], ["PLAY", "Plays"], ["LEAN", "Leans"], ["all", "Every pick"]])}
-      ${segB("tKind", tState.kind, [["all", "Lines + props"], ["games", "Game lines"], ["props", "Props"]])}
-      ${segB("tSp", tState.sp, [["all", "All sports"], ...sportsHere.map(sp => [sp, SPORTS[sp].label])])}</div>
-    ${all.length ? TODAY_SPORTS.map(bySport).join("") : `<div class="empty">No ${tState.tag === "all" ? "picks" : "Plays or Leans"} for today with these filters. ${d.games.length + d.props.length ? "Try “Every pick”." : "No games on today's DraftKings boards yet."}</div>`}
-    <div class="note" style="margin-top:18px"><b>Today</b> = games and props starting today (Eastern time) on each sport's board. <b>PLAY</b> / <b>LEAN</b> use each sport's bands; props use the model's edge at DraftKings' line. Prices and lines can move; confirm in the DraftKings app. Tap a pick to open its game or player.</div>`;
-  const bind = (id, k) => { $(id).onclick = e => { const b = e.target.closest("button"); if (!b) return; tState[k] = b.dataset.v; renderToday(); }; };
-  bind("#tTag", "tag"); bind("#tKind", "kind"); bind("#tSp", "sp");
+    ${top.length ? `<section class="td-sec" aria-label="Top plays"><h2>Top plays</h2>${hero(top[0], 0)}${top.length > 1 ? `<div class="td-pair">${top.slice(1).map((x, i) => hero(x, i + 1)).join("")}</div>` : ""}</section>` : ""}
+    <section class="td-sec" aria-label="Game lines">
+      <div class="td-head"><h2>Game lines</h2><button type="button" class="td-link" id="tdAll">${tView.allLines ? "Plays & leans only" : `All ${G.length} picks →`}</button></div>
+      ${gl.length ? `<div class="td-list">${gl.map(row).join("")}</div>` : `<div class="empty">No game-line Plays or Leans today. ${G.length ? "Tap “All picks” to see every pick." : ""}</div>`}
+    </section>
+    ${P.length ? `<section class="td-sec" aria-label="Top props">
+      <div class="td-head"><h2>Top ${Math.min(tView.props, pp.length) || ""} props</h2>${sports.filter(sp => PROPCFG[sp] && d.props.some(x => x.sp === sp)).map(sp => `<a class="td-link" href="#s=${sp}&v=props">All ${SPORTS[sp].label} props →</a>`).join(" ")}</div>
+      <p class="td-hint">Plays first, then Leans, each ranked by expected value at DraftKings' price.</p>
+      ${pp.length ? `<div class="td-list">${pp.slice(0, tView.props).map(row).join("")}</div>
+        ${pp.length > tView.props ? `<button type="button" class="td-more" id="tdMore">Show ${Math.min(10, pp.length - tView.props)} more of ${pp.length}</button>` : ""}` : `<div class="empty">No prop Plays or Leans today. Props are tagged only where the backtest against real lines found an edge: NFL unders at 70%+ model chance. NBA props are picked and graded but not tagged yet.</div>`}
+    </section>` : ""}
+    <div class="note" style="margin-top:22px"><b>Model</b> = the model's own number: its spread or total for the game, its projection for a prop. <b>Confidence</b> = how often picks like this one won in the backtest — same sport and market, same size of gap vs the line (game lines: against closing lines; props: against real sportsbook lines) — shrunk toward 50% when the sample is small. About 52.4% breaks even at -110. Lines and prices move; confirm in the DraftKings app. Tap any pick to open it.</div>`;
+  const a = $("#tdAll"); if (a) a.onclick = () => { tView.allLines = !tView.allLines; renderToday(); };
+  const mo = $("#tdMore"); if (mo) mo.onclick = () => { tView.props += 10; renderToday(); };
 }
 document.addEventListener("click", async e => {
   const el = e.target.closest("[data-tgo]"); if (!el || state.sport !== "today" || e.target.closest(".addb")) return;
@@ -1887,6 +1971,8 @@ document.addEventListener("click", async e => {
 
 /* ------------------------------------------------------------------ definitions (hover / tap) */
 const DEFS = {
+  "Model number": "The model's own number: its spread or total for the game, or its average projection for a prop.",
+  "Confidence": "How often picks like this one won in the backtest: same sport and market, same size of gap vs the line. Shrunk toward 50% when the sample is small. About 52.4% breaks even at -110.",
   "Kick (ET)": "Kickoff time, Eastern.", "Tip (ET)": "Tip-off time, Eastern.",
   "Matchup": "Away @ home (vs = neutral site). Small numbers are each team's rank in our ratings.",
   "DK": "DraftKings' current line: the home team's spread, or the game total. 'open' shows where it opened.",

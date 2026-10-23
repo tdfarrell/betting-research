@@ -426,7 +426,7 @@ def main():
         if not rows:
             continue
         log_flags(rows, s, w, flags)          # old tier names still drive the flags.csv CLV log
-        finalize_rows(rows)                   # every game gets a pick; PLAY / LEAN tags, the rest untagged
+        finalize_rows(rows, "nfl")            # every game gets a pick; PLAY / LEAN tags, the rest untagged; backtest confidence
         write(s, w, rows, teams, unmatched, calib, board["pulled_utc"])
         cnt = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)
         index["slates"].append({"key": f"{s}_wk{w:02d}", "season": s, "week": w, "label": f"Week {w}",

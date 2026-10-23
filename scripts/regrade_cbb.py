@@ -197,6 +197,13 @@ def backtest(seasons=(2026,)):
         w = sum(1 for r in rs if r.get(k) == 1); l = sum(1 for r in rs if r.get(k) == 0)
         return {"w": w, "l": l, "n": len(rs), "pct": round(w / (w + l), 3) if w + l else None}
     NAME = {"TARGET": "PLAY", "WATCH": "LEAN"}
+    # every graded game, for the confidence tables (scripts/confidence.py)
+    import csv as _csv
+    with open(f"{D}/backtest_games.csv", "w", newline="") as fh:
+        w = _csv.writer(fh); w.writerow(["season", "date", "side_edge", "side_sd", "side_res", "tot_edge", "tot_sd", "tot_res"])
+        for r in out:
+            w.writerow([r["season"], r["date"], rnd(r["number"] - r["close"], 2), rnd(r["side_sd"], 2), r.get("side_res"),
+                        rnd(r["total_number"] - r["close_total"], 2) if r.get("tot_res") is not None else "", rnd(r.get("tot_sd"), 2) if r.get("tot_sd") else "", r.get("tot_res")])
     summ = {"seasons": [min(seasons), max(seasons)], "games": len(out), "line": "closing line (ESPN core odds)",
             "rmse": {k: rnd(math.sqrt(np.mean([(r[k] - r["margin"]) ** 2 for r in out])), 2) for k in ("close", "number")} if out else {},
             "tiers_vs_close": {"side": {}, "total": {}}, "side_by_gap": {}}
@@ -308,7 +315,7 @@ def main():
                 teams[ab] = team_card(tid, R, G, season, day, ranks)
         if not rows:
             continue
-        finalize_rows(rows)
+        finalize_rows(rows, "cbb")
         path = f"{OUT}/cbb_{day}.json"
         rows, teams = merge_started(path, rows, teams)
         calib = {k: [round(v[0], 3), round(v[1], 2)] for k, v in (f or {}).items() if isinstance(v, tuple)}
