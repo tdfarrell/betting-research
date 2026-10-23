@@ -1,57 +1,533 @@
 {
  "tries": [
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401809243/competitions/401809243/odds",
-   "status": 404,
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/401809243/competitions/401809243/odds",
+   "status": 200,
    "label": "2025-26 opener",
-   "providers": []
+   "providers": [
+    [
+     "58",
+     "ESPN BET"
+    ],
+    [
+     "59",
+     "ESPN Bet - Live Odds"
+    ]
+   ]
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401809243/competitions/401809243/odds/100/propBets?lang=en&region=us&limit=1000",
-   "status": 404,
-   "label": "2025-26 opener"
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/401809243/competitions/401809243/odds/58/propBets?lang=en&region=us&limit=1000",
+   "status": 200,
+   "label": "2025-26 opener",
+   "count": 1681,
+   "pageCount": 2,
+   "types": {
+    "Total Points": 225,
+    "Total Assists": 146,
+    "Total Rebounds": 276,
+    "Total 3-Point Field Goals": 117,
+    "Total Steals": 40,
+    "Total Blocks": 37,
+    "1st Half Total": 2,
+    "1st Half Moneyline": 2,
+    "1st Half Spread": 2,
+    "1st Quarter Total": 85,
+    "1st Quarter Moneyline": 2,
+    "1st Quarter Spread": 2,
+    "Total Points and Assists": 14,
+    "Total Points and Rebounds": 50
+   },
+   "sample": [
+    {
+     "type": {
+      "id": "1",
+      "name": "Total Points"
+     },
+     "odds": {
+      "american": {
+       "value": "-130",
+       "open": "-130"
+      },
+      "decimal": {
+       "value": "1.7692",
+       "open": "1.7692"
+      },
+      "fraction": {
+       "value": "10/13",
+       "open": "10/13"
+      },
+      "total": {
+       "value": "24.5",
+       "open": "24.5"
+      }
+     },
+     "current": {
+      "target": {
+       "value": 24.5,
+       "displayValue": "24.5"
+      }
+     },
+     "open": {
+      "target": {
+       "value": 24.5,
+       "displayValue": "24.5"
+      }
+     },
+     "lastUpdated": "2025-10-19T01:19Z"
+    },
+    {
+     "type": {
+      "id": "1",
+      "name": "Total Points"
+     },
+     "odds": {
+      "american": {
+       "value": "+1000",
+       "open": "+1000"
+      },
+      "decimal": {
+       "value": "11.0000",
+       "open": "11.0000"
+      },
+      "fraction": {
+       "value": "10/1",
+       "open": "10/1"
+      },
+      "total": {
+       "value": "39.5",
+       "open": "39.5"
+      }
+     },
+     "current": {
+      "target": {
+       "value": 39.5,
+       "displayValue": "39.5"
+      }
+     },
+     "open": {
+      "target": {
+       "value": 39.5,
+       "displayValue": "39.5"
+      }
+     },
+     "lastUpdated": "2025-10-19T01:19Z"
+    }
+   ]
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401810330/competitions/401810330/odds",
-   "status": 404,
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/401809243/competitions/401809243/odds/59/propBets?lang=en&region=us&limit=1000",
+   "status": 200,
+   "label": "2025-26 opener",
+   "count": 1292,
+   "pageCount": 2,
+   "types": {
+    "Total Points": 161,
+    "Total Assists": 97,
+    "Total Rebounds": 214,
+    "Total 3-Point Field Goals": 82,
+    "Total Steals": 40,
+    "Total Blocks": 42,
+    "1st Half Total": 2,
+    "1st Half Moneyline": 2,
+    "1st Half Spread": 2,
+    "1st Quarter Total": 85,
+    "1st Quarter Moneyline": 2,
+    "1st Quarter Spread": 2,
+    "2nd Quarter Total": 2,
+    "2nd Quarter Moneyline": 2
+   },
+   "sample": [
+    {
+     "type": {
+      "id": "1",
+      "name": "Total Points"
+     },
+     "odds": {
+      "american": {
+       "value": "+150",
+       "open": "-120"
+      },
+      "decimal": {
+       "value": "2.5000",
+       "open": "1.8333"
+      },
+      "fraction": {
+       "value": "3/2",
+       "open": "5/6"
+      },
+      "total": {
+       "value": "21.5",
+       "open": "25.5"
+      }
+     },
+     "current": {
+      "under": {
+       "value": 2.5,
+       "displayValue": "3/2",
+       "alternateDisplayValue": "+150",
+       "decimal": 2.5,
+       "fraction": "3/2",
+       "american": "+150"
+      },
+      "target": {
+       "value": 21.5,
+       "displayValue": "21.5"
+      }
+     },
+     "open": {
+      "under": {
+       "value": 1.8333,
+       "displayValue": "5/6",
+       "alternateDisplayValue": "-120",
+       "decimal": 1.8333,
+       "fraction": "5/6",
+       "american": "-120"
+      },
+      "target": {
+       "value": 25.5,
+       "displayValue": "25.5"
+      }
+     },
+     "lastUpdated": "2025-10-22T02:43Z"
+    },
+    {
+     "type": {
+      "id": "1",
+      "name": "Total Points"
+     },
+     "odds": {
+      "american": {
+       "open": "-25000"
+      },
+      "decimal": {
+       "open": "1.0040"
+      },
+      "fraction": {
+       "open": "1/250"
+      },
+      "total": {
+       "value": "7.5",
+       "open": "7.5"
+      }
+     },
+     "current": null,
+     "open": {
+      "target": {
+       "value": 7.5,
+       "displayValue": "7.5"
+      }
+     },
+     "lastUpdated": "2025-10-22T02:43Z"
+    }
+   ]
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/401810330/competitions/401810330/odds",
+   "status": 200,
    "label": "2025-26 Jan",
-   "providers": []
+   "providers": [
+    [
+     "100",
+     "DraftKings"
+    ]
+   ]
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401810330/competitions/401810330/odds/100/propBets?lang=en&region=us&limit=1000",
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/401810330/competitions/401810330/odds/100/propBets?lang=en&region=us&limit=1000",
    "status": 404,
    "label": "2025-26 Jan"
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401704627/competitions/401704627/odds",
-   "status": 404,
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/401704627/competitions/401704627/odds",
+   "status": 200,
    "label": "2024-25 opener",
-   "providers": []
+   "providers": [
+    [
+     "58",
+     "ESPN BET"
+    ],
+    [
+     "59",
+     "ESPN Bet - Live Odds"
+    ]
+   ]
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/basketball/nba/leagues/nba/events/401704627/competitions/401704627/odds/100/propBets?lang=en&region=us&limit=1000",
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/401704627/competitions/401704627/odds/58/propBets?lang=en&region=us&limit=1000",
+   "status": 200,
+   "label": "2024-25 opener",
+   "count": 426,
+   "pageCount": 1,
+   "types": {
+    "Total Points": 148,
+    "Total Assists": 82,
+    "Total Rebounds": 80,
+    "Total 3-Point Field Goals": 28,
+    "Total Steals": 30,
+    "Total Blocks": 28,
+    "Total Turnovers": 30
+   },
+   "sample": [
+    {
+     "type": {
+      "id": "1",
+      "name": "Total Points"
+     },
+     "odds": {
+      "american": {
+       "value": "-325",
+       "open": "Even"
+      },
+      "decimal": {
+       "value": "1.3077",
+       "open": "2.0000"
+      },
+      "fraction": {
+       "value": "4/13",
+       "open": "1/1"
+      },
+      "total": {
+       "value": "5.5",
+       "open": "8.5"
+      }
+     },
+     "current": {
+      "over": {
+       "value": 1.3077,
+       "displayValue": "4/13",
+       "alternateDisplayValue": "-325",
+       "decimal": 1.3077,
+       "fraction": "4/13",
+       "american": "-325"
+      },
+      "target": {
+       "value": 5.5,
+       "displayValue": "5.5"
+      }
+     },
+     "open": {
+      "over": {
+       "value": 2.0,
+       "displayValue": "1/1",
+       "alternateDisplayValue": "Even",
+       "decimal": 2.0,
+       "fraction": "1/1",
+       "american": "Even"
+      },
+      "target": {
+       "value": 8.5,
+       "displayValue": "8.5"
+      }
+     },
+     "lastUpdated": "2024-10-19T18:21Z"
+    },
+    {
+     "type": {
+      "id": "1",
+      "name": "Total Points"
+     },
+     "odds": {
+      "american": {
+       "value": "-260",
+       "open": "-130"
+      },
+      "decimal": {
+       "value": "1.3846",
+       "open": "1.7692"
+      },
+      "fraction": {
+       "value": "5/13",
+       "open": "10/13"
+      },
+      "total": {
+       "value": "10.5",
+       "open": "8.5"
+      }
+     },
+     "current": {
+      "under": {
+       "value": 1.3846,
+       "displayValue": "5/13",
+       "alternateDisplayValue": "-260",
+       "decimal": 1.3846,
+       "fraction": "5/13",
+       "american": "-260"
+      },
+      "target": {
+       "value": 10.5,
+       "displayValue": "10.5"
+      }
+     },
+     "open": {
+      "under": {
+       "value": 1.7692,
+       "displayValue": "10/13",
+       "alternateDisplayValue": "-130",
+       "decimal": 1.7692,
+       "fraction": "10/13",
+       "american": "-130"
+      },
+      "target": {
+       "value": 8.5,
+       "displayValue": "8.5"
+      }
+     },
+     "lastUpdated": "2024-10-19T18:21Z"
+    }
+   ]
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/basketball/leagues/nba/events/401704627/competitions/401704627/odds/59/propBets?lang=en&region=us&limit=1000",
    "status": 404,
    "label": "2024-25 opener"
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/football/nfl/leagues/nfl/events/401772510/competitions/401772510/odds",
-   "status": 404,
+   "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401772510/competitions/401772510/odds",
+   "status": 200,
    "label": "2025 wk1",
-   "providers": []
+   "providers": [
+    [
+     "58",
+     "ESPN BET"
+    ],
+    [
+     "59",
+     "ESPN Bet - Live Odds"
+    ]
+   ]
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/football/nfl/leagues/nfl/events/401772510/competitions/401772510/odds/100/propBets?lang=en&region=us&limit=1000",
-   "status": 404,
-   "label": "2025 wk1"
+   "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401772510/competitions/401772510/odds/58/propBets?lang=en&region=us&limit=1000",
+   "status": 200,
+   "label": "2025 wk1",
+   "count": 1697,
+   "pageCount": 2,
+   "types": {
+    "Total Passing Yards (incl. overtime)": 30,
+    "Total Pass Completions (incl. overtime)": 23,
+    "Total Passing Touchdowns (incl. overtime)": 14,
+    "Total Carries (incl. overtime)": 41,
+    "Total Rushing Yards (incl. overtime)": 139,
+    "Total Receiving Yards (incl. overtime)": 237,
+    "Total Receptions (incl. overtime)": 125,
+    "Total Passing Interceptions (incl. overtime)": 9,
+    "Total Passing Attempts (incl. overtime)": 21,
+    "Longest Passing Completion (incl. overtime)": 22,
+    "Total Passing Plus Rushing Yards (incl. overtime)": 23,
+    "Longest Reception (incl. overtime)": 169,
+    "Total Rushing Plus Receiving Yards (incl. overtime)": 47,
+    "Longest Rush (incl. overtime)": 47
+   },
+   "sample": [
+    {
+     "type": {
+      "id": "8",
+      "name": "Total Passing Yards (incl. overtime)"
+     },
+     "odds": null,
+     "current": {
+      "target": {
+       "value": 249.5,
+       "displayValue": "249.5"
+      }
+     },
+     "open": {
+      "target": {
+       "value": 249.5,
+       "displayValue": "249.5"
+      }
+     },
+     "lastUpdated": "2025-09-05T07:26Z"
+    },
+    {
+     "type": {
+      "id": "8",
+      "name": "Total Passing Yards (incl. overtime)"
+     },
+     "odds": null,
+     "current": null,
+     "open": null,
+     "lastUpdated": "2025-09-05T07:37Z"
+    }
+   ]
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/football/nfl/leagues/nfl/events/401773000/competitions/401773000/odds",
-   "status": 404,
+   "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401772510/competitions/401772510/odds/59/propBets?lang=en&region=us&limit=1000",
+   "status": 200,
+   "label": "2025 wk1",
+   "count": 1753,
+   "pageCount": 2,
+   "types": {
+    "Total Passing Yards (incl. overtime)": 30,
+    "Total Pass Completions (incl. overtime)": 23,
+    "Total Passing Touchdowns (incl. overtime)": 14,
+    "Total Carries (incl. overtime)": 41,
+    "Total Rushing Yards (incl. overtime)": 139,
+    "Total Receiving Yards (incl. overtime)": 233,
+    "Total Receptions (incl. overtime)": 125,
+    "Total Passing Interceptions (incl. overtime)": 9,
+    "Total Passing Attempts (incl. overtime)": 21,
+    "Longest Passing Completion (incl. overtime)": 22,
+    "Total Passing Plus Rushing Yards (incl. overtime)": 23,
+    "Longest Reception (incl. overtime)": 171,
+    "Total Rushing Plus Receiving Yards (incl. overtime)": 47,
+    "Longest Rush (incl. overtime)": 47
+   },
+   "sample": [
+    {
+     "type": {
+      "id": "8",
+      "name": "Total Passing Yards (incl. overtime)"
+     },
+     "odds": null,
+     "current": null,
+     "open": {
+      "target": {
+       "value": 249.5,
+       "displayValue": "249.5"
+      }
+     },
+     "lastUpdated": "2025-09-05T06:25Z"
+    },
+    {
+     "type": {
+      "id": "8",
+      "name": "Total Passing Yards (incl. overtime)"
+     },
+     "odds": null,
+     "current": null,
+     "open": {
+      "target": {
+       "value": 399.5,
+       "displayValue": "399.5"
+      }
+     },
+     "lastUpdated": "2025-09-05T03:23Z"
+    }
+   ]
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401773000/competitions/401773000/odds",
+   "status": 200,
    "label": "2025 midseason?",
-   "providers": []
+   "providers": [
+    [
+     "58",
+     "ESPN BET"
+    ],
+    [
+     "59",
+     "ESPN Bet - Live Odds"
+    ]
+   ]
   },
   {
-   "url": "https://sports.core.api.espn.com/v2/sports/football/nfl/leagues/nfl/events/401773000/competitions/401773000/odds/100/propBets?lang=en&region=us&limit=1000",
+   "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401773000/competitions/401773000/odds/58/propBets?lang=en&region=us&limit=1000",
+   "status": 404,
+   "label": "2025 midseason?"
+  },
+  {
+   "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/401773000/competitions/401773000/odds/59/propBets?lang=en&region=us&limit=1000",
    "status": 404,
    "label": "2025 midseason?"
   }
