@@ -25,8 +25,14 @@ PICK_COLS = ["league", "slate", "day_et", "game_id", "kickoff_utc", "game", "awa
              "flag_grade", "flag_side", "flag_line", "flag_utc", "away_score", "home_score", "result", "lean_result", "clv", "status"]
 PROP_COLS = ["season", "week", "slate", "day_et", "game_id", "kickoff_utc", "player_id", "name", "team", "opp", "role", "market",
              "tiers", "probs", "season_hr", "l3_hr", "disagree", "last_seen_utc", "actual", "status"]
-FLAGGED = {"PLAY", "LEAN", "TARGET", "WATCH", "CHECK"}
-TIER_ORDER = {"cfb": ["PLAY", "LEAN", "CHECK"], "nfl": ["TARGET", "WATCH", "CHECK"], "nba": ["TARGET", "WATCH", "CHECK"]}
+sys.path.insert(0, os.path.dirname(__file__))
+from picks import tag_of, prop_pick
+FLAGGED = {"PLAY", "LEAN"}   # tags (Oct 23): every game has a pick; PLAY / LEAN are the tagged ones
+TIER_ORDER = {lg: ["PLAY", "LEAN"] for lg in ("cfb", "nfl", "nba", "cbb")}
+LEAGUES = ("cfb", "nfl", "nba", "cbb")
+PROP_PICKS = f"{OUT}/prop_picks.csv"
+PP_COLS = ["league", "season", "week", "slate", "day_et", "game_id", "kickoff_utc", "player_id", "name", "team", "opp", "market", "label", "line", "side",
+           "p_over", "novig_over", "edge", "tag", "odds", "first_line", "first_side", "first_utc", "last_seen_utc", "actual", "result", "clv", "status"]
 
 def now_utc():
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes").replace("+00:00", "Z")
@@ -68,7 +74,7 @@ def snapshot_board(doc, league, slate, picks, at):
         d, m = g["dk"], g["model"]
         for mk in ("side", "total"):
             s = g.get(mk) or {}
-            grade = s.get("grade") or "PASS"
+            grade = tag_of(s.get("grade"))
             if mk == "side":
                 hs = d.get("home_spread")
                 if hs is None:
@@ -76,7 +82,7 @@ def snapshot_board(doc, league, slate, picks, at):
                 edge = s.get("edge") if s.get("edge") is not None else s.get("edge_sp")
                 lean = None if edge is None or edge == 0 else ("home" if edge > 0 else "away")
                 lean_line = None if lean is None else (hs if lean == "home" else -hs)
-                model = m.get("number") if league in ("nfl", "nba") else m.get("sp_spread_cal")
+                model = m.get("number") if league != "cfb" else m.get("sp_spread_cal")
             else:
                 tot = d.get("total")
                 if tot is None:
@@ -84,25 +90,28 @@ def snapshot_board(doc, league, slate, picks, at):
                 edge = s.get("edge") if s.get("edge") is not None else s.get("edge_sp")
                 lean = None if edge is None or edge == 0 else ("over" if edge > 0 else "under")
                 lean_line = tot
-                model = m.get("total_number") if league in ("nfl", "nba") else (
+                model = m.get("total_number") if league != "cfb" else (
                     ((m.get("sp_total_cal") or 0) + (m.get("pp_total_cal") or 0)) / 2 if m.get("pp_total_cal") is not None else m.get("sp_total_cal"))
             key = (league, str(g["id"]), mk)
             r = picks.get(key) or {"league": league, "game_id": str(g["id"]), "market": mk, "first_seen_utc": at, "status": "open"}
             if r.get("status") == "final":
                 continue
-            side = s.get("pick_side") if grade in FLAGGED else None
+            side = s.get("pick_side") or lean   # every game has a pick (older boards: the model's lean)
             r.update({"slate": slate, "day_et": k.astimezone(ET).date().isoformat(), "kickoff_utc": g["kickoff_utc"],
                       "game": f"{g.get('away_abbr')} @ {g.get('home_abbr')}", "away": g.get("away_abbr"), "home": g.get("home_abbr"),
                       "grade": grade, "pick": s.get("pick") or "", "pick_side": side or "",
                       "line": s.get("line") if side else "", "odds": s.get("odds") or "",
                       "model": round(model, 1) if isinstance(model, (int, float)) else "", "edge": edge if edge is not None else "",
                       "lean_side": lean or "", "lean_line": lean_line if lean_line is not None else "", "last_seen_utc": at})
-            if side and grade in FLAGGED:
+            if side:
                 ln = s.get("line")
                 if ln is None:
                     ln = (d.get("home_spread") if side == "home" else -d.get("home_spread")) if mk == "side" else d.get("total")
                 r["line"] = ln
-                if r.get("flag_side") != side:          # first flag (or the side flipped): line at that moment
+                if not s.get("odds"):
+                    r["odds"] = (d.get("home_spread_odds") if side == "home" else d.get("away_spread_odds")) if mk == "side" else (
+                        d.get("over_odds") if side == "over" else d.get("under_odds")) or ""
+                if r.get("flag_side") != side:          # first time we see this pick (or the side flipped): line at that moment, for CLV
                     r.update({"flag_grade": grade, "flag_side": side, "flag_line": ln, "flag_utc": at})
             picks[key] = r
 
@@ -145,7 +154,7 @@ def wlp(x):
     return "" if x is None else ("W" if x > 0 else "L" if x < 0 else "P")
 
 def settle_picks(picks):
-    F = {lg: finals(lg) for lg in ("cfb", "nfl", "nba")}
+    F = {lg: finals(lg) for lg in LEAGUES}
     for r in picks.values():
         if r.get("status") == "final":
             continue
@@ -272,9 +281,9 @@ def props_metrics(rows):
 
 def summarize(picks, props):
     out = {"generated_utc": now_utc(), "leagues": {}}
-    for lg in ("cfb", "nfl", "nba"):
+    for lg in LEAGUES:
         rows = [r for r in picks.values() if r["league"] == lg]
-        if not rows and lg == "nba":
+        if not rows and lg in ("nba", "cbb"):
             continue
         days = defaultdict(list)
         for r in rows:
@@ -286,8 +295,11 @@ def summarize(picks, props):
             fin = [r for r in rs if r["status"] == "final"]
             agg = {"side": defaultdict(blank), "total": defaultdict(blank)}
             for r in fin:
-                for bucket in ((r["grade"],) if r["grade"] in FLAGGED and r["result"] else ()) + ("ALL",):
-                    res, odds = (r["result"], r["odds"]) if bucket != "ALL" else (r["lean_result"], -110)
+                tag = tag_of(r["grade"])
+                for bucket in ((tag,) if tag in FLAGGED and r["result"] else ()) + ("ALL",):
+                    # every pick counts toward ALL (the model's full record) at its DK price; older rows without a
+                    # recorded pick fall back to the model's lean at -110
+                    res, odds = (r["result"], r["odds"] or -110) if r["result"] else (r["lean_result"], -110)
                     if not res:
                         continue
                     for A in (agg, season):
@@ -295,7 +307,7 @@ def summarize(picks, props):
                         rec_add(d, res, odds)
                         if bucket != "ALL" and r.get("clv") not in ("", None):
                             d["clv_sum"] += float(r["clv"]); d["clv_n"] += 1
-            games = [{"g": r["game"], "id": r["game_id"], "m": r["market"], "grade": r["grade"], "pick": r["pick"],
+            games = [{"g": r["game"], "id": r["game_id"], "m": r["market"], "grade": tag_of(r["grade"]), "pick": r["pick"],
                       "line": r["line"], "lean": r["lean_side"], "score": f"{r['away_score']}-{r['home_score']}" if r["status"] == "final" else "",
                       "res": r["result"], "lean_res": r["lean_result"], "clv": r["clv"], "flag_line": r["flag_line"]}
                      for r in sorted(rs, key=lambda r: (r["kickoff_utc"], r["game"], r["market"]))]
@@ -313,6 +325,128 @@ def summarize(picks, props):
                              for d in sorted(pdays, reverse=True)]}
     return out
 
+
+# ------------------------------------------------------------------ 5. prop picks at DraftKings' line (Oct 23)
+NBA_STAT = {"pts": ["pts"], "reb": ["reb"], "ast": ["ast"], "tpm": ["tpm"], "stl": ["stl"], "blk": ["blk"],
+            "pra": ["pts", "reb", "ast"], "pr": ["pts", "reb"], "pa": ["pts", "ast"], "ra": ["reb", "ast"]}
+
+def snapshot_prop_picks(doc, league, lines, pp, at):
+    for c in doc.get("cards", []):
+        if c.get("started") or not c.get("kickoff_utc") or iso_le(c["kickoff_utc"], at):
+            continue
+        L = lines.get(str(c["id"])) or {}
+        k = dt.datetime.fromisoformat(c["kickoff_utc"].replace("Z", "+00:00"))
+        for mk, m in c.get("markets", {}).items():
+            rec = L.get(mk)
+            if not rec or str(rec.get("game_id")) != str(c["game_id"]) or rec.get("closed"):
+                continue
+            pk = prop_pick(m, mk, rec)
+            if not pk:
+                continue
+            key = (league, str(c["game_id"]), str(c["id"]), mk)
+            r = pp.get(key) or {"league": league, "game_id": str(c["game_id"]), "player_id": str(c["id"]), "market": mk, "status": "open"}
+            if r.get("status") in ("final", "void"):
+                continue
+            r.update({"season": doc.get("season"), "week": doc.get("week", ""), "slate": doc.get("key"), "day_et": k.astimezone(ET).date().isoformat(),
+                      "kickoff_utc": c["kickoff_utc"], "name": c["name"], "team": c["team"], "opp": c["opp"],
+                      "label": (doc.get("labels") or {}).get(mk, mk), "line": pk["line"], "side": pk["side"], "p_over": pk["p_over"],
+                      "novig_over": "" if pk["novig_over"] is None else pk["novig_over"], "edge": pk["edge"], "tag": pk["tag"],
+                      "odds": pk["odds"] or "", "last_seen_utc": at})
+            if r.get("first_side") != pk["side"]:
+                r.update({"first_side": pk["side"], "first_line": pk["line"], "first_utc": at})
+            pp[key] = r
+
+def settle_prop_picks(pp):
+    nba = {}
+    if os.path.exists("data/nba/player_games.csv"):
+        for x in csv.DictReader(open("data/nba/player_games.csv")):
+            nba[(x["game_id"], x["player_id"])] = x
+    nba_games = {k[0] for k in nba}
+    espn = {}
+    if os.path.exists("data/results/nfl.json"):
+        for g in json.load(open("data/results/nfl.json")).get("games", []):
+            if g.get("final") and g.get("players"):
+                espn[str(g["id"])] = {norm(n): p for n, p in g["players"].items()}
+    nflv, teams_in = {}, set()
+    if os.path.exists("data/nfl/player_games.csv"):
+        for x in csv.DictReader(open("data/nfl/player_games.csv")):
+            nflv[(x["season"], x["week"], x["player_id"])] = x
+            teams_in.add((x["season"], x["week"], x["team"]))
+    for r in pp.values():
+        if r.get("status") in ("final", "void"):
+            continue
+        val = None
+        if r["league"] == "nba":
+            x = nba.get((r["game_id"], r["player_id"]))
+            if x and x["dnp"] != "1" and float(x["min"] or 0) > 0:
+                val = sum(float(x[k] or 0) for k in NBA_STAT[r["market"]])
+            elif r["game_id"] in nba_games:
+                r["status"] = "void"; continue   # didn't play: DraftKings voids
+        else:
+            box = espn.get(r["game_id"])
+            if box is not None:
+                p = box.get(norm(r["name"]))
+                if p is not None and not p.get("dnp"):
+                    val = p["s"].get(PROP_STAT[r["market"]][0], 0)
+            if val is None:
+                x = nflv.get((str(r["season"]), str(r["week"]), r["player_id"]))
+                if x:
+                    f = lambda c: num(x.get(c)) or 0
+                    nk = PROP_STAT[r["market"]][1]
+                    val = f("rushing_yards") + f("receiving_yards") if r["market"] == "rr_yds" else f(nk)
+                elif (str(r["season"]), str(r["week"]), r["team"]) in teams_in:
+                    r["status"] = "void"; continue
+        if val is None:
+            continue
+        line = num(r["line"])
+        d = (val - line) * (1 if r["side"] == "over" else -1)
+        r["actual"] = int(val) if float(val).is_integer() else val
+        r["result"] = "W" if d > 0 else "L" if d < 0 else "P"
+        fl = num(r.get("first_line"))
+        if fl is not None and r.get("first_side") == r["side"]:
+            r["clv"] = round((line - fl) if r["side"] == "over" else (fl - line), 1)   # + = DK's line moved our way after we picked
+        r["status"] = "final"
+
+def summarize_prop_picks(pp):
+    out = {}
+    for lg in ("nfl", "nba", "cbb"):
+        rows = [r for r in pp.values() if r["league"] == lg]
+        if not rows:
+            continue
+        season = defaultdict(blank); days = defaultdict(list)
+        for r in rows:
+            days[r["day_et"]].append(r)
+        day_list = []
+        for day in sorted(days, reverse=True):
+            rs = days[day]; agg = defaultdict(blank)
+            for r in rs:
+                if r["status"] != "final":
+                    continue
+                for b in ((r["tag"],) if r["tag"] in FLAGGED else ()) + ("ALL",):
+                    for A in (agg, season):
+                        rec_add(A[b], r["result"], r["odds"] or -110)
+                        if r.get("clv") not in ("", None):
+                            A[b]["clv_sum"] += float(r["clv"]); A[b]["clv_n"] += 1
+            day_list.append({"day": day, "picks": len(rs), "final": sum(1 for r in rs if r["status"] == "final"),
+                             "void": sum(1 for r in rs if r["status"] == "void"), "rec": {k: finish(dict(v)) for k, v in agg.items()},
+                             "list": [{"n": r["name"], "t": r["team"], "m": r["label"], "s": r["side"], "l": r["line"], "tag": r["tag"],
+                                       "o": r["odds"], "a": r.get("actual", ""), "res": r.get("result", ""), "clv": r.get("clv", ""), "st": r["status"]}
+                                      for r in sorted(rs, key=lambda r: ({"PLAY": 0, "LEAN": 1}.get(r["tag"], 2), r["name"]))
+                                      if r["tag"] in FLAGGED or r["status"] == "final"][:400]})
+        out[lg] = {"season": {k: finish(dict(v)) for k, v in season.items()}, "days": day_list[:21], "priced": lg == "nba"}
+    return out
+
+def load_pp():
+    if not os.path.exists(PROP_PICKS):
+        return {}
+    return {(r["league"], r["game_id"], r["player_id"], r["market"]): r for r in csv.DictReader(open(PROP_PICKS))}
+
+def save_pp(pp):
+    os.makedirs(OUT, exist_ok=True)
+    rows = sorted(pp.values(), key=lambda r: (r["kickoff_utc"], r["game_id"], r["player_id"], r["market"]))
+    with open(PROP_PICKS, "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=PP_COLS, extrasaction="ignore"); w.writeheader(); w.writerows(rows)
+
 # ------------------------------------------------------------------ runs
 def boards():
     for p in glob.glob("data/boards/cfb_*.json"):
@@ -320,9 +454,10 @@ def boards():
     for p in glob.glob("data/boards/nfl_*.json"):
         if "index" not in p:
             yield "nfl", re.search(r"nfl_(.+)\.json", p).group(1), p
-    for p in glob.glob("data/boards/nba_*.json"):
-        if "index" not in p:
-            yield "nba", re.search(r"nba_(.+)\.json", p).group(1), p
+    for lg in ("nba", "cbb"):
+        for p in glob.glob(f"data/boards/{lg}_*.json"):
+            if "index" not in p:
+                yield lg, re.search(rf"{lg}_(.+)\.json", p).group(1), p
 
 def run():
     picks, props = load_csv(PICKS, PICK_COLS), load_csv(PROPS, PROP_COLS)
@@ -331,9 +466,16 @@ def run():
         snapshot_board(json.load(open(p)), lg, slate, picks, at)
     for p in glob.glob("data/props/nfl_props_*.json"):
         snapshot_props(json.load(open(p)), props, at)
-    settle_picks(picks); settle_props(props)
-    save_csv(PICKS, picks, PICK_COLS); save_csv(PROPS, props, PROP_COLS)
+    pp = load_pp()
+    for lg in ("nfl", "nba"):
+        lp = f"data/props/dk_lines_{lg}.json"
+        lines = json.load(open(lp)).get("lines", {}) if os.path.exists(lp) else {}
+        for p in glob.glob(f"data/props/{lg}_props_*.json"):
+            snapshot_prop_picks(json.load(open(p)), lg, lines, pp, at)
+    settle_picks(picks); settle_props(props); settle_prop_picks(pp)
+    save_csv(PICKS, picks, PICK_COLS); save_csv(PROPS, props, PROP_COLS); save_pp(pp)
     summ = summarize(picks, props)
+    summ["prop_picks"] = summarize_prop_picks(pp)
     with open(SUMMARY, "w") as f:
         json.dump(summ, f, separators=(",", ":"))
     n_open = sum(1 for r in picks.values() if r["status"] != "final")
@@ -349,7 +491,7 @@ def backfill(since):
         at = dt.datetime.fromisoformat(when).astimezone(dt.timezone.utc).isoformat(timespec="minutes").replace("+00:00", "Z")
         files = subprocess.run(["git", "ls-tree", "--name-only", sha, "data/boards/", "data/props/"], capture_output=True, text=True).stdout.split()
         for f in files:
-            m = re.search(r"data/boards/(cfb|nfl|nba)_(.+)\.json$", f)
+            m = re.search(r"data/boards/(cfb|nfl|nba|cbb)_(.+)\.json$", f)
             if m and "index" not in f:
                 doc = json.loads(subprocess.run(["git", "show", f"{sha}:{f}"], capture_output=True, text=True).stdout)
                 snapshot_board(doc, m.group(1), m.group(2), picks, at)

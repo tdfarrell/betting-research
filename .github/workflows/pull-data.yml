@@ -81,6 +81,12 @@ jobs:
         if: github.event.schedule == '7 10,22 * * *' || github.event.schedule == '17 15 * * 0' || (github.event_name == 'workflow_dispatch' && inputs.nflverse)
         run: python scripts/nfl_props.py
 
+      - name: College basketball scores + board
+        continue-on-error: true
+        run: |
+          python scripts/cbb_pull.py
+          if [ -f data/cbb/games.csv ]; then python scripts/regrade_cbb.py; fi
+
       - name: Grade NBA slates + prop cards
         continue-on-error: true
         run: |

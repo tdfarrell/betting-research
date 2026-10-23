@@ -12,3 +12,12 @@ Options -Indexes
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>
+
+# Installable app (PWA): manifest type, and the service worker must always be fresh
+AddType application/manifest+json .webmanifest
+<IfModule mod_headers.c>
+  <FilesMatch "^sw\.js$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header set Service-Worker-Allowed "./"
+  </FilesMatch>
+</IfModule>

@@ -1,0 +1,17 @@
+{
+  "name": "Ballwatcher Screener",
+  "short_name": "Screener",
+  "description": "Every DraftKings line and prop graded by Ballwatcher's models: Plays, Leans, trends and results for NFL, CFB, NBA and college basketball.",
+  "id": "./",
+  "start_url": "./#today",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0E13",
+  "theme_color": "#0B0E13",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

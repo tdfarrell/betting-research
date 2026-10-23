@@ -23,6 +23,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(__file__))
 from board_keep import merge_started
+from picks import finalize_rows
 
 D = "data/nba"
 OUT = "data/boards"
@@ -458,6 +459,7 @@ def main():
     slates = {s["date"]: s for s in idx.get("slates", [])}
     for day in sorted(by_day):
         rows, teams, calib, R = build_slate(day, by_day[day], G, L, season, [r for r in hist if r["date"] < day], P, INJ, board["pulled_utc"])
+        finalize_rows(rows)   # every game gets a pick; PLAY / LEAN tags, the rest untagged
         path = f"{OUT}/nba_{day}.json"
         rows, teams = merge_started(path, rows, teams)
         rows.sort(key=lambda r: (r["kickoff_utc"], r["id"]))
@@ -467,9 +469,9 @@ def main():
                "games": rows, "teams": teams}
         json.dump(doc, open(path, "w"), separators=(",", ":"))
         g_ = [r for r in rows if not r.get("started")]
-        slates[day] = {"date": day, "games": len(rows), "targets": sum(1 for r in rows for m in ("side", "total") if r[m].get("grade") == "TARGET"),
-                       "watches": sum(1 for r in rows for m in ("side", "total") if r[m].get("grade") == "WATCH")}
-        print(f"nba {day}: {len(rows)} games, {slates[day]['targets']} targets, {slates[day]['watches']} watch")
+        slates[day] = {"date": day, "games": len(rows), "plays": sum(1 for r in rows for m in ("side", "total") if r[m].get("grade") == "PLAY"),
+                       "leans": sum(1 for r in rows for m in ("side", "total") if r[m].get("grade") == "LEAN")}
+        print(f"nba {day}: {len(rows)} games, {slates[day]['plays']} plays, {slates[day]['leans']} leans")
     # keep slates whose files exist, newest 21 days
     cutoff = (dt.datetime.now(ET).date() - dt.timedelta(days=21)).isoformat()
     idx = {"generated_utc": now_iso(), "odds_pulled_utc": board["pulled_utc"], "season": season,

@@ -31,6 +31,9 @@ Method (see the project's NFL handicapping checklist):
           Overs with 15+ mph wind or rain and a falling total: PASS.
 """
 import csv, datetime as dt, json, os, re, sys
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(__file__))
+from picks import finalize_rows
 from collections import defaultdict
 sys.path.insert(0, os.path.dirname(__file__))
 import nfl_model as M
@@ -422,14 +425,15 @@ def main():
         rows, teams, unmatched, calib = build(by_week[(s, w)], s, w)
         if not rows:
             continue
+        log_flags(rows, s, w, flags)          # old tier names still drive the flags.csv CLV log
+        finalize_rows(rows)                   # every game gets a pick; PLAY / LEAN tags, the rest untagged
         write(s, w, rows, teams, unmatched, calib, board["pulled_utc"])
-        log_flags(rows, s, w, flags)
         cnt = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)
         index["slates"].append({"key": f"{s}_wk{w:02d}", "season": s, "week": w, "label": f"Week {w}",
                                 "first_day": min(r["day_et"] for r in rows), "games": len(json.load(open(f"data/boards/nfl_{s}_wk{w:02d}.json"))["games"]),
-                                "targets": cnt("side", "TARGET") + cnt("total", "TARGET"),
-                                "watches": cnt("side", "WATCH") + cnt("total", "WATCH")})
-        print(f"{s} wk{w}: {len(rows)} games, {index['slates'][-1]['targets']} targets, {index['slates'][-1]['watches']} watches; unmatched {unmatched or 'none'}")
+                                "plays": cnt("side", "PLAY") + cnt("total", "PLAY"),
+                                "leans": cnt("side", "LEAN") + cnt("total", "LEAN")})
+        print(f"{s} wk{w}: {len(rows)} games, {index['slates'][-1]['plays']} plays, {index['slates'][-1]['leans']} leans; unmatched {unmatched or 'none'}")
     settle_flags(flags)
     with open(FLAGS, "w", newline="") as f:
         wr = csv.DictWriter(f, fieldnames=FLAG_COLS, extrasaction="ignore"); wr.writeheader(); wr.writerows(flags)

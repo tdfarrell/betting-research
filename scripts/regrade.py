@@ -24,6 +24,9 @@ Method (see the project's handicapping checklist):
           tested with free data, so CFB grades are unproven. The fix makes them balanced, not proven.
 """
 import csv, datetime as dt, json, os, sys, unicodedata
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(__file__))
+from picks import finalize_rows
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from board_keep import merge_started
 
@@ -360,6 +363,7 @@ def main(days=None):
         if len(rows) < 2:
             continue
         calib = grade(rows)
+        finalize_rows(rows)   # every game gets a pick; PLAY / LEAN tags, the rest untagged
         write(day, rows, calib, unmatched, board["pulled_utc"])
         count = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)
         index["slates"].append({"date": day, "games": len(json.load(open(f"data/boards/cfb_{day}.json"))["games"]),

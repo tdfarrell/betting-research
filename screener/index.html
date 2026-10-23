@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Screener | Ballwatcher</title>
-<meta name="description" content="Ballwatcher's slate screener: every DraftKings college football and NFL line graded by our models, with matchup notes and line movement. Updated every 30 minutes.">
+<meta name="description" content="Ballwatcher's slate screener: every DraftKings NFL, college football, NBA and college basketball line and prop graded by our models, with matchup notes and line movement. Updated every 30 minutes.">
 <link rel="canonical" href="https://ballwatcher.com/screener/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ballwatcher">
 <meta property="og:title" content="Screener | Ballwatcher">
-<meta property="og:description" content="Every DraftKings CFB and NFL line, graded by Ballwatcher's models. Updated every 30 minutes.">
+<meta property="og:description" content="Every DraftKings NFL, CFB, NBA and CBB line and prop, graded by Ballwatcher's models. Updated every 30 minutes.">
 <meta property="og:url" content="https://ballwatcher.com/screener/">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0B0E13">
-<meta name="bw-build" content="screener 2026-10-12b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Screener">
+<meta name="bw-build" content="screener 2026-10-23a">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,6 +104,8 @@ td.mono:first-child{white-space:nowrap;color:var(--muted)}
 .gr.PLAY{background:var(--win-bg);color:var(--win);border:1px solid rgba(74,222,155,.35)}
 .gr.LEAN{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(255,176,32,.35)}
 .gr.PASS{color:var(--pass);background:transparent;border:1px solid var(--line)}
+.gr.PICK{color:var(--muted);background:transparent;border:1px solid var(--line)}
+.pk.untag{color:var(--muted)}
 .gr.FLAG{background:var(--lotto-bg);color:var(--lotto);border:1px solid rgba(201,162,255,.3)}
 .pk{font-weight:600;margin-left:7px;white-space:nowrap}
 .adj{color:var(--loss);font-size:11px;display:block;margin-top:3px}
@@ -275,6 +283,22 @@ tr.dimrow td{color:var(--muted)}
 .linkbtn{background:none;border:0;padding:0;color:var(--ink);font:600 13px var(--body);cursor:pointer;text-align:left}.linkbtn:hover{color:var(--amber);text-decoration:underline}
 .dh .hs{width:52px;height:52px;border-radius:50%;background:var(--chip);object-fit:cover;flex:none;display:grid;place-items:center;font:700 15px var(--display);color:var(--muted);overflow:hidden}
 
+@media (display-mode: standalone){.sitebar{padding-top:env(safe-area-inset-top)}}
+.tsub{font:600 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
+.tcard{cursor:pointer}.tcard .tag .gr{margin-right:4px;min-width:0;padding:3px 6px}
+/* definitions: dotted underline + a small popover on hover (desktop) or tap (phone) */
+.hasdef:not(button):not(.gr):not(.hp){text-decoration:underline dotted rgba(138,148,166,.6);text-underline-offset:3px;cursor:help}
+#deftip{position:fixed;z-index:60;max-width:280px;background:#1E2633;color:var(--ink);border:1px solid #2E3846;border-radius:8px;padding:8px 10px;font:500 12.5px/1.4 var(--body);box-shadow:0 8px 24px rgba(0,0,0,.45);pointer-events:none;opacity:0;transition:opacity .12s}
+#deftip.on{opacity:1}#deftip b{color:var(--amber);font-weight:600}
+/* model readout on prop cards: projection, model chance at DK's line, and the pick */
+.mread{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 4px}
+.mread .mb{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--panel2);min-width:0}
+.mread .mb .k{font:600 10px var(--mono);letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.mread .mb .v{font:700 26px/1.1 var(--display);letter-spacing:.3px;color:var(--ink);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mread .mb .s{font:500 11px var(--mono);color:var(--muted);margin-top:2px}
+.mread .mb.hi .v{color:var(--win)}.mread .mb.lo .v{color:var(--loss)}
+.mread .mb.pk.PLAY{border-color:rgba(74,222,155,.5)}.mread .mb.pk.LEAN{border-color:rgba(255,176,32,.5)}
+.px .hp.model{cursor:default;border-color:rgba(255,176,32,.45);background:var(--amber-bg)}.px .hp.model b{color:var(--amber)}
 /* trends explorer (player drawer): hit-rate pills, per-game bars against a movable line, split filters */
 .px .seg{flex-wrap:wrap;max-width:100%}
 .px .ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
@@ -338,6 +362,7 @@ tr.dimrow td{color:var(--muted)}
 </header>
 <main class="wrap">
   <div id="early"></div>
+  <div id="todayView" hidden></div>
   <div id="propsView" hidden></div>
   <div id="resultsView" hidden></div>
   <div id="linesView">
@@ -361,7 +386,7 @@ tr.dimrow td{color:var(--muted)}
       <button data-v="total" aria-pressed="false">Totals</button>
     </div>
     <input type="search" id="q" placeholder="Search team…" aria-label="Search team">
-    <label class="chk"><input type="checkbox" id="hideFlag"> Hide flagged</label>
+    <label class="chk"><input type="checkbox" id="hideFlag"> Hide flagged games</label>
   </div>
 
   <div class="tablewrap"><table id="tbl"><thead></thead><tbody></tbody></table></div>
@@ -371,6 +396,7 @@ tr.dimrow td{color:var(--muted)}
 
 <footer class="wrap">
   <div id="how"></div>
+  <p class="legal" id="installRow"><button class="linkbtn" id="installBtn" type="button">Install the Screener on your phone</button> <span id="installHint" class="muted small" hidden></span></p>
   <p class="legal">21+ · Gambling problem? Call 1-800-GAMBLER · Ballwatcher is not affiliated with DraftKings · Odds: DraftKings at time of pull</p>
 </footer>
 
@@ -400,10 +426,24 @@ function cmpRow(label, a, h, f, higherBetter) {
   return `<tr><td>${label}</td><td class="num ${ca}">${f(a)}</td><td class="num ${ch}">${f(h)}</td></tr>`;
 }
 const sect = t => `<tr><td colspan="3" class="edge" style="padding-top:10px">${t}</td></tr>`;
+/* Tags (Oct 23): every spread and total has a pick. PLAY / LEAN when it clears the sport's bands; otherwise an
+   untagged PICK (that includes the old CHECK big-gap games and flagged games). Older boards' names map over. */
+const TAGMAP = { PLAY: "PLAY", TARGET: "PLAY", LEAN: "LEAN", WATCH: "LEAN" };
+const tagOf = g => TAGMAP[g] || "PICK";
+const TAGTXT = { PLAY: "PLAY", LEAN: "LEAN", PICK: "PICK" };
+function normalizeSlate(sl) {
+  for (const g of sl.games || []) for (const k of ["side", "total"]) {
+    const m = g[k] || (g[k] = {});
+    if (!TAGMAP[m.grade] && m.grade !== "PICK") { if (m.grade === "CHECK") m.why_untagged = m.why_untagged || "Big gap vs DraftKings: usually news the model doesn't have"; }
+    m.grade = tagOf(m.grade);
+  }
+  return sl;
+}
 function gradeCell(m, g, k) {
-  const chk = m.grade === "CHECK";
-  const adj = (m.adjust || []).map(a => chk ? `<span class="adj info">? Big gap — check news first</span>` : `<span class="adj">↓ ${esc(a)}</span>`).join("");
-  return `<span class="gr ${m.grade}">${m.grade}</span>${m.pick ? `<span class="pk${chk ? " lean" : ""}">${chk ? "lean " : ""}${esc(m.pick)}</span>${resChip(g, k)}${pickAdd(m, g, k)}` : ""}${adj}`;
+  const t = tagOf(m.grade), un = t === "PICK";
+  const adj = un ? (m.why_untagged ? `<span class="adj info">${esc(m.why_untagged)}</span>` : "")
+    : (m.adjust || []).map(a => `<span class="adj">↓ ${esc(a)}</span>`).join("");
+  return `<span class="gr ${t}" data-def="${t === "PLAY" ? "Play" : t === "LEAN" ? "Lean" : "Pick"}">${TAGTXT[t]}</span>${m.pick ? `<span class="pk${un ? " untag" : ""}">${esc(m.pick)}</span>${resChip(g, k)}${pickAdd(m, g, k)}` : ""}${adj}`;
 }
 const moveTxt = (open, now, f = sgn) => open == null || now == null || open === now ? "" : `<span class="mv">open ${f(open)}</span>`;
 
@@ -420,7 +460,7 @@ const SPORTS = {
     done: (x, today) => x.date < today,   // a CFB slate is one day
     defaultSlate(slates) { const t = new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10); const up = slates.filter(s => s.date >= t);
       return (up.sort((a, b) => b.games - a.games)[0] || slates[slates.length - 1]).date; },
-    grades: ["PLAY", "LEAN"], topWord: "Plays", bothWord: "Plays + Leans", bestTitle: "Best bets", stats: ["Plays", "Leans"],
+    grades: ["PLAY", "LEAN"], topWord: "Plays", bothWord: "Plays + Leans", bestTitle: "Plays", stats: ["Plays", "Leans"],
     head: `<tr><th></th><th></th><th class="grp" colspan="4">Spread (home line)</th><th class="grp" colspan="4">Total</th><th></th></tr>
       <tr><th>Kick (ET)</th><th>Matchup</th><th class="num">DK</th><th class="num">SP+</th><th class="num">Elo</th><th>Grade</th>
       <th class="num">DK</th><th class="num">SP+</th><th class="num">Per-play</th><th>Grade</th><th>Weather</th></tr>`,
@@ -437,7 +477,7 @@ const SPORTS = {
     cardWhy(g, k) { const m = g[k], d = g.dk; return k === "side" ? `Value vs DK: SP+ ${fmt(Math.abs(m.edge_sp))} · Elo ${fmt(Math.abs(m.edge_elo))} pts`
       : `SP+ ${fmt(g.model.sp_total_cal)} · per-play ${fmt(g.model.pp_total_cal)} vs DK ${fmt(d.total)}`; },
     drawer: cfbDrawer,
-    how: () => `<p><b>How grades work.</b> SP+ and Elo spreads (and the SP+ and per-play totals) are put on DraftKings' scale using each slate's own lines, fitted so that an edge can't be predicted from the size of the line — favorites and underdogs, overs and unders all get an even shot. Gaps are measured against the slate's <b>usual gap</b> between the models and DK. <b style="color:var(--win)">PLAY</b>: the two models' average is 1–2× the usual gap from DK and both are on the same team (each 1+ point). <b style="color:var(--amber)">LEAN</b>: 0.6–1× the usual gap. <b style="color:var(--lotto)">CHECK</b>: 2×+ the usual gap — shown as a lean only, because gaps that big usually mean QB or injury news the models don't have. <b>Totals</b>: both totals models must clear the same bands on their own, in the same direction. <b style="color:var(--loss)">Downgrades</b>: line moved 2+ points toward the other side since open; overs where the total fell 5+ on a rain forecast. Spreads of 25+ and option offenses are flagged, not graded.</p>
+    how: () => `<p><b>How grades work.</b> SP+ and Elo spreads (and the SP+ and per-play totals) are put on DraftKings' scale using each slate's own lines, fitted so that an edge can't be predicted from the size of the line — favorites and underdogs, overs and unders all get an even shot. Gaps are measured against the slate's <b>usual gap</b> between the models and DK. <b>Every game gets a pick</b>: the side the models' average favors. <b style="color:var(--win)">PLAY</b>: the average is 1–2× the usual gap from DK and both models are on the same team (each 1+ point). <b style="color:var(--amber)">LEAN</b>: 0.6–1× the usual gap. Everything else is an untagged <b>PICK</b> — including gaps of 2×+ the usual gap, which usually mean QB or injury news the models don't have. Every pick is graded, tagged or not. <b>Totals</b>: both totals models must clear the same bands on their own, in the same direction. <b style="color:var(--loss)">Downgrades</b>: line moved 2+ points toward the other side since open; overs where the total fell 5+ on a rain forecast. Spreads of 25+ and option offenses are flagged: they still get a pick, untagged.</p>
       <p><b>Honesty note:</b> a 2022–25 backtest with pre-game Elo (past SP+ is only published as end-of-season ratings, which would leak results) ran about 50% against the line at every gap size. The new fit makes the card balanced; it doesn't prove an edge.</p>
       <p>Data: DraftKings lines via ESPN's public scoreboard; SP+, EPA, success rate, Elo and results via CollegeFootballData.com. Models don't know about injuries or weather — check both, and always confirm the current price in the DraftKings app. This is a research tool, not a pick; Ballwatcher's actual plays are on <a href="https://ballwatcher.com/today">Today's Card</a>.</p>`,
   },
@@ -452,7 +492,7 @@ const SPORTS = {
     defaultSlate(slates) { const t = new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
       const up = slates.filter(s => s.first_day >= t || s.games > 1).filter(s => s.first_day >= addDays(t, -6));
       return (up.sort((a, b) => b.games - a.games || a.key.localeCompare(b.key))[0] || slates[slates.length - 1]).key; },
-    grades: ["TARGET", "WATCH"], topWord: "Targets", bothWord: "Targets + Watch", bestTitle: "Targets", stats: ["Targets", "Watch list"],
+    grades: ["PLAY", "LEAN"], topWord: "Plays", bothWord: "Plays + Leans", bestTitle: "Plays", stats: ["Plays", "Leans"],
     head: `<tr><th></th><th></th><th class="grp" colspan="6">Spread (home line) · this season</th><th class="grp ang" colspan="2">Angles</th><th class="grp" colspan="5">Total</th><th></th></tr>
       <tr><th>Kick (ET)</th><th>Matchup</th><th class="num">DK</th><th class="num">BW #</th><th class="num">EPA</th><th class="num">Succ.</th><th class="num">Pts</th><th>Grade</th>
       <th class="num ang">Last yr</th><th class="num ang">Elo</th>
@@ -474,8 +514,8 @@ const SPORTS = {
       ? `BW ${esc(g.home_abbr)} ${sgn(m.number)} vs DK ${sgn(d.home_spread)} · EPA ${sgn(m.epa_spread)} · SR ${sgn(m.sr_spread)} · Pts ${sgn(m.pts_spread)}`
       : `BW total ${fmt(m.total_number)} vs DK ${fmt(d.total)} · EPA ${fmt(m.epa_total)} · points ${fmt(m.pts_total)}`; },
     drawer: nflDrawer, extra: nflTrack, early: nflEarly, props: true,
-    how: () => `<p><b>How grades work.</b> Grades use <b>this season only</b>: three ratings built from this season's play-by-play — EPA per play, success rate and points scored/allowed — each adjusted for opponent and for the projected starting quarterback, fitted to recent closing lines, and averaged into the <b>BW number</b>. Last season only seeds the ratings early (full weight in Week 1, fading to zero by Week 6) because rosters and coaching staffs change too much year to year. The ratings are put on DraftKings' scale so that an edge can't be predicted from the size of the line — favorites and underdogs, overs and unders all get an even shot. Gaps are measured against the <b>usual gap</b> between the BW number and the close lately (about 4 points early in the season, 3 later), so a tier means the same thing in Week 4 as in Week 14. <b style="color:var(--amber)">WATCH</b>: 0.3–0.6× the usual gap and at least two ratings agree (each 1+ point, same team). <b style="color:var(--win)">TARGET</b>: 0.6–1.0× the usual gap, at least two agree. <b style="color:var(--lotto)">CHECK</b>: bigger than the usual gap — in the backtest these lost against the close every season, because the market usually knows something the model doesn't (injury, QB, news); shown as a lean only. <b>Totals</b>: an EPA × pace projection and a points-rating projection, averaged into the BW total; TARGET when both miss DK by 1.5+ the same way and the BW total is 2–4.5 off, WATCH at 1.5–2, CHECK at 4.5+. <b style="color:var(--loss)">Downgrades</b>: line moved 2+ toward the other side since open; overs in 15+ mph wind or rain with a falling total. If a projected starting QB is questionable, doubtful or out, the game is flagged and not graded.</p>
-      <p><b style="color:var(--lotto)">Angles</b> — last season's rating, multi-season Elo and the market rating — are context only and never change a grade. <b>Honesty note:</b> backtested 2022–25 against closing lines, side WATCHes and TARGETs have run 55–59% and CHECK leans 44%; totals have shown no edge yet (about 50% in every band). Samples are a few hundred games, so every TARGET, WATCH and CHECK is logged at the DraftKings line when first flagged and graded on closing-line value in the Track record above.</p>
+    how: () => `<p><b>How grades work.</b> Grades use <b>this season only</b>: three ratings built from this season's play-by-play — EPA per play, success rate and points scored/allowed — each adjusted for opponent and for the projected starting quarterback, fitted to recent closing lines, and averaged into the <b>BW number</b>. Last season only seeds the ratings early (full weight in Week 1, fading to zero by Week 6) because rosters and coaching staffs change too much year to year. The ratings are put on DraftKings' scale so that an edge can't be predicted from the size of the line — favorites and underdogs, overs and unders all get an even shot. Gaps are measured against the <b>usual gap</b> between the BW number and the close lately (about 4 points early in the season, 3 later), so a tier means the same thing in Week 4 as in Week 14. <b>Every game gets a pick</b>: the side the BW number favors. <b style="color:var(--win)">PLAY</b>: 0.6–1.0× the usual gap and at least two ratings agree (each 1+ point, same team). <b style="color:var(--amber)">LEAN</b>: 0.3–0.6× the usual gap, at least two agree. Everything else is an untagged <b>PICK</b> — including gaps bigger than the usual gap, which lost against the close every season in the backtest because the market usually knows something the model doesn't (injury, QB, news). <b>Totals</b>: an EPA × pace projection and a points-rating projection, averaged into the BW total; PLAY when both miss DK by 1.5+ the same way and the BW total is 2–4.5 off, LEAN at 1.5–2; 4.5+ stays untagged. Every pick is graded, tagged or not. <b style="color:var(--loss)">Downgrades</b>: line moved 2+ toward the other side since open; overs in 15+ mph wind or rain with a falling total. If a projected starting QB is questionable, doubtful or out, the game is flagged and its pick isn't tagged.</p>
+      <p><b style="color:var(--lotto)">Angles</b> — last season's rating, multi-season Elo and the market rating — are context only and never change a grade. <b>Honesty note:</b> backtested 2022–25 against closing lines, side LEANs (then called WATCH) and PLAYs (TARGET) have run 55–59% and big-gap picks 44%; totals have shown no edge yet (about 50% in every band). Samples are a few hundred games, so every pick is logged at the DraftKings line when first seen and graded on the result and closing-line value in the Results view.</p>
       <p>Data: DraftKings lines via ESPN's public scoreboard; play-by-play, schedules, projected starters and injury reports via nflverse. Always check final inactives and confirm the current price in the DraftKings app. Research tool, not a pick; Ballwatcher's actual plays are on <a href="https://ballwatcher.com/today">Today's Card</a>.</p>`,
   },
   nba: {
@@ -487,7 +527,7 @@ const SPORTS = {
     done: (x, today) => x.date < today,
     defaultSlate(slates) { const t = new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10); const up = slates.filter(s => s.date >= t).sort((a, b) => a.date.localeCompare(b.date));
       return (up[0] || slates[slates.length - 1]).date; },
-    grades: ["TARGET", "WATCH"], topWord: "Targets", bothWord: "Targets + Watch", bestTitle: "Targets", stats: ["Targets", "Watch list"],
+    grades: ["PLAY", "LEAN"], topWord: "Plays", bothWord: "Plays + Leans", bestTitle: "Plays", stats: ["Plays", "Leans"],
     head: `<tr><th></th><th></th><th class="grp" colspan="5">Spread (home line)</th><th class="grp" colspan="5">Total</th><th></th></tr>
       <tr><th>Tip (ET)</th><th>Matchup</th><th class="num">DK</th><th class="num">BW #</th><th class="num">Eff.</th><th class="num">Pts</th><th>Grade</th>
       <th class="num">DK</th><th class="num">BW</th><th class="num">Eff.</th><th class="num">Pts</th><th>Grade</th><th>Pace · rest</th></tr>`,
@@ -506,11 +546,41 @@ const SPORTS = {
       ? `BW ${esc(g.home_abbr)} ${sgn(m.number)} vs DK ${sgn(d.home_spread)} · efficiency ${sgn(m.eff_spread)} · points ${sgn(m.pts_spread)}`
       : `BW total ${fmt(m.total_number)} vs DK ${fmt(d.total)} · efficiency × pace ${fmt(m.eff_total)} · points ${fmt(m.pts_total)}`; },
     drawer: nbaDrawer, early: nbaEarly, props: true,
-    how: () => `<p><b>How grades work.</b> Two ratings, both built only from games before the slate and adjusted for opponent: <b>efficiency</b> (points scored and allowed per 100 possessions, times the expected pace) and <b>points</b> (points scored and allowed per game). Each starts from last season's final rating, shrunk 35% toward average and worth 10 games, so it fades as this season's games pile up. Home court comes from the data; a team on the second night of a back-to-back loses 1.5 points. Each rating is put on DraftKings' scale with recent closing lines plus this slate's own lines, fitted so that an edge can't be predicted from the size of the line, and the two are averaged into the <b>BW number</b> / <b>BW total</b>. Gaps are measured against the <b>usual gap</b> between the BW number and DK lately. <b style="color:var(--amber)">WATCH</b>: 0.3–0.6× the usual gap with both ratings on the same side (1+ pt each; 1.5+ for totals). <b style="color:var(--win)">TARGET</b>: 0.6–1.0×. <b style="color:var(--lotto)">CHECK</b>: bigger than the usual gap — shown as a lean only, since it usually means news the ratings don't have. <b style="color:var(--loss)">Downgrades</b>: line moved 2+ (total 3+) toward the other side since open. <b>FLAG</b>: one of a team's top-2 minutes players is listed Out, Doubtful, Questionable or Day-To-Day — the ratings were built with him playing, so the game isn't graded.</p>
+    how: () => `<p><b>How grades work.</b> Two ratings, both built only from games before the slate and adjusted for opponent: <b>efficiency</b> (points scored and allowed per 100 possessions, times the expected pace) and <b>points</b> (points scored and allowed per game). Each starts from last season's final rating, shrunk 35% toward average and worth 10 games, so it fades as this season's games pile up. Home court comes from the data; a team on the second night of a back-to-back loses 1.5 points. Each rating is put on DraftKings' scale with recent closing lines plus this slate's own lines, fitted so that an edge can't be predicted from the size of the line, and the two are averaged into the <b>BW number</b> / <b>BW total</b>. Gaps are measured against the <b>usual gap</b> between the BW number and DK lately. <b>Every game gets a pick</b>: the side the BW number favors. <b style="color:var(--win)">PLAY</b>: 0.6–1.0× the usual gap with both ratings on the same side (1+ pt each; 1.5+ for totals). <b style="color:var(--amber)">LEAN</b>: 0.3–0.6×. Everything else is an untagged <b>PICK</b>, including gaps bigger than the usual gap (usually news the ratings don't have). <b style="color:var(--loss)">Downgrades</b>: line moved 2+ (total 3+) toward the other side since open. <b>Flagged</b>: one of a team's top-2 minutes players is listed Out, Doubtful, Questionable or Day-To-Day — the ratings were built with him playing, so the pick isn't tagged. Every pick is graded, tagged or not.</p>
       <p><b>Honesty note:</b> ${nbaBacktestTxt()}</p>
       <p>Data: DraftKings lines via ESPN's public scoreboard; box scores, injuries and closing lines via ESPN (stats.nba.com blocks automated access). Check injury reports and starting lineups before tip, and confirm the current price in the DraftKings app. Research tool, not a pick; Ballwatcher's actual plays are on <a href="https://ballwatcher.com/today">Today's Card</a>.</p>`,
   },
-  cbb: { label: "CBB", soon: true },
+  cbb: {
+    label: "CBB", kicker: "College basketball · DraftKings lines", title: "CBB Screener",
+    lede: "Every DraftKings men's college basketball line, graded on this season's scores: points scored and allowed, adjusted for opponent and home court (none at neutral sites), season-long and recent form. Updated about every 30 minutes.",
+    index: "data/boards/cbb_index.json", history: "data/odds/history_cbb.csv",
+    slateKey: s => s.date, slateFile: k => `data/boards/cbb_${k}.json`,
+    tabLabel: s => `${dayLabel(s.date)}<small>${s.games} games</small>`,
+    done: (x, today) => x.date < today,
+    defaultSlate(slates) { const t = new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10); const up = slates.filter(s => s.date >= t).sort((a, b) => a.date.localeCompare(b.date));
+      return (up[0] || slates[slates.length - 1]).date; },
+    grades: ["PLAY", "LEAN"], topWord: "Plays", bothWord: "Plays + Leans", bestTitle: "Plays", stats: ["Plays", "Leans"],
+    head: `<tr><th></th><th></th><th class="grp" colspan="5">Spread (home line)</th><th class="grp" colspan="5">Total</th><th></th></tr>
+      <tr><th>Tip (ET)</th><th>Matchup</th><th class="num">DK</th><th class="num">BW #</th><th class="num">Season</th><th class="num">Recent</th><th>Grade</th>
+      <th class="num">DK</th><th class="num">BW</th><th class="num">Season</th><th class="num">Recent</th><th>Grade</th><th>Site</th></tr>`,
+    cols: 13,
+    rank: (T, t) => T[t] && T[t].net_rank,
+    row(g, T) { const d = g.dk, m = g.model; return `
+      <td class="num mono">${sgn(d.home_spread)}${moveTxt(d.home_spread_open, d.home_spread)}</td>
+      <td class="num mono"><b>${sgn(m.number)}</b></td><td class="num mono">${sgn(m.season_spread)}</td><td class="num mono">${sgn(m.recent_spread)}</td>
+      <td>${gradeCell(g.side, g, "side")}</td>
+      <td class="num mono">${fmt(d.total)}${moveTxt(d.total_open, d.total, fmt)}</td>
+      <td class="num mono"><b>${fmt(m.total_number)}</b></td><td class="num mono">${fmt(m.season_total)}</td><td class="num mono">${fmt(m.recent_total)}</td><td>${gradeCell(g.total, g, "total")}</td>
+      <td class="wx">${g.neutral ? "Neutral" : "Home"}${g.conference_game ? " · conf" : ""}</td>`; },
+    mobile(g) { const m = g.model; return [`BW ${sgn(m.number)} · season ${sgn(m.season_spread)} · recent ${sgn(m.recent_spread)}`, `BW ${fmt(m.total_number)} · season ${fmt(m.season_total)} · recent ${fmt(m.recent_total)}`]; },
+    cardWhy(g, k) { const m = g.model, d = g.dk; return k === "side"
+      ? `BW ${esc(g.home_abbr)} ${sgn(m.number)} vs DK ${sgn(d.home_spread)} · season ${sgn(m.season_spread)} · recent ${sgn(m.recent_spread)}`
+      : `BW total ${fmt(m.total_number)} vs DK ${fmt(d.total)} · season ${fmt(m.season_total)} · recent ${fmt(m.recent_total)}`; },
+    drawer: cbbDrawer, early: nbaEarly,
+    how: () => `<p><b>How grades work.</b> Two ratings from this season's scores (D-I vs D-I, overtime scaled back to 40 minutes), both adjusted for opponent and home court (none at neutral sites): <b>season</b> (every game counts the same) and <b>recent</b> (each game back counts a bit less, so form and lineup changes show up sooner). Each starts from last season's final rating shrunk halfway to average and worth 6 games, because college rosters turn over. Each is put on DraftKings' scale with recent closing lines plus this slate's lines, and the two are averaged into the BW number / total. <b>Every game gets a pick</b>. <b style="color:var(--win)">PLAY</b>: 0.6–1.0× the usual gap, both ratings on the same side. <b style="color:var(--amber)">LEAN</b>: 0.3–0.6×. Everything else, including gaps bigger than the usual gap, is an untagged <b>PICK</b>. A line that moved 2+ against our side since open drops a tier. Every pick is graded. College injury reports aren't in the data; check news before tip.</p>
+      <p><b>Honesty note:</b> ${cbbBacktestTxt()}</p>
+      <p>Data: DraftKings lines via ESPN's public scoreboard; scores and closing lines via ESPN. Research tool, not a pick; Ballwatcher's actual plays are on <a href="https://ballwatcher.com/today">Today's Card</a>.</p>`,
+  },
 };
 function nbaRest(g) {
   const r = g.rest || {}, t = x => x == null ? "—" : x === 1 ? "B2B" : `${x - 1}d`;
@@ -519,7 +589,31 @@ function nbaRest(g) {
 function nbaBacktestTxt() {
   const b = state.index && state.index.backtest; if (!b || !b.tiers_vs_close) return "the backtest hasn't run yet.";
   const r = x => x && x.w + x.l ? `${x.w}-${x.l} (${Math.round(x.pct * 100)}%)` : "—", T = b.tiers_vs_close;
-  return `replayed over the ${b.seasons[0] - 1}–${String(b.seasons[0]).slice(2)} season${b.seasons[1] > b.seasons[0] ? " and this one so far" : ""} against DraftKings closing lines (${b.games.toLocaleString()} games): sides WATCH ${r(T.side.WATCH)}, TARGET ${r(T.side.TARGET)}, CHECK ${r(T.side.CHECK)}; totals WATCH ${r(T.total.WATCH)}, TARGET ${r(T.total.TARGET)}, CHECK ${r(T.total.CHECK)}. You need about 52.4% to break even at -110. Injuries weren't known to the backtest, so live FLAGs remove some games it graded.`;
+  return `replayed over the ${b.seasons[0] - 1}–${String(b.seasons[0]).slice(2)} season${b.seasons[1] > b.seasons[0] ? " and this one so far" : ""} against DraftKings closing lines (${b.games.toLocaleString()} games): sides PLAY ${r(T.side.TARGET)}, LEAN ${r(T.side.WATCH)}, big gaps ${r(T.side.CHECK)}; totals PLAY ${r(T.total.TARGET)}, LEAN ${r(T.total.WATCH)}, big gaps ${r(T.total.CHECK)}. You need about 52.4% to break even at -110. Injuries weren't known to the backtest.`;
+}
+function cbbBacktestTxt() {
+  const b = state.index && state.index.backtest; if (!b || !b.tiers_vs_close) return "the backtest runs once last season's scores and lines are loaded.";
+  const r = x => x && x.w + x.l ? `${x.w}-${x.l} (${Math.round(x.pct * 100)}%)` : "—", T = b.tiers_vs_close;
+  return `replayed over ${b.seasons[0] - 1}–${String(b.seasons[0]).slice(2)} against closing lines (${b.games.toLocaleString()} games): sides PLAY ${r(T.side.PLAY)}, LEAN ${r(T.side.LEAN)}, every pick ${r(T.side.ALL)}; totals PLAY ${r(T.total.PLAY)}, LEAN ${r(T.total.LEAN)}, every pick ${r(T.total.ALL)}. About 52.4% breaks even at -110.`;
+}
+function cbbDrawer(g, teams) {
+  const A = teams[g.away] || {}, H = teams[g.home] || {}, d = g.dk, m = g.model, sd = g.side, td = g.total;
+  const res = t => (t.results || []).map(r => `<span class="${r.res}">${dayLabel(r.date).replace(/^\w+, /, "")} ${r.site === "A" ? "@" : r.site === "N" ? "vs" : ""}${esc(r.opp)} ${r.res} ${r.score}${r.ats ? ` · ATS ${r.ats}` : ""}</span>`).join("") || `<span>No games yet</span>`;
+  const box = (x, k) => `<div class="panel"><h4>${k === "side" ? "Spread" : "Total"}</h4><div>${gradeCell(x, g, k)}</div>${drawerAdds(g, k)}<div class="mono edge" style="margin-top:6px">${k === "side"
+    ? `DK ${esc(g.home_abbr)} ${sgn(d.home_spread)} (open ${sgn(d.home_spread_open)}) · ${esc(d.home_spread_odds || "")} / ${esc(d.away_spread_odds || "")}<br><b style="color:var(--ink)">BW number ${esc(g.home_abbr)} ${sgn(m.number)}</b>${x.edge != null ? ` · edge ${sgn(x.edge)} (+ = home value)` : ""}<br>Season ${sgn(m.season_spread)} · recent ${sgn(m.recent_spread)}${g.bands ? `<br>Gap bands: LEAN ${fmt(g.bands[0])}+ · PLAY ${fmt(g.bands[1])}+ · untagged above ${fmt(g.bands[2])} pts` : ""}`
+    : `DK ${fmt(d.total)} (open ${fmt(d.total_open)}) · O ${esc(d.over_odds || "")} / U ${esc(d.under_odds || "")}<br><b style="color:var(--ink)">BW total ${fmt(m.total_number)}</b>${x.edge != null ? ` · edge ${sgn(x.edge)}` : ""}<br>Season ${fmt(m.season_total)} · recent ${fmt(m.recent_total)}${g.tbands ? `<br>Gap bands: LEAN ${fmt(g.tbands[0])}+ · PLAY ${fmt(g.tbands[1])}+ · untagged above ${fmt(g.tbands[2])}` : ""}`}${x.why_untagged ? `<br><span style="color:var(--lotto)">Untagged: ${esc(x.why_untagged)}</span>` : ""}</div></div>`;
+  return `<div class="grid2">${box(sd, "side")}${box(td, "total")}</div>${notesPanel(g)}${lmPanel}
+    <div class="panel"><h4>Team comparison · this season (opponent adjusted)</h4><table class="cmp"><thead><tr><th></th><th class="num">${esc(g.away_abbr)}</th><th class="num">${esc(g.home_abbr)}</th></tr></thead><tbody>
+      <tr><td>Record · ATS</td><td class="num">${esc(A.record || "—")} · ${esc(A.ats || "—")}</td><td class="num">${esc(H.record || "—")} · ${esc(H.ats || "—")}</td></tr>
+      ${cmpRow("Net rating (pts vs avg team)", A.net, H.net, x => sgn(x), true)}
+      <tr><td>Rank (of ${state.slate.teams_rated || "D-I"})</td><td class="num">#${A.net_rank ?? "—"}</td><td class="num">#${H.net_rank ?? "—"}</td></tr>
+      ${cmpRow("Points scored (adj.)", A.off, H.off, x => fmt(x), true)}${cmpRow("Points allowed (adj.)", A.def, H.def, x => fmt(x), false)}
+      ${cmpRow("Recent-form rating", A.recent_net, H.recent_net, x => sgn(x), true)}
+      <tr><td>Games played</td><td class="num">${A.games ?? "—"}</td><td class="num">${H.games ?? "—"}</td></tr>
+    </tbody></table></div>
+    <div class="panel"><h4>${esc(A.name || g.away_abbr)} results</h4><div class="res">${res(A)}</div></div>
+    <div class="panel"><h4>${esc(H.name || g.home_abbr)} results</h4><div class="res">${res(H)}</div></div>
+    <div class="panel"><h4>Before you bet</h4><ul class="notes"><li>College injury reports aren't in the data: check news and starting lineups before tip.</li><li>Confirm the current price in the DraftKings app.</li></ul></div>`;
 }
 function nbaEarly(slate) {
   const early = (slate.games || []).some(g => (g.notes || []).some(n => n.startsWith("Early season")));
@@ -532,12 +626,12 @@ function nbaDrawer(g, teams) {
   const side = `<div class="panel"><h4>Spread</h4><div>${gradeCell(sd, g, "side")}</div>${drawerAdds(g, "side")}<div class="mono edge" style="margin-top:6px">
     DK ${esc(g.home_abbr)} ${sgn(d.home_spread)} (open ${sgn(d.home_spread_open)}) · ${esc(d.home_spread_odds || "")} / ${esc(d.away_spread_odds || "")}<br>
     <b style="color:var(--ink)">BW number ${esc(g.home_abbr)} ${sgn(m.number)}</b>${sd.edge != null ? ` · edge ${sgn(sd.edge)} (+ = home value)` : ""}<br>
-    Efficiency ${sgn(m.eff_spread)} · points ${sgn(m.pts_spread)}${m.b2b ? ` · back-to-back ${sgn(-m.b2b)} to ${esc(g.home_abbr)}` : ""}${g.bands ? `<br>Gap bands: WATCH ${fmt(g.bands[0])}+ · TARGET ${fmt(g.bands[1])}+ · CHECK ${fmt(g.bands[2])}+ pts` : ""}${(sd.adjust || []).length ? `<br>${esc(sd.adjust.join("; "))}` : ""}${sd.grade_before_flag ? `<br><span style="color:var(--lotto)">Would be ${esc(sd.grade_before_flag)} without the injury flag</span>` : ""}</div></div>`;
+    Efficiency ${sgn(m.eff_spread)} · points ${sgn(m.pts_spread)}${m.b2b ? ` · back-to-back ${sgn(-m.b2b)} to ${esc(g.home_abbr)}` : ""}${g.bands ? `<br>Gap bands: LEAN ${fmt(g.bands[0])}+ · PLAY ${fmt(g.bands[1])}+ · untagged above ${fmt(g.bands[2])} pts` : ""}${(sd.adjust || []).length ? `<br>${esc(sd.adjust.join("; "))}` : ""}${sd.why_untagged ? `<br><span style="color:var(--lotto)">Untagged: ${esc(sd.why_untagged)}</span>` : ""}</div></div>`;
   const tot = `<div class="panel"><h4>Total</h4><div>${gradeCell(td, g, "total")}</div>${drawerAdds(g, "total")}<div class="mono edge" style="margin-top:6px">
     DK ${fmt(d.total)} (open ${fmt(d.total_open)}) · O ${esc(d.over_odds || "")} / U ${esc(d.under_odds || "")}<br>
-    <b style="color:var(--ink)">BW total ${fmt(m.total_number)}</b>${td.edge != null ? ` · edge ${sgn(td.edge)}` : ""}<br>Efficiency × pace ${fmt(m.eff_total)} · points ${fmt(m.pts_total)} · pace ${fmt(m.pace)} poss${g.tbands ? `<br>Gap bands: WATCH ${fmt(g.tbands[0])}+ · TARGET ${fmt(g.tbands[1])}+ · CHECK ${fmt(g.tbands[2])}+` : ""}${td.grade_before_flag ? `<br><span style="color:var(--lotto)">Would be ${esc(td.grade_before_flag)} without the injury flag</span>` : ""}</div></div>`;
+    <b style="color:var(--ink)">BW total ${fmt(m.total_number)}</b>${td.edge != null ? ` · edge ${sgn(td.edge)}` : ""}<br>Efficiency × pace ${fmt(m.eff_total)} · points ${fmt(m.pts_total)} · pace ${fmt(m.pace)} poss${g.tbands ? `<br>Gap bands: LEAN ${fmt(g.tbands[0])}+ · PLAY ${fmt(g.tbands[1])}+ · untagged above ${fmt(g.tbands[2])}` : ""}${td.why_untagged ? `<br><span style="color:var(--lotto)">Untagged: ${esc(td.why_untagged)}</span>` : ""}</div></div>`;
   const inj = [A, H].map(t => (t.injuries || []).length ? `<b>${esc(t.abbr)}</b>: ${t.injuries.map(i => `${esc(i.name)} (${esc(i.status)})`).join(", ")}` : `<b>${esc(t.abbr)}</b>: none listed`).join("<br>");
-  return `<div class="grid2">${side}${tot}</div>${(g.flags || []).length ? `<div class="panel" style="border-left:3px solid var(--lotto)"><h4 style="color:var(--lotto)">Not graded: a top player's status</h4><ul class="notes">${g.flags.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>` : ""}${notesPanel(g)}
+  return `<div class="grid2">${side}${tot}</div>${(g.flags || []).length ? `<div class="panel" style="border-left:3px solid var(--lotto)"><h4 style="color:var(--lotto)">Pick not tagged: a top player's status</h4><ul class="notes">${g.flags.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>` : ""}${notesPanel(g)}
     <div class="panel"><h4>Injury report (ESPN)</h4><div class="edge">${inj}</div></div>${lmPanel}
     <div class="panel"><h4>Team comparison · this season (opponent adjusted)</h4><table class="cmp"><thead><tr><th></th><th class="num">${esc(g.away_abbr)}</th><th class="num">${esc(g.home_abbr)}</th></tr></thead><tbody>
       <tr><td>Record · ATS</td><td class="num">${esc(A.record)} · ${esc(A.ats)}</td><td class="num">${esc(H.record)} · ${esc(H.ats)}</td></tr>
@@ -564,13 +658,15 @@ function hashParams() { return new URLSearchParams(location.hash.slice(1)); }
 function setHash() { try { history.replaceState(null, "", `#s=${state.sport}&k=${encodeURIComponent(state.key || "")}${state.view !== "lines" ? "&v=" + state.view : ""}`); } catch (e) {} }
 
 function drawSports() {
-  $("#sports").innerHTML = Object.entries(SPORTS).map(([k, s]) =>
+  $("#sports").innerHTML = `<button class="sport" role="tab" data-s="today" aria-selected="${state.sport === "today"}">Today</button>` + Object.entries(SPORTS).map(([k, s]) =>
     `<button class="sport" role="tab" data-s="${k}" aria-selected="${k === state.sport}" ${s.soon ? "disabled" : ""}>${s.label}${s.soon ? "<small>Soon</small>" : ""}</button>`).join("");
 }
-$("#sports").onclick = e => { const b = e.target.closest(".sport"); if (b && !b.disabled && b.dataset.s !== state.sport) setSport(b.dataset.s); };
+$("#sports").onclick = e => { const b = e.target.closest(".sport"); if (!b || b.disabled || b.dataset.s === state.sport) return;
+  if (b.dataset.s === "today") showToday(); else setSport(b.dataset.s); };
 
 async function setSport(sp, key, view) {
   state.sport = sp; state.key = null; state.index = null; state.slate = null; state.props = null; state.propsIndex = null; state.dkLines = null; px = null;
+  $("#todayView").hidden = true; $("#tabs").hidden = false; $("#linesView").hidden = false; $("#how").hidden = false;
   const s = S();
   state.view = view === "props" && s.props ? "props" : view === "results" ? "results" : "lines";
   drawSports(); drawViews();
@@ -609,7 +705,7 @@ function slateSplit() {
 function drawTabs(selected) {
   const s = S(), { past, cur } = slateSplit();
   const btn = x => `<button class="tab" role="tab" data-k="${esc(s.slateKey(x))}" aria-selected="${s.slateKey(x) === selected}">${s.tabLabel(x)}</button>`;
-  const unit = state.sport === "cfb" ? "day" : "week";
+  const unit = state.sport === "nfl" ? "week" : "day";
   $("#tabs").innerHTML = (past.length ? `<button class="tab pastbtn" id="pastTog" aria-expanded="${!!state.showPast}" title="${state.showPast ? "Hide" : "Show"} completed ${unit}s">${state.showPast ? "◂ Hide past" : `Past ${unit}s ▸`}<small>${past.length} completed</small></button>` : "")
     + (state.showPast ? past.map(btn).join("") : "") + cur.map(btn).join("");
 }
@@ -629,7 +725,7 @@ async function load(key) {
   loadGrades().then(ok => { if (ok && state.slate && state.view === "lines" && sp === state.sport) render(); });
   const slate = await getJSON(s.slateFile(key));
   if (sp !== state.sport || key !== state.key) return;
-  state.slate = slate;
+  state.slate = normalizeSlate(slate);
   const statsAt = slate.cfbd_pulled_utc || slate.stats_pulled_utc;
   $("#meta").innerHTML = `<span class="pill"><span class="dot"></span>DK lines <b>${ago(slate.odds_pulled_utc)}</b></span><span class="pill">Model stats <b>${ago(statsAt)}</b></span><span class="pill">Graded <b>${ago(slate.generated_utc)}</b></span>`;
   $("#early").innerHTML = s.early ? s.early(slate) : "";
@@ -642,14 +738,14 @@ function render() {
   const c = { [G1]: 0, [G2]: 0 };
   games.forEach(x => [x.side, x.total].forEach(m => { if (c[m.grade] != null) c[m.grade]++; }));
   $("#summary").innerHTML = `
-    <div class="stat"><div class="k">Games graded</div><div class="v">${games.length}</div></div>
+    <div class="stat"><div class="k">Games · every one has a pick</div><div class="v">${games.length}</div></div>
     <div class="stat play"><div class="k">${s.stats[0]}</div><div class="v">${c[G1]}</div></div>
     <div class="stat lean"><div class="k">${s.stats[1]}</div><div class="v">${c[G2]}</div></div>
     <div class="stat"><div class="k">${s.stats[0]}: sides · totals</div><div class="v">${games.filter(g => g.side.grade === G1).length} · ${games.filter(g => g.total.grade === G1).length}</div></div>`;
   const items = [];
   for (const g of games) for (const k of ["side", "total"]) if (g[k].grade === G1) items.push({ g, k });
   $("#best").innerHTML = items.length ? items.map(({ g, k }) => `<div class="card" data-id="${g.id}">
-      <div class="tag">${G1 === "PLAY" ? "Play" : "Target"} · ${k === "side" ? "Spread" : "Total"}</div>
+      <div class="tag">Play · ${k === "side" ? "Spread" : "Total"}</div>
       <div class="pick">${esc(g[k].pick)}</div>
       <div class="sub">${esc(g.away)} ${g.neutral ? "vs" : "@"} ${esc(g.home)} · ${g.kick_et}</div>
       <div class="why mono">${s.cardWhy(g, k)}</div>
@@ -740,8 +836,8 @@ function cfbDrawer(g, teams) {
   const res = t => (t.results || []).map(r => `<span class="${r.res}">Wk${r.wk} ${r.site === "A" ? "@" : r.site === "N" ? "vs" : ""} ${esc(r.opp)} ${r.res} ${r.score}</span>`).join("") || `<span>—</span>`;
   const why = k => { const x = g[k];
     const lines = k === "side"
-      ? [`DK ${esc(g.home_abbr)} ${sgn(d.home_spread)} (open ${sgn(d.home_spread_open)})`, `SP+ fitted ${sgn(m.sp_spread_cal)} · raw margin ${sgn(-m.sp_margin)}`, `Elo fitted ${sgn(m.elo_spread_cal)} · raw ${sgn(m.elo_margin == null ? null : -m.elo_margin)}`, `Edge vs DK: SP+ ${sgn(x.edge_sp)}, Elo ${sgn(x.edge_elo)}, average ${sgn(x.edge)} (+ = home value)`, ...(state.slate.calibration.bands_side ? [`Bands this slate: LEAN ${fmt(state.slate.calibration.bands_side[0])}+ · PLAY ${fmt(state.slate.calibration.bands_side[1])}+ · CHECK ${fmt(state.slate.calibration.bands_side[2])}+ pts`] : [])]
-      : [`DK ${fmt(d.total)} (open ${fmt(d.total_open)}) · O ${esc(d.over_odds)} / U ${esc(d.under_odds)}`, `SP+ ${fmt(m.sp_total_cal)} (raw ${fmt(m.sp_total)})`, `Per-play ${fmt(m.pp_total_cal)} (raw ${fmt(m.pp_total)})`, `Edge: SP+ ${sgn(x.edge_sp)}, per-play ${sgn(x.edge_pp)}`, ...(state.slate.calibration.bands_total ? [`Bands this slate (each model): LEAN ${fmt(state.slate.calibration.bands_total[0])}+ · PLAY ${fmt(state.slate.calibration.bands_total[1])}+ · CHECK ${fmt(state.slate.calibration.bands_total[2])}+`] : [])];
+      ? [`DK ${esc(g.home_abbr)} ${sgn(d.home_spread)} (open ${sgn(d.home_spread_open)})`, `SP+ fitted ${sgn(m.sp_spread_cal)} · raw margin ${sgn(-m.sp_margin)}`, `Elo fitted ${sgn(m.elo_spread_cal)} · raw ${sgn(m.elo_margin == null ? null : -m.elo_margin)}`, `Edge vs DK: SP+ ${sgn(x.edge_sp)}, Elo ${sgn(x.edge_elo)}, average ${sgn(x.edge)} (+ = home value)`, ...(state.slate.calibration.bands_side ? [`Bands this slate: LEAN ${fmt(state.slate.calibration.bands_side[0])}+ · PLAY ${fmt(state.slate.calibration.bands_side[1])}+ · untagged above ${fmt(state.slate.calibration.bands_side[2])} pts`] : [])]
+      : [`DK ${fmt(d.total)} (open ${fmt(d.total_open)}) · O ${esc(d.over_odds)} / U ${esc(d.under_odds)}`, `SP+ ${fmt(m.sp_total_cal)} (raw ${fmt(m.sp_total)})`, `Per-play ${fmt(m.pp_total_cal)} (raw ${fmt(m.pp_total)})`, `Edge: SP+ ${sgn(x.edge_sp)}, per-play ${sgn(x.edge_pp)}`, ...(state.slate.calibration.bands_total ? [`Bands this slate (each model): LEAN ${fmt(state.slate.calibration.bands_total[0])}+ · PLAY ${fmt(state.slate.calibration.bands_total[1])}+ · untagged above ${fmt(state.slate.calibration.bands_total[2])}`] : [])];
     return `<div class="panel"><h4>${k === "side" ? "Spread" : "Total"}</h4><div>${gradeCell(x, g, k)}</div><div class="mono edge" style="margin-top:6px">${lines.join("<br>")}</div>${drawerAdds(g, k)}</div>`; };
   return `<div class="grid2">${why("side")}${why("total")}</div>${notesPanel(g)}${lmPanel}
     <div class="panel"><h4>Team comparison</h4><table class="cmp"><thead><tr><th></th><th class="num">${esc(g.away_abbr)}</th><th class="num">${esc(g.home_abbr)}</th></tr></thead><tbody>
@@ -770,15 +866,11 @@ function nflEarly(sl) {
   return `<div class="note"><b>Early season:</b> Week ${sl.week} ratings still carry ${Math.round(w * 100)}% of last season's starting point (fades to zero by Week 6). Expect bigger swings week to week.</div>`;
 }
 function nflTrack(ix) {
-  const r = ix.flag_record || {}, bt = ix.backtest;
-  const box = (k, label) => { const x = r[k] || { n: 0 };
-    const clv = x.avg_clv == null ? "—" : sgn(x.avg_clv);
-    return `<div class="stat"><div class="k">${label}</div><div class="v">${x.n ? clv + " pts" : "—"}</div>
-      <div class="s">${x.n ? `CLV avg · beat close ${x.beat_close}/${x.n}` : "No closed flags yet"}${x.w + x.l + (x.p || 0) ? ` · ${x.w}-${x.l}${x.p ? "-" + x.p : ""} ATS` : ""}</div></div>`; };
-  let btTxt = "";
-  if (bt && bt.tiers_vs_close) { const T = bt.tiers_vs_close, f = (m, k) => { const x = (T[m] || {})[k]; return x ? `${k} ${x.w}-${x.l} (${pct(x.pct)})` : ""; };
-    btTxt = `<div class="note"><b>Backtest ${bt.seasons[0]}–${String(bt.seasons[1]).slice(2)}</b> (${bt.games} games vs the ${esc(bt.line)}). Sides: ${["WATCH", "TARGET", "CHECK"].map(k => f("side", k)).filter(Boolean).join(" · ")}; favorites are about half of all side flags. Totals: ${["WATCH", "TARGET", "CHECK"].map(k => f("total", k)).filter(Boolean).join(" · ")} — no edge yet. CHECK = the model's lean when it's far from the market; those leans have lost, so treat them as "find out what the market knows." The record that matters is above: whether flags beat the <b>DraftKings close</b> (CLV).</div>`; }
-  return `<h2>Track record</h2><div class="track">${box("TARGET_side", "Targets · sides")}${box("WATCH_side", "Watch · sides")}${box("CHECK_side", "Check leans · sides")}${box("TARGET_total", "Targets · totals")}</div>${btTxt}`;
+  const bt = ix.backtest;
+  if (!bt || !bt.tiers_vs_close) return "";
+  const T = bt.tiers_vs_close, f = (m, k, lab) => { const x = (T[m] || {})[k]; return x ? `${lab} ${x.w}-${x.l} (${pct(x.pct)})` : ""; };
+  const row = m => [f(m, "TARGET", "Play"), f(m, "WATCH", "Lean"), f(m, "CHECK", "big gaps (untagged)")].filter(Boolean).join(" · ");
+  return `<div class="note"><b>Backtest ${bt.seasons[0]}–${String(bt.seasons[1]).slice(2)}</b> (${bt.games} games vs the ${esc(bt.line)}). Sides: ${row("side")}. Totals: ${row("total")} — no totals edge yet. Big-gap picks have lost against the close, so they stay untagged. The live record of every pick, with closing-line value, is in the <b>Results</b> view.</div>`;
 }
 function nflDrawer(g, teams) {
   const A = teams[g.away], H = teams[g.home], d = g.dk, m = g.model, e3 = x => x == null ? "—" : (+x).toFixed(2), p = pct, n0 = x => fmt(x, 0), rk = x => x == null ? "—" : "#" + x;
@@ -788,7 +880,7 @@ function nflDrawer(g, teams) {
     DK ${esc(g.home_abbr)} ${sgn(d.home_spread)} (open ${sgn(d.home_spread_open)}) · ${esc(d.home_spread_odds)} / ${esc(d.away_spread_odds)}<br>
     <b style="color:var(--ink)">BW number ${esc(g.home_abbr)} ${sgn(m.number)}</b> · edge ${sgn(sd.edge)}<br>
     This season: EPA ${sgn(m.epa_spread)} · success ${sgn(m.sr_spread)} · points ${sgn(m.pts_spread)}<br>
-    QB adjustment in all: ${sgn(m.qb_adj)} pts to ${esc(g.home_abbr)}${g.bands ? `<br>Gap bands this week: WATCH ${fmt(g.bands[0])}+ · TARGET ${fmt(g.bands[1])}+ · CHECK ${fmt(g.bands[2])}+ pts` : ""}${sd.grade === "CHECK" ? `<br><span style="color:var(--lotto)">${esc(sd.adjust[0] || "")}</span>` : ""}${(sd.keys || []).length ? `<br>Our number and DK sit on opposite sides of ${sd.keys.join(" & ")}` : ""}</div></div>`;
+    QB adjustment in all: ${sgn(m.qb_adj)} pts to ${esc(g.home_abbr)}${g.bands ? `<br>Gap bands this week: LEAN ${fmt(g.bands[0])}+ · PLAY ${fmt(g.bands[1])}+ · untagged above ${fmt(g.bands[2])} pts` : ""}${sd.why_untagged ? `<br><span style="color:var(--lotto)">Untagged: ${esc(sd.why_untagged)}</span>` : ""}${(sd.keys || []).length ? `<br>Our number and DK sit on opposite sides of ${sd.keys.join(" & ")}` : ""}</div></div>`;
   const tot = `<div class="panel"><h4>Total</h4><div>${gradeCell(td, g, "total")}</div>${drawerAdds(g, "total")}<div class="mono edge" style="margin-top:6px">
     DK ${fmt(d.total)} (open ${fmt(d.total_open)}) · O ${esc(d.over_odds)} / U ${esc(d.under_odds)}<br>
     <b style="color:var(--ink)">BW total ${fmt(m.total_number)}</b> · edge ${sgn(td.edge)}<br>EPA × pace ${fmt(m.epa_total)} · points ${fmt(m.pts_total)}<br>Edge: EPA ${sgn(td.edge_epa)}, points ${sgn(td.edge_pts)}<br>
@@ -822,7 +914,7 @@ function nflDrawer(g, teams) {
     <div class="panel"><h4>${esc(H.name)} results</h4><div class="res">${res(H)}</div></div>
     <div class="panel"><h4>Before you bet</h4><ul class="notes">
       <li>Check final inactives ~90 minutes before kickoff, especially QB, OL and top receivers.</li>
-      <li>Grades are against the DK line shown; key numbers (3, 7) matter — a half point can flip a TARGET.</li>
+      <li>Grades are against the DK line shown; key numbers (3, 7) matter — a half point can flip a Play.</li>
       <li>Confirm the current price in the DraftKings app.</li></ul></div>`;
 }
 
@@ -971,7 +1063,7 @@ function tierTable(c, mk) {
         <tr><td class="lab">Season</td>${m.tiers.map(t => cell(t.season)).join("")}</tr>
         <tr><td class="lab">Opp vs role</td>${m.tiers.map(t => cell(t.def)).join("")}</tr>
         <tr class="sep"><td colspan="${m.tiers.length + 1}"></td></tr>
-        <tr class="model"><td class="lab">Model</td>${m.tiers.map(t => `<td class="c ${pcls(t.p)}">${Math.round(t.p * 100)}%</td>`).join("")}</tr>
+        <tr class="model"><td class="lab" data-def="Model %">Model</td>${m.tiers.map(t => `<td class="c ${pcls(t.p)}">${Math.round(t.p * 100)}%</td>`).join("")}</tr>
         <tr class="fairr"><td class="lab">Fair</td>${m.tiers.map(t => `<td>${fairTxt(t.fair)}</td>`).join("")}</tr>
         ${propAddRow(c, mk)}
       </tbody></table></div>`;
@@ -993,6 +1085,7 @@ function propCard(c, mk) {
   return `<div class="pc ${dis.length ? "dis" : ""}" data-pid="${esc(c.id)}" data-gid="${esc(c.game_id)}" tabindex="0" role="button" aria-label="Open ${esc(c.name)} details">
     <div class="top">${hs}<div style="min-width:0"><div class="nm">${esc(c.name)}<span class="role">${c.role}</span>${c.status ? `<span class="inj">${esc(c.status)}</span>` : ""}</div>
       <div class="sub">${esc(c.team)} ${c.home ? "vs" : "@"} ${esc(c.opp)} · ${c.kick_et} · ${esc(c.team)} implied ${fmt(c.implied)}</div></div></div>
+    ${modelRead(c, mk)}
     <div class="facts">${dkFact(c, mk)}<span>${avgTxt}</span><span>L3 <b>${l3}</b></span><span>${projTxt}</span>
       <span>${esc(c.opp)} allows <b>${m.def_avg == null ? "—" : fmt(m.def_avg)}</b> to ${c.role}s${m.def_n ? ` (${m.def_n} g)` : ""}${m.dvp ? ` ${dvpTag(m, c, true)}` : ""}</span>
       <span>${vol}</span>${u.snap_pct != null ? `<span>Snaps <b>${pct(u.snap_pct)}</b></span>` : ""}</div>
@@ -1043,7 +1136,45 @@ function modelOver(m, mk, L) {
 const impl = o => { const x = parseFloat(String(o || "").replace("+", "")); if (!isFinite(x) || !x) return null; return x < 0 ? -x / (-x + 100) : 100 / (x + 100); };
 // DraftKings' no-vig chance of the over (NBA lines come with prices; NFL ones don't)
 const novigOver = d => { const a = impl(d && d.over), b = impl(d && d.under); return a != null && b != null ? a / (a + b) : null; };
+/* prop picks (mirror of scripts/picks.py prop_pick): every player with a DK line gets an over or under pick */
+const PP_PRICED = { play: .08, lean: .04, big: .15 }, PP_UNPRICED = { play: .62, lean: .56, big: .75 };
+function propPick(c, mk) {
+  const d = mk !== "atd" && dkLine(c, mk); if (!d) return null;
+  const m = c.markets[mk], p = modelOver(m, mk, d.line); if (p == null) return null;
+  const nv = novigOver(d);
+  let over, edge, tag, chance, why = "";
+  if (nv != null) { over = p >= nv; edge = Math.abs(p - nv); chance = over ? p : 1 - p;
+    tag = edge >= PP_PRICED.big ? "PICK" : edge >= PP_PRICED.play ? "PLAY" : edge >= PP_PRICED.lean ? "LEAN" : "PICK";
+    if (edge >= PP_PRICED.big) why = "Big gap vs DraftKings: usually minutes, role or injury news the model doesn't have"; }
+  else { over = p >= .5; chance = over ? p : 1 - p; edge = chance - .5;
+    tag = chance >= PP_UNPRICED.big ? "PICK" : chance >= PP_UNPRICED.play ? "PLAY" : chance >= PP_UNPRICED.lean ? "LEAN" : "PICK";
+    if (chance >= PP_UNPRICED.big) why = "Model far from DraftKings' line: usually news the model doesn't have"; }
+  return { side: over ? "over" : "under", line: d.line, p, nv, edge, chance, tag, why, odds: over ? d.over : d.under, d };
+}
 const fairOf = p => p == null || p <= .005 || p >= .995 ? null : Math.round(p >= .5 ? -100 * p / (1 - p) : 100 * (1 - p) / p);
+// big, scannable model numbers on each card: what it projects, its chance at DK's line (or the coin-flip tier), and the pick
+function modelRead(c, mk) {
+  const m = c.markets[mk]; if (!m) return "";
+  const dp = ["pass_td", "atd", "rec", "tpm", "stl", "blk", "reb", "ast"].includes(mk) ? 1 : 0;
+  const unit = (state.props.labels[mk] || "").toLowerCase();
+  const proj = mk === "atd" ? `<div class="mb"><div class="k" data-def="TD chance">Model TD chance</div><div class="v">${pct(m.tiers[0].p)}</div><div class="s">fair ${fairTxt(m.tiers[0].fair)}</div></div>`
+    : `<div class="mb"><div class="k" data-def="Model projects">Model projects</div><div class="v">${fmt(m.proj, dp)}</div><div class="s">${esc(unit)} (median)</div></div>`;
+  const pk = propPick(c, mk);
+  let mid, pick;
+  if (pk) {
+    const pc = pk.side === "over" ? pk.p : 1 - pk.p;
+    mid = `<div class="mb ${pk.p >= .5 ? "hi" : "lo"}"><div class="k" data-def="Model over">Over ${fmt(pk.line)}</div><div class="v">${pct(pk.p)}</div><div class="s">model chance${pk.nv != null ? ` · DK ${pct(pk.nv)}` : ""}</div></div>`;
+    pick = `<div class="mb pk ${pk.tag}"><div class="k" data-def="Pick">Pick</div><div class="v">${pk.side === "over" ? "Over" : "Under"} ${fmt(pk.line)}</div><div class="s"><span class="gr ${pk.tag}">${pk.tag}</span> ${pct(pc)}${pk.nv != null ? ` · edge ${fmt(pk.edge * 100, 1)}%` : ""}</div></div>`;
+  } else if (mk === "atd") {
+    mid = `<div class="mb"><div class="k" data-def="Season">This season</div><div class="v">${m.season_vals.filter(v => v > 0).length}/${m.season_vals.length}</div><div class="s">games with a TD</div></div>`;
+    pick = `<div class="mb"><div class="k">Pick</div><div class="v" style="color:var(--muted)">—</div><div class="s">no over/under line</div></div>`;
+  } else {
+    let b = m.tiers[0]; for (const t of m.tiers) if (Math.abs(t.p - .5) < Math.abs(b.p - .5)) b = t;
+    mid = `<div class="mb ${b.p >= .5 ? "hi" : "lo"}"><div class="k" data-def="Model %">${b.t}+ ${esc(unit)}</div><div class="v">${pct(b.p)}</div><div class="s">model chance · fair ${fairTxt(b.fair)}</div></div>`;
+    pick = `<div class="mb"><div class="k">Pick</div><div class="v" style="color:var(--muted)">—</div><div class="s">no DK line yet</div></div>`;
+  }
+  return `<div class="mread">${proj}${mid}${pick}</div>`;
+}
 function dkFact(c, mk) {
   const d = mk !== "atd" && dkLine(c, mk); if (!d) return "";
   const p = modelOver(c.markets[mk], mk, d.line), mv = d.open != null && d.open !== d.line ? ` <span style="color:var(--muted)">(open ${fmt(d.open)})</span>` : "";
@@ -1069,13 +1200,14 @@ function renderPropLines(cards) {
     const m = c.markets[mk], min = Math.floor(d.line) + 1, p = modelOver(m, mk, d.line);
     const hr = {}; for (const [w] of LN_WINS) hr[w] = hasLog(c) ? hitAt(winOf(glog(c), w, c), mk, min) : [0, 0];
     const nv = novigOver(d);
-    return { c, m, d, min, p, hr, nv, edge: p != null && nv != null ? p - nv : null, diff: m.proj != null ? m.proj - d.line : null, streak: tierStreak(c, mk, min) }; }).filter(Boolean);
+    return { c, m, d, min, p, hr, nv, pk: propPick(c, mk), edge: p != null && nv != null ? p - nv : null, diff: m.proj != null ? m.proj - d.line : null, streak: tierStreak(c, mk, min) }; }).filter(Boolean);
   const priced = rows.some(r => r.nv != null);
   if (!rows.length) { $("#pList").innerHTML = `<div class="empty">No DraftKings ${esc(lab.toLowerCase())} lines for these players yet. ESPN usually posts them a few days before kickoff.</div>`; return; }
   const rate = ([h, n]) => n ? h / n + n / 1e4 : -1;
   const cols = [
     { k: "name", l: "Player", v: r => r.c.name, txt: true }, { k: "role", l: "Role", v: r => roleOrd(r.c) },
     { k: "opp", l: "Opp", v: r => r.c.opp, txt: true },
+    { k: "pick", l: "Pick", v: r => r.pk ? ({ PLAY: 3, LEAN: 2 }[r.pk.tag] || 1) + Math.min(r.pk.edge, .99) : 0 },
     { k: "line", l: "DK line", v: r => r.d.line }, { k: "open", l: "Open", v: r => r.d.open ?? -1 },
     { k: "proj", l: mk === "pass_td" ? "Proj" : "Model med.", v: r => r.m.proj ?? -1 }, { k: "diff", l: "Diff", v: r => r.diff ?? -999 },
     { k: "p", l: "Model over", v: r => r.p ?? -1 },
@@ -1087,7 +1219,7 @@ function renderPropLines(cards) {
   let list = rows;
   if (f.sort && cols.some(c => c.k === f.sort)) { const col = cols.find(c => c.k === f.sort);
     list = [...rows].sort((a, b) => { const x = col.v(a), y = col.v(b); return (col.txt ? String(x).localeCompare(String(y)) : x - y) * f.dir || a.c.name.localeCompare(b.c.name); }); }
-  else list = [...rows].sort((a, b) => priced ? Math.abs(b.edge ?? 0) - Math.abs(a.edge ?? 0) : Math.abs((b.p ?? .5) - .5) - Math.abs((a.p ?? .5) - .5));   // biggest edge vs DK's no-vig price (or strongest model lean when there are no prices)
+  else { const pv = cols.find(c => c.k === "pick").v; list = [...rows].sort((a, b) => pv(b) - pv(a)); }   // Plays first, then Leans, then untagged; biggest edge first within each
   const arrow = k => f.sort === k ? (f.dir > 0 ? " ▲" : " ▼") : "";
   const dp = mk === "pass_td" || mk === "rec" ? 1 : 0;
   const hrCell = ([h, n]) => `<td class="tc"><span class="c ${rcls(h, n)}">${n ? Math.round(h / n * 100) + "%" : "—"}</span><small>${n ? `${h}/${n}` : ""}</small></td>`;
@@ -1098,6 +1230,7 @@ function renderPropLines(cards) {
         <td class="first"><button class="linkbtn" data-pid="${esc(c.id)}" data-gid="${esc(c.game_id)}">${esc(c.name)}</button>${c.status ? ` <span class="inj">${esc(c.status)}</span>` : ""}${slip.admin ? " " + addBtn(lineOverItem(r, mk, lab)) : ""}</td>
         <td><span class="role" style="margin:0">${c.role}</span></td>
         <td class="mono opt">${c.home ? "" : "@"}${esc(c.opp)}</td>
+        <td style="white-space:nowrap">${r.pk ? `<span class="gr ${r.pk.tag}">${r.pk.tag}</span> <span class="${r.pk.tag === "PICK" ? "pk untag" : "pk"}">${r.pk.side === "over" ? "Over" : "Under"}</span>` : "—"}</td>
         <td class="num mono" style="color:var(--amber)">${fmt(r.d.line)}${mv ? `<small style="display:block;color:${mv > 0 ? "var(--win)" : "var(--loss)"}">${mv > 0 ? "▲" : "▼"} ${fmt(Math.abs(mv))}</small>` : ""}</td>
         <td class="num mono opt">${r.d.open == null ? "—" : fmt(r.d.open)}</td>
         <td class="num mono">${r.m.proj == null ? "—" : fmt(r.m.proj, dp)}</td>
@@ -1108,7 +1241,7 @@ function renderPropLines(cards) {
         <td class="tc"><span class="c st ${stCls(r.streak)}">${stTxt(r.streak)}</span></td>
         <td class="num opt">${dvpTag(r.m, c)}</td>
         ${LN_WINS.map(([w]) => hrCell(r.hr[w])).join("")}</tr>`; }).join("")}</tbody></table></div>
-    <div class="edge" style="margin-top:8px">DraftKings over/under lines from ESPN (${priced ? "with prices, read in the order ESPN lists them (over, then under); <b>Edge</b> = model chance minus DK's no-vig chance for the side the model prefers; 15%+ is marked <span style='color:var(--lotto)'>Check</span> because gaps that big usually mean a minutes limit, role change or injury the model doesn't know about" : "lines only; check the price in the DK app"}). Hit rates count games <b>over</b> the line (${esc(lab.toLowerCase())}). <b>Diff</b> = model median − line (green = model above the line). Default order: the strongest model lean, over or under. <b>Model over</b> = simulated chance of the over, fair odds underneath. <b>Streak</b> = games in a row over (✓) or under (✗). L5/L10/L20 run back into last season; H2H = vs this opponent, this season and last. Backtest: the model beat season hit rates, which beat recent ones, so treat the hit-rate columns as context. ${state.sport === "nba" ? "NBA model backtest (2025-26): calibrated within about 2 points in every band, and it beat both season and last-10 hit rates; not yet graded against DraftKings' prices." : "Not yet tested against DraftKings' lines: on the first slate the model leaned under on most receiving lines."}</div>`;
+    <div class="edge" style="margin-top:8px">DraftKings over/under lines from ESPN (${priced ? "with prices, read in the order ESPN lists them (over, then under); <b>Edge</b> = model chance minus DK's no-vig chance for the side the model prefers; 15%+ is marked <span style='color:var(--lotto)'>Check</span> because gaps that big usually mean a minutes limit, role change or injury the model doesn't know about" : "lines only; check the price in the DK app"}). Hit rates count games <b>over</b> the line (${esc(lab.toLowerCase())}). <b>Diff</b> = model median − line (green = model above the line). <b>Pick</b> = the model's side at DK's line: <b>PLAY</b> ${priced ? "8%+ edge over DK's no-vig chance" : "62%+ model chance"}, <b>LEAN</b> ${priced ? "4–8%" : "56–62%"}, otherwise untagged (and untagged at ${priced ? "15%+" : "75%+"}, where the gap usually means news the model lacks). Every pick is graded in Results. Default order: Plays, Leans, then the rest. <b>Model over</b> = simulated chance of the over, fair odds underneath. <b>Streak</b> = games in a row over (✓) or under (✗). L5/L10/L20 run back into last season; H2H = vs this opponent, this season and last. Backtest: the model beat season hit rates, which beat recent ones, so treat the hit-rate columns as context. ${state.sport === "nba" ? "NBA model backtest (2025-26): calibrated within about 2 points in every band, and it beat both season and last-10 hit rates; not yet graded against DraftKings' prices." : "Not yet tested against DraftKings' lines: on the first slate the model leaned under on most receiving lines."}</div>`;
   const sortBy = th => { const k = th.dataset.sort; if (f.sort === k) f.dir = -f.dir; else { f.sort = k; f.dir = ["name", "opp", "role"].includes(k) ? 1 : -1; } renderProps(); };
   $("#pList").querySelectorAll("th[data-sort]").forEach(th => { th.onclick = () => sortBy(th); th.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); sortBy(th); } }; });
 }
@@ -1187,7 +1320,7 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-22c";
+const SCREENER_BUILD = "2026-10-23a";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";
@@ -1388,7 +1521,7 @@ function tierBox(label, r, extra, cls) {
   return `<div class="stat ${cls || ""}"><div class="k">${label}</div><div class="v">${recTxt(r)}</div>
     <div class="s">${pctTxt(r)}${r && r.w + r.l ? " · " + unitTxt(r) : ""}${r && r.clv != null ? ` · CLV ${sgn(r.clv)}` : ""}${extra ? " · " + extra : ""}</div></div>`;
 }
-const TIER_CLS = { PLAY: "play", TARGET: "play", LEAN: "lean", WATCH: "lean", CHECK: "chk" };
+const TIER_CLS = { PLAY: "play", TARGET: "play", LEAN: "lean", WATCH: "lean", PICK: "all" };
 async function loadResults() {
   const sp = state.sport;
   $("#resultsView").innerHTML = `<div class="empty">Loading results…</div>`;
@@ -1399,20 +1532,20 @@ async function loadResults() {
   if (!L) { $("#resultsView").innerHTML = `<div class="empty">No graded games yet. Results appear once games on the board are final.</div>`; return; }
   $("#meta").innerHTML = `<span class="pill"><span class="dot"></span>Updated <b>${ago(G.generated_utc)}</b></span>`;
   const T = L.tiers, S = L.season;
-  const tiles = mk => [...T.map(t => tierBox(t === "CHECK" ? "CHECK (leans)" : t, S[mk][t], "", TIER_CLS[t])),
-    tierBox("All games · model lean", S[mk].ALL, "at -110")].join("");
-  const dayRec = (d, mk) => [...T, "ALL"].map(t => d[mk][t] ? `<span class="dr"><b class="t-${(TIER_CLS[t] || "all")}">${t === "ALL" ? "All" : t}</b> ${recTxt(d[mk][t])}</span>` : "").join("");
+  const tiles = mk => [...T.filter(t => TAGMAP[t]).map(t => tierBox(t === "PLAY" ? "Plays" : "Leans", S[mk][t], "", TIER_CLS[t])),
+    tierBox("Every pick · model record", S[mk].ALL, "tagged or not")].join("");
+  const dayRec = (d, mk) => [...T.filter(t => TAGMAP[t]), "ALL"].map(t => d[mk][t] ? `<span class="dr"><b class="t-${(TIER_CLS[t] || "all")}">${t === "ALL" ? "Every pick" : t === "PLAY" ? "Plays" : "Leans"}</b> ${recTxt(d[mk][t])}</span>` : "").join("");
   const days = L.days.filter(d => d.final > 0);
   const pending = L.days.filter(d => d.final === 0).length;
   const pickRow = p => {
-    const flagged = p.grade && !["PASS", "FLAG"].includes(p.grade);
+    const tag = tagOf(p.grade), tagged = tag !== "PICK";
     const [aw, hm] = String(p.g).split(" @ ");
     const leanTxt = p.lean === "home" ? hm : p.lean === "away" ? aw : p.lean ? p.lean[0].toUpperCase() + p.lean.slice(1) : "";
-    const what = flagged ? `${p.grade === "CHECK" ? "lean " : ""}${esc(p.pick)}` : (p.lean ? `<span class="angle">lean ${esc(leanTxt)}</span>` : "—");
-    const res = flagged ? p.res : p.lean_res;
-    return `<tr class="${flagged ? "" : "dimrow"}"><td>${esc(p.g)}</td><td class="mono-sm">${p.m === "side" ? "Spread" : "Total"}</td>
-      <td><span class="gr ${esc(p.grade)}">${esc(p.grade)}</span> ${what}</td>
-      <td class="num mono">${p.flag_line !== "" && p.flag_line != null && flagged && String(p.flag_line) !== String(p.line) ? `${esc(p.flag_line)} → ` : ""}${flagged ? esc(p.line) : ""}</td>
+    const what = p.pick ? `<span class="${tagged ? "" : "angle"}">${esc(p.pick)}</span>` : (p.lean ? `<span class="angle">${esc(leanTxt)}</span>` : "—");
+    const res = p.res || p.lean_res;
+    return `<tr class="${tagged ? "" : "dimrow"}"><td>${esc(p.g)}</td><td class="mono-sm">${p.m === "side" ? "Spread" : "Total"}</td>
+      <td><span class="gr ${tag}">${tag}</span> ${what}</td>
+      <td class="num mono">${p.flag_line !== "" && p.flag_line != null && String(p.flag_line) !== String(p.line) ? `${esc(p.flag_line)} → ` : ""}${esc(p.line ?? "")}</td>
       <td class="num mono">${esc(p.score || "")}</td>
       <td>${res ? `<span class="rchip r${res}">${res}</span>` : (p.score ? "" : `<span class="muted small">pending</span>`)}</td>
       <td class="num mono">${p.clv !== "" && p.clv != null ? sgn(+p.clv) : ""}</td></tr>`;
@@ -1422,12 +1555,27 @@ async function loadResults() {
       <span class="drs"><span class="mk">Sides</span>${dayRec(d, "side") || "—"}</span>
       <span class="drs"><span class="mk">Totals</span>${dayRec(d, "total") || "—"}</span></summary>
       <div class="rwrap"><table class="rtable"><thead><tr><th>Game</th><th>Market</th><th>Pick at kickoff</th><th class="num">Line</th><th class="num">Final</th><th>Result</th><th class="num">CLV</th></tr></thead>
-      <tbody>${d.picks.filter(p => p.score || (p.grade && !["PASS", "FLAG"].includes(p.grade))).sort((a, b) => (["PASS", "FLAG"].includes(a.grade) - ["PASS", "FLAG"].includes(b.grade))).map(pickRow).join("")}</tbody></table></div></details>`;
+      <tbody>${d.picks.slice().sort((a, b) => ((tagOf(a.grade) === "PICK") - (tagOf(b.grade) === "PICK"))).map(pickRow).join("")}</tbody></table></div></details>`;
   let props = "";
+  const PP = G.prop_picks && G.prop_picks[sp];
+  if (PP) {
+    const S2 = PP.season || {};
+    const ppDay = d => `<details class="panel dayp"><summary><span class="dd">${dayLabel(d.day)}</span><span class="muted small">${d.final}/${d.picks} picks final${d.void ? ` · ${d.void} void` : ""}</span>
+        <span class="drs">${["PLAY", "LEAN", "ALL"].map(t => d.rec[t] ? `<span class="dr"><b class="t-${TIER_CLS[t] || "all"}">${t === "ALL" ? "Every pick" : t === "PLAY" ? "Plays" : "Leans"}</b> ${recTxt(d.rec[t])}</span>` : "").join("") || "—"}</span></summary>
+        <div class="rwrap"><table class="rtable"><thead><tr><th>Player</th><th>Market</th><th>Pick at tip/kickoff</th><th class="num">Price</th><th class="num">Actual</th><th>Result</th><th class="num">CLV</th></tr></thead>
+        <tbody>${(d.list || []).map(x => `<tr class="${x.tag === "PICK" ? "dimrow" : ""}"><td>${esc(x.n)} <span class="muted small">${esc(x.t)}</span></td><td class="mono-sm">${esc(x.m)}</td>
+          <td><span class="gr ${x.tag}">${x.tag}</span> ${x.s === "over" ? "Over" : "Under"} ${esc(x.l)}</td><td class="num mono">${esc(x.o || "")}</td>
+          <td class="num mono">${x.a === "" ? "" : esc(x.a)}</td><td>${x.res ? `<span class="rchip r${x.res}">${x.res}</span>` : x.st === "void" ? `<span class="muted small">void</span>` : `<span class="muted small">pending</span>`}</td>
+          <td class="num mono">${x.clv !== "" && x.clv != null ? sgn(+x.clv) : ""}</td></tr>`).join("")}</tbody></table></div></details>`;
+    props += `<h2>Player props · picks at DraftKings' line</h2>
+      <div class="summary">${tierBox("Plays", S2.PLAY, "", "play")}${tierBox("Leans", S2.LEAN, "", "lean")}${tierBox("Every pick · model record", S2.ALL, "tagged or not")}</div>
+      ${(PP.days || []).filter(d => d.final || d.list.length).map(ppDay).join("") || `<div class="empty">No prop picks graded yet.</div>`}
+      <div class="edge" style="margin-top:6px">Every player with a DraftKings over/under gets an over or under pick from the model, locked in at tip/kickoff. ${PP.priced ? "Units use DraftKings' price." : "DraftKings' NFL prop prices aren't in the feed, so units assume -110."} CLV = how DK's line moved after our first pick (+ = toward us). Players who don't play are void.</div>`;
+  }
   if (sp === "nfl" && G.props && G.props.season) {
     const P = G.props.season;
     const better = P.brier_model != null && P.brier_hit_rate != null ? (P.brier_model < P.brier_hit_rate ? "model" : "hit rates") : null;
-    props = `<h2>Player props</h2>
+    props += `<h2>Player props · tier calls</h2>
       <div class="summary">
         <div class="stat"><div class="k">Tier calls graded</div><div class="v">${P.calls.toLocaleString()}</div><div class="s">${P.players} player-games</div></div>
         <div class="stat play"><div class="k">Model 70%+ tiers</div><div class="v">${P.model_70.hit}/${P.model_70.n}</div><div class="s">${P.model_70.n ? pct(P.model_70.hit / P.model_70.n) : "—"} hit</div></div>
@@ -1452,7 +1600,7 @@ async function loadResults() {
     ${days.length ? days.map(dayBlock).join("") : `<div class="empty">No finished days yet.</div>`}
     ${pending ? `<div class="muted small" style="margin-top:6px">${pending} upcoming day${pending === 1 ? "" : "s"} being tracked; they appear here once games are final.</div>` : ""}
     ${props}
-    <div class="note" style="margin-top:18px"><b>How this is graded.</b> Each game's grade and pick are locked in as they stood at kickoff and graded against that DraftKings line once the game is final (W/L/P). <b>CLV</b> = the line when the game was first flagged vs the line at kickoff (+ means the market moved toward our pick). <b>All games · model lean</b> grades the side the models preferred on every game, flagged or not, at -110. Units assume 1u per pick at the DraftKings price. Lines are captured each time the data job runs, which GitHub schedules every 1–3 hours in practice, so "kickoff" means the last capture before kickoff.</div>`;
+    <div class="note" style="margin-top:18px"><b>How this is graded.</b> Every game has a pick. Each pick and its tag (Play, Lean or untagged) are locked in as they stood at kickoff and graded against that DraftKings line once the game is final (W/L/P). <b>CLV</b> = the line when we first made the pick vs the line at kickoff (+ means the market moved toward our pick). <b>Every pick · model record</b> grades all picks, tagged or not, at the DraftKings price (older days before Oct 23, which only stored the model's lean on untagged games, at -110). Earlier tier names map over: TARGET → Play, WATCH → Lean, CHECK → untagged. Previously, "all games" graded the side the models preferred on every game, flagged or not, at -110. Units assume 1u per pick at the DraftKings price. Lines are captured each time the data job runs, which GitHub schedules every 1–3 hours in practice, so "kickoff" means the last capture before kickoff.</div>`;
 }
 
 /* ------------------------------------------------------------------ player deep dive (props) */
@@ -1495,7 +1643,9 @@ function renderPX(c) {
   const mk = px.mk, k = gstat(mk), S = state.props.season, lab = state.props.labels[mk];
   const min = Math.floor(px.line) + 1;           // over x.5 = at least x+1
   const base = pxFiltered(c), rows = winOf(base, px.win, c);
-  const pills = PX_WINS.map(([w, l]) => { const r = winOf(base, w, c), [h, n] = hitAt(r, mk, min);
+  const pOverNow = modelOver(c.markets[mk], mk, px.line);
+  const modelPill = `<div class="hp model" data-def="Model"><span>Model</span><b>${pOverNow == null ? "—" : pct(pOverNow)}</b><small>${mk === "atd" ? "TD chance" : `proj ${fmt(c.markets[mk].proj, 1)}`}</small></div>`;
+  const pills = modelPill + PX_WINS.map(([w, l]) => { const r = winOf(base, w, c), [h, n] = hitAt(r, mk, min);
     return `<button class="hp ${rcls(h, n)}" data-pxw="${w}" aria-pressed="${px.win === w}">${l}<b>${n ? Math.round(h / n * 100) + "%" : "—"}</b><small>${n ? `${h}/${n}` : "no games"}</small></button>`; }).join("");
   const vals = rows.map(x => x[k]), top = Math.max(px.line * 1.25, ...vals, 1);
   const bars = rows.map((x, i) => { const v = x[k], hit = v >= min, sep = i > 0 && rows[i - 1].season !== x.season;
@@ -1616,18 +1766,252 @@ document.addEventListener("keydown", e => {
   if (state.view === "props" && (e.key === "Enter" || e.key === " ") && e.target.matches && e.target.matches(".pc[data-pid]")) { e.preventDefault(); openPlayer(e.target.dataset.pid, e.target.dataset.gid); }
 });
 
+
+/* ------------------------------------------------------------------ Today: every Play and Lean, all sports, one view */
+const TODAY_SPORTS = ["nfl", "cfb", "nba", "cbb"];
+const todayET = () => new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
+const tState = { tag: "both", kind: "all", sp: "all", data: null };
+async function gatherToday() {
+  const day = todayET(), out = { day, games: [], props: [], errors: [] };
+  await Promise.all(TODAY_SPORTS.map(async sp => {
+    const S_ = SPORTS[sp]; if (!S_ || S_.soon) return;
+    let idx; try { idx = await getJSON(S_.index); } catch (e) { return; }
+    const slates = (idx.slates || []).filter(x => sp === "nfl" ? (x.first_day <= day && addDays(x.first_day, 6) >= day) : x.date === day);
+    for (const x of slates) {
+      let sl; try { sl = normalizeSlate(await getJSON(S_.slateFile(S_.slateKey(x)))); } catch (e) { continue; }
+      for (const g of sl.games) {
+        if ((g.day_et || day) !== day) continue;
+        for (const k of ["side", "total"]) {
+          const m = g[k]; if (!m || !m.pick) continue;
+          out.games.push({ sp, key: S_.slateKey(x), g, k, m, tag: m.grade, teams: sl.teams });
+        }
+      }
+      // props for the same slate
+      const PCx = PROPCFG[sp]; if (!PCx) continue;
+      let doc, L;
+      try { doc = await getJSON(PCx.file(S_.slateKey(x))); } catch (e) { continue; }
+      try { L = await getJSON(PCx.dk); } catch (e) { L = null; }
+      const keep = { props: state.props, dk: state.dkLines };
+      state.props = doc; state.dkLines = L;
+      for (const c of doc.cards || []) {
+        if (!c.kickoff_utc) continue;
+        const cday = new Date(new Date(c.kickoff_utc) - 4 * 3600e3).toISOString().slice(0, 10);
+        if (cday !== day) continue;
+        for (const mk of Object.keys(c.markets)) {
+          const pk = propPick(c, mk); if (!pk) continue;
+          out.props.push({ sp, key: S_.slateKey(x), c, mk, pk, label: doc.labels[mk], tag: pk.tag });
+        }
+      }
+      state.props = keep.props; state.dkLines = keep.dk;
+    }
+  }));
+  return out;
+}
+async function showToday() {
+  state.sport = "today"; state.view = "today"; state.slate = null; px = null;
+  try { history.replaceState(null, "", "#today"); } catch (e) {}
+  drawSports();
+  $("#views").hidden = true; $("#tabs").hidden = true; $("#linesView").hidden = true; $("#propsView").hidden = true; $("#resultsView").hidden = true;
+  $("#how").hidden = true; $("#early").innerHTML = ""; $("#todayView").hidden = false;
+  $("#kicker").textContent = "All sports · DraftKings lines"; $("#title").textContent = "Today";
+  $("#lede").textContent = "Every Play and Lean from every sport for today, game lines and player props, in one place. Tap any pick to open it in its sport's board.";
+  document.title = "Today | Ballwatcher Screener";
+  $("#meta").innerHTML = `<span class="pill">Loading today's picks…</span>`;
+  $("#todayView").innerHTML = `<div class="empty">Gathering every sport's board…</div>`;
+  const d = await gatherToday();
+  if (state.sport !== "today") return;
+  tState.data = d;
+  $("#meta").innerHTML = `<span class="pill"><span class="dot"></span>${dayLabel(d.day)}</span><span class="pill"><b>${d.games.length}</b> game picks · <b>${d.props.length}</b> prop picks on the board</span>`;
+  renderToday();
+}
+function renderToday() {
+  const d = tState.data; if (!d) return;
+  const okTag = t => tState.tag === "both" ? (t === "PLAY" || t === "LEAN") : tState.tag === "all" ? true : t === tState.tag;
+  const okSp = sp => tState.sp === "all" || tState.sp === sp;
+  const G = d.games.filter(x => okTag(x.tag) && okSp(x.sp) && tState.kind !== "props");
+  const P = d.props.filter(x => okTag(x.tag) && okSp(x.sp) && tState.kind !== "games");
+  const ord = t => ({ PLAY: 0, LEAN: 1 }[t] ?? 2);
+  G.sort((a, b) => ord(a.tag) - ord(b.tag) || (a.g.kickoff_utc || "").localeCompare(b.g.kickoff_utc || ""));
+  P.sort((a, b) => ord(a.tag) - ord(b.tag) || b.pk.edge - a.pk.edge);
+  const count = (arr, t) => arr.filter(x => x.tag === t).length;
+  const sportsHere = TODAY_SPORTS.filter(sp => d.games.some(x => x.sp === sp) || d.props.some(x => x.sp === sp));
+  const segB = (id, cur, opts) => `<div class="seg" id="${id}" role="group">${opts.map(([v, l]) => `<button data-v="${v}" aria-pressed="${cur === v}">${l}</button>`).join("")}</div>`;
+  const gCard = x => { const g = x.g, m = x.m, started = g.started;
+    return `<div class="card tcard" data-tgo="g" data-sp="${x.sp}" data-key="${esc(x.key)}" data-id="${esc(g.id)}" role="button" tabindex="0">
+      <div class="tag"><span class="gr ${x.tag}">${x.tag}</span> ${SPORTS[x.sp].label} · ${x.k === "side" ? "Spread" : "Total"}</div>
+      <div class="pick">${esc(m.pick)}${m.odds ? ` <span class="mono" style="font-size:14px;color:var(--muted)">${esc(m.odds)}</span>` : ""}</div>
+      <div class="sub">${esc(g.away)} ${g.neutral ? "vs" : "@"} ${esc(g.home)} · ${esc(g.kick_et)}${started ? ` · <b>${esc(gameScore(g) || "started")}</b>` : ""}</div>
+      <div class="why mono">${SPORTS[x.sp].cardWhy(g, x.k)}</div>
+      ${m.why_untagged ? `<div class="why" style="color:var(--lotto)">${esc(m.why_untagged)}</div>` : g.notes && g.notes[0] ? `<div class="why">${esc(g.notes[0])}</div>` : ""}</div>`; };
+  const pCard = x => { const c = x.c, pk = x.pk, ch = pk.side === "over" ? pk.p : 1 - pk.p;
+    return `<div class="card tcard" data-tgo="p" data-sp="${x.sp}" data-key="${esc(x.key)}" data-pid="${esc(c.id)}" data-gid="${esc(c.game_id)}" role="button" tabindex="0">
+      <div class="tag"><span class="gr ${x.tag}">${x.tag}</span> ${SPORTS[x.sp].label} · ${esc(x.label)}</div>
+      <div class="pick">${esc(c.name)} ${pk.side === "over" ? "Over" : "Under"} ${fmt(pk.line)}${pk.odds ? ` <span class="mono" style="font-size:14px;color:var(--muted)">${esc(pk.odds)}</span>` : ""}</div>
+      <div class="sub">${esc(c.team)} ${c.home ? "vs" : "@"} ${esc(c.opp)} · ${esc(c.kick_et)}</div>
+      <div class="why mono">Model ${pct(ch)} ${pk.side} · projects ${fmt(c.markets[x.mk].proj, 1)}${pk.nv != null ? ` · DK no-vig ${pct(pk.side === "over" ? pk.nv : 1 - pk.nv)} · edge ${fmt(pk.edge * 100, 1)}%` : ""}</div></div>`; };
+  const bySport = sp => { const g = G.filter(x => x.sp === sp), p = P.filter(x => x.sp === sp);
+    if (!g.length && !p.length) return "";
+    return `<h2>${SPORTS[sp].label} <small class="muted" style="font:500 13px var(--mono)">${count(g.concat(p), "PLAY")} plays · ${count(g.concat(p), "LEAN")} leans</small></h2>
+      ${g.length ? `<h3 class="tsub">Game lines</h3><div class="best">${g.map(gCard).join("")}</div>` : ""}
+      ${p.length ? `<h3 class="tsub">Player props</h3><div class="best">${p.slice(0, 60).map(pCard).join("")}</div>${p.length > 60 ? `<div class="muted small">+${p.length - 60} more in the ${SPORTS[sp].label} props view</div>` : ""}` : ""}`; };
+  const all = G.concat(P);
+  $("#todayView").innerHTML = `
+    <section class="summary">
+      <div class="stat play"><div class="k">Plays today</div><div class="v">${count(d.games, "PLAY") + count(d.props, "PLAY")}</div><div class="s">${count(d.games, "PLAY")} game lines · ${count(d.props, "PLAY")} props</div></div>
+      <div class="stat lean"><div class="k">Leans today</div><div class="v">${count(d.games, "LEAN") + count(d.props, "LEAN")}</div><div class="s">${count(d.games, "LEAN")} game lines · ${count(d.props, "LEAN")} props</div></div>
+      <div class="stat"><div class="k">Sports with games</div><div class="v">${sportsHere.length}</div><div class="s">${sportsHere.map(sp => SPORTS[sp].label).join(" · ") || "none today"}</div></div>
+      <div class="stat"><div class="k">Every pick on the board</div><div class="v">${d.games.length + d.props.length}</div><div class="s">all graded in Results</div></div>
+    </section>
+    <div class="controls">${segB("tTag", tState.tag, [["both", "Plays + Leans"], ["PLAY", "Plays"], ["LEAN", "Leans"], ["all", "Every pick"]])}
+      ${segB("tKind", tState.kind, [["all", "Lines + props"], ["games", "Game lines"], ["props", "Props"]])}
+      ${segB("tSp", tState.sp, [["all", "All sports"], ...sportsHere.map(sp => [sp, SPORTS[sp].label])])}</div>
+    ${all.length ? TODAY_SPORTS.map(bySport).join("") : `<div class="empty">No ${tState.tag === "all" ? "picks" : "Plays or Leans"} for today with these filters. ${d.games.length + d.props.length ? "Try “Every pick”." : "No games on today's DraftKings boards yet."}</div>`}
+    <div class="note" style="margin-top:18px"><b>Today</b> = games and props starting today (Eastern time) on each sport's board. <b>PLAY</b> / <b>LEAN</b> use each sport's bands; props use the model's edge at DraftKings' line. Prices and lines can move; confirm in the DraftKings app. Tap a pick to open its game or player.</div>`;
+  const bind = (id, k) => { $(id).onclick = e => { const b = e.target.closest("button"); if (!b) return; tState[k] = b.dataset.v; renderToday(); }; };
+  bind("#tTag", "tag"); bind("#tKind", "kind"); bind("#tSp", "sp");
+}
+document.addEventListener("click", async e => {
+  const el = e.target.closest("[data-tgo]"); if (!el || state.sport !== "today" || e.target.closest(".addb")) return;
+  const sp = el.dataset.sp, key = el.dataset.key;
+  if (el.dataset.tgo === "g") { await setSport(sp, key, "lines"); openGame(el.dataset.id); }
+  else { await setSport(sp, key, "props"); setTimeout(() => openPlayer(el.dataset.pid, el.dataset.gid), 50); }
+});
+
+
+/* ------------------------------------------------------------------ definitions (hover / tap) */
+const DEFS = {
+  "Kick (ET)": "Kickoff time, Eastern.", "Tip (ET)": "Tip-off time, Eastern.",
+  "Matchup": "Away @ home (vs = neutral site). Small numbers are each team's rank in our ratings.",
+  "DK": "DraftKings' current line: the home team's spread, or the game total. 'open' shows where it opened.",
+  "BW #": "Ballwatcher number: our model's spread for the home team, on DraftKings' scale.",
+  "BW": "Ballwatcher total: our model's projected total points.",
+  "EPA": "Expected Points Added: play-by-play efficiency (how much each play raised or lowered expected points), shown as a spread or total.",
+  "Succ.": "Success rate: share of plays that gain enough yards to stay on schedule, shown as a spread.",
+  "Pts": "Points rating: points scored and allowed, adjusted for opponent, shown as a spread or total.",
+  "Grade": "Our pick and its tag: PLAY (strongest), LEAN, or an untagged PICK. Every pick is graded.",
+  "Last yr": "Angle only: last season's final rating as a spread. Never changes a grade.",
+  "Elo": "Elo: a running team-strength score built from game results.",
+  "SP+": "SP+: Bill Connelly's college football efficiency rating, shown as a spread or total.",
+  "Per-play": "Per-play model: yards per play × pace, shown as a total.",
+  "Eff.": "Efficiency: points scored and allowed per 100 possessions, adjusted for opponent, times the expected pace.",
+  "tbl:Season": "Season rating: every game this season counts the same.",
+  "tbl:Recent": "Recent-form rating: recent games count more, so lineup and form changes show up sooner.",
+  "Pace · rest": "Expected possessions per team · rest for each team (B2B = second night of a back-to-back, 1d = one day off).",
+  "Weather": "Forecast at kickoff. The models don't use weather.", "Site": "Home court or neutral site; conf = conference game.",
+  "Play": "PLAY: the model's strongest tag. Its gap vs DraftKings clears the Play band and the ratings agree.",
+  "Lean": "LEAN: a smaller but real gap vs DraftKings, with the ratings agreeing.",
+  "Pick": "Untagged PICK: the side the model prefers, below the Lean band (or a big gap / flagged game). Still graded.",
+  "Plays": "Picks tagged PLAY: the strongest tag.", "Leans": "Picks tagged LEAN.",
+  "Role": "Role entering the game, by volume (QB1, RB1, WR1…) or position for basketball (G = guard, F = forward, C = center).",
+  "Opp": "Opponent (@ = away).", "Kick": "Kickoff / tip time, Eastern.",
+  "Tm imp.": "Team implied total: the points DraftKings' spread and total imply for this team.",
+  "Avg": "Average this season.", "TD g": "Games with a touchdown this season.", "L3 avg": "Average over the last 3 games.",
+  "Model med.": "Model median: the middle of the model's simulated games (half above, half below).",
+  "TD rate": "Model's expected touchdowns this game.", "Proj TDs": "Model's expected passing touchdowns.", "Proj": "Model's projection.",
+  "Opp allows": "What this opponent has allowed per game to the same role/position this season.",
+  "D vs pos": "Defense vs position: the opponent's rank in this stat allowed to the role or position. Higher = allows more = softer matchup.",
+  "DK line": "DraftKings' over/under line for this player.", "Open": "Where DraftKings opened the line.",
+  "Diff": "Model median minus DraftKings' line (green = model above the line).",
+  "Model over": "Model's chance the player goes over DraftKings' line; fair odds underneath.",
+  "DK O / U": "DraftKings' over / under prices. The % is DraftKings' chance of the over with the vig removed (no-vig).",
+  "Edge": "Model chance minus DraftKings' no-vig chance, for the side the model likes.",
+  "Streak": "Games in a row over (✓) or under (✗), most recent first.",
+  "L3": "Last 3 games this season.", "L5": "Last 5 games (runs back into last season).", "L10": "Last 10 games (runs back into last season).",
+  "L20": "Last 20 games (runs back into last season).", "Season": "This season.", "This szn": "This season.", "Last szn": "Last season.",
+  "H2H": "Head to head: games against this opponent, this season and last.", "All": "Every game in the log (this season and last).",
+  "Opp vs role": "What this week's opponent allowed to the same role this season, as a hit rate at each tier.",
+  "Opp vs pos": "What tonight's opponent allowed to the same position this season, as a hit rate at each tier.",
+  "Model %": "Model's simulated chance of reaching each tier.", "Model": "Model's simulated chance at this line, and its median projection.",
+  "Fair": "Fair odds: the model's chance written as American odds with no vig.",
+  "Model projects": "Median of the model's simulated games.", "TD chance": "Model's chance of at least one touchdown.",
+  "Record · ATS": "Win-loss record · against-the-spread record (vs the closing line).",
+  "CLV": "Closing line value: how far the line moved toward our pick between when we made it and kickoff (+ = we beat the close).",
+  "Line": "The DraftKings line the pick is graded at.", "Final": "Final score (away-home).", "Result": "W / L / P against the line.",
+  "Pick at kickoff": "Our pick and tag as they stood at kickoff.", "Pick at tip/kickoff": "Our pick and tag as they stood at tip/kickoff.",
+  "Price": "DraftKings' price on our side.", "Actual": "What the player actually recorded.",
+  "Every pick · model record": "Every pick the model made, tagged or not: its full record.",
+  "Net rating (per 100)": "Points scored minus allowed per 100 possessions, adjusted for opponent.",
+  "Offensive rating": "Points scored per 100 possessions, adjusted for opponent.", "Defensive rating (allowed)": "Points allowed per 100 possessions (lower is better).",
+  "Pace (poss / game)": "Possessions per game.", "Points margin rating": "Points scored minus allowed per game, adjusted for opponent.",
+  "Net rating (pts vs avg team)": "How many points better than an average D-I team, per game, adjusted for opponent.",
+  "Points scored (adj.)": "Points scored per game, adjusted for opponent.", "Points allowed (adj.)": "Points allowed per game, adjusted for opponent.",
+  "Recent-form rating": "Net rating with recent games counting more.",
+  "EPA rating (pts/game)": "Expected Points Added per play (offense minus defense), turned into points per game.",
+  "Success-rate rating": "Success rate (offense minus defense) as points per game.",
+  "EPA / play (adj.)": "Expected Points Added per play, adjusted for opponent.", "Pass EPA (adj.)": "Expected Points Added per dropback, adjusted for opponent.",
+  "Rush EPA (adj.)": "Expected Points Added per rush, adjusted for opponent.", "Explosive play rate": "Share of plays gaining 20+ yards (pass) or 10+ (run).",
+  "Pass rate over expected": "How much more (or less) a team passes than expected in the situation.",
+  "Neutral pace (sec/snap)": "Seconds between snaps when the game is close (lower = faster).",
+  "Proj. min": "Projected minutes if he plays.", "Fair odds": "The model's chance as American odds with no vig.",
+};
+const TIER_RE = /^(\d+)\+$/;
+function defFor(el) {
+  let key = el.dataset.def || (el.classList.contains("hp") ? (el.firstChild && el.firstChild.textContent || "") : el.textContent);
+  key = key.replace(/[▲▼]/g, "").trim();
+  if (!key || key.length > 40) return null;
+  if (el.closest("#tbl") && DEFS["tbl:" + key]) return DEFS["tbl:" + key];
+  if (DEFS[key]) return DEFS[key];
+  const up = Object.keys(DEFS).find(k => k.toUpperCase() === key.toUpperCase());
+  if (up) return DEFS[up];
+  const m = key.match(TIER_RE);
+  if (m) return `Tier ${m[1]}+: a hit means the player reached at least ${m[1]}.`;
+  return null;
+}
+let defTimer = null;
+function annotateDefs() {
+  document.querySelectorAll("th, td.lab, .stat .k, .seg button, .px .hp, .mb .k, [data-def], .tiers th, table.cmp td:first-child").forEach(el => {
+    if (el.dataset.defDone === "1") return;
+    el.dataset.defDone = "1";
+    const d = defFor(el);
+    if (d) { el.dataset.defText = d; el.classList.add("hasdef"); }
+  });
+}
+new MutationObserver(() => { clearTimeout(defTimer); defTimer = setTimeout(annotateDefs, 60); }).observe(document.body, { childList: true, subtree: true });
+const tip = document.createElement("div"); tip.id = "deftip"; tip.setAttribute("role", "tooltip"); document.body.appendChild(tip);
+let tipHide = null;
+function showTip(el) {
+  const txt = el.dataset.defText; if (!txt) return;
+  const label = (el.dataset.def || (el.classList.contains("hp") ? el.firstChild && el.firstChild.textContent : el.textContent) || "").replace(/[▲▼]/g, "").trim();
+  tip.innerHTML = `<b>${esc(label)}</b> — ${esc(txt)}`;
+  const r = el.getBoundingClientRect(), w = Math.min(280, innerWidth - 16);
+  tip.style.maxWidth = w + "px"; tip.classList.add("on");
+  const th = tip.offsetHeight, x = Math.max(8, Math.min(innerWidth - w - 8, r.left + r.width / 2 - w / 2));
+  tip.style.left = x + "px"; tip.style.top = (r.top > th + 14 ? r.top - th - 8 : r.bottom + 8) + "px";
+}
+const hideTip = () => tip.classList.remove("on");
+document.addEventListener("mouseover", e => { const el = e.target.closest(".hasdef"); if (el && matchMedia("(hover: hover)").matches) showTip(el); });
+document.addEventListener("mouseout", e => { if (e.target.closest(".hasdef")) hideTip(); });
+document.addEventListener("touchstart", e => { const el = e.target.closest(".hasdef"); if (!el) return; showTip(el); clearTimeout(tipHide); tipHide = setTimeout(hideTip, 2600); }, { passive: true });
+document.addEventListener("scroll", hideTip, { passive: true, capture: true });
+
+
+/* ------------------------------------------------------------------ installable app (PWA) */
+if ("serviceWorker" in navigator && /^https:|^http:\/\/localhost/.test(location.href)) {
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+let installEvt = null;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; });
+const standalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+if (standalone()) { const r = $("#installRow"); if (r) r.hidden = true; }
+$("#installBtn").onclick = async () => {
+  const hint = $("#installHint");
+  if (installEvt) { installEvt.prompt(); await installEvt.userChoice.catch(() => {}); installEvt = null; return; }
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  hint.hidden = false;
+  hint.textContent = ios ? "In Safari: tap the Share button, then “Add to Home Screen”." : "In your browser menu, choose “Install app” or “Add to Home screen”.";
+};
+
 /* ------------------------------------------------------------------ start */
 (function start() {
   const hp = hashParams();
   let sp = hp.get("s"), key = hp.get("k") || hp.get("d"), view = hp.get("v");
   if (!SPORTS[sp] || SPORTS[sp].soon) sp = hp.get("d") ? "cfb" : (location.hash.match(/nfl/i) ? "nfl" : null);
-  if (!sp) { // in season, show the sport with games soonest; default NFL on Sun/Mon/Thu, CFB on Fri/Sat
-    const day = new Date(Date.now() - 4 * 3600e3).getUTCDay(); sp = [5, 6].includes(day) ? "cfb" : "nfl";
-  }
-  detectAdmin().then(() => { drawTray(); showSlipCheck(); setSport(sp, key, view); });
+  // no sport in the link (or #today): open on Today, every sport's Plays and Leans
+  detectAdmin().then(() => { drawTray(); showSlipCheck(); if (!sp) showToday(); else setSport(sp, key, view); });
 })();
 // links that change only the hash (e.g. #s=nfl) switch sport/slate without a reload
 window.addEventListener("hashchange", () => {
+  if (/^#today/.test(location.hash)) { if (state.sport !== "today") showToday(); return; }
   const hp = hashParams(), sp = hp.get("s"), key = hp.get("k");
   const v = ["props", "results"].includes(hp.get("v")) ? hp.get("v") : "lines";
   if (SPORTS[sp] && !SPORTS[sp].soon && sp !== state.sport) setSport(sp, key, v);
