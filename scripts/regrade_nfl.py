@@ -430,7 +430,9 @@ def main():
         write(s, w, rows, teams, unmatched, calib, board["pulled_utc"])
         cnt = lambda k, gr: sum(1 for r in rows if r[k]["grade"] == gr)
         index["slates"].append({"key": f"{s}_wk{w:02d}", "season": s, "week": w, "label": f"Week {w}",
-                                "first_day": min(r["day_et"] for r in rows), "games": len(json.load(open(f"data/boards/nfl_{s}_wk{w:02d}.json"))["games"]),
+                                # first day of the week counts games that already kicked off (kept on the board)
+                                "first_day": min(r.get("day_et") or "9999" for r in json.load(open(f"data/boards/nfl_{s}_wk{w:02d}.json"))["games"]),
+                                "games": len(json.load(open(f"data/boards/nfl_{s}_wk{w:02d}.json"))["games"]),
                                 "plays": cnt("side", "PLAY") + cnt("total", "PLAY"),
                                 "leans": cnt("side", "LEAN") + cnt("total", "LEAN")})
         print(f"{s} wk{w}: {len(rows)} games, {index['slates'][-1]['plays']} plays, {index['slates'][-1]['leans']} leans; unmatched {unmatched or 'none'}")

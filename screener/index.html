@@ -489,9 +489,10 @@ const SPORTS = {
     tabLabel: s => `${s.label}<small>${s.games} games</small>`,
     // an NFL week is done once Monday night is over (first day + 5) or the next week has started
     done: (x, today, all) => addDays(x.first_day, 5) < today || all.some(y => y.first_day > x.first_day && y.first_day <= today),
+    // the current week: the latest one that has started (or starts within 6 days), skipping 1-game stubs when a full week is there
     defaultSlate(slates) { const t = new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10);
-      const up = slates.filter(s => s.first_day >= t || s.games > 1).filter(s => s.first_day >= addDays(t, -6));
-      return (up.sort((a, b) => b.games - a.games || a.key.localeCompare(b.key))[0] || slates[slates.length - 1]).key; },
+      const live = slates.filter(s => s.first_day <= addDays(t, 6) && s.games > 1).sort((a, b) => a.key.localeCompare(b.key));
+      return (live[live.length - 1] || slates[0] || {}).key || slates[slates.length - 1].key; },
     grades: ["PLAY", "LEAN"], topWord: "Plays", bothWord: "Plays + Leans", bestTitle: "Plays", stats: ["Plays", "Leans"],
     head: `<tr><th></th><th></th><th class="grp" colspan="6">Spread (home line) · this season</th><th class="grp ang" colspan="2">Angles</th><th class="grp" colspan="5">Total</th><th></th></tr>
       <tr><th>Kick (ET)</th><th>Matchup</th><th class="num">DK</th><th class="num">BW #</th><th class="num">EPA</th><th class="num">Succ.</th><th class="num">Pts</th><th>Grade</th>
