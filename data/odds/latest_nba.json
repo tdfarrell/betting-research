@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-23T16:59Z",
+ "pulled_utc": "2026-10-23T17:32Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -89,9 +89,9 @@
    "away_spread_open": "+2.5",
    "away_ml": "+114",
    "away_ml_open": "+114",
-   "total": 220.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
+   "total": 221.5,
+   "over_odds": "-108",
+   "under_odds": "-112",
    "total_open": "o223.5"
   },
   {
@@ -239,9 +239,9 @@
    "away_spread_open": "+1.5",
    "away_ml": "-125",
    "away_ml_open": "+105",
-   "total": 234.5,
-   "over_odds": "-112",
-   "under_odds": "-108",
+   "total": 235.5,
+   "over_odds": "-108",
+   "under_odds": "-112",
    "total_open": "o234.5"
   },
   {
@@ -299,9 +299,9 @@
    "away_spread_open": "+5.5",
    "away_ml": "-108",
    "away_ml_open": "+170",
-   "total": 240.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "total": 239.5,
+   "over_odds": "-112",
+   "under_odds": "-108",
    "total_open": "o241.5"
   },
   {
@@ -389,9 +389,9 @@
    "away_spread_open": "-6.5",
    "away_ml": "-470",
    "away_ml_open": "-230",
-   "total": 232.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "total": 233.5,
+   "over_odds": "-105",
+   "under_odds": "-115",
    "total_open": "o232.5"
   },
   {
