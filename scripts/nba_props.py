@@ -130,7 +130,12 @@ class Day:
             num += PRIOR_GAMES_MIN * prior; den += PRIOR_GAMES_MIN
         m = num / den
         gp = g[g["min"] > 0]
-        start_rate = float(gp.tail(5).starter.mean()) if len(gp) else 0.0
+        if len(gp) >= 3:
+            start_rate = float(gp.tail(5).starter.mean())
+        else:   # few or no games this season: blend in last season's starts
+            last = self.pri[self.pri.player_id == pid].sort_values("date").tail(20)
+            n_c, n_p = len(gp), len(last)
+            start_rate = float((gp.starter.sum() + last.starter.mean() * (5 - n_c) * (n_p > 0)) / max(1, n_c + (5 - n_c) * (n_p > 0))) if n_c + n_p else 0.0
         if spread is not None and m >= 28 and abs(spread) > 7:
             m *= 1 - 0.01 * (abs(spread) - 7)
         return m, start_rate

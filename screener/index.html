@@ -19,7 +19,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Screener">
-<meta name="bw-build" content="screener 2026-10-23a">
+<meta name="bw-build" content="screener 2026-10-23b">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -291,11 +291,15 @@ tr.dimrow td{color:var(--muted)}
 #deftip{position:fixed;z-index:60;max-width:280px;background:#1E2633;color:var(--ink);border:1px solid #2E3846;border-radius:8px;padding:8px 10px;font:500 12.5px/1.4 var(--body);box-shadow:0 8px 24px rgba(0,0,0,.45);pointer-events:none;opacity:0;transition:opacity .12s}
 #deftip.on{opacity:1}#deftip b{color:var(--amber);font-weight:600}
 /* model readout on prop cards: projection, model chance at DK's line, and the pick */
-.mread{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 4px}
+.mread{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0 4px}
 .mread .mb{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--panel2);min-width:0}
 .mread .mb .k{font:600 10px var(--mono);letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
-.mread .mb .v{font:700 26px/1.1 var(--display);letter-spacing:.3px;color:var(--ink);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mread .mb .s{font:500 11px var(--mono);color:var(--muted);margin-top:2px}
+.mread .mb .v{font:700 26px/1.1 var(--display);letter-spacing:.3px;color:var(--ink);margin-top:2px;white-space:nowrap}
+.mread .mb .s{font:500 11px/1.45 var(--mono);color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
+.mread .mb .s .gr{padding:3px 6px;min-width:0;margin-right:2px}
+/* narrow cards (phones, two-up grids): projection and chance side by side, the pick on its own full-width row */
+@media (max-width:720px){.mread{grid-template-columns:repeat(2,minmax(0,1fr))}.mread .mb.pk{grid-column:1/-1;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .mread .mb.pk .k{flex-basis:100%}.mread .mb.pk .v{margin-top:0}.mread .mb.pk .s{margin-top:0}}
 .mread .mb.hi .v{color:var(--win)}.mread .mb.lo .v{color:var(--loss)}
 .mread .mb.pk.PLAY{border-color:rgba(74,222,155,.5)}.mread .mb.pk.LEAN{border-color:rgba(255,176,32,.5)}
 .px .hp.model{cursor:default;border-color:rgba(255,176,32,.45);background:var(--amber-bg)}.px .hp.model b{color:var(--amber)}
@@ -656,7 +660,9 @@ const state = { sport: null, index: null, slate: null, key: null, grade: "all", 
 const S = () => SPORTS[state.sport];
 
 function hashParams() { return new URLSearchParams(location.hash.slice(1)); }
-function setHash() { try { history.replaceState(null, "", `#s=${state.sport}&k=${encodeURIComponent(state.key || "")}${state.view !== "lines" ? "&v=" + state.view : ""}`); } catch (e) {} }
+// The address no longer follows you around the page: a reload or a reopened tab always starts on Today.
+// Deep links (#s=nba&k=2026-10-23&v=props, #today) still open where they point; once in, the hash is cleared.
+function setHash() { try { if (location.hash) history.replaceState(null, "", location.pathname + location.search); } catch (e) {} }
 
 function drawSports() {
   $("#sports").innerHTML = `<button class="sport" role="tab" data-s="today" aria-selected="${state.sport === "today"}">Today</button>` + Object.entries(SPORTS).map(([k, s]) =>
@@ -1062,7 +1068,7 @@ function tierTable(c, mk) {
       <tbody>
         <tr><td class="lab">L3</td>${m.tiers.map(t => cell(t.l3)).join("")}</tr>
         <tr><td class="lab">Season</td>${m.tiers.map(t => cell(t.season)).join("")}</tr>
-        <tr><td class="lab">Opp vs role</td>${m.tiers.map(t => cell(t.def)).join("")}</tr>
+        <tr><td class="lab">${state.sport === "nba" || state.sport === "cbb" ? "Opp vs pos" : "Opp vs role"}</td>${m.tiers.map(t => cell(t.def)).join("")}</tr>
         <tr class="sep"><td colspan="${m.tiers.length + 1}"></td></tr>
         <tr class="model"><td class="lab" data-def="Model %">Model</td>${m.tiers.map(t => `<td class="c ${pcls(t.p)}">${Math.round(t.p * 100)}%</td>`).join("")}</tr>
         <tr class="fairr"><td class="lab">Fair</td>${m.tiers.map(t => `<td>${fairTxt(t.fair)}</td>`).join("")}</tr>
@@ -1168,11 +1174,11 @@ function modelRead(c, mk) {
     pick = `<div class="mb pk ${pk.tag}"><div class="k" data-def="Pick">Pick</div><div class="v">${pk.side === "over" ? "Over" : "Under"} ${fmt(pk.line)}</div><div class="s"><span class="gr ${pk.tag}">${pk.tag}</span> ${pct(pc)}${pk.nv != null ? ` · edge ${fmt(pk.edge * 100, 1)}%` : ""}</div></div>`;
   } else if (mk === "atd") {
     mid = `<div class="mb"><div class="k" data-def="Season">This season</div><div class="v">${m.season_vals.filter(v => v > 0).length}/${m.season_vals.length}</div><div class="s">games with a TD</div></div>`;
-    pick = `<div class="mb"><div class="k">Pick</div><div class="v" style="color:var(--muted)">—</div><div class="s">no over/under line</div></div>`;
+    pick = `<div class="mb pk"><div class="k">Pick</div><div class="v" style="color:var(--muted)">—</div><div class="s">no over/under line</div></div>`;
   } else {
     let b = m.tiers[0]; for (const t of m.tiers) if (Math.abs(t.p - .5) < Math.abs(b.p - .5)) b = t;
     mid = `<div class="mb ${b.p >= .5 ? "hi" : "lo"}"><div class="k" data-def="Model %">${b.t}+ ${esc(unit)}</div><div class="v">${pct(b.p)}</div><div class="s">model chance · fair ${fairTxt(b.fair)}</div></div>`;
-    pick = `<div class="mb"><div class="k">Pick</div><div class="v" style="color:var(--muted)">—</div><div class="s">no DK line yet</div></div>`;
+    pick = `<div class="mb pk"><div class="k">Pick</div><div class="v" style="color:var(--muted)">—</div><div class="s">no DK line yet</div></div>`;
   }
   return `<div class="mread">${proj}${mid}${pick}</div>`;
 }
@@ -1321,7 +1327,7 @@ const slip = { admin: false, items: [], open: false };
 try { slip.items = JSON.parse(localStorage.getItem(SLIP_KEY) || "[]"); } catch (e) { slip.items = []; }
 function saveSlip() { try { localStorage.setItem(SLIP_KEY, JSON.stringify(slip.items)); } catch (e) {} }
 
-const SCREENER_BUILD = "2026-10-23a";
+const SCREENER_BUILD = "2026-10-23b";
 // Bet-slip mode: turned on by the admin menu's "Screener + bet slip" link (#slip=on) and remembered in this
 // browser, so the + buttons don't depend on the background login check. Slips still need the admin login to open.
 const SLIP_MODE_KEY = "bw_slip_mode";
@@ -1810,7 +1816,7 @@ async function gatherToday() {
 }
 async function showToday() {
   state.sport = "today"; state.view = "today"; state.slate = null; px = null;
-  try { history.replaceState(null, "", "#today"); } catch (e) {}
+  setHash();
   drawSports();
   $("#views").hidden = true; $("#tabs").hidden = true; $("#linesView").hidden = true; $("#propsView").hidden = true; $("#resultsView").hidden = true;
   $("#how").hidden = true; $("#early").innerHTML = ""; $("#todayView").hidden = false;
