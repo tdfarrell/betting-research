@@ -25974,3 +25974,24 @@ season,week,game_id,season_type,team,opp,player_id,name,position,headshot,attemp
 2026,6,2026_06_WAS_SF,REG,WAS,SF,00-0039686,Colson Yankoff,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cgsxdjqy6l2zuqaftbd6",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0.07
 2026,6,2026_06_WAS_SF,REG,WAS,SF,00-0039910,Jayden Daniels,QB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gfz8k5onuqjrche9ogqc",40,29,300,2,0,4,4,10,0,0,0,0,0,0,0,0,0,0,6,67,1.0
 2026,6,2026_06_WAS_SF,REG,WAS,SF,00-0041040,Antonio Williams,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/noywrsgaqoqlv64c12yw",0,0,0,0,0,0,0,0,0,4,3,50,0,0.114,0.222,0,0,0,0,45,0.67
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0032464,Kalif Raymond,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/trqs4qje1ctnwxs9shwd",0,0,0,0,0,0,0,0,0,2,0,0,0,0.067,0.052,0,0,0,0,48,0.7
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0036275,D'Andre Swift,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/owpmwzoilitcodc6cmxo",0,0,0,0,0,0,22,78,1,4,4,12,0,0.133,-0.035,0,2,1,0,59,0.86
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0036290,Cole Kmet,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ysnui8mzlu2fo70ub0yt",0,0,0,0,0,0,0,0,0,3,3,28,0,0.1,0.063,0,0,0,0,38,0.55
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0038440,Zavier Scott,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/z8sqpgdoyuv5rask15vn",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0039021,Roschon Johnson,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mzfm6qlgvsa9i5bstqoa",0,0,0,0,0,0,2,13,0,0,0,0,0,0,0,0,0,0,0,10,0.14
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0039918,Caleb Williams,QB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/h4qs11kutwiw7whekmyt",33,22,308,2,0,3,5,18,0,0,0,0,0,0,0,0,1,0,4,69,1.0
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0039919,Rome Odunze,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kqxetflykjn9clz04k68",0,0,0,0,0,0,0,0,0,5,4,69,0,0.167,0.22,1,0,0,0,65,0.94
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0040126,Colston Loveland,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tdeidev1typrqjijtb3a",0,0,0,0,0,0,0,0,0,12,7,69,1,0.4,0.39,1,0,0,0,58,0.84
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0040277,Jahdae Walker,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/fwpj1g5yuigrhbch7szt",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0.04
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0040735,Luther Burden III,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/iyuwdz7pbowdkwzq2tg5",0,0,0,0,0,0,1,7,0,4,4,130,1,0.133,0.132,0,1,0,0,42,0.61
+2026,7,2026_07_NE_CHI,REG,CHI,NE,00-0041051,Zavion Thomas,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/oqdpvuf3w45eelcjblq7",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0.07
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0033090,Hunter Henry,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hfbzcsv4v7fdpohl42mk",0,0,0,0,0,0,0,0,0,7,7,71,0,0.233,0.132,0,0,0,0,41,0.76
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0035676,A.J. Brown,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qfhvjyssf0lwsh0kienp",0,0,0,0,0,0,0,0,0,6,3,48,0,0.2,0.532,0,0,0,0,49,0.91
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0036875,Rhamondre Stevenson,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/x9dlpy3i5fciajd4w9ij",0,0,0,0,0,0,6,22,0,5,5,93,1,0.167,0.096,0,2,0,0,37,0.69
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0038621,DeMario Douglas,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/m3fpxawsccoqsajtqlec",0,0,0,0,0,0,0,0,0,4,3,23,0,0.133,0.082,0,0,0,0,35,0.65
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0039851,Drake Maye,QB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mkauzrg7vo8lfziigsbg",31,24,321,2,1,2,4,26,1,0,0,0,0,0,0,0,0,0,1,54,1.0
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0040131,Kyle Williams,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/d31ahhl7yt97gu8iei8v",0,0,0,0,0,0,0,0,0,1,0,0,0,0.033,0.021,0,0,0,0,21,0.39
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0040556,Corey Kiner,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zz4imen7bzozyeicm1mn",0,0,0,0,0,0,4,13,0,0,0,0,0,0,0,0,0,0,0,6,0.11
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0040563,Efton Chism III,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zbnf3ujmwprzgjnwdtlo",0,0,0,0,0,0,0,0,0,1,1,16,0,0.033,0.011,0,0,0,0,34,0.63
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0040734,TreVeyon Henderson,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ac50ezemcsqyjkrfrzgt",0,0,0,0,0,0,3,9,0,2,2,14,0,0.067,-0.011,0,0,0,0,13,0.24
+2026,7,2026_07_NE_CHI,REG,NE,CHI,00-0041395,Eli Raridon,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/flj53cmijulfjxegejyc",0,0,0,0,0,0,0,0,0,4,3,56,1,0.133,0.143,1,0,0,0,29,0.54
