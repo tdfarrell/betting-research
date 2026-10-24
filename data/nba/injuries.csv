@@ -9,7 +9,7 @@ player_id,name,team,status,detail,date
 4684269,Kylan Boswell,CHA,Out,Boswell (knee) is out for Wednesday's season opener against the Nets.,2026-10-20
 4278067,Nic Claxton,CHI,Out,"Claxton (hamstring) will be re-evaluated in two weeks, K.C. Johnson of Chicago Sports Network reports.",2026-10-19
 3138160,Caleb Martin,DAL,Out,Martin (thumb) has been ruled out for Fridays' game against the Pacers.,2026-10-22
-5041939,Cooper Flagg,DAL,Day-To-Day,"Flagg won't return to Friday's game against the Pacers due to left shoulder soreness, Brett Siegel of ClutchPoints.com reports.",2026-10-24
+5041939,Cooper Flagg,DAL,Out,"Head coach Dusty May said Flagg (shoulder) will be evaluated in the next couple of days, Mike Curtis of The Dallas Morning News reports.",2026-10-24
 4683688,Dereck Lively II,DAL,Out,Lively (foot) has been ruled out for Friday's game against the Pacers.,2026-10-22
 5105806,Jett Howard,DAL,Out,Howard (calf) is out for Friday's game in Indiana.,2026-10-23
 4593125,Santi Aldama,DAL,Out,Aldama (knee) has been ruled out for Friday's game against the Pacers.,2026-10-22
@@ -37,6 +37,7 @@ player_id,name,team,status,detail,date
 4592691,Jake LaRavia,LAL,Out,"LaRavia (ankle) has been ruled out for Friday's game against the Clippers, Mark Medina of TheSportingTribune.com reports.",2026-10-23
 4903027,Cedric Coward,MEM,Out,Coward (wrist) has been ruled out for Friday's game against the Warriors.,2026-10-24
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
+5061589,Yves Missi,NO,Day-To-Day,"Missi ended with 13 points (5-6 FG, 3-4 FT), 14 rebounds, five assists, three blocks and two steals across 30 minutes during Wednesday's 123-120 loss to the Pac",2026-10-24
 5159925,Nikola Topic,OKC,Out,Topic (back) won't play in Thursday's game against the Nuggets.,2026-10-21
 5106270,Otega Oweh,OKC,Out,The Thunder plan to waive Oweh (Achilles) on Friday.,2026-10-23
 5061603,Thomas Sorber,OKC,Out,Sorber (knee) is listed as out for Thursday's game against Denver.,2026-10-21
@@ -44,7 +45,7 @@ player_id,name,team,status,detail,date
 5107251,Izaiyah Nelson,ORL,Out,"Team president Jeff Weltman said Monday that Nelson (ankle) remains about a month away from returning to the court after offseason surgery, per Philip Rossman-R",2026-09-28
 4065654,Jonathan Isaac,ORL,Out,Isaac (knee) is out for Friday's game against Minnesota.,2026-10-22
 5214637,Noah Penda,ORL,Out,"Penda was diagnosed with a partially torn right hamstring Saturday, Jason Beede of the Orlando Sentinel reports.",2026-10-17
-4432573,Paolo Banchero,ORL,Day-To-Day,"Banchero is doubtful to return to Friday's game against the Timberwolves due to a sore right ankle, NBA reporter Marc Stein reports.",2026-10-24
+4432573,Paolo Banchero,ORL,Day-To-Day,Banchero didn't check back in during the fourth quarter of Friday's 115-93 loss to the Timberwolves after being deemed doubtful to return. He finished with 14 p,2026-10-24
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
 3912848,Dean Wade,PHI,Day-To-Day,Wade is listed as questionable for Saturday's game against the Bucks due to a left ankle sprain.,2026-10-23
 4870562,Dominick Barlow,PHI,Out,"Barlow will miss at least the next two weeks of action due to a lumbar spine bone stress response, Adam Aaronson of PhillyVoice.com reports.",2026-10-19
