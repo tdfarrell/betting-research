@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-24T07:27Z",
+ "pulled_utc": "2026-10-24T12:07Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -96,20 +96,20 @@
    "conference_game": true,
    "venue": "Hard Rock Stadium",
    "weather": "Partly sunny",
-   "temp_f": 81,
-   "home_spread": "-19.5",
-   "home_spread_odds": "-115",
+   "temp_f": 82,
+   "home_spread": "-20.5",
+   "home_spread_odds": "-105",
    "home_spread_open": "-23.5",
    "home_ml": "-1650",
    "home_ml_open": "-2800",
-   "away_spread": "+19.5",
-   "away_spread_odds": "-105",
+   "away_spread": "+20.5",
+   "away_spread_odds": "-115",
    "away_spread_open": "+23.5",
    "away_ml": "+950",
    "away_ml_open": "+1300",
    "total": 48.5,
-   "over_odds": "-112",
-   "under_odds": "-108",
+   "over_odds": "-108",
+   "under_odds": "-112",
    "total_open": "o53.5"
   },
   {
@@ -125,7 +125,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Michigan Stadium",
-   "weather": "Mostly sunny",
+   "weather": "Fog",
    "temp_f": 56,
    "home_spread": "+7.5",
    "home_spread_odds": "-115",
@@ -156,20 +156,20 @@
    "conference_game": true,
    "venue": "Nippert Stadium",
    "weather": "Sunny",
-   "temp_f": 60,
+   "temp_f": 61,
    "home_spread": "+11.5",
-   "home_spread_odds": "-108",
+   "home_spread_odds": "-110",
    "home_spread_open": "+11.5",
    "home_ml": "+350",
    "home_ml_open": "+330",
    "away_spread": "-11.5",
-   "away_spread_odds": "-112",
+   "away_spread_odds": "-110",
    "away_spread_open": "-11.5",
    "away_ml": "-455",
    "away_ml_open": "-425",
-   "total": 57.5,
-   "over_odds": "-105",
-   "under_odds": "-115",
+   "total": 56.5,
+   "over_odds": "-115",
+   "under_odds": "-105",
    "total_open": "o56.5"
   },
   {
@@ -186,7 +186,7 @@
    "conference_game": true,
    "venue": "Jordan-Hare Stadium",
    "weather": "Sunny",
-   "temp_f": 65,
+   "temp_f": 66,
    "home_spread": "+7",
    "home_spread_odds": "-105",
    "home_spread_open": "+6.5",
@@ -216,7 +216,7 @@
    "conference_game": true,
    "venue": "Gerald J. Ford Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 74,
+   "temp_f": 73,
    "home_spread": "-18.5",
    "home_spread_odds": "-112",
    "home_spread_open": "-16.5",
@@ -245,8 +245,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Ryan Field",
-   "weather": "33",
-   "temp_f": 55,
+   "weather": "37",
+   "temp_f": 48,
    "home_spread": "-15.5",
    "home_spread_odds": "-112",
    "home_spread_open": "-16.5",
@@ -335,15 +335,15 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Glass Bowl",
-   "weather": "Mostly sunny",
+   "weather": "Fog",
    "temp_f": 56,
-   "home_spread": "-3",
-   "home_spread_odds": "-102",
+   "home_spread": "-2.5",
+   "home_spread_odds": "-118",
    "home_spread_open": "-1.5",
    "home_ml": "-142",
    "home_ml_open": "-118",
-   "away_spread": "+3",
-   "away_spread_odds": "-118",
+   "away_spread": "+2.5",
+   "away_spread_odds": "-102",
    "away_spread_open": "+1.5",
    "away_ml": "+120",
    "away_ml_open": "-102",
@@ -396,7 +396,7 @@
    "conference_game": true,
    "venue": "Zoeller Field at Dix Stadium",
    "weather": "Sunny",
-   "temp_f": 59,
+   "temp_f": 61,
    "home_spread": "-3",
    "home_spread_odds": "-105",
    "home_spread_open": "-3.5",
@@ -425,8 +425,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Kelly/Shorts Stadium",
-   "weather": "Mostly sunny",
-   "temp_f": 60,
+   "weather": "Fog",
+   "temp_f": 58,
    "home_spread": "+3.5",
    "home_spread_odds": "-110",
    "home_spread_open": "-1.5",
@@ -456,7 +456,7 @@
    "conference_game": true,
    "venue": "Gies Memorial Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 70,
+   "temp_f": 71,
    "home_spread": "+10",
    "home_spread_odds": "-112",
    "home_spread_open": "+12.5",
@@ -486,7 +486,7 @@
    "conference_game": true,
    "venue": "Acrisure Bounce House",
    "weather": "Intermittent clouds",
-   "temp_f": 78,
+   "temp_f": 81,
    "home_spread": "+7.5",
    "home_spread_odds": "-118",
    "home_spread_open": "+9.5",
@@ -545,8 +545,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Williams-Brice Stadium",
-   "weather": "Mostly sunny",
-   "temp_f": 71,
+   "weather": "Sunny",
+   "temp_f": 72,
    "home_spread": "-2.5",
    "home_spread_odds": "-108",
    "home_spread_open": "+2.5",
@@ -576,7 +576,7 @@
    "conference_game": true,
    "venue": "Bryant-Denny Stadium",
    "weather": "Sunny",
-   "temp_f": 75,
+   "temp_f": 76,
    "home_spread": "-13.5",
    "home_spread_odds": "-108",
    "home_spread_open": "-2.5",
@@ -605,8 +605,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Huntington Bank Stadium",
-   "weather": "Mostly cloudy",
-   "temp_f": 73,
+   "weather": "Cloudy",
+   "temp_f": 74,
    "home_spread": "+7.5",
    "home_spread_odds": "-115",
    "home_spread_open": "+4.5",
@@ -638,12 +638,12 @@
    "weather": "Sunny",
    "temp_f": 77,
    "home_spread": "+2.5",
-   "home_spread_odds": "-110",
+   "home_spread_odds": "-115",
    "home_spread_open": "+1.5",
    "home_ml": "+114",
    "home_ml_open": "+105",
    "away_spread": "-2.5",
-   "away_spread_odds": "-110",
+   "away_spread_odds": "-105",
    "away_spread_open": "-1.5",
    "away_ml": "-135",
    "away_ml_open": "-125",
@@ -695,7 +695,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Navy-Marine Corps Memorial Stadium",
-   "weather": "Mostly sunny",
+   "weather": "Sunny",
    "temp_f": 62,
    "home_spread": "+3",
    "home_spread_odds": "-105",
@@ -755,7 +755,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Scheumann Stadium",
-   "weather": "Mostly sunny",
+   "weather": "Sunny",
    "temp_f": 70,
    "home_spread": "-14.5",
    "home_spread_odds": "-108",
@@ -790,12 +790,12 @@
    "home_spread": "-3",
    "home_spread_odds": "-112",
    "home_spread_open": "-4.5",
-   "home_ml": "-162",
+   "home_ml": "-155",
    "home_ml_open": "-180",
    "away_spread": "+3",
    "away_spread_odds": "-108",
    "away_spread_open": "+4.5",
-   "away_ml": "+136",
+   "away_ml": "+130",
    "away_ml_open": "+150",
    "total": 44.5,
    "over_odds": "-112",
@@ -818,18 +818,18 @@
    "weather": "Mostly sunny",
    "temp_f": 75,
    "home_spread": "+1.5",
-   "home_spread_odds": "-110",
+   "home_spread_odds": "-115",
    "home_spread_open": "+3",
-   "home_ml": "+100",
+   "home_ml": "-102",
    "home_ml_open": "+130",
    "away_spread": "-1.5",
-   "away_spread_odds": "-110",
+   "away_spread_odds": "-105",
    "away_spread_open": "-3",
-   "away_ml": "-120",
+   "away_ml": "-118",
    "away_ml_open": "-155",
    "total": 52.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "over_odds": "-105",
+   "under_odds": "-115",
    "total_open": "o56.5"
   },
   {
@@ -906,7 +906,7 @@
    "conference_game": true,
    "venue": "Mackay Stadium",
    "weather": "Sunny",
-   "temp_f": 56,
+   "temp_f": 55,
    "home_spread": "-6.5",
    "home_spread_odds": "-110",
    "home_spread_open": "-5.5",
@@ -936,7 +936,7 @@
    "conference_game": true,
    "venue": "M. M. Roberts Stadium",
    "weather": "Sunny",
-   "temp_f": 80,
+   "temp_f": 79,
    "home_spread": "+10",
    "home_spread_odds": "-112",
    "home_spread_open": "+10.5",
@@ -966,7 +966,7 @@
    "conference_game": true,
    "venue": "Joe Aillet Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 84,
+   "temp_f": 85,
    "home_spread": "-13.5",
    "home_spread_odds": "-115",
    "home_spread_open": "-8.5",
@@ -995,7 +995,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Martin Stadium",
-   "weather": "Partly sunny",
+   "weather": "Intermittent clouds",
    "temp_f": 55,
    "home_spread": "+14.5",
    "home_spread_odds": "-115",
@@ -1026,7 +1026,7 @@
    "conference_game": true,
    "venue": "Canvas Stadium",
    "weather": "Intermittent clouds",
-   "temp_f": 54,
+   "temp_f": 56,
    "home_spread": "+1.5",
    "home_spread_odds": "-118",
    "home_spread_open": "+3",
@@ -1037,9 +1037,9 @@
    "away_spread_open": "-3",
    "away_ml": "-115",
    "away_ml_open": "-162",
-   "total": 60.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
+   "total": 59.5,
+   "over_odds": "-112",
+   "under_odds": "-108",
    "total_open": "o59.5"
   },
   {
@@ -1116,7 +1116,7 @@
    "conference_game": true,
    "venue": "Centennial Bank Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 75,
+   "temp_f": 77,
    "home_spread": "+2.5",
    "home_spread_odds": "-105",
    "home_spread_open": "+1.5",
@@ -1145,7 +1145,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "DKR-Texas Memorial Stadium",
-   "weather": "Mostly sunny",
+   "weather": "Intermittent clouds",
    "temp_f": 85,
    "home_spread": "-3",
    "home_spread_odds": "-112",
@@ -1176,7 +1176,7 @@
    "conference_game": true,
    "venue": "Kroger Field",
    "weather": "Mostly clear",
-   "temp_f": 65,
+   "temp_f": 63,
    "home_spread": "-10.5",
    "home_spread_odds": "-110",
    "home_spread_open": "-9.5",
@@ -1208,12 +1208,12 @@
    "weather": "Hazy sunshine",
    "temp_f": 66,
    "home_spread": "+3",
-   "home_spread_odds": "-118",
+   "home_spread_odds": "-115",
    "home_spread_open": "+1.5",
    "home_ml": "+124",
    "home_ml_open": "+100",
    "away_spread": "-3",
-   "away_spread_odds": "-102",
+   "away_spread_odds": "-105",
    "away_spread_open": "-1.5",
    "away_ml": "-148",
    "away_ml_open": "-120",
@@ -1265,8 +1265,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Kenan Stadium",
-   "weather": "Clear",
-   "temp_f": 59,
+   "weather": "Mostly clear",
+   "temp_f": 60,
    "home_spread": "-8.5",
    "home_spread_odds": "-112",
    "home_spread_open": "-9.5",
@@ -1355,8 +1355,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "University Stadium (NM)",
-   "weather": "Intermittent clouds",
-   "temp_f": 60,
+   "weather": "Thunderstorms",
+   "temp_f": 59,
    "home_spread": "-4.5",
    "home_spread_odds": "-112",
    "home_spread_open": "-3.5",
@@ -1368,8 +1368,8 @@
    "away_ml": "+160",
    "away_ml_open": "+142",
    "total": 40.5,
-   "over_odds": "-112",
-   "under_odds": "-108",
+   "over_odds": "-110",
+   "under_odds": "-110",
    "total_open": "o46.5"
   },
   {
@@ -1385,8 +1385,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Rice-Eccles Stadium",
-   "weather": "Mostly clear",
-   "temp_f": 48,
+   "weather": "Partly cloudy",
+   "temp_f": 47,
    "home_spread": "-6.5",
    "home_spread_odds": "-120",
    "home_spread_open": "-6.5",
@@ -1416,7 +1416,7 @@
    "conference_game": true,
    "venue": "Houchens Industries-L.T. Smith Stadium",
    "weather": "Partly cloudy",
-   "temp_f": 69
+   "temp_f": 70
   },
   {
    "game_id": "401871072",
@@ -1431,8 +1431,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Robert W. Plaster Stadium",
-   "weather": "Cloudy",
-   "temp_f": 67
+   "weather": "Mostly cloudy",
+   "temp_f": 65
   },
   {
    "game_id": "401871058",
@@ -1447,8 +1447,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Johnny \"Red\" Floyd Stadium",
-   "weather": "Clear",
-   "temp_f": 69
+   "weather": "Mostly clear",
+   "temp_f": 68
   },
   {
    "game_id": "401871057",
@@ -1464,7 +1464,7 @@
    "conference_game": true,
    "venue": "Aggie Memorial Stadium",
    "weather": "Intermittent clouds",
-   "temp_f": 75
+   "temp_f": 74
   },
   {
    "game_id": "401862812",
@@ -1479,8 +1479,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "DATCU Stadium",
-   "weather": "Intermittent clouds",
-   "temp_f": 77
+   "weather": "Mostly cloudy",
+   "temp_f": 75
   },
   {
    "game_id": "401869963",
@@ -1495,8 +1495,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Bridgeforth Stadium",
-   "weather": "Intermittent clouds",
-   "temp_f": 60
+   "weather": "Mostly clear",
+   "temp_f": 58
   },
   {
    "game_id": "401862813",
@@ -1511,8 +1511,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Jerry Richardson Stadium",
-   "weather": "Clear",
-   "temp_f": 72
+   "weather": "Mostly clear",
+   "temp_f": 68
   },
   {
    "game_id": "401856844",
@@ -1527,8 +1527,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Acrisure Bounce House",
-   "weather": "Mostly clear",
-   "temp_f": 82
+   "weather": "Partly cloudy",
+   "temp_f": 77
   },
   {
    "game_id": "401866451",
@@ -1543,8 +1543,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Hornet Stadium",
-   "weather": "Intermittent clouds",
-   "temp_f": 62
+   "weather": "Mostly clear",
+   "temp_f": 59
   },
   {
    "game_id": "401858505",
@@ -1559,8 +1559,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Autzen Stadium",
-   "weather": "Mostly cloudy",
-   "temp_f": 48,
+   "weather": "Showers",
+   "temp_f": 43,
    "home_spread": "-7.5",
    "home_spread_odds": "-110",
    "home_spread_open": "-7.5",
@@ -1589,8 +1589,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Beaver Stadium",
-   "weather": "Mostly cloudy",
-   "temp_f": 51
+   "weather": "Clear",
+   "temp_f": 52
   },
   {
    "game_id": "401859185",
@@ -1636,7 +1636,7 @@
    "conference_game": true,
    "venue": "Galaxy Stadium",
    "weather": "Partly sunny",
-   "temp_f": 61,
+   "temp_f": 53,
    "home_spread": "-7.5",
    "home_spread_odds": "+100",
    "home_spread_open": "-7.5",
@@ -1666,7 +1666,7 @@
    "conference_game": true,
    "venue": "Kinnick Stadium",
    "weather": "Partly sunny",
-   "temp_f": 53,
+   "temp_f": 55,
    "home_spread": "-4.5",
    "home_spread_odds": "-115",
    "home_spread_open": "-4.5",
@@ -1696,7 +1696,7 @@
    "conference_game": true,
    "venue": "JMA Wireless Dome",
    "weather": "Mostly sunny",
-   "temp_f": 47
+   "temp_f": 49
   },
   {
    "game_id": "401858277",
@@ -1711,8 +1711,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Carter-Finley Stadium",
-   "weather": "Sunny",
-   "temp_f": 58
+   "weather": "Mostly sunny",
+   "temp_f": 55
   },
   {
    "game_id": "401858279",
@@ -1728,7 +1728,7 @@
    "conference_game": true,
    "venue": "Wallace Wade Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 54
+   "temp_f": 53
   },
   {
    "game_id": "401858503",
@@ -1744,7 +1744,7 @@
    "conference_game": true,
    "venue": "SECU Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 54
+   "temp_f": 55
   },
   {
    "game_id": "401862816",
@@ -1776,7 +1776,7 @@
    "conference_game": true,
    "venue": "Waldo Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 50
+   "temp_f": 53
   },
   {
    "game_id": "401858507",
@@ -1791,8 +1791,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "SHI Stadium",
-   "weather": "Mostly sunny",
-   "temp_f": 52
+   "weather": "Sunny",
+   "temp_f": 54
   },
   {
    "game_id": "401856735",
@@ -1808,7 +1808,7 @@
    "conference_game": true,
    "venue": "Vaught-Hemingway Stadium",
    "weather": "Partly sunny",
-   "temp_f": 66,
+   "temp_f": 64,
    "home_spread": "-10.5",
    "home_spread_odds": "-110",
    "home_spread_open": "-10.5",
@@ -1837,8 +1837,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "S.B. Ballard Stadium",
-   "weather": "Sunny",
-   "temp_f": 60
+   "weather": "Mostly sunny",
+   "temp_f": 59
   },
   {
    "game_id": "401856846",
@@ -1853,8 +1853,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Folsom Field",
-   "weather": "Partly sunny",
-   "temp_f": 53
+   "weather": "Intermittent clouds",
+   "temp_f": 55
   },
   {
    "game_id": "401869944",
@@ -1885,8 +1885,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Falcon Stadium",
-   "weather": "Partly sunny",
-   "temp_f": 60
+   "weather": "Mostly cloudy",
+   "temp_f": 58
   },
   {
    "game_id": "401862815",
@@ -1901,7 +1901,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Dowdy-Ficklen Stadium",
-   "weather": "Mostly sunny",
+   "weather": "Partly sunny",
    "temp_f": 64
   },
   {
@@ -1934,7 +1934,7 @@
    "conference_game": true,
    "venue": "L&N Federal Credit Union Stadium",
    "weather": "Mostly sunny",
-   "temp_f": 62
+   "temp_f": 63
   },
   {
    "game_id": "401856843",
@@ -2009,7 +2009,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Memorial Stadium (Bloomington, IN)",
-   "weather": "Mostly sunny",
+   "weather": "Partly sunny",
    "temp_f": 58,
    "home_spread": "-22.5",
    "home_spread_odds": "-110",
@@ -2039,8 +2039,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Amon G. Carter Stadium",
-   "weather": "Mostly cloudy",
-   "temp_f": 68
+   "weather": "Rain",
+   "temp_f": 67
   },
   {
    "game_id": "401860910",
@@ -2056,7 +2056,7 @@
    "conference_game": true,
    "venue": "Maverik Stadium",
    "weather": "Partly sunny",
-   "temp_f": 45
+   "temp_f": 48
   },
   {
    "game_id": "401864531",
@@ -2072,7 +2072,7 @@
    "conference_game": true,
    "venue": "Fargodome",
    "weather": "Mostly sunny",
-   "temp_f": 49
+   "temp_f": 48
   },
   {
    "game_id": "401871059",
@@ -2104,7 +2104,7 @@
    "conference_game": true,
    "venue": "Malone Stadium",
    "weather": "Partly sunny",
-   "temp_f": 72
+   "temp_f": 71
   },
   {
    "game_id": "401856848",
@@ -2165,8 +2165,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "CEFCU Stadium",
-   "weather": "Partly sunny",
-   "temp_f": 68
+   "weather": "Mostly sunny",
+   "temp_f": 59
   },
   {
    "game_id": "401858508",
@@ -2182,7 +2182,7 @@
    "conference_game": false,
    "venue": "Rose Bowl",
    "weather": "Partly sunny",
-   "temp_f": 74
+   "temp_f": 73
   },
   {
    "game_id": "401856736",
@@ -2197,8 +2197,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Memorial Stadium (Norman, OK)",
-   "weather": "Mostly cloudy",
-   "temp_f": 63,
+   "weather": "Cloudy",
+   "temp_f": 62,
    "home_spread": "-5.5",
    "home_spread_odds": "-110",
    "home_spread_open": "-5.5",
@@ -2228,7 +2228,7 @@
    "conference_game": true,
    "venue": "Allen E. Paulson Stadium",
    "weather": "Partly sunny",
-   "temp_f": 69
+   "temp_f": 68
   },
   {
    "game_id": "401856847",
@@ -2244,7 +2244,7 @@
    "conference_game": true,
    "venue": "Jack Trice Stadium",
    "weather": "Partly sunny",
-   "temp_f": 52
+   "temp_f": 53
   },
   {
    "game_id": "401858280",
@@ -2275,8 +2275,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Snapdragon Stadium",
-   "weather": "Intermittent clouds",
-   "temp_f": 77
+   "weather": "Partly sunny",
+   "temp_f": 76
   },
   {
    "game_id": "401858282",
@@ -2322,7 +2322,7 @@
    "conference_game": true,
    "venue": "Los Angeles Memorial Coliseum",
    "weather": "Partly sunny",
-   "temp_f": 75,
+   "temp_f": 74,
    "home_spread": "+6.5",
    "home_spread_odds": "-105",
    "home_spread_open": "+7.5",
@@ -2352,7 +2352,7 @@
    "conference_game": true,
    "venue": "DKR-Texas Memorial Stadium",
    "weather": "Rain",
-   "temp_f": 70
+   "temp_f": 71
   },
   {
    "game_id": "401858281",
@@ -2367,7 +2367,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Acrisure Stadium",
-   "weather": "Intermittent clouds",
+   "weather": "Mostly clear",
    "temp_f": 52
   },
   {
@@ -2383,7 +2383,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Donald W. Reynolds Razorback Stadium",
-   "weather": "Cloudy",
+   "weather": "Intermittent clouds",
    "temp_f": 57
   },
   {
@@ -2416,7 +2416,7 @@
    "conference_game": true,
    "venue": "Simmons Bank Liberty Stadium",
    "weather": "Partly cloudy",
-   "temp_f": 64
+   "temp_f": 63
   },
   {
    "game_id": "401860908",
@@ -2431,7 +2431,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Albertsons Stadium",
-   "weather": "Cloudy",
+   "weather": "Clear",
    "temp_f": 52
   },
   {
@@ -2447,7 +2447,7 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Allegiant Stadium",
-   "weather": "Intermittent clouds",
+   "weather": "Partly cloudy",
    "temp_f": 69
   },
   {
@@ -2463,8 +2463,8 @@
    "neutral": false,
    "conference_game": true,
    "venue": "Valley Children's Stadium",
-   "weather": "Partly cloudy",
-   "temp_f": 66
+   "weather": "Clear",
+   "temp_f": 68
   }
  ]
 }
