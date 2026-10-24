@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-24T12:07Z",
+ "pulled_utc": "2026-10-24T13:58Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -227,13 +227,13 @@
    "venue": "Reliant Stadium",
    "weather": "Mostly sunny",
    "temp_f": 76,
-   "home_spread": "-10.5",
-   "home_spread_odds": "-108",
+   "home_spread": "-10",
+   "home_spread_odds": "-115",
    "home_spread_open": "-5.5",
    "home_ml": "-500",
    "home_ml_open": "-238",
-   "away_spread": "+10.5",
-   "away_spread_odds": "-112",
+   "away_spread": "+10",
+   "away_spread_odds": "-105",
    "away_spread_open": "+5.5",
    "away_ml": "+380",
    "away_ml_open": "+195",
