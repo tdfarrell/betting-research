@@ -31,8 +31,32 @@ def build():
     df["spread"] = np.where(df.home == 1, df.home_spread, -df.home_spread)
     df["implied_tt"] = df.total / 2 - df.spread / 2
     df["b2b"] = (pd.to_numeric(df.rest, errors="coerce") == 1).astype(int)
+    df = projected_starter(df)
     df.drop(columns=["home_spread"]).to_csv(TABLE, index=False, compression="gzip")
     print(len(df), "player-games", df.groupby("season").size().to_dict())
+
+def projected_starter(df):
+    """`starter` = the projected starter, known before tip, using the same rule as the live cards
+    (scripts/nba_props.py Day.minutes): 3+ games this season -> share of the last 5 games started; otherwise this
+    season's starts blended with last season's last-20 start share. Training on whether he ACTUALLY started (kept as
+    `started`) taught the model that starter=0 means a bench game for sure, which the live card can't know; projected
+    bench players then sat well under DK's line (Oct 23 research: claude/nba-props-under-lean.md)."""
+    df = df.copy()
+    df["date"] = pd.to_datetime(df.date)
+    df = df.sort_values(["player_id", "date"]).reset_index(drop=True)
+    df["started"] = df.starter
+    gs = df.groupby(["player_id", "season"], sort=False)
+    n = gs.cumcount()
+    starts = gs.starter.transform(lambda x: x.shift(1).fillna(0).cumsum())
+    l5 = gs.starter.transform(lambda x: x.shift(1).rolling(5, min_periods=1).mean())
+    prev = df.groupby(["player_id", "season"]).starter.apply(lambda x: x.tail(20).mean()).to_dict()
+    pr = pd.Series([prev.get((p, s - 1), np.nan) for p, s in zip(df.player_id, df.season)], index=df.index)
+    has = pr.notna().astype(float)
+    rest = (5 - n).clip(lower=0) * has
+    blend = (starts + pr.fillna(0) * rest) / np.maximum(1, n + rest)
+    df["start_rate"] = np.where(n >= 3, l5, blend)
+    df["starter"] = (df.start_rate >= 0.5).astype(int)
+    return df
 
 BASE = ["starter", "min_e3", "min_e10", "min_last", "start_e5", "n_prev", "n_prev_season", "home", "rest", "b2b",
         "out_min", "out_pts", "out_n", "opp_out_min", "opp_out_pts", "pace_e", "opp_pace", "spread", "total", "implied_tt"]
@@ -61,8 +85,12 @@ def walk(params=None, rounds=150):
     df["date"] = pd.to_datetime(df.date)
     df["month"] = df.date.dt.to_period("M")
     df = df[df.n_prev >= 3]
-    lines = pd.read_csv(f"{H}/nba_features.csv.gz", dtype={"game_id": str, "athlete_id": str},
-                        usecols=["game_id", "athlete_id", "market", "line", "over", "under", "p_mkt", "sim_p"])
+    if os.path.exists(f"{H}/nba_features.csv.gz"):
+        lines = pd.read_csv(f"{H}/nba_features.csv.gz", dtype={"game_id": str, "athlete_id": str},
+                            usecols=["game_id", "athlete_id", "market", "line", "over", "under", "p_mkt", "sim_p"])
+    else:   # the features file isn't committed; the last walk-forward output carries the same lines
+        lines = pd.read_csv(f"{H}/nba_v3_lines.csv.gz", dtype={"game_id": str, "athlete_id": str},
+                            usecols=["game_id", "athlete_id", "market", "line", "over", "under", "p_mkt", "sim_p"]).drop_duplicates(["game_id", "athlete_id", "market"])
     P = dict(learning_rate=0.08, num_leaves=31, min_data_in_leaf=100, max_bin=63, feature_fraction=0.8,
              bagging_fraction=0.8, bagging_freq=1, lambda_l2=5.0, verbose=-1, seed=5)
     if params:
