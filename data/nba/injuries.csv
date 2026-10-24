@@ -8,17 +8,14 @@ player_id,name,team,status,detail,date
 5061575,Kon Knueppel,CHA,Out,Knueppel (hamstring) has been ruled out for Saturday's game against the Heat.,2026-10-24
 4684269,Kylan Boswell,CHA,Out,Boswell (knee) is out for Wednesday's season opener against the Nets.,2026-10-20
 4278067,Nic Claxton,CHI,Out,"Claxton (hamstring) will be re-evaluated in two weeks, K.C. Johnson of Chicago Sports Network reports.",2026-10-19
-5242496,Noa Essengue,CHI,Day-To-Day,"Essengue (head) is probable for Saturday's game against the Wizards, Joel Lorenzi of The Athletic reports.",2026-10-24
+5242496,Noa Essengue,CHI,Out,"Essengue (head) won't suit up for Saturday's game against the Wizards, Joel Lorenzi of The Athletic reports.",2026-10-24
+4431687,Patrick Williams,CHI,Out,"Williams (groin) is out for Saturday's game versus the Wizards, Joel Lorenzi of The Athletic reports.",2026-10-24
 3138160,Caleb Martin,DAL,Out,Martin (thumb) has been ruled out against San Antonio on Saturday.,2026-10-24
 5041939,Cooper Flagg,DAL,Out,"The Mavericks diagnosed Flagg with a mild left shoulder sprain, and the second-year forward will be re-evaluated by medical staff next week, Brett Siegel of Clu",2026-10-24
 4683688,Dereck Lively II,DAL,Out,Lively (foot) has been ruled out for Friday's game against the Pacers.,2026-10-22
-5105806,Jett Howard,DAL,Out,Howard (calf) is listed as doubtful against the Spurs on Saturday.,2026-10-24
-6442,Kyrie Irving,DAL,Day-To-Day,Irving (knee) is listed as questionable for Saturday's game against San Antonio.,2026-10-24
-4432582,Max Christie,DAL,Day-To-Day,Christie (shin) is questionable for Saturday's game against the Spurs.,2026-10-24
-4873153,Morez Johnson Jr.,DAL,Day-To-Day,Johnson (shin) is listed as questionable for Saturday's game against the Spurs.,2026-10-24
+6442,Kyrie Irving,DAL,Out,"Irving is out for Saturday's game against the Spurs due to rest, Christian Clark of The Athletic reports.",2026-10-24
 4593125,Santi Aldama,DAL,Out,Aldama (knee) has been ruled out for Saturday's game against the Spurs.,2026-10-24
 5148538,Tarik Biberovic,DAL,Out,Biberovic (heel) has been ruled out for Saturday's game against San Antonio.,2026-10-24
-5211175,Zaccharie Risacher,DAL,Day-To-Day,Risacher is questionable for Saturday's game against the Spurs due to right hip soreness.,2026-10-24
 4065813,Alpha Diallo,DEN,Day-To-Day,Diallo is questionable for Saturday's game versus the Pelicans due to a right wrist sprain.,2026-10-23
 3138196,Cameron Johnson,DEN,Out,Johnson (ankle) has been ruled out for Saturday's game against New Orleans.,2026-10-23
 4432181,Julian Strawther,DEN,Out,"Strawther (knee) was diagnosed with a left knee sprain Friday and will be re-evaluated in six weeks, Vinny Benedetto of The Denver Gazette reports.",2026-10-17
@@ -35,9 +32,8 @@ player_id,name,team,status,detail,date
 3975,Stephen Curry,GS,Out,Curry (rest) won't play Saturday against the Suns.,2026-10-24
 2991230,Fred VanVleet,HOU,Out,VanVleet (knee) has been ruled out for Saturday's game against the Hawks.,2026-10-24
 2990992,Marcus Smart,HOU,Day-To-Day,Smart (forearm) is listed as questionable for Saturday's game against the Hawks.,2026-10-24
-4711272,Reed Sheppard,HOU,Day-To-Day,Sheppard (knee) is listed as questionable for Saturday's game against the Hawks.,2026-10-24
 2991235,Steven Adams,HOU,Out,Adams (ankle) has been ruled out for Saturday's game against the Hawks.,2026-10-24
-4396909,Aaron Nesmith,IND,Day-To-Day,"Nesmith is not starting Friday against the Mavericks, Grant Afseth of DallasHoopsJournal.com reports.",2026-10-24
+4396909,Aaron Nesmith,IND,Day-To-Day,Nesmith (hamstring) is listed as probable for Sunday's game against Brooklyn.,2026-10-24
 4433076,Ben Sheppard,IND,Out,"Sheppard has been diagnosed with a torn meniscus in his left knee and is without a timetable for a return to game action, Scott Agness of FieldhouseFiles.com re",2026-10-23
 5157066,Johnny Furphy,IND,Out,"Furphy was diagnosed with a torn right ACL on Monday and will miss the remainder of the season, Michael Scotto of USA Today reports.",2026-02-09
 2530530,T.J. McConnell,IND,Out,McConnell (hamstring) is out for Sunday's game against the Nets.,2026-10-24
@@ -45,13 +41,12 @@ player_id,name,team,status,detail,date
 4396818,Jordan Miller,LAC,Out,"Miller underwent surgery Wednesday to repair a torn left rotator cuff and will be re-evaluated in six months, per Law Murray of The Athletic.",2026-08-26
 4065778,Max Strus,LAC,Out,"Strus has been diagnosed with a partially torn plantar fascia in his right foot and he will be re-evaluated in four weeks, Ohm Youngmisuk of ESPN.com reports.",2026-10-05
 5108024,Yanic Konan Niederhauser,LAC,Out,"Niederhauser (foot) won't be ready for the start of the season, Law Murray of The Athletic reports.",2026-09-28
-5060631,Adou Thiero,LAL,Day-To-Day,Thiero (knee) is out for Friday's game against the Clippers.,2026-10-24
-5113969,Cameron Carr,LAL,Day-To-Day,Carr (oblique) is out for Friday's game against the Clippers.,2026-10-24
-4592691,Jake LaRavia,LAL,Day-To-Day,"LaRavia (ankle) has been ruled out for Friday's game against the Clippers, Mark Medina of TheSportingTribune.com reports.",2026-10-24
+5060631,Adou Thiero,LAL,Out,Thiero (knee) is out for Friday's game against the Clippers.,2026-10-24
+5113969,Cameron Carr,LAL,Out,"Carr (oblique) is out for Sunday's game in Utah, Khobi Price of The California Post reports.",2026-10-24
 4903027,Cedric Coward,MEM,Day-To-Day,Coward (wrist) has been ruled out for Friday's game against the Warriors.,2026-10-24
-4601025,Pelle Larsson,MIA,Day-To-Day,Larsson (finger) is listed as probable for Saturday's game against Charlotte.,2026-10-24
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
-5061589,Yves Missi,NO,Out,Missi (knee) has been ruled out for Saturday's game against the Nuggets.,2026-10-24
+5061589,Yves Missi,NO,Out,"Missi has been diagnosed with a left knee bone bruise and he will miss an extended period of time, Brett Siegel of ClutchPoints.com reports.",2026-10-24
+4277869,Jose Alvarado,NY,Day-To-Day,Alvarado is questionable for Sunday's game against Orlando due to a left ankle sprain.,2026-10-24
 5159925,Nikola Topic,OKC,Out,Topic (back) won't play in Thursday's game against the Nuggets.,2026-10-21
 5106270,Otega Oweh,OKC,Out,The Thunder plan to waive Oweh (Achilles) on Friday.,2026-10-23
 5061603,Thomas Sorber,OKC,Out,Sorber (knee) is listed as out for Thursday's game against Denver.,2026-10-21
@@ -61,7 +56,6 @@ player_id,name,team,status,detail,date
 5214637,Noah Penda,ORL,Out,"Penda was diagnosed with a partially torn right hamstring Saturday, Jason Beede of the Orlando Sentinel reports.",2026-10-17
 4432573,Paolo Banchero,ORL,Out,"Banchero is expected to be sidelined for the next four-to-six weeks due to a right high-ankle sprain, Shams Charania of ESPN reports.",2026-10-24
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
-3912848,Dean Wade,PHI,Day-To-Day,Wade is listed as questionable for Saturday's game against the Bucks due to a left ankle sprain.,2026-10-23
 4870562,Dominick Barlow,PHI,Out,"Barlow will miss at least the next two weeks of action due to a lumbar spine bone stress response, Adam Aaronson of PhillyVoice.com reports.",2026-10-19
 1966,LeBron James,PHI,Out,"James (back) has been ruled out for Saturday's game against the Bucks, Adam Aaronson of PhillyVoice.com reports.",2026-10-24
 3904625,Tacko Fall,PHI,Out,Fall (quadriceps) is out for Saturday's game against the Bucks.,2026-10-23
@@ -79,7 +73,7 @@ player_id,name,team,status,detail,date
 3913176,Brandon Ingram,TOR,Out,"Ingram won't be ready for the start of the season due to a partially torn Achilles, per Joey Linn of SI.com.",2026-09-28
 4432586,Nate Bittle,TOR,Out,Bittle (foot) is out for Wednesday's season opener against the Bulls.,2026-10-20
 3102530,Jusuf Nurkic,UTAH,Out,"Nurkic will miss at least the next four weeks due to a partial plantar plate tear of second toe in right foot, Chris Haynes of NBA TV reports.",2026-10-07
-4433268,Trey Alexander,UTAH,Day-To-Day,Alexander won't play Wednesday against the Grizzlies due to a left knee bone bruise.,2026-10-24
+4433268,Trey Alexander,UTAH,Out,Alexander won't play Wednesday against the Grizzlies due to a left knee bone bruise.,2026-10-24
 5142718,AJ Dybantsa,WSH,Out,Dybantsa (ankle) has been ruled out for Saturday's game against the Bulls.,2026-10-24
 4606840,Jamir Watkins,WSH,Out,The Wizards announced Thursday that Watkins has undergone surgery for a torn ACL.,2026-07-30
 4997537,Tristan Vukcevic,WSH,Out,The Wizards announced Thursday that Vukcevic (hip) will be re-evaluated in four weeks.,2026-10-01
