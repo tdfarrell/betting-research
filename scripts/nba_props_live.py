@@ -68,27 +68,28 @@ def train(rounds=150):
     L = pd.read_csv(f"{V3.H}/nba_v3_lines.csv.gz")
     L = L[L.actual != L.line].copy()
     L["praw"] = [p_over([r.q10, r.q25, r.q50, r.q75, r.q90], r.line) for r in L.itertuples()]
-    mks = sorted(L.market.unique())
-    X = np.c_[logit(L.praw), np.stack([(L.market == m).astype(float) for m in mks], 1)]
-    lr = LogisticRegression(C=1.0, max_iter=2000).fit(X, (L.actual > L.line).astype(int))
-    cfg = {"quantiles": QS, "lean": LEAN, "features": feats, "trained_rows": int(len(df)),
-           "cal": {"const": float(lr.intercept_[0]), "slope": float(lr.coef_[0][0]),
-                   "offset": {m: float(lr.coef_[0][1 + i]) for i, m in enumerate(mks)}},
-           "walk_forward": walk_forward_tiers(L, lr, mks)}
+    # Slope only (Oct 23): calibration sets how far to trust the model's chance, never the side. With an intercept
+    # and per-market offsets it learned the league-wide under habit at prop lines and overrode the model on close
+    # calls (73% unders on Oct 23 while the model's own median favored the under on 57%).
+    # Research: claude/nba-props-under-lean.md
+    lr = LogisticRegression(C=1.0, max_iter=2000, fit_intercept=False).fit(logit(L.praw).reshape(-1, 1), (L.actual > L.line).astype(int))
+    cfg = {"quantiles": QS, "lean": LEAN, "features": feats, "trained_rows": int(len(df)), "starter": "projected",
+           "cal": {"const": 0.0, "slope": float(lr.coef_[0][0]), "offset": {}},
+           "walk_forward": walk_forward_tiers(L)}
     json.dump(cfg, open(CFG, "w"), indent=1)
     print("saved", CFG, cfg["cal"], cfg["walk_forward"])
 
-def walk_forward_tiers(L, lr, mks):
+def walk_forward_tiers(L):
     """Hit rate by calibrated chance, refit month by month on earlier months only (the honest version)."""
     from sklearn.linear_model import LogisticRegression
     L = L.copy(); L["month"] = pd.to_datetime(L.date).dt.to_period("M")
     L["pc"] = np.nan
-    X = lambda d: np.c_[logit(d.praw), np.stack([(d.market == m).astype(float) for m in mks], 1)]
+    X = lambda d: logit(d.praw).reshape(-1, 1)
     for m in sorted(L.month.unique()):
         tr, te = L.month < m, L.month == m
         if tr.sum() < 3000:
             continue
-        f = LogisticRegression(C=1.0, max_iter=2000).fit(X(L[tr]), (L[tr].actual > L[tr].line).astype(int))
+        f = LogisticRegression(C=1.0, max_iter=2000, fit_intercept=False).fit(X(L[tr]), (L[tr].actual > L[tr].line).astype(int))
         L.loc[te, "pc"] = f.predict_proba(X(L[te]))[:, 1]
     d = L.dropna(subset=["pc"])
     ch = np.maximum(d.pc, 1 - d.pc); won = np.where(d.pc >= .5, d.actual > d.line, d.actual < d.line)
