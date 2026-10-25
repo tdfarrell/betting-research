@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-25T18:24Z",
+ "pulled_utc": "2026-10-25T18:28Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -751,19 +751,19 @@
    "venue": "Robert W. Plaster Stadium",
    "weather": "Intermittent clouds",
    "temp_f": 67,
-   "home_spread": "-6",
-   "home_spread_odds": "-105",
+   "home_spread": "-5.5",
+   "home_spread_odds": "-110",
    "home_spread_open": "-6",
    "home_ml": "-225",
    "home_ml_open": "-218",
-   "away_spread": "+6",
-   "away_spread_odds": "-115",
+   "away_spread": "+5.5",
+   "away_spread_odds": "-110",
    "away_spread_open": "+6",
    "away_ml": "+185",
    "away_ml_open": "+180",
-   "total": 50.5,
-   "over_odds": "-120",
-   "under_odds": "+100",
+   "total": 51.5,
+   "over_odds": "+100",
+   "under_odds": "-120",
    "total_open": "o51.5"
   },
   {
