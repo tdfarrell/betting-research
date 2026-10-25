@@ -11,10 +11,10 @@ player_id,name,team,status,detail,date
 4278067,Nic Claxton,CHI,Out,"Claxton (hamstring) will be re-evaluated in two weeks, K.C. Johnson of Chicago Sports Network reports.",2026-10-19
 5242496,Noa Essengue,CHI,Day-To-Day,Essengue (head) is listed as questionable for Monday's game against Boston.,2026-10-25
 4431687,Patrick Williams,CHI,Day-To-Day,Williams (groin) is listed as questionable for Monday's game against Boston.,2026-10-25
-3138160,Caleb Martin,DAL,Out,Martin (thumb) has been ruled out against San Antonio on Saturday.,2026-10-24
-5041939,Cooper Flagg,DAL,Out,"The Mavericks diagnosed Flagg with a mild left shoulder sprain, and the second-year forward will be re-evaluated by medical staff next week, Brett Siegel of Clu",2026-10-24
+3138160,Caleb Martin,DAL,Out,Martin (thumb) is listed as doubtful for Monday's game against the Heat.,2026-10-25
+5041939,Cooper Flagg,DAL,Out,Flagg (shoulder) is questionable to play Monday against the Heat.,2026-10-25
 4683688,Dereck Lively II,DAL,Out,Lively (foot) has been ruled out for Friday's game against the Pacers.,2026-10-22
-6442,Kyrie Irving,DAL,Day-To-Day,"Irving is out for Saturday's game against the Spurs due to rest, Christian Clark of The Athletic reports.",2026-10-25
+4278594,Naji Marshall,DAL,Out,Marshall (illness) has been ruled out for Monday's game against the Heat.,2026-10-25
 4593125,Santi Aldama,DAL,Out,Aldama (knee) has been ruled out for Saturday's game against the Spurs.,2026-10-24
 5148538,Tarik Biberovic,DAL,Out,Biberovic (heel) has been ruled out for Saturday's game against San Antonio.,2026-10-24
 4065813,Alpha Diallo,DEN,Day-To-Day,Diallo (wrist) won't play Saturday against the Pelicans.,2026-10-25
@@ -45,6 +45,7 @@ player_id,name,team,status,detail,date
 5060631,Adou Thiero,LAL,Out,"Thiero (knee) has been ruled out for Sunday's game against Utah, Khobi Price of The California Post reports.",2026-10-24
 5113969,Cameron Carr,LAL,Out,"Carr (oblique) is out for Sunday's game in Utah, Khobi Price of The California Post reports.",2026-10-24
 4903027,Cedric Coward,MEM,Day-To-Day,Coward (wrist) is questionable for Sunday's game in Sacramento.,2026-10-25
+5231919,Karim Lopez,MEM,Day-To-Day,Lopez (knee) is listed as questionable for Sunday's game against the Kings.,2026-10-25
 4600663,Zach Edey,MEM,Out,Edey has been ruled out for Sunday's game against Sacramento due to left ankle injury management.,2026-10-25
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
 5061589,Yves Missi,NO,Out,"Missi has been diagnosed with a left knee bone bruise and he will miss an extended period of time, Brett Siegel of ClutchPoints.com reports.",2026-10-24
@@ -71,7 +72,7 @@ player_id,name,team,status,detail,date
 6440,Tobias Harris,SA,Out,Harris (calf) is out for Saturday's game against the Mavericks.,2026-10-24
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
 4433174,Dylan Cardwell,SAC,Out,"Cardwell (calf) is expected to miss at least the first five or six games of the regular season, with a longer absence possible, Frankie Cartoscelli of KHTK Sact",2026-10-15
-4594327,Keegan Murray,SAC,Day-To-Day,Murray is questionable to play Sunday against the Grizzlies due to left ankle capsulitis.,2026-10-25
+4594327,Keegan Murray,SAC,Day-To-Day,Murray (ankle) has been downgraded to doubtful for Sunday's game against Memphis.,2026-10-25
 4898371,Maxime Raynaud,SAC,Out,"Raynaud (knee) is expected to miss at least the first five or six games of the regular season, and potentially longer, Frankie Cartoscelli of KHTK Sactown Sport",2026-10-15
 3913176,Brandon Ingram,TOR,Out,"Ingram won't be ready for the start of the season due to a partially torn Achilles, per Joey Linn of SI.com.",2026-09-28
 4432586,Nate Bittle,TOR,Out,Bittle (foot) is out for Wednesday's season opener against the Bulls.,2026-10-20
