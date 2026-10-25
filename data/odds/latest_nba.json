@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-25T14:18Z",
+ "pulled_utc": "2026-10-25T15:07Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -175,13 +175,13 @@
    "venue": "Barclays Center",
    "weather": null,
    "temp_f": null,
-   "home_spread": "+7.5",
-   "home_spread_odds": "-115",
+   "home_spread": "+6.5",
+   "home_spread_odds": "-105",
    "home_spread_open": "+5.5",
    "home_ml": "+220",
    "home_ml_open": "+180",
-   "away_spread": "-7.5",
-   "away_spread_odds": "-105",
+   "away_spread": "-6.5",
+   "away_spread_odds": "-115",
    "away_spread_open": "-5.5",
    "away_ml": "-270",
    "away_ml_open": "-218",
