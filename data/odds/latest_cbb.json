@@ -1,0 +1,52 @@
+{
+ "pulled_utc": "2026-10-25T00:16Z",
+ "source": "ESPN scoreboard, provider DraftKings",
+ "games": [
+  {
+   "game_id": "401920982",
+   "kickoff_utc": "2026-11-01T14:30Z",
+   "status": "pre",
+   "away": "ND",
+   "home": "VILL",
+   "away_name": "Notre Dame Fighting Irish",
+   "home_name": "Villanova Wildcats",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": true,
+   "conference_game": false,
+   "venue": "Palazzo dello Sport",
+   "weather": null,
+   "temp_f": null,
+   "home_spread": "-7.5",
+   "home_spread_odds": "-110",
+   "home_spread_open": "-7.5",
+   "home_ml": "-305",
+   "home_ml_open": "-305",
+   "away_spread": "+7.5",
+   "away_spread_odds": "-110",
+   "away_spread_open": "+7.5",
+   "away_ml": "+245",
+   "away_ml_open": "+245",
+   "total": 149.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o149.5"
+  },
+  {
+   "game_id": "401920409",
+   "kickoff_utc": "2026-11-02T04:59Z",
+   "status": "pre",
+   "away": "LIB",
+   "home": "HPU",
+   "away_name": "Liberty Flames",
+   "home_name": "High Point Panthers",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": true,
+   "conference_game": false,
+   "venue": "Rock Hill Sports & Event Center",
+   "weather": null,
+   "temp_f": null
+  }
+ ]
+}
