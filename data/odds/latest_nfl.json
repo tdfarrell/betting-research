@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-25T21:02Z",
+ "pulled_utc": "2026-10-25T23:22Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,13 +10,13 @@
    "home": "ARI",
    "away_name": "Denver Broncos",
    "home_name": "Arizona Cardinals",
-   "away_score": "6",
-   "home_score": "3",
+   "away_score": "30",
+   "home_score": "16",
    "neutral": false,
    "conference_game": false,
    "venue": "State Farm Stadium",
    "weather": "1",
-   "temp_f": 79
+   "temp_f": 81
   },
   {
    "game_id": "401873020",
@@ -26,13 +26,13 @@
    "home": "DET",
    "away_name": "Green Bay Packers",
    "home_name": "Detroit Lions",
-   "away_score": "7",
-   "home_score": "7",
+   "away_score": "17",
+   "home_score": "17",
    "neutral": false,
    "conference_game": false,
    "venue": "Ford Field",
-   "weather": "3",
-   "temp_f": 67
+   "weather": "7",
+   "temp_f": 60
   },
   {
    "game_id": "401873021",
@@ -42,13 +42,13 @@
    "home": "LV",
    "away_name": "Los Angeles Rams",
    "home_name": "Las Vegas Raiders",
-   "away_score": "7",
-   "home_score": "3",
+   "away_score": "35",
+   "home_score": "21",
    "neutral": false,
    "conference_game": false,
    "venue": "Allegiant Stadium",
    "weather": "1",
-   "temp_f": 70
+   "temp_f": 73
   },
   {
    "game_id": "401873011",
@@ -191,21 +191,21 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Lumen Field",
-   "weather": "Cloudy",
+   "weather": "Showers",
    "temp_f": 56,
    "home_spread": "-3",
-   "home_spread_odds": "+100",
+   "home_spread_odds": "-102",
    "home_spread_open": "-3",
    "home_ml": "-155",
    "home_ml_open": "-155",
    "away_spread": "+3",
-   "away_spread_odds": "-120",
+   "away_spread_odds": "-118",
    "away_spread_open": "+3",
    "away_ml": "+130",
    "away_ml_open": "+130",
-   "total": 42.5,
-   "over_odds": "-112",
-   "under_odds": "-108",
+   "total": 43.5,
+   "over_odds": "-102",
+   "under_odds": "-118",
    "total_open": "o45.5"
   },
   {
@@ -252,7 +252,7 @@
    "conference_game": false,
    "venue": "Lambeau Field",
    "weather": "Intermittent clouds",
-   "temp_f": 54
+   "temp_f": 57
   },
   {
    "game_id": "401873026",
@@ -268,7 +268,21 @@
    "conference_game": false,
    "venue": "Highmark Stadium",
    "weather": null,
-   "temp_f": null
+   "temp_f": null,
+   "home_spread": "-3",
+   "home_spread_odds": "-120",
+   "home_spread_open": "-2.5",
+   "home_ml": "-180",
+   "home_ml_open": "-135",
+   "away_spread": "+3",
+   "away_spread_odds": "+100",
+   "away_spread_open": "+2.5",
+   "away_ml": "+150",
+   "away_ml_open": "+114",
+   "total": 52.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o51.5"
   },
   {
    "game_id": "401873031",
@@ -284,7 +298,21 @@
    "conference_game": false,
    "venue": "Paycor Stadium",
    "weather": "Rain",
-   "temp_f": 68
+   "temp_f": 66,
+   "home_spread": "-10",
+   "home_spread_odds": "-110",
+   "home_spread_open": "-6.5",
+   "home_ml": "-600",
+   "home_ml_open": "-270",
+   "away_spread": "+10",
+   "away_spread_odds": "-110",
+   "away_spread_open": "+6.5",
+   "away_ml": "+440",
+   "away_ml_open": "+220",
+   "total": 47.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o49.5"
   },
   {
    "game_id": "401873024",
@@ -300,7 +328,7 @@
    "conference_game": false,
    "venue": "AT&T Stadium",
    "weather": "Sunny",
-   "temp_f": 66
+   "temp_f": 72
   },
   {
    "game_id": "401873030",
@@ -332,7 +360,7 @@
    "conference_game": false,
    "venue": "MetLife Stadium",
    "weather": "Intermittent clouds",
-   "temp_f": 66
+   "temp_f": 61
   },
   {
    "game_id": "401873027",
@@ -348,7 +376,21 @@
    "conference_game": false,
    "venue": "Acrisure Stadium",
    "weather": "Rain",
-   "temp_f": 63
+   "temp_f": 60,
+   "home_spread": "-3.5",
+   "home_spread_odds": "-118",
+   "home_spread_open": "-5.5",
+   "home_ml": "-185",
+   "home_ml_open": "-245",
+   "away_spread": "+3.5",
+   "away_spread_odds": "-102",
+   "away_spread_open": "+5.5",
+   "away_ml": "+154",
+   "away_ml_open": "+200",
+   "total": 39.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o39.5"
   },
   {
    "game_id": "401873025",
@@ -364,7 +406,21 @@
    "conference_game": false,
    "venue": "Raymond James Stadium",
    "weather": "Intermittent clouds",
-   "temp_f": 84
+   "temp_f": 83,
+   "home_spread": "-1.5",
+   "home_spread_odds": "-110",
+   "home_spread_open": "-4.5",
+   "home_ml": "-125",
+   "home_ml_open": "-225",
+   "away_spread": "+1.5",
+   "away_spread_odds": "-110",
+   "away_spread_open": "+4.5",
+   "away_ml": "+105",
+   "away_ml_open": "+185",
+   "total": 44.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o46.5"
   },
   {
    "game_id": "401873028",
@@ -380,7 +436,21 @@
    "conference_game": false,
    "venue": "EverBank Stadium",
    "weather": "Cloudy",
-   "temp_f": 80
+   "temp_f": 79,
+   "home_spread": "-7.5",
+   "home_spread_odds": "-105",
+   "home_spread_open": "-4.5",
+   "home_ml": "-345",
+   "home_ml_open": "-218",
+   "away_spread": "+7.5",
+   "away_spread_odds": "-115",
+   "away_spread_open": "+4.5",
+   "away_ml": "+275",
+   "away_ml_open": "+180",
+   "total": 46.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o49.5"
   },
   {
    "game_id": "401873032",
@@ -396,7 +466,7 @@
    "conference_game": false,
    "venue": "SoFi Stadium",
    "weather": "Mostly cloudy",
-   "temp_f": 74
+   "temp_f": 70
   },
   {
    "game_id": "401873033",
@@ -412,7 +482,7 @@
    "conference_game": false,
    "venue": "Empower Field at Mile High",
    "weather": "Cloudy",
-   "temp_f": 61
+   "temp_f": 65
   },
   {
    "game_id": "401873034",
@@ -428,7 +498,21 @@
    "conference_game": false,
    "venue": "Hard Rock Stadium",
    "weather": "Intermittent clouds",
-   "temp_f": 85
+   "temp_f": 85,
+   "home_spread": "+7.5",
+   "home_spread_odds": "-115",
+   "home_spread_open": "+7",
+   "home_ml": "+300",
+   "home_ml_open": "+260",
+   "away_spread": "-7.5",
+   "away_spread_odds": "-105",
+   "away_spread_open": "-7",
+   "away_ml": "-380",
+   "away_ml_open": "-325",
+   "total": 44.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o45.5"
   },
   {
    "game_id": "401873035",
@@ -444,7 +528,7 @@
    "conference_game": false,
    "venue": "Northwest Stadium",
    "weather": "Rain",
-   "temp_f": 63
+   "temp_f": 62
   }
  ]
 }
