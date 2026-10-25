@@ -1,6 +1,7 @@
 player_id,name,team,status,detail,date
 5105571,Henri Veesaar,ATL,Out,"Veesaar was diagnosed with a torn right ACL and is expected to miss the 2026-27 season, the Hawks announced Monday.",2026-09-21
 4712863,Mouhamed Gueye,ATL,Out,"Gueye underwent surgery Tuesday to repair a fractured left foot that he suffered during a workout last week, Brad Rowland of the Locked On Podcast Network repor",2026-10-19
+5101761,Mikel Brown Jr.,BKN,Out,"Head coach Jordi Fernandez said Brown (rest) will be held out of Sunday's game against the Pacers, Brian Lewis of the New York Post reports.",2026-10-25
 5105626,Tyler Bilodeau,BKN,Out,Bilodeau (shoulder) has been ruled out for Saturday's game in Cleveland.,2026-10-23
 4433188,Devin Carter,BOS,Out,"Carter has been diagnosed with mononucleosis and is without a timetable for a return, Gary Washburn of The Boston Globe reports.",2026-10-18
 4395651,Coby White,CHA,Out,White (calf) has been ruled out for Saturday's game against Miami.,2026-10-24
@@ -24,8 +25,8 @@ player_id,name,team,status,detail,date
 4433621,Jalen Duren,DET,Out,"Duren has been ruled out for Sunday's game against the 76ers due to a right hamstring strain, Eric Vincent of ClutchPoints.com reports.",2026-10-24
 3213,Al Horford,GS,Out,Horford (back) has been ruled out for Saturday's game against the Suns.,2026-10-24
 4709138,Brandin Podziemski,GS,Out,"Podziemski (back) told reporters Friday that he will not play in the second leg of the Warriors' back-to-back set Saturday against the Suns, Nick Friedell of Th",2026-10-24
-4397886,Charles Bassey,GS,Day-To-Day,Bassey (knee) is listed as questionable for Saturday's game against the Suns.,2026-10-24
 6589,Draymond Green,GS,Out,Green (back) won't play Saturday in Phoenix.,2026-10-25
+4997536,Gui Santos,GS,Day-To-Day,"Santos exited Saturday's 131-122 loss to the Suns with an undisclosed injury and did not return, Anthony Slater of ESPN.com reports.",2026-10-25
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis is contemplating his future in basketball as he deals with recurring symptoms from the autoimmune condition termed as postural orthostatic tachycardia,2026-10-21
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
@@ -58,6 +59,8 @@ player_id,name,team,status,detail,date
 4432573,Paolo Banchero,ORL,Out,"Banchero is expected to be sidelined for the next four-to-six weeks due to a right high-ankle sprain, Shams Charania of ESPN reports.",2026-10-24
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
 4870562,Dominick Barlow,PHI,Out,"Barlow will miss at least the next two weeks of action due to a lumbar spine bone stress response, Adam Aaronson of PhillyVoice.com reports.",2026-10-19
+4432446,Jabari Walker,PHI,Day-To-Day,"Walker (ankle) exited Saturday's 127-116 win over the Bucks in the third quarter and did not return, finishing with six points (2-3 FG, 2-3 FT), three rebounds,",2026-10-25
+3059318,Joel Embiid,PHI,Day-To-Day,"Embiid produced 28 points (8-20 FG, 0-3 3Pt, 12-14 FT), 11 rebounds, 10 assists, one steal and four turnovers across 36 minutes in Saturday's 127-116 win over t",2026-10-25
 1966,LeBron James,PHI,Out,"James (back) has been ruled out for Saturday's game against the Bucks, Adam Aaronson of PhillyVoice.com reports.",2026-10-24
 3904625,Tacko Fall,PHI,Out,Fall (quadriceps) is out for Saturday's game against the Bucks.,2026-10-23
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11

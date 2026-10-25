@@ -1,13 +1,22 @@
 kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total,total_open,sp_total_cal,pp_total_cal,total_grade,total_pick,flags,adjustments,notes
-12:00 AM,NU @ ORE,-7.5,-7.5,-8.3,-8.4,PICK,NU +7.5,52.5,50.5,51.4,52.2,PICK,Under 52.5,,,Northwestern pass edge (pass EPA +0.47; Oregon allows +0.07)
-12:00 PM,WIS @ IOWA,-4.5,-4.5,-7.5,-12.4,PICK,IOWA -4.5,39.5,39.5,36.0,40.5,PICK,Over 39.5,,,Wisconsin pass edge (pass EPA +0.11; Iowa allows +0.35)
-12:00 PM,ARIZ @ TTU,-7.5,-7.5,-8.3,-11.2,PICK,TTU -7.5,54.5,52.5,55.7,53.4,PICK,Over 54.5,,,Arizona pass edge (pass EPA +0.45; Texas Tech allows +0.05)
-12:00 PM,ND @ NAVY,28.5,28.5,20.0,26.7,PICK,NAVY +28.5,53.5,53.5,55.9,51.2,PICK,Under 53.5,Big spread; Option offense,,Notre Dame havoc rate 21%; Notre Dame pass edge (pass EPA +0.46; Navy allows +0.36); Notre Dame should finish drives (5.1 pts/opp; Navy allows 3.9)
-12:45 PM,AUB @ MISS,-10.5,-10.5,-10.0,-14.2,PICK,MISS -10.5,53.5,53.5,53.6,53.3,PICK,Under 53.5,,,Ole Miss pass edge (pass EPA +0.45; Auburn allows +0.13)
-3:30 PM,FLA @ UGA,-10.5,-12.5,-15.6,-17.9,PICK,UGA -10.5,56.5,53.5,56.8,56.6,PICK,Over 56.5,,Line moved 2 pts toward the other side since open,Georgia pass edge (pass EPA +0.53; Florida allows +0.28); Georgia should finish drives (5.2 pts/opp; Florida allows 4.3); Florida pass edge (pass EPA +0.41; Georgia allows +0.11)
-3:30 PM,ASU @ BYU,-16.5,-17.5,-20.0,-17.3,PICK,ASU +16.5,51.5,51.5,50.0,51.1,PICK,Over 51.5,,,BYU pass edge (pass EPA +0.36; Arizona State allows +0.17)
-3:30 PM,MINN @ IU,-22.5,-22.5,-20.4,-33.8,PICK,IU -22.5,45.5,45.5,45.0,44.9,PICK,Over 45.5,,,Indiana pass edge (pass EPA +0.62; Minnesota allows +0.05); Minnesota havoc rate 22%; Indiana run D shuts down Minnesota (run EPA -0.15; allows -0.09)
-3:45 PM,UTAH @ CIN,9.5,9.5,9.1,16.8,PICK,UTAH -9.5,56.5,56.5,61.1,62.8,PICK,Under 56.5,,,Utah pass edge (pass EPA +0.37; Cincinnati allows +0.38); Utah should finish drives (4.8 pts/opp; Cincinnati allows 4.5)
-4:15 PM,SC @ OU,-5.5,-5.5,-2.8,-4.1,PICK,SC +5.5,43.5,43.5,43.6,45.8,PICK,Over 43.5,,,South Carolina run D shuts down Oklahoma (run EPA -0.21; allows -0.04); Oklahoma pass edge (pass EPA +0.16; South Carolina allows +0.38)
-7:30 PM,OSU @ USC,6.5,7.5,6.8,8.9,PICK,USC +6.5,53.5,55.5,58.2,58.1,PICK,Over 53.5,,,USC pass edge (pass EPA +0.58; Ohio State allows +0.01); Ohio State pass edge (pass EPA +0.49; USC allows +0.40); Ohio State should finish drives (4.9 pts/opp; USC allows 4.2)
-7:30 PM,MIA @ UNC,14.5,14.5,14.2,20.3,PICK,MIA -14.5,50.5,50.5,50.1,51.7,PICK,Under 50.5,,,Miami run D shuts down North Carolina (run EPA +0.02; allows -0.23); Miami pass edge (pass EPA +0.67; North Carolina allows +0.09)
+12:00 PM,WIS @ IOWA,-3.5,-4.5,-7.4,-10.1,PICK,IOWA -3.5,39.5,39.5,35.8,40.0,PICK,Over 39.5,,,
+12:00 PM,SMU @ SYR,9.5,12.5,12.0,16.4,PICK,SMU -9.5,56.5,55.5,51.4,56.7,PICK,Under 56.5,,Line moved 3 pts toward the other side since open,SMU pass edge (pass EPA +0.49; Syracuse allows +0.00)
+12:00 PM,ARIZ @ TTU,-4.5,-7.5,-8.3,-8.0,PICK,TTU -4.5,55.5,52.5,55.3,53.5,PICK,Over 55.5,,Line moved 3 pts toward the other side since open,Arizona pass edge (pass EPA +0.45; Texas Tech allows +0.04)
+12:00 PM,ND @ NAVY,30.5,28.5,23.3,25.1,PICK,NAVY +30.5,52.5,53.5,55.5,54.0,PICK,Under 52.5,Big spread; Option offense,,Notre Dame havoc rate 21%; Notre Dame pass edge (pass EPA +0.46; Navy allows +0.40); Notre Dame should finish drives (5.1 pts/opp; Navy allows 3.8)
+12:30 PM,MICH @ RUTG,14.0,14.0,13.5,13.1,PICK,RUTG +14,47.5,47.5,50.7,45.1,PICK,Over 47.5,,,Michigan pass edge (pass EPA +0.10; Rutgers allows +0.37)
+12:45 PM,AUB @ MISS,-11.5,-10.5,-10.2,-14.3,PICK,MISS -11.5,55.5,53.5,53.3,53.2,PICK,Under 55.5,,,Ole Miss pass edge (pass EPA +0.45; Auburn allows +0.21)
+3:30 PM,ASU @ BYU,-14.5,-17.5,-21.4,-13.4,PICK,ASU +14.5,51.5,51.5,49.7,49.8,PICK,Over 51.5,,,BYU pass edge (pass EPA +0.35; Arizona State allows +0.12)
+3:30 PM,FLA @ UGA,-10.5,-12.5,-16.5,-15.8,PICK,UGA -10.5,56.5,53.5,56.4,56.0,PICK,Over 56.5,,Line moved 2 pts toward the other side since open,Georgia pass edge (pass EPA +0.53; Florida allows +0.28); Georgia should finish drives (5.2 pts/opp; Florida allows 4.3); Florida pass edge (pass EPA +0.41; Georgia allows +0.11)
+3:30 PM,MINN @ IU,-20.5,-22.5,-21.9,-29.5,PICK,IU -20.5,43.5,45.5,44.8,41.5,PICK,Over 43.5,,Line moved 2 pts toward the other side since open,Indiana pass edge (pass EPA +0.52; Minnesota allows +0.06); Minnesota havoc rate 22%; Indiana run D shuts down Minnesota (run EPA -0.15; allows -0.12)
+3:30 PM,NU @ ORE,-4.5,-7.5,-8.3,-3.9,PICK,NU +4.5,51.5,50.5,51.0,53.1,PICK,Under 51.5,,,Northwestern pass edge (pass EPA +0.48; Oregon allows +0.06)
+3:45 PM,UTAH @ CIN,6.5,9.5,11.0,13.7,PICK,UTAH -6.5,55.5,56.5,60.6,60.5,PICK,Over 55.5,,Line moved 3 pts toward the other side since open; Models are 5.1 off the DK total (usual gap 2.2): usually weather or news the models don't have. Lean only,Utah pass edge (pass EPA +0.37; Cincinnati allows +0.32); Utah should finish drives (4.8 pts/opp; Cincinnati allows 4.3)
+3:45 PM,UVA @ WAKE,-13.5,-13.5,-9.1,-10.4,PICK,UVA +13.5,49.5,49.5,51.7,47.6,PICK,Under 49.5,,,Wake Forest pass edge (pass EPA +0.48; Virginia allows +0.19)
+4:15 PM,NEV @ UCLA,-23.5,-23.5,-20.1,-14.9,PICK,NEV +23.5,48.5,48.5,44.6,45.4,PICK,Over 48.5,,,UCLA havoc rate 20%
+4:15 PM,SC @ OU,-5.5,-5.5,-2.2,-3.6,PICK,SC +5.5,43.5,43.5,43.4,46.9,PICK,Over 43.5,,,South Carolina run D shuts down Oklahoma (run EPA -0.19; allows -0.05); Oklahoma pass edge (pass EPA +0.21; South Carolina allows +0.36)
+7:00 PM,CLEM @ FSU,-5.5,1.5,-3.3,-6.5,PICK,FSU -5.5,50.5,51.5,50.4,51.4,PICK,Over 50.5,,,
+7:30 PM,MSST @ TEX,-20.5,-18.5,-15.5,-16.9,PICK,MSST +20.5,50.5,52.5,54.2,47.1,PICK,Over 50.5,,Line moved 2 pts toward the other side since open,Texas pass edge (pass EPA +0.24; Mississippi State allows +0.28); Texas havoc rate 20%
+7:30 PM,OSU @ USC,7.0,7.5,8.5,8.4,PICK,USC +7,52.5,55.5,57.7,57.3,PICK,Over 52.5,,Models are 5.0 off the DK total (usual gap 2.2): usually weather or news the models don't have. Lean only,USC pass edge (pass EPA +0.58; Ohio State allows +0.01); Ohio State pass edge (pass EPA +0.49; USC allows +0.40); Ohio State should finish drives (4.9 pts/opp; USC allows 4.2)
+7:30 PM,MIA @ UNC,16.5,14.5,16.8,20.7,PICK,MIA -16.5,50.5,50.5,49.8,52.3,PICK,Over 50.5,,,Miami pass edge (pass EPA +0.68; North Carolina allows +0.09)
+7:45 PM,MIZ @ ARK,10.5,10.5,12.1,7.0,PICK,ARK +10.5,47.5,48.5,48.9,50.3,PICK,Over 47.5,,,Missouri pass edge (pass EPA +0.39; Arkansas allows +0.24)
+8:00 PM,WASH @ NEB,-9.5,-9.5,-9.4,-5.2,PICK,WASH +9.5,49.5,49.5,48.1,48.3,PICK,Over 49.5,,,
+11:00 PM,ORST @ FRES,7.0,7.0,3.0,-3.3,PICK,FRES +7,56.5,56.5,53.8,55.8,PICK,Under 56.5,,,Fresno State pass edge (pass EPA +0.33; Oregon State allows +0.12); Oregon State pass edge (pass EPA +0.42; Fresno State allows +0.12)
