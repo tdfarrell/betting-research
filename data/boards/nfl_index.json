@@ -1,7 +1,7 @@
 {
- "generated_utc": "2026-10-25T15:07+00:00",
- "odds_pulled_utc": "2026-10-25T15:07Z",
- "stats_pulled_utc": "2026-10-25T14:19+00:00",
+ "generated_utc": "2026-10-25T18:24+00:00",
+ "odds_pulled_utc": "2026-10-25T18:24Z",
+ "stats_pulled_utc": "2026-10-25T18:24+00:00",
  "slates": [
   {
    "key": "2026_wk05",
@@ -46,57 +46,57 @@
  ],
  "flag_record": {
   "TARGET_side": {
-   "n": 9,
-   "avg_clv": -0.06,
-   "beat_close": 2,
-   "lost_close": 2,
+   "n": 14,
+   "avg_clv": -0.07,
+   "beat_close": 3,
+   "lost_close": 5,
    "w": 4,
    "l": 5,
    "p": 0
   },
   "TARGET_total": {
-   "n": 7,
-   "avg_clv": 0.43,
-   "beat_close": 2,
-   "lost_close": 2,
+   "n": 10,
+   "avg_clv": 0.3,
+   "beat_close": 3,
+   "lost_close": 3,
    "w": 6,
    "l": 1,
    "p": 0
   },
   "WATCH_side": {
-   "n": 5,
-   "avg_clv": 0.4,
-   "beat_close": 2,
+   "n": 6,
+   "avg_clv": 0.58,
+   "beat_close": 3,
    "lost_close": 0,
-   "w": 2,
+   "w": 3,
    "l": 2,
    "p": 0
   },
   "WATCH_total": {
-   "n": 5,
-   "avg_clv": 1.0,
-   "beat_close": 3,
+   "n": 6,
+   "avg_clv": 1.17,
+   "beat_close": 4,
    "lost_close": 0,
    "w": 2,
    "l": 3,
    "p": 0
   },
   "CHECK_side": {
-   "n": 12,
-   "avg_clv": 0.29,
-   "beat_close": 2,
+   "n": 13,
+   "avg_clv": 0.35,
+   "beat_close": 3,
    "lost_close": 3,
    "w": 4,
    "l": 8,
    "p": 0
   },
   "CHECK_total": {
-   "n": 7,
-   "avg_clv": -0.86,
-   "beat_close": 2,
+   "n": 10,
+   "avg_clv": 0.0,
+   "beat_close": 4,
    "lost_close": 4,
    "w": 1,
-   "l": 5,
+   "l": 6,
    "p": 0
   }
  },
