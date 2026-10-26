@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-26T00:12+00:00",
- "odds_pulled_utc": "2026-10-26T00:11Z",
+ "generated_utc": "2026-10-26T01:23+00:00",
+ "odds_pulled_utc": "2026-10-26T01:23Z",
  "stats_pulled_utc": "2026-10-26T00:12+00:00",
  "slates": [
   {
@@ -39,7 +39,7 @@
    "week": 8,
    "label": "Week 8",
    "first_day": "2026-10-29",
-   "games": 14,
+   "games": 12,
    "plays": 0,
    "leans": 0
   }
@@ -82,10 +82,10 @@
    "p": 0
   },
   "CHECK_side": {
-   "n": 13,
-   "avg_clv": 0.35,
+   "n": 14,
+   "avg_clv": 0.21,
    "beat_close": 3,
-   "lost_close": 3,
+   "lost_close": 4,
    "w": 5,
    "l": 8,
    "p": 0
