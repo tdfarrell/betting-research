@@ -34,6 +34,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple"
   ],
@@ -63,6 +67,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple"
   ],
@@ -92,6 +100,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple"
   ],
@@ -121,6 +133,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple"
   ],
@@ -150,6 +166,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple"
   ],
@@ -179,6 +199,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple"
   ],
@@ -208,6 +232,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple",
    "pts_pm_e20",
@@ -240,6 +268,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple",
    "pts_pm_e20",
@@ -271,6 +303,10 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple",
    "pts_pm_e20",
@@ -302,27 +338,31 @@
    "s_e5",
    "s_e15",
    "s_sd",
+   "min_cs",
+   "min_ly",
+   "s_pm_cs",
+   "s_pm_ly",
    "s_allow",
    "proj_simple",
    "reb_pm_e20",
    "ast_pm_e20"
   ]
  },
- "trained_rows": 51212,
+ "trained_rows": 51623,
  "starter": "projected",
  "cal": {
   "const": 0.0,
-  "slope": 0.14563773701208146,
+  "slope": 0.1445504500597084,
   "offset": {}
  },
  "walk_forward": {
   "lean": {
-   "n": 543,
-   "won": 0.56
+   "n": 460,
+   "won": 0.572
   },
   "pick": {
-   "n": 70400,
-   "won": 0.518
+   "n": 70483,
+   "won": 0.519
   },
   "all": {
    "n": 70943,

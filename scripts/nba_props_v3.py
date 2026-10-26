@@ -15,7 +15,8 @@ import nba_props_v2 as V2
 
 H = "data/props_hist"
 MKS = V2.MKS
-TABLE = f"{H}/nba_v3_table.csv.gz"
+TABLE = os.environ.get("NBA_V3_TABLE", f"{H}/nba_v3_table.csv.gz")
+SEASON_FEATS = os.environ.get("NBA_SEASON_FEATS", "1") == "1"
 PREDS = f"{H}/nba_v3_preds.csv.gz"
 
 def build():
@@ -67,6 +68,9 @@ def feats_for(df, mk):
     X = df[BASE].copy()
     for k in ("pm_e5", "pm_e20", "e5", "e15", "sd"):
         X[f"s_{k}"] = df[f"{mk}_{k}"]
+    if SEASON_FEATS:   # this season so far vs last season, as plain averages (Oct 26)
+        X["min_cs"], X["min_ly"] = df.min_cs, df.min_ly
+        X["s_pm_cs"], X["s_pm_ly"] = df[f"{mk}_pm_cs"], df[f"{mk}_pm_ly"]
     X["s_allow"] = sum(df[f"oallow_{p}"] for p in parts)
     X["proj_simple"] = (0.5 * df[f"{mk}_pm_e5"] + 0.5 * df[f"{mk}_pm_e20"]) * (0.6 * df.min_e3 + 0.4 * df.min_e10)
     # the single stats that make up a combo, so the model can weigh them

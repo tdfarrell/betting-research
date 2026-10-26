@@ -53,37 +53,80 @@ def decimal(o):
     return 1 + (x / 100 if x > 0 else 100 / -x)
 
 # ------------------------------------------------------------------ features
+# How much a previous season's game counts next to a game from the current season, in the rolling windows below
+# (Oct 26: was 1.0, i.e. last season's games counted fully, so 3 games into a new season the 20-game windows were
+# still ~85% last season and new roles barely moved the model). Each season further back multiplies again.
+SEASON_CARRY = float(os.environ.get("NBA_SEASON_CARRY", "0.25"))
+
+def ewm_season(vals, pid, season, hl, carry=None, min_periods=1):
+    """EWM over each player's (or team's) PREVIOUS rows, like x.shift(1).ewm(halflife=hl).mean(), except rows from
+    an earlier season are down-weighted by `carry` per season of distance from the row being predicted.
+    carry=1 reproduces pandas exactly. vals: (n, k) array, rows sorted by pid then date; NaN = skip."""
+    carry = SEASON_CARRY if carry is None else carry
+    v = np.asarray(vals, float); v = v.reshape(len(v), -1)
+    a = 0.5 ** (1.0 / hl)
+    out = np.full(v.shape, np.nan)
+    num = np.zeros(v.shape[1]); den = np.zeros(v.shape[1]); cnt = np.zeros(v.shape[1])
+    last_p, last_s = None, None
+    for i in range(len(v)):
+        p, s_ = pid[i], season[i]
+        if p != last_p:
+            num[:] = 0; den[:] = 0; cnt[:] = 0
+        elif s_ != last_s:
+            f = carry ** (s_ - last_s)
+            num *= f; den *= f
+        ok = (cnt >= min_periods) & (den > 0)
+        out[i, ok] = num[ok] / den[ok]
+        x = v[i]; m = ~np.isnan(x)
+        num *= a; den *= a
+        num[m] += x[m]; den[m] += 1; cnt[m] += 1
+        last_p, last_s = p, s_
+    return out
+
 def player_history():
     import nba_props as NP
     pg, tg = NP.load()
     pg = pg.copy()
     pg["date"] = pd.to_datetime(pg["date"])
-    pg = pg.sort_values(["player_id", "date"])
+    pg = pg.sort_values(["player_id", "date"], kind="stable")
     played = (pg.dnp == 0) & (pg["min"] > 0)
     pg["played"] = played.astype(int)
-    feats = {}
     g = pg.groupby("player_id", sort=False)
     # minutes windows (only games played count toward rates; DNPs count toward availability)
     pgp = pg[played].copy()
     gp = pgp.groupby("player_id", sort=False)
-    def ewm_prev(s, hl):
-        return s.groupby(pgp.player_id).transform(lambda x: x.shift(1).ewm(halflife=hl, min_periods=1).mean())
+    pid, sea = pgp.player_id.values, pgp.season.astype(int).values
+    def ew(cols, hl, mp=1):
+        return ewm_season(pgp[cols].values if isinstance(cols, list) else cols, pid, sea, hl, min_periods=mp)
     out = pd.DataFrame(index=pgp.index)
-    out["min_e3"] = ewm_prev(pgp["min"], 3)
-    out["min_e10"] = ewm_prev(pgp["min"], 10)
+    m = ew(["min", "starter"], 3); out["min_e3"] = m[:, 0]
+    out["min_e10"] = ew(["min"], 10)[:, 0]
     out["min_last"] = gp["min"].shift(1)
-    out["start_e5"] = ewm_prev(pgp["starter"], 5)
+    out["start_e5"] = ew(["starter"], 5)[:, 0]
     out["n_prev"] = gp.cumcount()
-    out["n_prev_season"] = pgp.groupby(["player_id", "season"]).cumcount()
-    for st in MKS:
-        pm = pgp[st] / pgp["min"].clip(lower=1)
-        out[f"{st}_pm_e5"] = ewm_prev(pm, 5)
-        out[f"{st}_pm_e20"] = ewm_prev(pm, 20)
-        out[f"{st}_e5"] = ewm_prev(pgp[st], 5)
-        out[f"{st}_e15"] = ewm_prev(pgp[st], 15)
-        # spread of the stat around its recent mean (per-player overdispersion)
-        dev = (pgp[st] - out[f"{st}_e15"]) ** 2
-        out[f"{st}_sd"] = np.sqrt(dev.groupby(pgp.player_id).transform(lambda x: x.shift(1).ewm(halflife=20, min_periods=3).mean()))
+    gs = pgp.groupby(["player_id", "season"], sort=False)
+    out["n_prev_season"] = gs.cumcount()
+    # this season so far (NaN before his first game of the season) and last season, as plain averages, so the
+    # model can see a role change directly instead of only through blended windows
+    out["min_cs"] = gs["min"].transform(lambda x: x.shift(1).expanding().mean())
+    ly = pgp.groupby(["player_id", "season"])["min"].mean()
+    out["min_ly"] = [ly.get((p, s - 1), np.nan) for p, s in zip(pid, sea)]
+    pm = pd.DataFrame({st: pgp[st] / pgp["min"].clip(lower=1) for st in MKS}, index=pgp.index)
+    e5, e20 = ew(pm[MKS].values, 5, 1), ew(pm[MKS].values, 20, 1)
+    r5, r15 = ew(MKS, 5), ew(MKS, 15)
+    tot_cs = pgp[MKS + ["min"]].groupby([pgp.player_id, pgp.season]).transform(lambda x: x.shift(1).cumsum())
+    tot_ly = pgp.groupby(["player_id", "season"])[MKS + ["min"]].sum()
+    for j, st in enumerate(MKS):
+        out[f"{st}_pm_e5"], out[f"{st}_pm_e20"] = e5[:, j], e20[:, j]
+        out[f"{st}_e5"], out[f"{st}_e15"] = r5[:, j], r15[:, j]
+        out[f"{st}_pm_cs"] = tot_cs[st] / tot_cs["min"].clip(lower=1)
+        d = {(p, s): v for (p, s), v in (tot_ly[st] / tot_ly["min"].clip(lower=1)).items()}
+        out[f"{st}_pm_ly"] = [d.get((p, s - 1), np.nan) for p, s in zip(pid, sea)]
+    # spread of the stat around its recent mean (per-player overdispersion)
+    dev = (pgp[MKS].values - r15) ** 2
+    sd = np.sqrt(ewm_season(dev, pid, sea, 20, min_periods=3))
+    for j, st in enumerate(MKS):
+        out[f"{st}_sd"] = sd[:, j]
     keep = pgp[["player_id", "game_id", "date", "season", "team", "opp", "home", "starter", "min"] + MKS]
     hist = pd.concat([keep, out], axis=1)
     return pg, tg, hist
@@ -104,13 +147,19 @@ def team_context(pg, tg):
     t = t.merge(m, on=["game_id", "team"], how="left").fillna({"out_min": 0, "out_pts": 0, "out_n": 0})
     for c in ["poss", "pts", "opp_pts", "reb", "ast", "tpm", "stl", "blk"]:
         t[c] = pd.to_numeric(t[c], errors="coerce")
-    t["pace_e"] = t.groupby("team")["poss"].transform(lambda x: x.shift(1).ewm(halflife=15, min_periods=1).mean())
+    t = t.sort_values(["team", "date"], kind="stable")
+    tsea = pd.to_numeric(t.season, errors="coerce").fillna(0).astype(int).values
+    t["pace_e"] = ewm_season(t[["poss"]].values, t.team.values, tsea, 15)[:, 0]
     # what this team allows: opponent's stats in its games
     opp = t[["game_id", "team", "pts", "reb", "ast", "tpm", "stl", "blk"]].rename(columns={"team": "opp"})
     opp.columns = ["game_id", "opp"] + [f"a_{c}" for c in ["pts", "reb", "ast", "tpm", "stl", "blk"]]
     t = t.merge(opp, on=["game_id", "opp"], how="left")
-    for c in ["pts", "reb", "ast", "tpm", "stl", "blk"]:
-        t[f"allow_{c}"] = t.groupby("team")[f"a_{c}"].transform(lambda x: x.shift(1).ewm(halflife=15, min_periods=1).mean())
+    t = t.sort_values(["team", "date"], kind="stable")
+    tsea = pd.to_numeric(t.season, errors="coerce").fillna(0).astype(int).values
+    ac = [f"a_{c}" for c in ["pts", "reb", "ast", "tpm", "stl", "blk"]]
+    al = ewm_season(t[ac].apply(pd.to_numeric, errors="coerce").values, t.team.values, tsea, 15)
+    for j, c in enumerate(["pts", "reb", "ast", "tpm", "stl", "blk"]):
+        t[f"allow_{c}"] = al[:, j]
     return t[["game_id", "team", "opp", "rest", "out_min", "out_pts", "out_n", "pace_e"] + [f"allow_{c}" for c in ["pts", "reb", "ast", "tpm", "stl", "blk"]]]
 
 def build_features():
