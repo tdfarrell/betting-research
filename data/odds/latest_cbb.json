@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-27T15:51Z",
+ "pulled_utc": "2026-10-27T19:42Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -58,8 +58,8 @@
    "away_ml": "+260",
    "away_ml_open": "+260",
    "total": 154.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
+   "over_odds": "-110",
+   "under_odds": "-110",
    "total_open": "o154.5"
   },
   {
@@ -75,38 +75,6 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Smith-Hammond-Middleton Memorial Center",
-   "weather": null,
-   "temp_f": null
-  },
-  {
-   "game_id": "401925862",
-   "kickoff_utc": "2026-11-02T05:00Z",
-   "status": "pre",
-   "away": "OUKS",
-   "home": "TLSA",
-   "away_name": "Ottawa (KS) OTTAWA (KS)",
-   "home_name": "Tulsa Golden Hurricane",
-   "away_score": "0",
-   "home_score": "0",
-   "neutral": false,
-   "conference_game": false,
-   "venue": "Reynolds Center",
-   "weather": null,
-   "temp_f": null
-  },
-  {
-   "game_id": "401925857",
-   "kickoff_utc": "2026-11-02T05:00Z",
-   "status": "pre",
-   "away": "CCSU",
-   "home": "TEM",
-   "away_name": "Central Connecticut Blue Devils",
-   "home_name": "Temple Owls",
-   "away_score": "0",
-   "home_score": "0",
-   "neutral": false,
-   "conference_game": false,
-   "venue": "Liacouras Center",
    "weather": null,
    "temp_f": null
   },
@@ -537,6 +505,22 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Pete Hanna Center",
+   "weather": null,
+   "temp_f": null
+  },
+  {
+   "game_id": "401925857",
+   "kickoff_utc": "2026-11-02T23:30Z",
+   "status": "pre",
+   "away": "CCSU",
+   "home": "TEM",
+   "away_name": "Central Connecticut Blue Devils",
+   "home_name": "Temple Owls",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": false,
+   "conference_game": false,
+   "venue": "Liacouras Center",
    "weather": null,
    "temp_f": null
   },
@@ -1989,6 +1973,22 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Joseph G. Echols Hall",
+   "weather": null,
+   "temp_f": null
+  },
+  {
+   "game_id": "401925862",
+   "kickoff_utc": "2026-11-03T01:00Z",
+   "status": "pre",
+   "away": "OUKS",
+   "home": "TLSA",
+   "away_name": "Ottawa (KS) OTTAWA (KS)",
+   "home_name": "Tulsa Golden Hurricane",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": false,
+   "conference_game": false,
+   "venue": "Reynolds Center",
    "weather": null,
    "temp_f": null
   },

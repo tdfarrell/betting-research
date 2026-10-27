@@ -2,6 +2,7 @@ player_id,name,team,status,detail,date
 5105571,Henri Veesaar,ATL,Out,"Veesaar was diagnosed with a torn right ACL and is expected to miss the 2026-27 season, the Hawks announced Monday.",2026-09-21
 4712863,Mouhamed Gueye,ATL,Out,"Gueye underwent surgery Tuesday to repair a fractured left foot that he suffered during a workout last week, Brad Rowland of the Locked On Podcast Network repor",2026-10-19
 5105626,Tyler Bilodeau,BKN,Out,Bilodeau (shoulder) has been ruled out for Sunday's game against Indiana.,2026-10-25
+3078576,Derrick White,BOS,Day-To-Day,White (right hip) is probable for Tuesday's game against the Nets.,2026-10-27
 4433188,Devin Carter,BOS,Out,"Carter has been diagnosed with mononucleosis and is without a timetable for a return, Gary Washburn of The Boston Globe reports.",2026-10-18
 4395651,Coby White,CHA,Out,"Head coach Charles Lee said Monday that White (calf) remains without a timeline for a return, though Lee added that he'll have a better idea of where things sta",2026-10-26
 4066218,Grant Williams,CHA,Out,"Williams (hamstring) will be re-evaluated following Charlotte's upcoming two-game road trip, Rod Boone reports.",2026-10-26
@@ -38,6 +39,7 @@ player_id,name,team,status,detail,date
 5108024,Yanic Konan Niederhauser,LAC,Out,"Niederhauser (foot) won't be ready for the start of the season, Law Murray of The Athletic reports.",2026-09-28
 5060631,Adou Thiero,LAL,Out,Thiero (knee) is out for Tuesday's game against Portland.,2026-10-27
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
+4277956,Jordan Poole,NO,Day-To-Day,Poole (illness) is listed as probable for Wednesday's game against Denver.,2026-10-27
 5061589,Yves Missi,NO,Out,"Missi has been diagnosed with a left knee bone bruise and he will miss an extended period of time, Brett Siegel of ClutchPoints.com reports.",2026-10-24
 4277869,Jose Alvarado,NY,Out,Alvarado (ankle) is out for Tuesday's game against the Pistons.,2026-10-26
 2991350,Alex Caruso,OKC,Day-To-Day,"Caruso won't return to Monday's game against the Suns due to a right ankle sprain, Marc J. Spears of ESPN.com reports. He'll finish with nine points (3-5 FG, 3-",2026-10-27
@@ -49,15 +51,15 @@ player_id,name,team,status,detail,date
 5061603,Thomas Sorber,OKC,Out,"Sorber (knee) is out for Monday's game versus the Suns, per Andrew Schlecht of The Athletic.",2026-10-26
 5107251,Izaiyah Nelson,ORL,Out,"Team president Jeff Weltman said Monday that Nelson (ankle) remains about a month away from returning to the court after offseason surgery, per Philip Rossman-R",2026-09-28
 4432165,Jalen Suggs,ORL,Out,"Suggs has been diagnosed with a mild bone bruise in his right knee and will be re-evaluated in two weeks, Shams Charania of ESPN reports.",2026-10-26
-4065654,Jonathan Isaac,ORL,Out,Isaac (knee) has been ruled out ahead of Sunday's game against the Knicks.,2026-10-24
+4065654,Jonathan Isaac,ORL,Out,Isaac (knee) has been ruled out ahead of Wednesday's game against the Raptors.,2026-10-27
 5214637,Noah Penda,ORL,Out,"Penda was diagnosed with a partially torn right hamstring Saturday, Jason Beede of the Orlando Sentinel reports.",2026-10-17
 4432573,Paolo Banchero,ORL,Out,"Banchero is expected to be sidelined for the next four-to-six weeks due to a right high-ankle sprain, Shams Charania of ESPN reports.",2026-10-24
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
 4870562,Dominick Barlow,PHI,Out,"Barlow will miss at least the next two weeks of action due to a lumbar spine bone stress response, Adam Aaronson of PhillyVoice.com reports.",2026-10-19
 4432446,Jabari Walker,PHI,Day-To-Day,Walker has been ruled out for Sunday's game against the Pistons due to left knee soreness.,2026-10-26
 3059318,Joel Embiid,PHI,Day-To-Day,Embiid has been ruled out for Sunday's game against Detroit due to right plantar fasciitis management.,2026-10-26
-3904625,Tacko Fall,PHI,Out,Fall (quadriceps) has been ruled out for Sunday's game against Detroit.,2026-10-25
-5124612,VJ Edgecombe,PHI,Day-To-Day,"Edgecombe (abdomen) is out for Sunday's game against the Pistons, Adam Aaronson of PhillyVoice.com reports.",2026-10-26
+3904625,Tacko Fall,PHI,Out,"Fall (quadriceps) was able to practice on Tuesday, Keith Pompey of The Philadelphia Inquirer reports.",2026-10-27
+5124612,VJ Edgecombe,PHI,Day-To-Day,"Edgecombe (abdomen) practiced in full Tuesday, Keith Pompey of The Philadelphia Inquirer reports.",2026-10-27
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
 4601023,Oso Ighodaro,PHX,Day-To-Day,Ighodaro (oblique) is out for Monday's matchup with the Thunder.,2026-10-27
 4592435,Branden Carlson,POR,Day-To-Day,Carlson (concussion) is listed as questionable for Tuesday's game against the Lakers.,2026-10-27
@@ -72,8 +74,8 @@ player_id,name,team,status,detail,date
 4898371,Maxime Raynaud,SAC,Out,"Raynaud (knee) is progressing in his rehabilitation and will be re-evaluated in approximately two weeks, Brenden Nunes of KHTK Sactown Sports 1140 reports.",2026-10-26
 3913176,Brandon Ingram,TOR,Out,"Ingram won't be ready for the start of the season due to a partially torn Achilles, per Joey Linn of SI.com.",2026-09-28
 6450,Kawhi Leonard,TOR,Out,"Leonard (knee) is expected to miss multiple weeks due to swelling in his left knee, Shams Charania of ESPN reports.",2026-10-27
-4432586,Nate Bittle,TOR,Out,Bittle (foot) is out for Wednesday's season opener against the Bulls.,2026-10-20
-4277961,Jaren Jackson Jr.,UTAH,Day-To-Day,Jackson has been ruled out for the rest of Monday's game against the Grizzlies due to a right knee injury.,2026-10-27
+4432586,Nate Bittle,TOR,Out,"Bittle (foot) has been ruled out for Wednesday's game against the Magic, Cody Taylor of USA Today reports.",2026-10-27
+4277961,Jaren Jackson Jr.,UTAH,Out,"Jackson has been diagnosed with a torn MCL in his right knee and will be sidelined for 6-to-8 weeks, per Shams Charania of ESPN.",2026-10-27
 4397077,Jaxson Hayes,UTAH,Day-To-Day,Hayes (shoulder) is out for Monday's game against the Grizzlies.,2026-10-27
 3102530,Jusuf Nurkic,UTAH,Out,"Nurkic will miss at least the next four weeks due to a partial plantar plate tear of second toe in right foot, Chris Haynes of NBA TV reports.",2026-10-07
 4066336,Lauri Markkanen,UTAH,Day-To-Day,Markkanen (wrist) won't return to Monday's game against Memphis.,2026-10-27
