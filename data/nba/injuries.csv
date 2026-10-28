@@ -26,7 +26,7 @@ player_id,name,team,status,detail,date
 4395702,Isaiah Joe,DET,Day-To-Day,Joe (hip) has been ruled out for Tuesday's game against the Knicks.,2026-10-28
 4433621,Jalen Duren,DET,Out,"Duren will be re-evaluated in two weeks due to a right hamstring strain, Eric Vincent of ClutchPoints.com reports.",2026-10-25
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
-3102531,Kristaps Porzingis,GS,Out,Porzingis is contemplating his future in basketball as he deals with recurring symptoms from the autoimmune condition termed as postural orthostatic tachycardia,2026-10-21
+3102531,Kristaps Porzingis,GS,Out,"The Warriors are exploring potential trades involving Porzingis (personal), who remains away from the team indefinitely while dealing with ongoing health concer",2026-10-28
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
 5175737,Yaxel Lendeborg,GS,Day-To-Day,Lendeborg (foot) is questionable for Wednesday's game against Minnesota.,2026-10-27
 4871144,Alperen Sengun,HOU,Out,Sengun (back) has been ruled out for Wednesday's game against the Bucks.,2026-10-27
@@ -48,7 +48,7 @@ player_id,name,team,status,detail,date
 5060631,Adou Thiero,LAL,Out,Thiero (knee) is out for Tuesday's game against Portland.,2026-10-27
 5113969,Cameron Carr,LAL,Out,"The Lakers recalled Carr (oblique) from the G League's Coachella Valley Lakers on Tuesday, Mark Medina of TheSportingTribune.com reports.",2026-10-27
 4601025,Pelle Larsson,MIA,Day-To-Day,Larsson is listed as probable for Wednesday's game at Atlanta due to a right ankle sprain.,2026-10-27
-3899664,Simone Fontecchio,MIA,Day-To-Day,"Fontecchio is doubtful for Wednesday's game in Atlanta due to an illness, per Tim Reynolds of Associated Press.",2026-10-27
+3899664,Simone Fontecchio,MIA,Out,Fontecchio (illness) is out for Wednesday's game against the Hawks.,2026-10-28
 4594268,Anthony Edwards,MIN,Out,"Edwards will undergo arthroscopic right knee surgery and is expected to miss up to two months, Shams Charania of ESPN reports.",2026-10-27
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
 4277956,Jordan Poole,NO,Day-To-Day,Poole (illness) is listed as probable for Wednesday's game against Denver.,2026-10-27
@@ -62,6 +62,7 @@ player_id,name,team,status,detail,date
 5159925,Nikola Topic,OKC,Out,Topic (back) will remain on the inactive list for Wednesday's game in Dallas.,2026-10-27
 5106270,Otega Oweh,OKC,Out,The Thunder plan to waive Oweh (Achilles) on Friday.,2026-10-23
 5061603,Thomas Sorber,OKC,Out,Sorber (knee) has been ruled out for Wednesday's game against the Mavericks.,2026-10-27
+4712849,Anthony Black,ORL,Day-To-Day,"Black (personal) was not present at Wednesday's morning shootaround, Jason Beede of the Orlando Sentinel reports.",2026-10-28
 5107251,Izaiyah Nelson,ORL,Out,"Team president Jeff Weltman said Monday that Nelson (ankle) remains about a month away from returning to the court after offseason surgery, per Philip Rossman-R",2026-09-28
 4432165,Jalen Suggs,ORL,Out,"Suggs has been diagnosed with a mild bone bruise in his right knee and will be re-evaluated in two weeks, Shams Charania of ESPN reports.",2026-10-26
 4065654,Jonathan Isaac,ORL,Out,Isaac (knee) has been ruled out ahead of Wednesday's game against the Raptors.,2026-10-27
