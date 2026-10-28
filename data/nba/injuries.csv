@@ -1,5 +1,5 @@
 player_id,name,team,status,detail,date
-4397183,Aaron Wiggins,ATL,Day-To-Day,Wiggins is questionable for Wednesday's game against the Heat due to a left knee contusion.,2026-10-27
+4397183,Aaron Wiggins,ATL,Day-To-Day,Wiggins (knee) is probable for Wednesday against Miami.,2026-10-28
 5105571,Henri Veesaar,ATL,Out,"Veesaar was diagnosed with a torn right ACL and is expected to miss the 2026-27 season, the Hawks announced Monday.",2026-09-21
 4712863,Mouhamed Gueye,ATL,Out,"Gueye underwent surgery Tuesday to repair a fractured left foot that he suffered during a workout last week, Brad Rowland of the Locked On Podcast Network repor",2026-10-19
 5175643,Egor Demin,BKN,Day-To-Day,"Demin (leg) stated he isn't sure if he will be able to play in Friday's game against Detroit, Erik Slater of ClutchPoints.com reports.",2026-10-28
@@ -47,7 +47,6 @@ player_id,name,team,status,detail,date
 5108024,Yanic Konan Niederhauser,LAC,Out,"Niederhauser (foot) won't be ready for the start of the season, Law Murray of The Athletic reports.",2026-09-28
 5060631,Adou Thiero,LAL,Out,Thiero (knee) is out for Tuesday's game against Portland.,2026-10-27
 5113969,Cameron Carr,LAL,Out,"The Lakers recalled Carr (oblique) from the G League's Coachella Valley Lakers on Tuesday, Mark Medina of TheSportingTribune.com reports.",2026-10-27
-4601025,Pelle Larsson,MIA,Day-To-Day,Larsson is listed as probable for Wednesday's game at Atlanta due to a right ankle sprain.,2026-10-27
 3899664,Simone Fontecchio,MIA,Out,Fontecchio (illness) is out for Wednesday's game against the Hawks.,2026-10-28
 4594268,Anthony Edwards,MIN,Out,"Edwards will undergo arthroscopic right knee surgery and is expected to miss up to two months, Shams Charania of ESPN reports.",2026-10-27
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
@@ -90,7 +89,6 @@ player_id,name,team,status,detail,date
 3102530,Jusuf Nurkic,UTAH,Out,"Nurkic will miss at least the next four weeks due to a partial plantar plate tear of second toe in right foot, Chris Haynes of NBA TV reports.",2026-10-07
 4066336,Lauri Markkanen,UTAH,Day-To-Day,Markkanen (wrist) is questionable for Wednesday's game against the Spurs.,2026-10-27
 4433268,Trey Alexander,UTAH,Out,Alexander won't play Wednesday against the Grizzlies due to a left knee bone bruise.,2026-10-24
-5142718,AJ Dybantsa,WSH,Out,Dybantsa (ankle) is questionable for Wednesday's game versus Cleveland.,2026-10-27
 4606840,Jamir Watkins,WSH,Out,The Wizards announced Thursday that Watkins has undergone surgery for a torn ACL.,2026-07-30
 4432907,Justin Champagnie,WSH,Out,Champagnie (foot) is out for Wednesday's game versus Cleveland.,2026-10-27
 4997537,Tristan Vukcevic,WSH,Out,The Wizards announced Thursday that Vukcevic (hip) will be re-evaluated in four weeks.,2026-10-01
