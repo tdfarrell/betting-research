@@ -1,4 +1,6 @@
 {
- "pulled_utc": "2026-10-28T02:26+00:00",
- "errors": []
+ "pulled_utc": "2026-10-28T08:47+00:00",
+ "errors": [
+  "scoreboard 2026-10-26: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+ ]
 }
