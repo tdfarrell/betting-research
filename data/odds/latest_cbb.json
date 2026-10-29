@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-29T06:11Z",
+ "pulled_utc": "2026-10-29T13:23Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -711,8 +711,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "VyStar Arena",
-   "weather": null,
-   "temp_f": null
+   "weather": "Mostly cloudy",
+   "temp_f": 68
   },
   {
    "game_id": "401926141",
@@ -839,8 +839,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Addition Financial Arena",
-   "weather": null,
-   "temp_f": null
+   "weather": "Mostly cloudy",
+   "temp_f": 81
   },
   {
    "game_id": "401921139",
@@ -887,8 +887,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Swisher Gymnasium",
-   "weather": null,
-   "temp_f": null
+   "weather": "Partly sunny w/ t-storms",
+   "temp_f": 79
   },
   {
    "game_id": "401920842",
@@ -999,8 +999,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Merkert Gymnasium",
-   "weather": null,
-   "temp_f": null
+   "weather": "Intermittent clouds",
+   "temp_f": 68
   },
   {
    "game_id": "401919803",
@@ -1335,8 +1335,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "JMA Wireless Dome",
-   "weather": null,
-   "temp_f": null
+   "weather": "Intermittent clouds",
+   "temp_f": 64
   },
   {
    "game_id": "401909705",
@@ -1525,8 +1525,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Joan Perry Brock Center",
-   "weather": null,
-   "temp_f": null
+   "weather": "Mostly cloudy",
+   "temp_f": 69
   },
   {
    "game_id": "401920959",
@@ -2117,8 +2117,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "F&M Bank Arena",
-   "weather": null,
-   "temp_f": null
+   "weather": "Intermittent clouds",
+   "temp_f": 72
   },
   {
    "game_id": "401917510",
@@ -2341,8 +2341,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Event Center",
-   "weather": null,
-   "temp_f": null
+   "weather": "Intermittent clouds",
+   "temp_f": 72
   },
   {
    "game_id": "401925105",
@@ -2563,8 +2563,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "The Pit",
-   "weather": null,
-   "temp_f": null
+   "weather": "Partly sunny w/ showers",
+   "temp_f": 60
   },
   {
    "game_id": "401921697",
@@ -2723,8 +2723,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Foster Pavilion",
-   "weather": null,
-   "temp_f": null
+   "weather": "Mostly cloudy",
+   "temp_f": 80
   },
   {
    "game_id": "401909738",
