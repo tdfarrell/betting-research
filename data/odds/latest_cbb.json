@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-29T01:45Z",
+ "pulled_utc": "2026-10-29T06:11Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -3045,22 +3045,6 @@
    "temp_f": null
   },
   {
-   "game_id": "401917511",
-   "kickoff_utc": "2026-11-03T05:00Z",
-   "status": "pre",
-   "away": "BTHS",
-   "home": "PAC",
-   "away_name": "Bethesda Flames",
-   "home_name": "Pacific Tigers",
-   "away_score": "0",
-   "home_score": "0",
-   "neutral": false,
-   "conference_game": false,
-   "venue": "Alex G. Spanos Center",
-   "weather": null,
-   "temp_f": null
-  },
-  {
    "game_id": "401906848",
    "kickoff_utc": "2026-11-03T23:00Z",
    "status": "pre",
@@ -3505,6 +3489,22 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Viejas Arena",
+   "weather": null,
+   "temp_f": null
+  },
+  {
+   "game_id": "401917511",
+   "kickoff_utc": "2026-11-04T03:00Z",
+   "status": "pre",
+   "away": "BTHS",
+   "home": "PAC",
+   "away_name": "Bethesda Flames",
+   "home_name": "Pacific Tigers",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": false,
+   "conference_game": false,
+   "venue": "Alex G. Spanos Center",
    "weather": null,
    "temp_f": null
   },
