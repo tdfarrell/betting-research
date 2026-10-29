@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-29T19:02Z",
+ "pulled_utc": "2026-10-29T23:25Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -203,6 +203,22 @@
    "neutral": false,
    "conference_game": false,
    "venue": "David R. Stopher Gymnasium",
+   "weather": null,
+   "temp_f": null
+  },
+  {
+   "game_id": "401921060",
+   "kickoff_utc": "2026-11-02T17:05Z",
+   "status": "pre",
+   "away": "RAD",
+   "home": "SF",
+   "away_name": "Radford Highlanders",
+   "home_name": "San Francisco Dons",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": false,
+   "conference_game": false,
+   "venue": "The Sobrato Center",
    "weather": null,
    "temp_f": null
   },
@@ -840,7 +856,7 @@
    "conference_game": false,
    "venue": "Addition Financial Arena",
    "weather": "Intermittent clouds",
-   "temp_f": 81
+   "temp_f": 78
   },
   {
    "game_id": "401921139",
@@ -1336,7 +1352,7 @@
    "conference_game": false,
    "venue": "JMA Wireless Dome",
    "weather": "Mostly cloudy",
-   "temp_f": 64
+   "temp_f": 68
   },
   {
    "game_id": "401909705",
@@ -2057,6 +2073,22 @@
    "temp_f": null
   },
   {
+   "game_id": "401919039",
+   "kickoff_utc": "2026-11-03T01:00Z",
+   "status": "pre",
+   "away": "UIW",
+   "home": "OKST",
+   "away_name": "Incarnate Word Cardinals",
+   "home_name": "Oklahoma State Cowboys",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": false,
+   "conference_game": false,
+   "venue": "Gallagher-Iba Arena",
+   "weather": null,
+   "temp_f": null
+  },
+  {
    "game_id": "401919001",
    "kickoff_utc": "2026-11-03T01:00Z",
    "status": "pre",
@@ -2118,7 +2150,7 @@
    "conference_game": false,
    "venue": "F&M Bank Arena",
    "weather": "Cloudy",
-   "temp_f": 72
+   "temp_f": 75
   },
   {
    "game_id": "401917510",
@@ -2583,22 +2615,6 @@
    "temp_f": null
   },
   {
-   "game_id": "401919039",
-   "kickoff_utc": "2026-11-03T02:00Z",
-   "status": "pre",
-   "away": "UIW",
-   "home": "OKST",
-   "away_name": "Incarnate Word Cardinals",
-   "home_name": "Oklahoma State Cowboys",
-   "away_score": "0",
-   "home_score": "0",
-   "neutral": false,
-   "conference_game": false,
-   "venue": "Gallagher-Iba Arena",
-   "weather": null,
-   "temp_f": null
-  },
-  {
    "game_id": "401916303",
    "kickoff_utc": "2026-11-03T02:00Z",
    "status": "pre",
@@ -2853,22 +2869,6 @@
    "temp_f": null
   },
   {
-   "game_id": "401921060",
-   "kickoff_utc": "2026-11-03T03:00Z",
-   "status": "pre",
-   "away": "RAD",
-   "home": "SF",
-   "away_name": "Radford Highlanders",
-   "home_name": "San Francisco Dons",
-   "away_score": "0",
-   "home_score": "0",
-   "neutral": false,
-   "conference_game": false,
-   "venue": "The Sobrato Center",
-   "weather": null,
-   "temp_f": null
-  },
-  {
    "game_id": "401920769",
    "kickoff_utc": "2026-11-03T03:00Z",
    "status": "pre",
@@ -3041,6 +3041,22 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Stan Sheriff Center",
+   "weather": null,
+   "temp_f": null
+  },
+  {
+   "game_id": "401917511",
+   "kickoff_utc": "2026-11-03T17:05Z",
+   "status": "pre",
+   "away": "BTHS",
+   "home": "PAC",
+   "away_name": "Bethesda Flames",
+   "home_name": "Pacific Tigers",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": false,
+   "conference_game": false,
+   "venue": "Alex G. Spanos Center",
    "weather": null,
    "temp_f": null
   },
@@ -3493,22 +3509,6 @@
    "temp_f": null
   },
   {
-   "game_id": "401917511",
-   "kickoff_utc": "2026-11-04T03:00Z",
-   "status": "pre",
-   "away": "BTHS",
-   "home": "PAC",
-   "away_name": "Bethesda Flames",
-   "home_name": "Pacific Tigers",
-   "away_score": "0",
-   "home_score": "0",
-   "neutral": false,
-   "conference_game": false,
-   "venue": "Alex G. Spanos Center",
-   "weather": null,
-   "temp_f": null
-  },
-  {
    "game_id": "401920232",
    "kickoff_utc": "2026-11-04T23:30Z",
    "status": "pre",
@@ -3941,18 +3941,18 @@
    "temp_f": null
   },
   {
-   "game_id": "401924948",
-   "kickoff_utc": "2026-11-05T05:00Z",
+   "game_id": "401929292",
+   "kickoff_utc": "2026-11-05T17:05Z",
    "status": "pre",
-   "away": "KNGS",
-   "home": "LAF",
-   "away_name": "King's Monarchs",
-   "home_name": "Lafayette Leopards",
+   "away": "LSIU",
+   "home": "PEPP",
+   "away_name": "La Sierra Golden Eagles",
+   "home_name": "Pepperdine Waves",
    "away_score": "0",
    "home_score": "0",
    "neutral": false,
    "conference_game": false,
-   "venue": "Kirby Sports Center",
+   "venue": "Firestone Fieldhouse",
    "weather": null,
    "temp_f": null
   },
@@ -4017,6 +4017,38 @@
    "neutral": false,
    "conference_game": false,
    "venue": "William J. Nicks Building",
+   "weather": null,
+   "temp_f": null
+  },
+  {
+   "game_id": "401924948",
+   "kickoff_utc": "2026-11-05T23:00Z",
+   "status": "pre",
+   "away": "KNGS",
+   "home": "LAF",
+   "away_name": "King's Monarchs",
+   "home_name": "Lafayette Leopards",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": false,
+   "conference_game": false,
+   "venue": "Kirby Sports Center",
+   "weather": null,
+   "temp_f": null
+  },
+  {
+   "game_id": "401919732",
+   "kickoff_utc": "2026-11-05T23:00Z",
+   "status": "pre",
+   "away": "CHST",
+   "home": "UIW",
+   "away_name": "Chicago State Cougars",
+   "home_name": "Incarnate Word Cardinals",
+   "away_score": "0",
+   "home_score": "0",
+   "neutral": false,
+   "conference_game": false,
+   "venue": "McDermott Center",
    "weather": null,
    "temp_f": null
   },
@@ -4433,22 +4465,6 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Purcell Pavilion",
-   "weather": null,
-   "temp_f": null
-  },
-  {
-   "game_id": "401919732",
-   "kickoff_utc": "2026-11-06T00:00Z",
-   "status": "pre",
-   "away": "CHST",
-   "home": "UIW",
-   "away_name": "Chicago State Cougars",
-   "home_name": "Incarnate Word Cardinals",
-   "away_score": "0",
-   "home_score": "0",
-   "neutral": false,
-   "conference_game": false,
-   "venue": "McDermott Center",
    "weather": null,
    "temp_f": null
   },
@@ -4961,22 +4977,6 @@
    "neutral": false,
    "conference_game": false,
    "venue": "McKale Center at ALKEME Arena",
-   "weather": null,
-   "temp_f": null
-  },
-  {
-   "game_id": "401929292",
-   "kickoff_utc": "2026-11-06T03:30Z",
-   "status": "pre",
-   "away": "LSIU",
-   "home": "PEPP",
-   "away_name": "La Sierra Golden Eagles",
-   "home_name": "Pepperdine Waves",
-   "away_score": "0",
-   "home_score": "0",
-   "neutral": false,
-   "conference_game": false,
-   "venue": "Firestone Fieldhouse",
    "weather": null,
    "temp_f": null
   }
