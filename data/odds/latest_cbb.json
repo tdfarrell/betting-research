@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-30T02:43Z",
+ "pulled_utc": "2026-10-30T09:07Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -888,7 +888,7 @@
    "conference_game": false,
    "venue": "Swisher Gymnasium",
    "weather": "Thunderstorms",
-   "temp_f": 79
+   "temp_f": 77
   },
   {
    "game_id": "401920842",
@@ -1000,7 +1000,7 @@
    "conference_game": false,
    "venue": "Merkert Gymnasium",
    "weather": "Partly sunny",
-   "temp_f": 68
+   "temp_f": 70
   },
   {
    "game_id": "401919803",
@@ -2134,7 +2134,7 @@
    "conference_game": false,
    "venue": "F&M Bank Arena",
    "weather": "Cloudy",
-   "temp_f": 75
+   "temp_f": 72
   },
   {
    "game_id": "401917510",
@@ -2580,7 +2580,7 @@
    "conference_game": false,
    "venue": "The Pit",
    "weather": "Showers",
-   "temp_f": 60
+   "temp_f": 62
   },
   {
    "game_id": "401921697",
@@ -3057,8 +3057,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Food City Center",
-   "weather": null,
-   "temp_f": null
+   "weather": "Mostly sunny",
+   "temp_f": 78
   },
   {
    "game_id": "401921801",

@@ -13,7 +13,7 @@ player_id,name,team,status,detail,date
 4278067,Nic Claxton,CHI,Out,"Claxton (hamstring) participated in individual drills Monday morning and hopes to join the team for practice next week, Joe Cowley of the Chicago Sun-Times repo",2026-10-26
 4431687,Patrick Williams,CHI,Out,Williams (adductor) is questionable for Friday's game in Boston.,2026-10-29
 5105555,Tobe Awaka,CHI,Day-To-Day,Awaka (ankle) is questionable for Friday's game in Boston.,2026-10-29
-5041951,Meleek Thomas,CLE,Out,"Thomas (foot) has been ruled out for Thursday's game against the Hawks, Serena Winters of FanDuel Sports Network Ohio reports.",2026-10-29
+5041951,Meleek Thomas,CLE,Day-To-Day,"Thomas (foot) has been ruled out for Thursday's game against the Hawks, Serena Winters of FanDuel Sports Network Ohio reports.",2026-10-30
 4683688,Dereck Lively II,DAL,Out,Lively (foot) has been ruled out for Friday's game against the Pacers.,2026-10-22
 4278594,Naji Marshall,DAL,Day-To-Day,Marshall is questionable for Friday's game against the Rockets with an illness.,2026-10-29
 4593125,Santi Aldama,DAL,Out,Aldama (knee) is listed as doubtful for Friday's game against Houston.,2026-10-29
@@ -49,11 +49,12 @@ player_id,name,team,status,detail,date
 5060631,Adou Thiero,LAL,Out,Thiero (knee) has been ruled out for Friday's game against the Warriors.,2026-10-30
 5113969,Cameron Carr,LAL,Out,Carr (oblique) has been ruled out for Friday's game against Golden State.,2026-10-30
 4433137,Ziaire Williams,LAL,Day-To-Day,Williams (foot) is questionable for Friday's game against Golden State.,2026-10-30
+4593016,Quinten Post,MEM,Day-To-Day,"Post (ankle) didn't return to Thursday's game against Portland. He recorded 10 points (3-5 FG, 2-3 3Pt, 2-2 FT) and four rebounds in seven minutes before exitin",2026-10-30
 3899664,Simone Fontecchio,MIA,Day-To-Day,Fontecchio (illness) is listed as questionable for Friday's game against Indiana.,2026-10-29
 4594268,Anthony Edwards,MIN,Out,"Edwards underwent a successful arthroscopic procedure on his right knee Thursday, the Timberwolves announced.",2026-10-29
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
-3907497,Dejounte Murray,NO,Out,"Murray (personal) is out for Thursday's game against the Kings, Jim Eichenhofer of the Pelicans' official site reports.",2026-10-29
-4277956,Jordan Poole,NO,Out,Poole (ankle) has been ruled out for Thursday's game against the Kings.,2026-10-29
+3907497,Dejounte Murray,NO,Day-To-Day,"Murray (personal) is out for Thursday's game against the Kings, Jim Eichenhofer of the Pelicans' official site reports.",2026-10-30
+4277956,Jordan Poole,NO,Day-To-Day,Poole (ankle) has been ruled out for Thursday's game against the Kings.,2026-10-30
 5061589,Yves Missi,NO,Out,"Missi has been diagnosed with a left knee bone bruise and he will miss an extended period of time, Brett Siegel of ClutchPoints.com reports.",2026-10-24
 4277869,Jose Alvarado,NY,Out,Alvarado (ankle) has been ruled out for Friday's game against Philadelphia.,2026-10-29
 2991350,Alex Caruso,OKC,Out,"Caruso (ankle) is expected to miss time due to an ankle sprain, Clemente Almanza of USA Today reports.",2026-10-28
@@ -75,7 +76,8 @@ player_id,name,team,status,detail,date
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
 4601023,Oso Ighodaro,PHX,Day-To-Day,Ighodaro (oblique) is listed as questionable for Friday's game against Denver.,2026-10-30
 4706557,Chris Youngblood,POR,Out,Youngblood (ankle/two-way player) is out for Tuesday's game against the Lakers.,2026-10-27
-4066211,Robert Williams III,POR,Out,"Williams (knee) has been ruled out for Thursday's game against Memphis, Casey Holdahl of the Trail Blazers' official site reports.",2026-10-30
+4279888,Ja Morant,POR,Day-To-Day,"Morant won't return to Thursday's game against the Grizzlies due to a left hamstring injury. He'll end with 14 points (6-14 FG, 2-5 3Pt), two rebounds and three",2026-10-30
+4066211,Robert Williams III,POR,Day-To-Day,"Williams (knee) has been ruled out for Thursday's game against Memphis, Casey Holdahl of the Trail Blazers' official site reports.",2026-10-30
 4914336,Shaedon Sharpe,POR,Out,"Sharpe suffered a torn meniscus in his knee and is expected to miss six months, per Shams Charania of ESPN.",2026-08-24
 5101845,Jayden Quaintance,SA,Out,"Quaintance has been around the team but has not yet been cleared for basketball activities, Matt Guzman of SI.com reports.",2026-10-05
 6440,Tobias Harris,SA,Out,"Harris (calf) is out for Wednesday's game against Utah, Paul Garcia of ProjectSpurs.com reports.",2026-10-28
