@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-30T16:03Z",
+ "pulled_utc": "2026-10-30T16:40Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -95,15 +95,15 @@
    "venue": "TD Garden",
    "weather": null,
    "temp_f": null,
-   "home_spread": "-15.5",
-   "home_spread_odds": "-105",
+   "home_spread": "-14.5",
+   "home_spread_odds": "-115",
    "home_spread_open": "-11.5",
-   "home_ml": "-900",
+   "home_ml": "-950",
    "home_ml_open": "-575",
-   "away_spread": "+15.5",
-   "away_spread_odds": "-115",
+   "away_spread": "+14.5",
+   "away_spread_odds": "-105",
    "away_spread_open": "+11.5",
-   "away_ml": "+600",
+   "away_ml": "+625",
    "away_ml_open": "+425",
    "total": 234.5,
    "over_odds": "-110",
@@ -255,9 +255,9 @@
    "away_spread_open": "+4.5",
    "away_ml": "-238",
    "away_ml_open": "-175",
-   "total": 223.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
+   "total": 222.5,
+   "over_odds": "-112",
+   "under_odds": "-108",
    "total_open": "o225.5"
   },
   {
