@@ -164,7 +164,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,7,NYG,00-0036309,Darnell Mooney,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eaejonwaflt9drrs9ika",4040655
 2026,8,MIN,00-0036322,Justin Jefferson,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tzx1iqbxxa1807m6olwj",4262921
 2026,8,ARI,00-0036331,Devin Duvernay,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tj3t166iwsxbnyzxcyyl",4039050
-2026,8,SEA,00-0036332,Josiah Deguara,TE,TE,TRD,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wivlyvbmlm0aogcvl2yz",3914151
+2026,8,SEA,00-0036332,Josiah Deguara,TE,TE,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wivlyvbmlm0aogcvl2yz",3914151
 2026,8,TEN,00-0036345,K.J. Osborn,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ytgf9lftpnc3hqg81vhj",3916566
 2026,8,LAC,00-0036355,Justin Herbert,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/jnkspnntgebegzp4ghve",4038941
 2026,8,DAL,00-0036358,CeeDee Lamb,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mbblzwtynxr15ovzkevi",4241389
@@ -368,7 +368,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,8,DAL,00-0038705,Emari Demercado,RB,RB,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wu0sm9ttr4aiugi9fquf",4362478
 2026,8,CLE,00-0038710,Blake Whiteheart,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cupbiosaxda8p06n7mti",4362018
 2026,8,NE,00-0038720,Julian Hill,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ntrsoupvy1agk1yq2iaf",4365395
-2026,8,MIA,00-0038728,Jared Wayne,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dh1s9y04vrx1nycraazf",4430681
+2026,8,MIA,00-0038728,Jared Wayne,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/apmjfdsol4wvdnm1kntf",4430681
 2026,8,DAL,00-0038735,Princeton Fant,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dh67wj7xhek86nhyucig",4242442
 2026,8,DAL,00-0038738,Hunter Luepke,RB,FB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/m28qafff4o5vb3aaumiv",4383396
 2026,7,NO,00-0038740,Jalen Cropper,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/key7qkukzlgva9oz7k2r",4426990

@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-31T11:40Z",
+ "pulled_utc": "2026-10-31T15:42Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -28,8 +28,8 @@
    "away_ml": "+245",
    "away_ml_open": "+245",
    "total": 147.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
+   "over_odds": "-110",
+   "under_odds": "-110",
    "total_open": "o149.5"
   },
   {
@@ -47,12 +47,12 @@
    "venue": "Rock Hill Sports & Event Center",
    "weather": null,
    "temp_f": null,
-   "home_spread": "-7.5",
+   "home_spread": "-6.5",
    "home_spread_odds": "-110",
    "home_spread_open": "-7.5",
    "home_ml": "-325",
    "home_ml_open": "-325",
-   "away_spread": "+7.5",
+   "away_spread": "+6.5",
    "away_spread_odds": "-110",
    "away_spread_open": "+7.5",
    "away_ml": "+260",
@@ -572,18 +572,18 @@
    "weather": null,
    "temp_f": null,
    "home_spread": "-13.5",
-   "home_spread_odds": "-102",
+   "home_spread_odds": "-108",
    "home_spread_open": "-13.5",
    "home_ml": "-1000",
    "home_ml_open": "-900",
    "away_spread": "+13.5",
-   "away_spread_odds": "-118",
+   "away_spread_odds": "-112",
    "away_spread_open": "+13.5",
    "away_ml": "+650",
    "away_ml_open": "+600",
-   "total": 154.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
+   "total": 155.5,
+   "over_odds": "-105",
+   "under_odds": "-115",
    "total_open": "o152.5"
   },
   {
@@ -840,7 +840,7 @@
    "conference_game": false,
    "venue": "Addition Financial Arena",
    "weather": "Partly sunny w/ t-storms",
-   "temp_f": 78
+   "temp_f": 80
   },
   {
    "game_id": "401921139",
@@ -888,7 +888,7 @@
    "conference_game": false,
    "venue": "Swisher Gymnasium",
    "weather": "Thunderstorms",
-   "temp_f": 77
+   "temp_f": 80
   },
   {
    "game_id": "401920842",
@@ -2504,12 +2504,12 @@
    "weather": null,
    "temp_f": null,
    "home_spread": "-2.5",
-   "home_spread_odds": "-108",
+   "home_spread_odds": "-115",
    "home_spread_open": "-1.5",
    "home_ml": "-142",
    "home_ml_open": "-135",
    "away_spread": "+2.5",
-   "away_spread_odds": "-112",
+   "away_spread_odds": "-105",
    "away_spread_open": "+1.5",
    "away_ml": "+120",
    "away_ml_open": "+114",
