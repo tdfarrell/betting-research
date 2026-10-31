@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-31T15:42Z",
+ "pulled_utc": "2026-10-31T16:23Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -28,8 +28,8 @@
    "away_ml": "+245",
    "away_ml_open": "+245",
    "total": 147.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "over_odds": "-108",
+   "under_odds": "-112",
    "total_open": "o149.5"
   },
   {
@@ -47,13 +47,13 @@
    "venue": "Rock Hill Sports & Event Center",
    "weather": null,
    "temp_f": null,
-   "home_spread": "-6.5",
-   "home_spread_odds": "-110",
+   "home_spread": "-7.5",
+   "home_spread_odds": "-105",
    "home_spread_open": "-7.5",
    "home_ml": "-325",
    "home_ml_open": "-325",
-   "away_spread": "+6.5",
-   "away_spread_odds": "-110",
+   "away_spread": "+7.5",
+   "away_spread_odds": "-115",
    "away_spread_open": "+7.5",
    "away_ml": "+260",
    "away_ml_open": "+260",
