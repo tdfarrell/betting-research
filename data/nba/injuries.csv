@@ -8,7 +8,7 @@ player_id,name,team,status,detail,date
 4066218,Grant Williams,CHA,Out,"Williams (hamstring) will be re-evaluated following Charlotte's upcoming two-game road trip, Rod Boone reports.",2026-10-26
 5061575,Kon Knueppel,CHA,Out,Knueppel (hamstring) was recalled from the G League's Greensboro Swarm on Friday. He remains out for Friday's contest against the Wizards.,2026-10-30
 4684269,Kylan Boswell,CHA,Out,Boswell (knee) is out for Wednesday's season opener against the Nets.,2026-10-20
-4848625,Dailyn Swain,CHI,Out,Swain (back) has been ruled out for Friday's game against Boston.,2026-10-30
+4848625,Dailyn Swain,CHI,Day-To-Day,Swain (back) has been ruled out for Friday's game against Boston.,2026-10-31
 4278067,Nic Claxton,CHI,Out,"Claxton (hamstring) participated in individual drills Monday morning and hopes to join the team for practice next week, Joe Cowley of the Chicago Sun-Times repo",2026-10-26
 4683747,Jaylon Tyson,CLE,Out,Tyson (ankle) has been ruled out for Saturday's game against the Bucks.,2026-10-30
 5041951,Meleek Thomas,CLE,Day-To-Day,Thomas (foot) is questionable for Saturday's game against the Bucks.,2026-10-30
@@ -24,13 +24,13 @@ player_id,name,team,status,detail,date
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,"The Warriors are exploring potential trades involving Porzingis (personal), who remains away from the team indefinitely while dealing with ongoing health concer",2026-10-28
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
-4871144,Alperen Sengun,HOU,Out,"Sengun (back) has been ruled out for Friday's game against the Mavericks, Mike Curtis of The Dallas Morning News reports.",2026-10-30
-4711272,Reed Sheppard,HOU,Out,"Houston picked up Sheppard's (back) fourth-year team option Friday, per Lachard Binkley of SI.com.",2026-10-30
+4871144,Alperen Sengun,HOU,Day-To-Day,"Sengun (back) has been ruled out for Friday's game against the Mavericks, Mike Curtis of The Dallas Morning News reports.",2026-10-31
+4711272,Reed Sheppard,HOU,Day-To-Day,"Houston picked up Sheppard's (back) fourth-year team option Friday, per Lachard Binkley of SI.com.",2026-10-31
 2991235,Steven Adams,HOU,Out,"Head coach Ime Udoka said Monday that Adams could be out ""a week or two"" due to his right soleus strain, Lachard Binkley of SI.com reports.",2026-10-26
 4433076,Ben Sheppard,IND,Out,"Head coach Rick Carlise confirmed Sheppard will miss ""months"" after undergoing surgery to repair a torn meniscus in his left knee, Tony East of Forbes.com repor",2026-10-28
 4017837,Ivica Zubac,IND,Out,Zubac (ankle) is out for Friday's game against the Heat.,2026-10-29
 5157066,Johnny Furphy,IND,Out,"Furphy (knee) is practicing with the G League's Noblesville Boom, per Alex Golden of SI.com.",2026-10-30
-4278355,Obi Toppin,IND,Out,Toppin (back) has been ruled out for Friday's game against Miami.,2026-10-30
+4278355,Obi Toppin,IND,Day-To-Day,Toppin (back) has been ruled out for Friday's game against Miami.,2026-10-31
 2530530,T.J. McConnell,IND,Out,"McConnell (hamstring) is practicing in the G League at Noblesville Boom training camp, per Alex Golden of SI.com.",2026-10-30
 4396993,Tyrese Haliburton,IND,Out,"Haliburton (hamstring) will miss at least the next two weeks of action, Shams Charania of ESPN reports.",2026-10-28
 6580,Bradley Beal,LAC,Out,"Beal (knee) will not be ready for the start of the regular season, NBA writer Justin Russo reports.",2026-10-15
@@ -39,7 +39,7 @@ player_id,name,team,status,detail,date
 4065778,Max Strus,LAC,Out,"Strus (foot) is making progress but is set to miss at least one more week, Ohm Youngmisuk of ESPN.com reports.",2026-10-29
 5108024,Yanic Konan Niederhauser,LAC,Out,"Niederhauser (foot) had his third-year team option picked up Thursday by the Clippers, Ohm Youngmisuk of ESPN.com reports.",2026-10-29
 5060631,Adou Thiero,LAL,Out,Thiero (knee) has been ruled out for Friday's game against the Warriors.,2026-10-30
-4433137,Ziaire Williams,LAL,Out,"Williams has been ruled out for Friday's game against the Warriors due to left foot injury management, Mark Medina of TheSportingTribune.com reports.",2026-10-30
+4433137,Ziaire Williams,LAL,Day-To-Day,"Williams has been ruled out for Friday's game against the Warriors due to left foot injury management, Mark Medina of TheSportingTribune.com reports.",2026-10-31
 4593016,Quinten Post,MEM,Day-To-Day,Post (ankle) is doubtful for Friday's game against the Kings.,2026-10-30
 4431785,Scotty Pippen Jr.,MEM,Day-To-Day,Pippen (back) is listed as questionable for Saturday's game against the Kings.,2026-10-30
 4065733,Ty Jerome,MEM,Day-To-Day,Jerome (back) is listed as questionable for Saturday's game against the Kings.,2026-10-30
@@ -62,7 +62,7 @@ player_id,name,team,status,detail,date
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
 4870562,Dominick Barlow,PHI,Out,"Barlow will miss at least the next two weeks of action due to a lumbar spine bone stress response, Adam Aaronson of PhillyVoice.com reports.",2026-10-19
 4432446,Jabari Walker,PHI,Out,Walker (knee) has been ruled out for Friday's game versus New York.,2026-10-29
-3917376,Jaylen Brown,PHI,Out,Brown (knee) is out for Friday's game against the Knicks.,2026-10-30
+3917376,Jaylen Brown,PHI,Day-To-Day,Brown (knee) is out for Friday's game against the Knicks.,2026-10-31
 3904625,Tacko Fall,PHI,Out,Fall (quadriceps) is out for Wednesday's game in Indiana.,2026-10-27
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
 4706557,Chris Youngblood,POR,Out,Youngblood (ankle) is questionable for Saturday's game against Utah.,2026-10-30
