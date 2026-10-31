@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-10-31T05:59Z",
+ "pulled_utc": "2026-10-31T11:40Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -712,7 +712,7 @@
    "conference_game": false,
    "venue": "VyStar Arena",
    "weather": "Intermittent clouds",
-   "temp_f": 66
+   "temp_f": 63
   },
   {
    "game_id": "401926141",
@@ -1000,7 +1000,7 @@
    "conference_game": false,
    "venue": "Merkert Gymnasium",
    "weather": "Partly sunny",
-   "temp_f": 70
+   "temp_f": 72
   },
   {
    "game_id": "401919803",
@@ -1335,7 +1335,7 @@
    "neutral": false,
    "conference_game": false,
    "venue": "JMA Wireless Dome",
-   "weather": "Mostly cloudy",
+   "weather": "Intermittent clouds",
    "temp_f": 68
   },
   {
@@ -3793,8 +3793,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Liberty Arena (IN)",
-   "weather": null,
-   "temp_f": null
+   "weather": "Rain",
+   "temp_f": 67
   },
   {
    "game_id": "401920798",

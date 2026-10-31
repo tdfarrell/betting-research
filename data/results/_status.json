@@ -1,6 +1,4 @@
 {
- "pulled_utc": "2026-10-31T06:00+00:00",
- "errors": [
-  "nba 20261027: JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
- ]
+ "pulled_utc": "2026-10-31T11:40+00:00",
+ "errors": []
 }
