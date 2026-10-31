@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-10-30T20:56+00:00",
- "odds_pulled_utc": "2026-10-30T20:55Z",
+ "generated_utc": "2026-10-31T00:14+00:00",
+ "odds_pulled_utc": "2026-10-31T00:12Z",
  "season": 2027,
  "slates": [
   {
@@ -90,6 +90,12 @@
   {
    "date": "2026-11-06",
    "games": 9,
+   "plays": 0,
+   "leans": 0
+  },
+  {
+   "date": "2026-11-07",
+   "games": 7,
    "plays": 0,
    "leans": 0
   }
