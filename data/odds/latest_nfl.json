@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-01T19:39Z",
+ "pulled_utc": "2026-11-01T20:38Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,13 +10,13 @@
    "home": "BUF",
    "away_name": "Baltimore Ravens",
    "home_name": "Buffalo Bills",
-   "away_score": "7",
-   "home_score": "13",
+   "away_score": "10",
+   "home_score": "23",
    "neutral": false,
    "conference_game": false,
    "venue": "Highmark Stadium",
    "weather": "2",
-   "temp_f": 70
+   "temp_f": 67
   },
   {
    "game_id": "401873031",
@@ -26,13 +26,13 @@
    "home": "CIN",
    "away_name": "Tennessee Titans",
    "home_name": "Cincinnati Bengals",
-   "away_score": "13",
-   "home_score": "14",
+   "away_score": "21",
+   "home_score": "23",
    "neutral": false,
    "conference_game": false,
    "venue": "Paycor Stadium",
-   "weather": "7",
-   "temp_f": 68
+   "weather": "12",
+   "temp_f": 69
   },
   {
    "game_id": "401873024",
@@ -42,13 +42,13 @@
    "home": "DAL",
    "away_name": "Arizona Cardinals",
    "home_name": "Dallas Cowboys",
-   "away_score": "3",
-   "home_score": "14",
+   "away_score": "17",
+   "home_score": "24",
    "neutral": false,
    "conference_game": false,
    "venue": "AT&T Stadium",
    "weather": "6",
-   "temp_f": 78
+   "temp_f": 79
   },
   {
    "game_id": "401873030",
@@ -59,7 +59,7 @@
    "away_name": "Minnesota Vikings",
    "home_name": "Detroit Lions",
    "away_score": "7",
-   "home_score": "6",
+   "home_score": "12",
    "neutral": false,
    "conference_game": false,
    "venue": "Ford Field",
@@ -74,13 +74,13 @@
    "home": "NYJ",
    "away_name": "Las Vegas Raiders",
    "home_name": "New York Jets",
-   "away_score": "14",
-   "home_score": "23",
+   "away_score": "35",
+   "home_score": "30",
    "neutral": false,
    "conference_game": false,
    "venue": "MetLife Stadium",
    "weather": "2",
-   "temp_f": 61
+   "temp_f": 60
   },
   {
    "game_id": "401873027",
@@ -91,7 +91,7 @@
    "away_name": "Cleveland Browns",
    "home_name": "Pittsburgh Steelers",
    "away_score": "6",
-   "home_score": "20",
+   "home_score": "27",
    "neutral": false,
    "conference_game": false,
    "venue": "Acrisure Stadium",
@@ -107,7 +107,7 @@
    "away_name": "Atlanta Falcons",
    "home_name": "Tampa Bay Buccaneers",
    "away_score": "0",
-   "home_score": "9",
+   "home_score": "16",
    "neutral": false,
    "conference_game": false,
    "venue": "Raymond James Stadium",
@@ -122,13 +122,13 @@
    "home": "JAX",
    "away_name": "Indianapolis Colts",
    "home_name": "Jacksonville Jaguars",
-   "away_score": "0",
-   "home_score": "28",
+   "away_score": "7",
+   "home_score": "42",
    "neutral": false,
    "conference_game": false,
    "venue": "EverBank Stadium",
-   "weather": "12",
-   "temp_f": 76
+   "weather": "7",
+   "temp_f": 73
   },
   {
    "game_id": "401873032",
@@ -155,9 +155,9 @@
    "away_spread_open": "+3.5",
    "away_ml": "+230",
    "away_ml_open": "+160",
-   "total": 45.5,
-   "over_odds": "-112",
-   "under_odds": "-108",
+   "total": 46.5,
+   "over_odds": "-105",
+   "under_odds": "-115",
    "total_open": "o48.5"
   },
   {
@@ -173,8 +173,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Empower Field at Mile High",
-   "weather": "Intermittent clouds",
-   "temp_f": 63,
+   "weather": "Showers",
+   "temp_f": 66,
    "home_spread": "+1.5",
    "home_spread_odds": "-120",
    "home_spread_open": "-1.5",
@@ -204,7 +204,7 @@
    "conference_game": false,
    "venue": "Hard Rock Stadium",
    "weather": "Thunderstorms",
-   "temp_f": 77,
+   "temp_f": 76,
    "home_spread": "+7",
    "home_spread_odds": "-110",
    "home_spread_open": "+7",

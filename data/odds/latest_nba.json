@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-01T19:39Z",
+ "pulled_utc": "2026-11-01T20:38Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -129,19 +129,19 @@
    "venue": "Kia Center",
    "weather": null,
    "temp_f": null,
-   "home_spread": "+7.5",
-   "home_spread_odds": "-108",
+   "home_spread": "+6.5",
+   "home_spread_odds": "-105",
    "home_spread_open": "+6.5",
-   "home_ml": "+240",
+   "home_ml": "+230",
    "home_ml_open": "+210",
-   "away_spread": "-7.5",
-   "away_spread_odds": "-112",
+   "away_spread": "-6.5",
+   "away_spread_odds": "-115",
    "away_spread_open": "-6.5",
-   "away_ml": "-298",
+   "away_ml": "-285",
    "away_ml_open": "-258",
    "total": 221.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
+   "over_odds": "-112",
+   "under_odds": "-108",
    "total_open": "o222.5"
   },
   {
@@ -230,8 +230,8 @@
    "away_ml": "+124",
    "away_ml_open": "+145",
    "total": 224.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
+   "over_odds": "-110",
+   "under_odds": "-110",
    "total_open": "o227.5"
   },
   {
