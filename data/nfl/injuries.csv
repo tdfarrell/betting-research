@@ -71,10 +71,10 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,8,CAR,00-0040541,G,Torricelli Simpkins III,Ankle,Out,Did Not Participate In Practice
 2026,8,CHI,00-0035386,LB,T.J. Edwards,,,Full Participation in Practice
 2026,8,CHI,00-0037109,LB,Jack Sanborn,,,Full Participation in Practice
-2026,8,CHI,00-0037271,LB,D'Marco Jackson,,,Did Not Participate In Practice
-2026,8,CHI,00-0040126,TE,Colston Loveland,,,Limited Participation in Practice
-2026,8,CHI,00-0040236,RB,Kyle Monangai,,,Did Not Participate In Practice
-2026,8,CHI,00-0041060,CB,Malik Muhammad,,,Limited Participation in Practice
+2026,8,CHI,00-0037271,LB,D'Marco Jackson,Ankle,Questionable,Full Participation in Practice
+2026,8,CHI,00-0040126,TE,Colston Loveland,,,Full Participation in Practice
+2026,8,CHI,00-0040236,RB,Kyle Monangai,Thumb,Out,Did Not Participate In Practice
+2026,8,CHI,00-0041060,CB,Malik Muhammad,Toe,Questionable,Limited Participation in Practice
 2026,8,CIN,00-0033523,DT,Jonathan Allen,,,Did Not Participate In Practice
 2026,8,CIN,00-0034800,DT,B.J. Hill,,,Did Not Participate In Practice
 2026,8,CIN,00-0035363,LB,Joe Giles-Harris,Calf,Questionable,Limited Participation in Practice
@@ -270,21 +270,21 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,8,SEA,00-0031411,LB,DeMarcus Lawrence,,,Full Participation in Practice
 2026,8,SEA,00-0031933,DT,Leonard Williams,,,Full Participation in Practice
 2026,8,SEA,00-0034342,G,Quenton Nelson,,,Full Participation in Practice
-2026,8,SEA,00-0034350,LB,Uchenna Nwosu,,,Did Not Participate In Practice
-2026,8,SEA,00-0035704,QB,Drew Lock,,,Limited Participation in Practice
+2026,8,SEA,00-0034350,LB,Uchenna Nwosu,Ankle,Doubtful,Did Not Participate In Practice
+2026,8,SEA,00-0035704,QB,Drew Lock,Elbow,Questionable,Limited Participation in Practice
 2026,8,SEA,00-0037003,LB,Chazz Surratt,,,Full Participation in Practice
-2026,8,SEA,00-0037545,WR,Rashid Shaheed,,,Did Not Participate In Practice
-2026,8,SEA,00-0037745,RB,Velus Jones Jr.,,,Did Not Participate In Practice
-2026,8,SEA,00-0037821,T,Charles Cross,,,Did Not Participate In Practice
+2026,8,SEA,00-0037545,WR,Rashid Shaheed,Knee,Out,Did Not Participate In Practice
+2026,8,SEA,00-0037745,RB,Velus Jones Jr.,Hamstring,Out,Did Not Participate In Practice
+2026,8,SEA,00-0037821,T,Charles Cross,Ankle,Out,Did Not Participate In Practice
 2026,8,SEA,00-0038488,FB,Brady Russell,,,Full Participation in Practice
 2026,8,SEA,00-0038543,WR,Jaxon Smith-Njigba,,,Full Participation in Practice
-2026,8,SEA,00-0038694,DT,Brandon Pili,,,Did Not Participate In Practice
-2026,8,SEA,00-0038764,LB,Patrick O'Connell,,,Did Not Participate In Practice
+2026,8,SEA,00-0038694,DT,Brandon Pili,Back,Questionable,Did Not Participate In Practice
+2026,8,SEA,00-0038764,LB,Patrick O'Connell,Toe,Questionable,Did Not Participate In Practice
 2026,8,SEA,00-0038922,LB,Drake Thomas,,,Full Participation in Practice
-2026,8,SEA,00-0039020,G,Anthony Bradford,,,Did Not Participate In Practice
-2026,8,SEA,00-0039165,RB,Zach Charbonnet,,,Limited Participation in Practice
-2026,8,SEA,00-0039309,DT,Byron Murphy II,,,Limited Participation in Practice
-2026,8,SEA,00-0039815,LB,Tyrice Knight,,,Limited Participation in Practice
+2026,8,SEA,00-0039020,G,Anthony Bradford,Knee,Questionable,Limited Participation in Practice
+2026,8,SEA,00-0039165,RB,Zach Charbonnet,,,Full Participation in Practice
+2026,8,SEA,00-0039309,DT,Byron Murphy II,,,Full Participation in Practice
+2026,8,SEA,00-0039815,LB,Tyrice Knight,,,Full Participation in Practice
 2026,8,SEA,00-0040061,LB,Connor O'Toole,,,Full Participation in Practice
 2026,8,SEA,00-0041512,RB,Jadarian Price,,,Full Participation in Practice
 2026,8,TB,00-0032889,DT,A'Shawn Robinson,,,Full Participation in Practice
