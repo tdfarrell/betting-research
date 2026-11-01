@@ -1,5 +1,6 @@
 player_id,name,team,status,detail,date
 5105571,Henri Veesaar,ATL,Out,"Veesaar was diagnosed with a torn right ACL and is expected to miss the 2026-27 season, the Hawks announced Monday.",2026-09-21
+3146557,Jock Landale,ATL,Out,Landale (hip) won't return to Saturday's game against the Pelicans.,2026-11-01
 4712863,Mouhamed Gueye,ATL,Out,"Gueye underwent surgery Tuesday to repair a fractured left foot that he suffered during a workout last week, Brad Rowland of the Locked On Podcast Network repor",2026-10-19
 5175643,Egor Demin,BKN,Out,"The Nets exercised Demin's third-year team option for the 2027-28 season, Sharif Phillips-Keaton of USA Today reports Thursday.",2026-10-29
 5101761,Mikel Brown Jr.,BKN,Out,Brown (rest) is out for Sunday's game in Indiana.,2026-10-31
@@ -13,7 +14,6 @@ player_id,name,team,status,detail,date
 4848625,Dailyn Swain,CHI,Day-To-Day,Swain (back) has been ruled out for Friday's game against Boston.,2026-10-31
 4278067,Nic Claxton,CHI,Out,"Claxton (hamstring) participated in individual drills Monday morning and hopes to join the team for practice next week, Joe Cowley of the Chicago Sun-Times repo",2026-10-26
 4683747,Jaylon Tyson,CLE,Out,Tyson (ankle) has been ruled out for Saturday's game against the Bucks.,2026-10-30
-5041951,Meleek Thomas,CLE,Day-To-Day,Thomas (foot) has been upgraded to probable ahead of Saturday's meeting in Milwaukee.,2026-10-31
 4683688,Dereck Lively II,DAL,Out,Lively (foot) has been ruled out for Friday's game against the Pacers.,2026-10-22
 4593125,Santi Aldama,DAL,Out,Aldama (knee) is listed as out for Friday's game against the Rockets.,2026-10-30
 5279129,Sergio de Larrea,DAL,Out,"Head coach Dusty May said Friday that de Larrea (knee) will be re-evaluated next week, Noah Weber of TheSmokingCuban.com reports.",2026-10-30
@@ -45,10 +45,10 @@ player_id,name,team,status,detail,date
 4065778,Max Strus,LAC,Out,"Strus (foot) is making progress but is set to miss at least one more week, Ohm Youngmisuk of ESPN.com reports.",2026-10-29
 5108024,Yanic Konan Niederhauser,LAC,Out,"Niederhauser (foot) had his third-year team option picked up Thursday by the Clippers, Ohm Youngmisuk of ESPN.com reports.",2026-10-29
 5060631,Adou Thiero,LAL,Out,Thiero (knee) has been ruled out for Friday's game against the Warriors.,2026-10-30
-4433137,Ziaire Williams,LAL,Day-To-Day,"Williams has been ruled out for Friday's game against the Warriors due to left foot injury management, Mark Medina of TheSportingTribune.com reports.",2026-10-31
-4593016,Quinten Post,MEM,Day-To-Day,Post (ankle) is doubtful for Friday's game against the Kings.,2026-10-30
-4431785,Scotty Pippen Jr.,MEM,Day-To-Day,Pippen (back) is listed as questionable for Saturday's game against the Kings.,2026-10-30
-4065733,Ty Jerome,MEM,Day-To-Day,Jerome (back) is listed as questionable for Saturday's game against the Kings.,2026-10-30
+4433137,Ziaire Williams,LAL,Day-To-Day,"Williams (foot) is questionable for Sunday's game against the Raptors, Law Murray of The Athletic reports.",2026-11-01
+4593016,Quinten Post,MEM,Out,"Post (ankle) has been ruled out for Saturday's game versus Sacramento, Chris Herrington of The Daily Memphian reports.",2026-10-31
+4431785,Scotty Pippen Jr.,MEM,Out,"Pippen (back) has been ruled out for Saturday's game against the Kings, Chris Herrington of The Daily Memphian reports.",2026-10-31
+4065733,Ty Jerome,MEM,Out,"Jerome (back) won't play in Saturday's game versus Sacramento, Chris Herrington of The Daily Memphian.",2026-10-31
 4594268,Anthony Edwards,MIN,Out,"Edwards underwent a successful arthroscopic procedure on his right knee Thursday, the Timberwolves announced.",2026-10-29
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
 3032976,Rudy Gobert,MIN,Out,"Gobert (back) is out for Saturday's game against the Spurs, Dane Moore of 'The Dane Moore NBA Podcast' reports.",2026-10-31
