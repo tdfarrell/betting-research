@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-01T20:38+00:00",
- "odds_pulled_utc": "2026-11-01T20:38Z",
+ "generated_utc": "2026-11-01T23:59+00:00",
+ "odds_pulled_utc": "2026-11-01T23:59Z",
  "stats_pulled_utc": "2026-11-01T19:39+00:00",
  "slates": [
   {
@@ -56,12 +56,12 @@
  ],
  "flag_record": {
   "TARGET_side": {
-   "n": 17,
-   "avg_clv": 0.35,
+   "n": 20,
+   "avg_clv": 0.2,
    "beat_close": 5,
-   "lost_close": 5,
-   "w": 6,
-   "l": 9,
+   "lost_close": 7,
+   "w": 7,
+   "l": 11,
    "p": 0
   },
   "TARGET_total": {
@@ -69,8 +69,8 @@
    "avg_clv": 0.75,
    "beat_close": 7,
    "lost_close": 4,
-   "w": 8,
-   "l": 3,
+   "w": 11,
+   "l": 5,
    "p": 0
   },
   "WATCH_side": {
@@ -78,8 +78,8 @@
    "avg_clv": 0.95,
    "beat_close": 6,
    "lost_close": 0,
-   "w": 4,
-   "l": 3,
+   "w": 5,
+   "l": 5,
    "p": 0
   },
   "WATCH_total": {
@@ -87,7 +87,7 @@
    "avg_clv": 0.88,
    "beat_close": 5,
    "lost_close": 1,
-   "w": 4,
+   "w": 5,
    "l": 3,
    "p": 0
   },
@@ -96,16 +96,16 @@
    "avg_clv": 0.14,
    "beat_close": 4,
    "lost_close": 7,
-   "w": 5,
-   "l": 10,
+   "w": 6,
+   "l": 12,
    "p": 0
   },
   "CHECK_total": {
-   "n": 14,
-   "avg_clv": 0.21,
+   "n": 15,
+   "avg_clv": 0.13,
    "beat_close": 6,
-   "lost_close": 5,
-   "w": 3,
+   "lost_close": 6,
+   "w": 6,
    "l": 9,
    "p": 0
   }
