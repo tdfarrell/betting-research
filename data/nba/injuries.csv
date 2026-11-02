@@ -28,6 +28,7 @@ player_id,name,team,status,detail,date
 4395702,Isaiah Joe,DET,Out,Joe (hip) is questionable for Friday's game against the Hornets.,2026-11-01
 4433621,Jalen Duren,DET,Out,"Duren will be re-evaluated in two weeks due to a right hamstring strain, Eric Vincent of ClutchPoints.com reports.",2026-10-25
 6589,Draymond Green,GS,Out,Green (back) is out for Sunday's game against the Clippers.,2026-10-31
+4997536,Gui Santos,GS,Day-To-Day,"Santos did not play in the second half of Sunday's 124-112 win over the Clippers due to a knee injury and will not play against the Suns on Monday, Danny Emerma",2026-11-02
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,"The Warriors are exploring potential trades involving Porzingis (personal), who remains away from the team indefinitely while dealing with ongoing health concer",2026-10-28
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
@@ -42,7 +43,7 @@ player_id,name,team,status,detail,date
 2530530,T.J. McConnell,IND,Out,Indiana recalled McConnell (hamstring) from the G League's Noblesville Boom on Saturday.,2026-11-01
 4396993,Tyrese Haliburton,IND,Out,"Haliburton (hamstring) will miss at least the next two weeks of action, Shams Charania of ESPN reports.",2026-10-28
 6580,Bradley Beal,LAC,Out,"Beal (knee) will not be ready for the start of the regular season, NBA writer Justin Russo reports.",2026-10-15
-3913176,Brandon Ingram,LAC,Out,"Ingram (Achilles) is making progress but is set to miss at least one more week, Ohm Youngmisuk of ESPN.com reports.",2026-11-01
+3913176,Brandon Ingram,LAC,Out,Los Angeles assigned Ingram (Achilles) to the G League's San Diego Clippers on Saturday.,2026-11-01
 3936099,Derrick Jones Jr.,LAC,Day-To-Day,"Jones (right knee) has been ruled out for the rest of Sunday's game against the Clippers, Ohm Youngmisuk of ESPN.com reports.",2026-11-02
 4396818,Jordan Miller,LAC,Out,"Miller underwent surgery Wednesday to repair a torn left rotator cuff and will be re-evaluated in six months, per Law Murray of The Athletic.",2026-08-26
 4065778,Max Strus,LAC,Out,"Strus (foot) practiced and participated in 5-on-5 with the San Diego Clippers on Saturday, Los Angeles Clippers sideline reporter/host Ohm Youngmisuk reports.",2026-11-02
@@ -82,7 +83,7 @@ player_id,name,team,status,detail,date
 4594327,Keegan Murray,SAC,Out,"Murray (ankle) will be re-evaluated in 10-to-14 days, NBA reporter Marc Stein reports.",2026-10-26
 4898371,Maxime Raynaud,SAC,Out,"Raynaud (knee) is progressing in his rehabilitation and will be re-evaluated in approximately two weeks, Brenden Nunes of KHTK Sactown Sports 1140 reports.",2026-10-26
 3064440,Zach LaVine,SAC,Day-To-Day,LaVine (elbow) is questionable to play in Monday's game against Dallas.,2026-11-01
-3134908,Jakob Poeltl,TOR,Out,"Poeltl (shoulder) won't play in Sunday's game against the Lakers, Vivek Jacob of the Raptors' official site reports.",2026-11-02
+3134908,Jakob Poeltl,TOR,Day-To-Day,"Poeltl (shoulder) won't play in Sunday's game against the Lakers, Vivek Jacob of the Raptors' official site reports.",2026-11-02
 6450,Kawhi Leonard,TOR,Out,"Leonard (knee) is expected to be sidelined for at least three to four weeks, Chris Haynes of NBA TV reports.",2026-10-29
 4432586,Nate Bittle,TOR,Out,"Bittle (foot) has been ruled out for Wednesday's game against the Magic, Cody Taylor of USA Today reports.",2026-10-27
 4277961,Jaren Jackson Jr.,UTAH,Out,"Jackson has been diagnosed with a torn MCL in his right knee and will be sidelined for 6-to-8 weeks, per Shams Charania of ESPN.",2026-10-27
