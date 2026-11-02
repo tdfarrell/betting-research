@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-02T12:41Z",
+ "pulled_utc": "2026-11-02T20:17Z",
  "status": {
   "cfb": {
    "games": 63,
@@ -18,7 +18,7 @@
   },
   "cbb": {
    "games": 522,
-   "with_dk_line": 117,
+   "with_dk_line": 113,
    "mode": "per-day"
   }
  },
