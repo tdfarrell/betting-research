@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-03T03:16Z",
+ "pulled_utc": "2026-11-03T03:26Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -16,7 +16,7 @@
    "conference_game": false,
    "venue": "Lumen Field",
    "weather": "7",
-   "temp_f": 48
+   "temp_f": 49
   },
   {
    "game_id": "401873037",
@@ -36,12 +36,12 @@
    "home_spread": "+8.5",
    "home_spread_odds": "-105",
    "home_spread_open": "-4.5",
-   "home_ml": "+340",
+   "home_ml": "+350",
    "home_ml_open": "-218",
    "away_spread": "-8.5",
    "away_spread_odds": "-115",
    "away_spread_open": "+4.5",
-   "away_ml": "-440",
+   "away_ml": "-455",
    "away_ml_open": "+180",
    "total": 42.5,
    "over_odds": "-105",
