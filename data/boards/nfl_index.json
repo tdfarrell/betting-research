@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-02T21:59+00:00",
- "odds_pulled_utc": "2026-11-02T21:58Z",
+ "generated_utc": "2026-11-03T03:17+00:00",
+ "odds_pulled_utc": "2026-11-03T03:16Z",
  "stats_pulled_utc": "2026-11-02T20:17+00:00",
  "slates": [
   {
@@ -49,7 +49,7 @@
    "week": 9,
    "label": "Week 9",
    "first_day": "2026-11-05",
-   "games": 15,
+   "games": 13,
    "plays": 0,
    "leans": 0
   }
@@ -92,17 +92,17 @@
    "p": 0
   },
   "CHECK_side": {
-   "n": 19,
-   "avg_clv": 0.0,
+   "n": 20,
+   "avg_clv": -0.03,
    "beat_close": 4,
-   "lost_close": 8,
+   "lost_close": 9,
    "w": 6,
    "l": 13,
    "p": 0
   },
   "CHECK_total": {
-   "n": 15,
-   "avg_clv": 0.13,
+   "n": 16,
+   "avg_clv": 0.12,
    "beat_close": 6,
    "lost_close": 6,
    "w": 6,
