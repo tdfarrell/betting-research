@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-04T02:11Z",
+ "pulled_utc": "2026-11-04T03:30Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -18,14 +18,14 @@
    "weather": null,
    "temp_f": null,
    "home_spread": "-2.5",
-   "home_spread_odds": "-110",
+   "home_spread_odds": "-106",
    "home_spread_open": "-1.5",
-   "home_ml": "-130",
+   "home_ml": "-125",
    "home_ml_open": "-119",
    "away_spread": "+2.5",
-   "away_spread_odds": "-110",
+   "away_spread_odds": "-114",
    "away_spread_open": "+1.5",
-   "away_ml": "+110",
+   "away_ml": "+106",
    "away_ml_open": "+101",
    "total": 217.5,
    "over_odds": "-110",
@@ -57,7 +57,7 @@
    "away_spread_open": "-1.5",
    "away_ml": "-136",
    "away_ml_open": "-124",
-   "total": 232.5,
+   "total": 231.5,
    "over_odds": "-110",
    "under_odds": "-110",
    "total_open": "o234.5"
@@ -267,9 +267,9 @@
    "away_spread_open": "+8.5",
    "away_ml": "+261",
    "away_ml_open": "+279",
-   "total": 220.5,
-   "over_odds": "-108",
-   "under_odds": "-112",
+   "total": 219.5,
+   "over_odds": "-115",
+   "under_odds": "-106",
    "total_open": "o223.5"
   },
   {
@@ -350,12 +350,12 @@
    "home_spread": "-11.5",
    "home_spread_odds": "-108",
    "home_spread_open": "+12.5",
-   "home_ml": "-574",
+   "home_ml": "-545",
    "home_ml_open": "+503",
    "away_spread": "+11.5",
    "away_spread_odds": "-112",
    "away_spread_open": "-12.5",
-   "away_ml": "+429",
+   "away_ml": "+411",
    "away_ml_open": "-700",
    "total": 227.5,
    "over_odds": "-105",
@@ -388,8 +388,8 @@
    "away_ml": "-540",
    "away_ml_open": "-610",
    "total": 235.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "over_odds": "-106",
+   "under_odds": "-114",
    "total_open": "o238.5"
   },
   {
