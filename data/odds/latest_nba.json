@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-05T17:58Z",
+ "pulled_utc": "2026-11-05T20:44Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -252,8 +252,8 @@
    "away_ml": "-104",
    "away_ml_open": "+100",
    "total": 222.5,
-   "over_odds": "-107",
-   "under_odds": "-113",
+   "over_odds": "-110",
+   "under_odds": "-110",
    "total_open": "o224.5"
   },
   {
@@ -271,17 +271,17 @@
    "venue": "Chase Center",
    "weather": null,
    "temp_f": null,
-   "home_spread": "-7.5",
-   "home_spread_odds": "-106",
+   "home_spread": "-6.5",
+   "home_spread_odds": "-116",
    "home_spread_open": "-4.5",
-   "home_ml": "-279",
+   "home_ml": "-265",
    "home_ml_open": "-164",
-   "away_spread": "+7.5",
-   "away_spread_odds": "-114",
+   "away_spread": "+6.5",
+   "away_spread_odds": "-104",
    "away_spread_open": "+4.5",
-   "away_ml": "+228",
+   "away_ml": "+218",
    "away_ml_open": "+138",
-   "total": 233.5,
+   "total": 232.5,
    "over_odds": "-113",
    "under_odds": "-107",
    "total_open": "o238.5"
