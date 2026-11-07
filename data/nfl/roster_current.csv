@@ -252,7 +252,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,9,BUF,00-0037248,James Cook,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/anjbznqb9i21wzcgrtbs",4379399
 2026,9,MIA,00-0037252,Greg Dulcich,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nzqdkcpzcnspgfpflxcu",4367209
 2026,9,WAS,00-0037256,Rachaad White,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wtdhs50gcl2p6vngsnre",4697815
-2026,9,PHI,00-0037258,Dameon Pierce,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/oai3defivyfyofxxh4ux",4360238
+2026,9,PHI,00-0037258,Dameon Pierce,RB,RB,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/oai3defivyfyofxxh4ux",4360238
 2026,9,BUF,00-0037261,Khalil Shakir,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ituuwxmqtheiha2kkrvt",4373678
 2026,9,ARI,00-0037263,Tyler Allgeier,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/sp9lhhmpv4qy3xy2msxd",4373626
 2026,9,ARI,00-0037267,Jerome Ford,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rntmoum7ncnyo5j2bdei",4372019
@@ -290,7 +290,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,9,ATL,00-0037741,Jahan Dotson,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mzzh72ip9p7gqhkpsn4u",4361409
 2026,9,WAS,00-0037742,Treylon Burks,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bmozbzdxgnnwdniuvgnn",4567156
 2026,9,ARI,00-0037744,Trey McBride,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/psasp10nn5pcvkli9kil",4361307
-2026,9,SEA,00-0037745,Velus Jones Jr.,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/d4y5fxivhcxk34q7stpb",4035693
+2026,9,SEA,00-0037745,Velus Jones Jr.,RB,RB,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/d4y5fxivhcxk34q7stpb",4035693
 2026,9,ATL,00-0037746,Brian Robinson,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/n1xhex1ytisxcbcggqu7",4241474
 2026,9,NYJ,00-0037755,Jelani Woods,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bnezem4laynlarqnpyc5",4241410
 2026,9,DAL,00-0037801,KaVontae Turpin,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tayjlp1hgmm6rewgl1k4",3676833

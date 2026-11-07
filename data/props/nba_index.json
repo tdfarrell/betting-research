@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-07T14:15+00:00",
+ "generated_utc": "2026-11-07T16:24+00:00",
  "days": [
   {
    "key": "2026-10-24",
@@ -82,20 +82,20 @@
   {
    "key": "2026-11-07",
    "date": "2026-11-07",
-   "players": 117,
-   "flags": 32
+   "players": 121,
+   "flags": 36
   },
   {
    "key": "2026-11-08",
    "date": "2026-11-08",
-   "players": 125,
+   "players": 126,
    "flags": 33
   },
   {
    "key": "2026-11-09",
    "date": "2026-11-09",
-   "players": 137,
-   "flags": 33
+   "players": 140,
+   "flags": 34
   }
  ],
  "backtest": {
