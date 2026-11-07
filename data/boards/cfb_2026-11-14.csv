@@ -1,10 +1,10 @@
 kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total,total_open,sp_total_cal,pp_total_cal,total_grade,total_pick,flags,adjustments,notes
-1:00 AM,LOU @ UNC,2.5,2.5,6.4,7.4,PICK,LOU -2.5,59.5,59.5,57.6,54.8,PICK,Under 59.5,,,North Carolina pass edge (pass EPA +0.28; Louisville allows +0.29); Louisville pass edge (pass EPA +0.42; North Carolina allows +0.13)
-1:00 AM,TTU @ OKST,1.5,15.5,4.1,12.6,PICK,TTU -1.5,63.5,61.5,60.0,65.2,PICK,Under 63.5,,Line moved 14 pts toward the other side since open,Oklahoma State pass edge (pass EPA +0.39; Texas Tech allows +0.08); Texas Tech pass edge (pass EPA +0.24; Oklahoma State allows +0.28)
-1:00 AM,MIZ @ UGA,-12.5,-12.5,-13.5,-11.9,PICK,UGA -12.5,46.5,46.5,47.0,50.1,PICK,Over 46.5,,,Georgia pass edge (pass EPA +0.44; Missouri allows +0.08); Missouri pass edge (pass EPA +0.36; Georgia allows +0.10)
-1:00 AM,FLA @ UK,-1.5,-1.5,-1.5,-2.2,PICK,UK -1.5,55.5,55.5,58.3,52.7,PICK,Over 55.5,,,Florida pass edge (pass EPA +0.36; Kentucky allows +0.13)
-1:00 AM,TEX @ LSU,-5.5,3.0,-6.0,-2.2,PICK,TEX +5.5,46.5,54.5,48.1,42.7,PICK,Over 46.5,,,LSU pass edge (pass EPA +0.46; Texas allows +0.03); Texas havoc rate 20%; LSU havoc rate 22%
-1:00 AM,BAY @ BYU,-7.0,-7.5,-9.1,-2.7,PICK,BAY +7,47.5,47.5,46.6,45.7,PICK,Over 47.5,,,Baylor havoc rate 21%
-4:30 PM,USC @ IU,-7.0,-10.5,-10.8,-11.8,PICK,IU -7,50.5,58.5,51.5,50.6,PICK,Over 50.5,,Line moved 3.5 pts toward the other side since open,Indiana pass edge (pass EPA +0.47; USC allows +0.33); Indiana havoc rate 20%
-4:30 PM,MICH @ ORE,-5.5,-13.5,-6.6,-5.0,PICK,ORE -5.5,44.5,53.5,35.3,40.9,PICK,Under 44.5,,Models are 6.4 off the DK total (usual gap 3.0): usually weather or news the models don't have. Lean only,
-7:00 PM,ORST @ BOIS,-4.5,-4.5,-5.5,-7.3,PICK,BOIS -4.5,62.5,62.5,59.6,67.8,PICK,Under 62.5,,,Boise State pass edge (pass EPA +0.43; Oregon State allows +0.17); Oregon State pass edge (pass EPA +0.37; Boise State allows +0.09)
+1:00 AM,LOU @ UNC,2.5,2.5,6.3,7.4,PICK,LOU -2.5,59.5,59.5,57.7,54.9,PICK,Under 59.5,,,North Carolina pass edge (pass EPA +0.28; Louisville allows +0.29); Louisville pass edge (pass EPA +0.42; North Carolina allows +0.13)
+1:00 AM,TTU @ OKST,1.5,15.5,4.0,12.6,PICK,TTU -1.5,63.5,61.5,60.1,65.3,PICK,Under 63.5,,Line moved 14 pts toward the other side since open,Oklahoma State pass edge (pass EPA +0.39; Texas Tech allows +0.08); Texas Tech pass edge (pass EPA +0.24; Oklahoma State allows +0.28)
+1:00 AM,MIZ @ UGA,-12.5,-12.5,-13.6,-12.0,PICK,UGA -12.5,46.5,46.5,46.9,50.1,PICK,Over 46.5,,,Georgia pass edge (pass EPA +0.44; Missouri allows +0.08); Missouri pass edge (pass EPA +0.36; Georgia allows +0.10)
+1:00 AM,FLA @ UK,-1.5,-1.5,-1.6,-2.2,PICK,UK -1.5,55.5,55.5,58.3,52.7,PICK,Over 55.5,,,Florida pass edge (pass EPA +0.36; Kentucky allows +0.13)
+1:00 AM,TEX @ LSU,-5.5,3.0,-6.1,-2.3,PICK,TEX +5.5,46.5,54.5,48.1,42.7,PICK,Over 46.5,,,LSU pass edge (pass EPA +0.46; Texas allows +0.03); Texas havoc rate 20%; LSU havoc rate 22%
+1:00 AM,BAY @ BYU,-7.0,-7.5,-9.2,-2.7,PICK,BAY +7,47.5,47.5,46.6,45.7,PICK,Over 47.5,,,Baylor havoc rate 21%
+4:30 PM,USC @ IU,-7.0,-10.5,-10.9,-11.9,PICK,IU -7,50.5,58.5,51.5,50.6,PICK,Over 50.5,,Line moved 3.5 pts toward the other side since open,Indiana pass edge (pass EPA +0.47; USC allows +0.33); Indiana havoc rate 20%
+4:30 PM,MICH @ ORE,-5.5,-13.5,-6.7,-5.1,PICK,ORE -5.5,44.5,53.5,35.2,40.8,PICK,Under 44.5,,Models are 6.5 off the DK total (usual gap 3.1): usually weather or news the models don't have. Lean only,
+7:00 PM,ORST @ BOIS,-4.5,-4.5,-5.6,-7.4,PICK,BOIS -4.5,62.5,62.5,59.7,67.9,PICK,Under 62.5,,,Boise State pass edge (pass EPA +0.43; Oregon State allows +0.17); Oregon State pass edge (pass EPA +0.37; Boise State allows +0.09)
