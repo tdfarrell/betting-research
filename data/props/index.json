@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-07T16:22+00:00",
+ "generated_utc": "2026-11-08T01:21+00:00",
  "weeks": [
   {
    "key": "2026_wk05",
@@ -34,14 +34,14 @@
    "season": 2026,
    "week": 9,
    "players": 209,
-   "flags": 37
+   "flags": 36
   },
   {
    "key": "2026_wk10",
    "season": 2026,
    "week": 10,
-   "players": 14,
-   "flags": 2
+   "players": 181,
+   "flags": 35
   }
  ],
  "backtest": {
