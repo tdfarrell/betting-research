@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-08T19:40Z",
+ "pulled_utc": "2026-11-08T19:48Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -448,7 +448,21 @@
    "conference_game": false,
    "venue": "Mortgage Matchup Center",
    "weather": null,
-   "temp_f": null
+   "temp_f": null,
+   "home_spread": "+7.5",
+   "home_spread_odds": "-110",
+   "home_spread_open": "+7.5",
+   "home_ml": "+200",
+   "home_ml_open": "+200",
+   "away_spread": "-7.5",
+   "away_spread_odds": "-110",
+   "away_spread_open": "-7.5",
+   "away_ml": "-243",
+   "away_ml_open": "-243",
+   "total": 225.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o225.5"
   },
   {
    "game_id": "401909959",
