@@ -13,6 +13,7 @@ player_id,name,team,status,detail,date
 4433249,Moussa Diabate,CHA,Day-To-Day,"Diabate (quadriceps) has been ruled out for Friday's game against Boston, according to the Hornets' official injury report.",2026-11-07
 4397189,Jalen Smith,CHI,Day-To-Day,Smith (finger) is probable for Sunday's game against Philadelphia.,2026-11-07
 4278067,Nic Claxton,CHI,Out,Claxton (hamstring) has been downgraded to questionable for Sunday's game against the 76ers.,2026-11-07
+2595516,Norman Powell,CHI,Day-To-Day,Powell (shoulder) is listed as questionable for Sunday's game against the 76ers.,2026-11-08
 5105555,Tobe Awaka,CHI,Day-To-Day,Awaka (knee) is questionable for Sundays' game against the 76ers.,2026-11-07
 4066650,Zach Collins,CHI,Out,Collins (illness) is out for Sunday's game against Philadelphia.,2026-11-07
 4066328,Jarrett Allen,CLE,Out,Allen (knee) is out for Saturday's game against the Knicks,2026-11-07
@@ -22,8 +23,6 @@ player_id,name,team,status,detail,date
 5279129,Sergio de Larrea,DAL,Out,De Larrea (knee) is out for Friday's game against Utah.,2026-11-05
 5148538,Tarik Biberovic,DAL,Out,Biberovic (heel) is listed as out for Monday's game against Sacramento.,2026-11-01
 4432181,Julian Strawther,DEN,Out,"Strawther (knee) was diagnosed with a left knee sprain Friday and will be re-evaluated in six weeks, Vinny Benedetto of The Denver Gazette reports.",2026-10-17
-4397449,Elijah Harkless,DET,Day-To-Day,"Harkless signed a two-way contract with the Pistons, Keith Smith of Spotrac.com reports.",2026-11-07
-5107818,Isaac Jones,DET,Day-To-Day,"Jones posted 18 points (6-14 FG, 0-3 3Pt, 3-3 FT), 10 rebounds, an assist, two steals and two blocks in Wednesday's 100-88 Summer League loss to the Suns.",2026-11-07
 4395702,Isaiah Joe,DET,Out,Joe (hip) has been ruled out for Sunday's game against the Lakers.,2026-11-07
 4433621,Jalen Duren,DET,Out,"Duren will be re-evaluated in two weeks due to a right hamstring strain, Eric Vincent of ClutchPoints.com reports.",2026-10-25
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
@@ -82,7 +81,7 @@ player_id,name,team,status,detail,date
 3102530,Jusuf Nurkic,UTAH,Out,Nurkic (toe) has begun participating in on-court activities as he continues recovering from a right foot injury sustained during an Oct. 4 preseason game agains,2026-11-06
 4066336,Lauri Markkanen,UTAH,Day-To-Day,Markkanen is questionable for Sunday's game against the Timberwolves due to a right wrist sprain.,2026-11-07
 6583,Anthony Davis,WSH,Out,Davis (ankle) won't play Saturday against the Thunder.,2026-11-07
-4278129,Deandre Ayton,WSH,Out,Ayton won't return to Saturday's game against the Thunder due to a lower leg injury.,2026-11-08
+4278129,Deandre Ayton,WSH,Day-To-Day,Ayton won't return to Saturday's game against the Thunder due to a lower leg injury.,2026-11-08
 4606840,Jamir Watkins,WSH,Out,The Wizards announced Thursday that Watkins has undergone surgery for a torn ACL.,2026-07-30
 4432907,Justin Champagnie,WSH,Out,"Champagnie (foot) is expected to miss several months, per Josh Robbins of The Athletic.",2026-10-28
 4432187,Reece Beekman,WSH,Out,The Wizards announced Monday that Beekman sustained a right acromioclavicular joint injury and will be re-evaluated in approximately three weeks.,2026-11-02
