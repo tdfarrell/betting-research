@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-09T20:39Z",
+ "pulled_utc": "2026-11-09T20:56Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -340,18 +340,18 @@
    "weather": null,
    "temp_f": null,
    "home_spread": "-9.5",
-   "home_spread_odds": "-104",
+   "home_spread_odds": "-114",
    "home_spread_open": "-9.5",
-   "home_ml": "-382",
+   "home_ml": "-448",
    "home_ml_open": "-378",
    "away_spread": "+9.5",
-   "away_spread_odds": "-117",
+   "away_spread_odds": "-106",
    "away_spread_open": "+9.5",
-   "away_ml": "+303",
+   "away_ml": "+348",
    "away_ml_open": "+300",
-   "total": 232.5,
+   "total": 231.5,
    "over_odds": "-106",
-   "under_odds": "-115",
+   "under_odds": "-114",
    "total_open": "o231.5"
   },
   {
