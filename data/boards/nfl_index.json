@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-09T02:47+00:00",
- "odds_pulled_utc": "2026-11-09T02:46Z",
+ "generated_utc": "2026-11-09T10:29+00:00",
+ "odds_pulled_utc": "2026-11-09T10:29Z",
  "stats_pulled_utc": "2026-11-09T01:40+00:00",
  "slates": [
   {
@@ -116,7 +116,7 @@
    "beat_close": 8,
    "lost_close": 7,
    "w": 8,
-   "l": 13,
+   "l": 14,
    "p": 0
   }
  },
