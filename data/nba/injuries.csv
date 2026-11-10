@@ -46,6 +46,7 @@ player_id,name,team,status,detail,date
 5105462,Richie Saunders,MEM,Out,"Saunders signed a two-way contract with the Grizzlies on Saturday, Shams Charania of ESPN reports.",2026-11-07
 4431785,Scotty Pippen Jr.,MEM,Out,Pippen (back) won't play in Monday's game versus the Raptors.,2026-11-08
 3032977,Giannis Antetokounmpo,MIA,Day-To-Day,Antetokounmpo is probable for Tuesday's game against the Jazz due to a right wrist sprain.,2026-11-09
+5105623,Kel'el Ware,MIL,Day-To-Day,Ware is questionable for Tuesday's game against the Knicks due to a left ankle sprain.,2026-11-10
 4395725,Tyler Herro,MIL,Day-To-Day,Herro (contusion) is listed as questionable for Tuesday's game against the Knicks.,2026-11-09
 4594268,Anthony Edwards,MIN,Out,"Edwards underwent a successful arthroscopic procedure on his right knee Thursday, the Timberwolves announced.",2026-10-29
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
@@ -64,6 +65,7 @@ player_id,name,team,status,detail,date
 4065654,Jonathan Isaac,ORL,Out,Isaac (knee) is out for Tuesday's game against Sacramento.,2026-11-09
 5214637,Noah Penda,ORL,Out,"Penda was diagnosed with a partially torn right hamstring Saturday, Jason Beede of the Orlando Sentinel reports.",2026-10-17
 4432573,Paolo Banchero,ORL,Out,"Banchero is expected to be sidelined for the next four-to-six weeks due to a right high-ankle sprain, Shams Charania of ESPN reports.",2026-10-24
+4702382,Tristan da Silva,ORL,Day-To-Day,Da Silva is questionable for Tuesday's game against the Kings due to a left calf strain.,2026-11-10
 5105637,Adem Bona,PHI,Out,Bona (back) is out for Tuesday's game against the Celtics.,2026-11-09
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
 4870562,Dominick Barlow,PHI,Out,"Head coach Nick Nurse said Wednesday that Barlow (back) likely needs another 10-12 days before he's cleared to return to the court, Derek Bodner of AllPHLY.com ",2026-11-04
@@ -81,7 +83,7 @@ player_id,name,team,status,detail,date
 4898371,Maxime Raynaud,SAC,Out,Raynaud (knee) has been ruled out for Tuesday's game against Orlando.,2026-11-10
 5093267,Collin Murray-Boyles,TOR,Day-To-Day,"Murray-Boyles (illness) is out for Monday's game against the Grizzlies, Esfandiar Baraheni of The Athletic reports.",2026-11-10
 4395724,Immanuel Quickley,TOR,Day-To-Day,"Quickley (hamstring) has been ruled out for Monday's game against Memphis, Esfandiar Baraheni of The Athletic reports.",2026-11-10
-6450,Kawhi Leonard,TOR,Out,"Leonard has completed treatment to reduce swelling in his left knee and he will be re-evaluated in one week, Brett Siegel of ClutchPoints.com reports.",2026-11-04
+6450,Kawhi Leonard,TOR,Out,"Leonard (knee) is continuing the reconditioning process, and another update will be provided in one week, Blake Murphy of Sportsnet.ca reports.",2026-11-10
 4432586,Nate Bittle,TOR,Out,Bittle (foot) is listed as out for Monday's game against Memphis.,2026-11-08
 4433134,Scottie Barnes,TOR,Day-To-Day,"Barnes (groin) is out for Monday's game against the Grizzlies, Esfandiar Baraheni of The Athletic reports.",2026-11-10
 4277961,Jaren Jackson Jr.,UTAH,Out,"Jackson has been diagnosed with a torn MCL in his right knee and will be sidelined for 6-to-8 weeks, per Shams Charania of ESPN.",2026-10-27
