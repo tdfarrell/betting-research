@@ -22,13 +22,14 @@ player_id,name,team,status,detail,date
 4432181,Julian Strawther,DEN,Out,"Strawther (knee) was diagnosed with a left knee sprain Friday and will be re-evaluated in six weeks, Vinny Benedetto of The Denver Gazette reports.",2026-10-17
 4395702,Isaiah Joe,DET,Out,Joe (hip) is out for Monday against the Wizards.,2026-11-09
 4433621,Jalen Duren,DET,Out,"Duren (hamstring) has begun on-court activity and will be re-evaluated in two weeks, Hunter Patterson of The Athletic reports.",2026-11-08
-3134903,Gary Payton II,GS,Out,Payton (knee) has been ruled out for Monday's game against the Pelicans.,2026-11-10
+4397040,Brandon Williams,GS,Day-To-Day,"Williams has been ruled out for the remainder of Monday's game against the Pelicans due to a left hamstring injury, Danny Emerman of SFStandard.com reports. He'",2026-11-10
+3134903,Gary Payton II,GS,Day-To-Day,Payton (knee) has been ruled out for Monday's game against the Pelicans.,2026-11-10
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis announced on his social media that he's stepping away from basketball.,2026-11-06
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
 4897262,Will Richard,GS,Out,"Richard is deciding between getting surgery or playing with a splint, Luca Evans of the San Francisco Chronicle reports.",2026-11-10
 3102529,Clint Capela,HOU,Out,"Head coach Ime Udoka stated Monday that Capela (ankle) could be cleared to return either Nov. 15 in Washington or Nov. 16 in Miami, Lachard Binkley of SI.com re",2026-11-09
-4432827,Oscar Tshiebwe,HOU,Out,Tshiebwe has been ruled out for Monday's game against the Nuggets due to an illness.,2026-11-09
+4432827,Oscar Tshiebwe,HOU,Day-To-Day,Tshiebwe has been ruled out for Monday's game against the Nuggets due to an illness.,2026-11-10
 2991235,Steven Adams,HOU,Out,"Head coach Ime Udoka said Monday that Adams could return as soon as Sunday's game at Washington, Lachard Binkley of SI.com reports.",2026-11-09
 4433076,Ben Sheppard,IND,Out,"Head coach Rick Carlise confirmed Sheppard will miss ""months"" after undergoing surgery to repair a torn meniscus in his left knee, Tony East of Forbes.com repor",2026-10-28
 5157066,Johnny Furphy,IND,Out,"Furphy (knee) is practicing with the G League's Noblesville Boom, per Alex Golden of SI.com.",2026-10-30
@@ -48,10 +49,10 @@ player_id,name,team,status,detail,date
 4395725,Tyler Herro,MIL,Day-To-Day,Herro (contusion) is listed as questionable for Tuesday's game against the Knicks.,2026-11-09
 4594268,Anthony Edwards,MIN,Out,"Edwards underwent a successful arthroscopic procedure on his right knee Thursday, the Timberwolves announced.",2026-10-29
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
-4431675,Trendon Watford,NO,Out,Watford (ankle) is out for Monday's game versus Utah.,2026-11-09
-4397688,Trey Murphy III,NO,Out,Murphy (knees) has been ruled out for Monday's game against Golden State.,2026-11-09
+4431675,Trendon Watford,NO,Day-To-Day,Watford (ankle) is out for Monday's game versus Utah.,2026-11-10
+4397688,Trey Murphy III,NO,Day-To-Day,Murphy (knees) has been ruled out for Monday's game against Golden State.,2026-11-10
 5061589,Yves Missi,NO,Out,Missi (knee) is out for Friday's game against Minnesota.,2026-11-05
-4395628,Zion Williamson,NO,Out,Williamson (rest) is out for Monday's game against the Warriors.,2026-11-09
+4395628,Zion Williamson,NO,Day-To-Day,Williamson (rest) is out for Monday's game against the Warriors.,2026-11-10
 3062679,Josh Hart,NY,Day-To-Day,Hart is questionable for Tuesday's game against the Bucks due to right ankle soreness.,2026-11-09
 4683692,Cason Wallace,OKC,Out,"Wallace underwent surgery Friday to repair a torn labrum in his left shoulder and will be re-evaluated before the end of the regular season, Clemente Almanza of",2026-10-31
 4433255,Chet Holmgren,OKC,Out,"Holmgren underwent a biological treatment Friday to address a small patellar tendon tear and will miss at least 8-10 weeks, Nick Crain of Slam reports.",2026-10-31
@@ -71,7 +72,7 @@ player_id,name,team,status,detail,date
 4279888,Ja Morant,POR,Out,"Head coach Micah Nori said Morant met with a doctor in Los Angeles, who gave him a positive outlook on his recovery from the hamstring injury. While Nori declin",2026-11-08
 4914336,Shaedon Sharpe,POR,Out,"Sharpe suffered a torn meniscus in his knee and is expected to miss six months, per Shams Charania of ESPN.",2026-08-24
 4578893,Vit Krejci,POR,Out,"Head coach Micah Nori said that Krejci suffered a left leg fracture during Wednesday's 132-119 win over the Suns, Brett Siegel of ClutchPoints.com reports.",2026-11-05
-4395630,Devin Vassell,SA,Out,"Vassell (groin) is out for Monday's game against the Suns, Tom Orsborn of the San Antonio Express-News reports.",2026-11-09
+4395630,Devin Vassell,SA,Day-To-Day,"Vassell (groin) is out for Monday's game against the Suns, Tom Orsborn of the San Antonio Express-News reports.",2026-11-10
 5101845,Jayden Quaintance,SA,Out,"Quaintance has been around the team but has not yet been cleared for basketball activities, Matt Guzman of SI.com reports.",2026-10-05
 6440,Tobias Harris,SA,Out,Harris (calf) is listed as out for Monday's game against Phoenix.,2026-11-09
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
