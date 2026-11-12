@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-12T16:57Z",
+ "pulled_utc": "2026-11-12T18:11Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -17,13 +17,13 @@
    "venue": "MetLife Stadium",
    "weather": "Showers",
    "temp_f": 52,
-   "home_spread": "-2.5",
-   "home_spread_odds": "-110",
+   "home_spread": "-1.5",
+   "home_spread_odds": "-115",
    "home_spread_open": "-1.5",
    "home_ml": "-135",
    "home_ml_open": "-125",
-   "away_spread": "+2.5",
-   "away_spread_odds": "-110",
+   "away_spread": "+1.5",
+   "away_spread_odds": "-105",
    "away_spread_open": "+1.5",
    "away_ml": "+114",
    "away_ml_open": "+105",
