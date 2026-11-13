@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-13T02:34Z",
+ "pulled_utc": "2026-11-13T02:59Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -10,8 +10,8 @@
    "home": "USF",
    "away_name": "Memphis Tigers",
    "home_name": "South Florida Bulls",
-   "away_score": "21",
-   "home_score": "10",
+   "away_score": "28",
+   "home_score": "17",
    "neutral": false,
    "conference_game": true,
    "venue": "Raymond James Stadium",
@@ -27,12 +27,12 @@
    "away_name": "Louisiana Ragin' Cajuns",
    "home_name": "UL Monroe Warhawks",
    "away_score": "7",
-   "home_score": "7",
+   "home_score": "14",
    "neutral": false,
    "conference_game": true,
    "venue": "Malone Stadium",
    "weather": "33",
-   "temp_f": 60
+   "temp_f": 58
   },
   {
    "game_id": "401858293",
@@ -320,12 +320,12 @@
    "weather": "Partly sunny",
    "temp_f": 47,
    "home_spread": "+8.5",
-   "home_spread_odds": "-110",
+   "home_spread_odds": "OFF",
    "home_spread_open": "+7.5",
    "home_ml": "+275",
    "home_ml_open": "+220",
    "away_spread": "-8.5",
-   "away_spread_odds": "-110",
+   "away_spread_odds": "-108",
    "away_spread_open": "-7.5",
    "away_ml": "-345",
    "away_ml_open": "-270",
@@ -1739,9 +1739,9 @@
    "away_spread_open": "-10",
    "away_ml": "-325",
    "away_ml_open": "-360",
-   "total": 39.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "total": 40.5,
+   "over_odds": "-108",
+   "under_odds": "-112",
    "total_open": "o43.5"
   },
   {

@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-13T02:34Z",
+ "pulled_utc": "2026-11-13T02:59Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -11,7 +11,7 @@
    "away_name": "Washington Commanders",
    "home_name": "New York Giants",
    "away_score": "10",
-   "home_score": "7",
+   "home_score": "13",
    "neutral": false,
    "conference_game": false,
    "venue": "MetLife Stadium",
@@ -135,7 +135,7 @@
    "away_ml_open": "+185",
    "total": 41.5,
    "over_odds": "-115",
-   "under_odds": "-105",
+   "under_odds": "OFF",
    "total_open": "o45.5"
   },
   {
