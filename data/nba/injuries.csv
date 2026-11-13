@@ -7,7 +7,7 @@ player_id,name,team,status,detail,date
 5101761,Mikel Brown Jr.,BKN,Day-To-Day,"Brown has been ruled out for Wednesday's game against the Pelicans due to an illness, Sharif Phillips-Keaton of USA Today reports.",2026-11-12
 5279130,Nolan Traore,BKN,Day-To-Day,"Traore (calf) has been ruled out for Wednesday's game against the Pelicans, Ian Begley of SportsNet New York reports.",2026-11-12
 4251,Paul George,BOS,Day-To-Day,"George (illness) has been ruled out for Wednesday's game against Toronto, Taylor Snow of the Celtics' official site reports.",2026-11-12
-4433287,Brandon Miller,CHA,Out,Miller (groin) is listed as out for Thursday's game against Phoenix.,2026-11-12
+4433287,Brandon Miller,CHA,Day-To-Day,Miller (groin) is listed as out for Thursday's game against Phoenix.,2026-11-13
 3032979,Dennis Schroder,CHA,Out,"Schroder has been diagnosed with a left hamstring strain and will be reevaluated in two weeks, Michael Scotto of HoopsHype.com reports.",2026-11-08
 5061575,Kon Knueppel,CHA,Out,Knueppel (hamstring) was diagnosed with a left hamstring strain Sunday and will be re-evaluated in four weeks.,2026-11-08
 5095151,Caleb Wilson,CHI,Out,"Wilson (hand) is expected to miss four to six weeks, Shams Charania of ESPN reports.",2026-11-12
@@ -75,7 +75,7 @@ player_id,name,team,status,detail,date
 5105637,Adem Bona,PHI,Out,"Bona (back) will be re-evaluated in approximately one week after seeing a specialist, Ky Carlin of USA Today reports.",2026-11-12
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
 4870562,Dominick Barlow,PHI,Out,"Barlow (back) participated in Thursday's shootaround but doesn't have a timeline to return to game action, Ky Carlin of USA Today reports.",2026-11-12
-1966,LeBron James,PHI,Out,James (back) is out for Thursday's game against Toronto.,2026-11-12
+1966,LeBron James,PHI,Day-To-Day,James (back) is out for Thursday's game against Toronto.,2026-11-13
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
 4706557,Chris Youngblood,POR,Out,Youngblood (foot) is out for Friday's game against Sacramento.,2026-11-13
 4279888,Ja Morant,POR,Out,"Head coach Micah Nori said Morant met with a doctor in Los Angeles, who gave him a positive outlook on his recovery from the hamstring injury. While Nori declin",2026-11-08
@@ -91,11 +91,12 @@ player_id,name,team,status,detail,date
 6450,Kawhi Leonard,TOR,Out,"Head coach Darko Rajakovic said Wednesday that Leonard (knee) is doing individual on-court work and is progressing well, Michael Grange of Sportsnet.ca reports.",2026-11-11
 4432586,Nate Bittle,TOR,Out,Bittle (foot) is listed as out for Monday's game against Memphis.,2026-11-08
 4433134,Scottie Barnes,TOR,Out,Barnes (groin) is out for Thursday's game against Philadelphia.,2026-11-12
-4431684,Trayce Jackson-Davis,TOR,Out,Jackson-Davis is out for Thursday's game against the 76ers due to an illness.,2026-11-12
+4431684,Trayce Jackson-Davis,TOR,Day-To-Day,Jackson-Davis is out for Thursday's game against the 76ers due to an illness.,2026-11-13
 4277961,Jaren Jackson Jr.,UTAH,Out,"Jackson has been diagnosed with a torn MCL in his right knee and will be sidelined for 6-to-8 weeks, per Shams Charania of ESPN.",2026-10-27
 3102530,Jusuf Nurkic,UTAH,Out,Nurkic (toe) has begun participating in on-court activities as he continues recovering from a right foot injury sustained during an Oct. 4 preseason game agains,2026-11-06
 4066336,Lauri Markkanen,UTAH,Out,"Markkanen has been diagnosed with a non-displaced fracture in his right hand and will be sidelined for at least one month, Shams Charania of ESPN reports.",2026-11-11
 4433268,Trey Alexander,UTAH,Out,Alexander won't play Wednesday against the Grizzlies due to a left knee bone bruise.,2026-11-12
+4845374,Bub Carrington,WSH,Day-To-Day,Carrington (chest) has been ruled out for the remainder of Thursday's game against the Pistons.,2026-11-13
 4606840,Jamir Watkins,WSH,Out,The Wizards announced Thursday that Watkins has undergone surgery for a torn ACL.,2026-07-30
 4432907,Justin Champagnie,WSH,Out,"Champagnie (foot) is expected to miss several months, per Josh Robbins of The Athletic.",2026-10-28
 4432187,Reece Beekman,WSH,Out,The Wizards announced Monday that Beekman sustained a right acromioclavicular joint injury and will be re-evaluated in approximately three weeks.,2026-11-02
