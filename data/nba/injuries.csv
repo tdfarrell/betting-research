@@ -10,7 +10,7 @@ player_id,name,team,status,detail,date
 3032979,Dennis Schroder,CHA,Out,"Schroder has been diagnosed with a left hamstring strain and will be reevaluated in two weeks, Michael Scotto of HoopsHype.com reports.",2026-11-08
 5061575,Kon Knueppel,CHA,Out,Knueppel (hamstring) was diagnosed with a left hamstring strain Sunday and will be re-evaluated in four weeks.,2026-11-08
 5095151,Caleb Wilson,CHI,Out,"Wilson (hand) is expected to miss four to six weeks, Shams Charania of ESPN reports.",2026-11-12
-4848625,Dailyn Swain,CHI,Day-To-Day,Swain (back) is listed as questionable for Friday's game against Atlanta.,2026-11-12
+4848625,Dailyn Swain,CHI,Out,Swain (back) is out for Friday's game against the Hawks.,2026-11-14
 5105555,Tobe Awaka,CHI,Out,Awaka (back) has been ruled out for Friday's game against the Hawks.,2026-11-12
 4432158,Evan Mobley,CLE,Out,Mobley (toe) is out for Friday's game against the Heat.,2026-11-12
 5106268,Nae'Qwan Tomlin,CLE,Out,"Tomlin is set to miss several weeks with a lower back stress reaction, Chris Fedor of The Cleveland Plain Dealer reports.",2026-10-20
@@ -25,7 +25,6 @@ player_id,name,team,status,detail,date
 4433621,Jalen Duren,DET,Out,"Duren (hamstring) has begun on-court activity and will be re-evaluated in two weeks, Hunter Patterson of The Athletic reports.",2026-11-08
 5037878,Ugonna Onyenso,DET,Day-To-Day,Onyenso agreed to a two-way contract with the Pistons on Thursday.,2026-11-11
 4397040,Brandon Williams,GS,Out,"Williams (hamstring) will miss at least one week, per Anthony Slater of ESPN.com.",2026-11-10
-4397886,Charles Bassey,GS,Day-To-Day,Bassey is probable for Friday's game against the Spurs due to left toe soreness.,2026-11-12
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis announced on his social media that he's stepping away from basketball.,2026-11-06
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
@@ -52,7 +51,6 @@ player_id,name,team,status,detail,date
 4601025,Pelle Larsson,MIA,Out,Larsson (illness) is out for Friday's game against Cleveland.,2026-11-13
 4594268,Anthony Edwards,MIN,Out,"Edwards underwent a successful arthroscopic procedure on his right knee Thursday, the Timberwolves announced.",2026-10-29
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
-4683634,Bennedict Mathurin,NO,Day-To-Day,Mathurin (thumb) is listed as questionable for Friday's game against Memphis.,2026-11-13
 4576086,Bryce McGowens,NO,Out,McGowens (elbow) is listed as out for Friday's game against the Grizzlies.,2026-11-13
 3907497,Dejounte Murray,NO,Out,Murray (ankle) is out for Friday's game against Memphis.,2026-11-13
 4431675,Trendon Watford,NO,Out,Watford (ankle) is listed as out for Friday's game against the Grizzlies.,2026-11-12
@@ -78,8 +76,6 @@ player_id,name,team,status,detail,date
 4279888,Ja Morant,POR,Out,"Head coach Micah Nori said Morant met with a doctor in Los Angeles, who gave him a positive outlook on his recovery from the hamstring injury. While Nori declin",2026-11-08
 4914336,Shaedon Sharpe,POR,Out,"Sharpe suffered a torn meniscus in his knee and is expected to miss six months, per Shams Charania of ESPN.",2026-08-24
 4578893,Vit Krejci,POR,Out,"Krejci underwent surgery on his fractured left ankle Wednesday and will be re-evaluated in eight weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-11
-4066259,De'Aaron Fox,SA,Day-To-Day,Fox is questionable for Friday's game against the Warriors due to left hip soreness.,2026-11-12
-4395630,Devin Vassell,SA,Day-To-Day,Vassell is questionable for Friday's game against the Warriors due to left adductor tightness.,2026-11-12
 5101845,Jayden Quaintance,SA,Out,"Quaintance has been around the team but has not yet been cleared for basketball activities, Matt Guzman of SI.com reports.",2026-10-05
 6440,Tobias Harris,SA,Out,"Harris (calf) is out for Wednesday's game against Chicago, Jared Weiss of The Athletic reports.",2026-11-10
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
