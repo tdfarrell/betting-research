@@ -1,24 +1,24 @@
 {
- "pulled_utc": "2026-11-15T16:59Z",
+ "pulled_utc": "2026-11-15T20:23Z",
  "status": {
   "cfb": {
    "games": 126,
-   "with_dk_line": 64,
+   "with_dk_line": 65,
    "mode": "per-day"
   },
   "nfl": {
    "games": 25,
-   "with_dk_line": 23,
+   "with_dk_line": 5,
    "mode": "per-day"
   },
   "nba": {
    "games": 65,
-   "with_dk_line": 9,
+   "with_dk_line": 8,
    "mode": "per-day"
   },
   "cbb": {
    "games": 479,
-   "with_dk_line": 35,
+   "with_dk_line": 13,
    "mode": "per-day"
   }
  },
