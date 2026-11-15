@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-15T20:23Z",
+ "pulled_utc": "2026-11-15T20:26Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -59,7 +59,7 @@
    "away_name": "Jacksonville Jaguars",
    "home_name": "Tennessee Titans",
    "away_score": "23",
-   "home_score": "13",
+   "home_score": "16",
    "neutral": false,
    "conference_game": false,
    "venue": "Nissan Stadium",
@@ -143,8 +143,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Allegiant Stadium",
-   "weather": "Mostly sunny",
-   "temp_f": 67,
+   "weather": "Intermittent clouds",
+   "temp_f": 66,
    "home_spread": "+6.5",
    "home_spread_odds": "-110",
    "home_spread_open": "+7",

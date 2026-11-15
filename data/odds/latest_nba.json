@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-15T20:23Z",
+ "pulled_utc": "2026-11-15T20:26Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -90,8 +90,8 @@
    "home": "PHI",
    "away_name": "Indiana Pacers",
    "home_name": "Philadelphia 76ers",
-   "away_score": "119",
-   "home_score": "126",
+   "away_score": "121",
+   "home_score": "128",
    "neutral": false,
    "conference_game": false,
    "venue": "Xfinity Mobile Arena",
