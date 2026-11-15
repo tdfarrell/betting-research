@@ -25,14 +25,16 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,10,ATL,00-0040578,DE,James Pearce Jr.,Back,Questionable,Limited Participation in Practice
 2026,10,ATL,00-0041044,WR,Zachariah Branch,Hamstring,Out,Did Not Participate In Practice
 2026,10,ATL,00-0041066,LB,Kendal Daniels,,,Full Participation in Practice
-2026,10,BAL,00-0036302,S,Jaylinn Hawkins,,,Limited Participation in Practice
+2026,10,BAL,00-0026190,DT,Calais Campbell,,,Did Not Participate In Practice
+2026,10,BAL,00-0032965,T,Ronnie Stanley,,,Did Not Participate In Practice
+2026,10,BAL,00-0036302,S,Jaylinn Hawkins,Knee,Out,Limited Participation in Practice
 2026,10,BAL,00-0036550,WR,Rashod Bateman,,,Full Participation in Practice
 2026,10,BAL,00-0038038,S,Kyle Hamilton,,,Full Participation in Practice
 2026,10,BAL,00-0039232,CB,Nate Wiggins,,,Full Participation in Practice
 2026,10,BAL,00-0039796,RB,Rasheen Ali,,,Full Participation in Practice
 2026,10,BAL,00-0040866,G,Olaivavega Ioane,,,Full Participation in Practice
 2026,10,BAL,00-0040879,TE,Matthew Hibner,,,Full Participation in Practice
-2026,10,BAL,00-0040888,RB,Adam Randall,,,Full Participation in Practice
+2026,10,BAL,00-0040888,RB,Adam Randall,Neck,Questionable,Full Participation in Practice
 2026,10,BUF,00-0033904,T,Dion Dawkins,,,Full Participation in Practice
 2026,10,BUF,00-0035230,DE,Ed Oliver,,,Did Not Participate In Practice
 2026,10,BUF,00-0035667,DT,Greg Gaines,,,Full Participation in Practice
@@ -145,7 +147,7 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,10,IND,00-0033217,TE,Mo Alie-Cox,Groin,Out,Did Not Participate In Practice
 2026,10,IND,00-0033952,DT,Grover Stewart,,,Full Participation in Practice
 2026,10,IND,00-0034573,CB,Charvarius Ward,,,Full Participation in Practice
-2026,10,IND,00-0034825,DE,Arden Key,Hamstring,Questionable,Full Participation in Practice
+2026,10,IND,00-0034825,DE,Arden Key,,,Full Participation in Practice
 2026,10,IND,00-0035674,DT,Jerry Tillery,Calf,Out,Did Not Participate In Practice
 2026,10,IND,00-0036223,RB,Jonathan Taylor,,,Full Participation in Practice
 2026,10,IND,00-0036298,LB,Akeem Davis-Gaither,Knee,Out,Did Not Participate In Practice
@@ -194,24 +196,24 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,10,LA,00-0039734,DT,Braden Fiske,,,Did Not Participate In Practice
 2026,10,LA,00-0040737,TE,Terrance Ferguson,Ankle,Out,Did Not Participate In Practice
 2026,10,LAC,00-0031040,LB,Khalil Mack,,,Full Participation in Practice
-2026,10,LAC,00-0032103,LB,Denzel Perryman,,,Full Participation in Practice
-2026,10,LAC,00-0032146,DE,Bud Dupree,,,Did Not Participate In Practice
-2026,10,LAC,00-0033885,TE,David Njoku,,,Limited Participation in Practice
-2026,10,LAC,00-0035688,T,Trey Pipkins,,,Did Not Participate In Practice
-2026,10,LAC,00-0036736,G,Kayode Awosika,,,Limited Participation in Practice
+2026,10,LAC,00-0032103,LB,Denzel Perryman,Pectoral,Questionable,Full Participation in Practice
+2026,10,LAC,00-0032146,DE,Bud Dupree,,,Full Participation in Practice
+2026,10,LAC,00-0033885,TE,David Njoku,Fibula,Questionable,Full Participation in Practice
+2026,10,LAC,00-0035688,T,Trey Pipkins,Not injury related - personal matter,Questionable,Limited Participation in Practice
+2026,10,LAC,00-0036736,G,Kayode Awosika,Fibula,Questionable,Full Participation in Practice
 2026,10,LAC,00-0037320,CB,Deane Leonard,,,Full Participation in Practice
-2026,10,LAC,00-0038414,S,Kendall Williamson,,,Did Not Participate In Practice
-2026,10,LAC,00-0038454,RB,Keaton Mitchell,,,Limited Participation in Practice
+2026,10,LAC,00-0038414,S,Kendall Williamson,Calf,Out,Did Not Participate In Practice
+2026,10,LAC,00-0038454,RB,Keaton Mitchell,,,Full Participation in Practice
 2026,10,LAC,00-0038553,LB,Daiyan Henley,,,Full Participation in Practice
 2026,10,LAC,00-0039369,CB,Cam Hart,,,Full Participation in Practice
-2026,10,LAC,00-0039835,DE,Justin Eboigbe,,,Limited Participation in Practice
-2026,10,LAC,00-0039915,WR,Ladd McConkey,,,Did Not Participate In Practice
-2026,10,LAC,00-0040065,CB,Isas Waxter,,,Did Not Participate In Practice
-2026,10,LAC,00-0040212,G,Branson Taylor,,,Did Not Participate In Practice
+2026,10,LAC,00-0039835,DE,Justin Eboigbe,Ankle,Questionable,Limited Participation in Practice
+2026,10,LAC,00-0039915,WR,Ladd McConkey,Back,Questionable,Did Not Participate In Practice
+2026,10,LAC,00-0040065,CB,Isas Waxter,Ankle,Out,Did Not Participate In Practice
+2026,10,LAC,00-0040212,G,Branson Taylor,Ankle,Out,Did Not Participate In Practice
 2026,10,LAC,00-0040727,WR,Tre Harris,,,Full Participation in Practice
 2026,10,LAC,00-0041107,G,Alex Harkey,,,Full Participation in Practice
-2026,10,LAC,00-0041381,CB,Rodney Shelley,,,Limited Participation in Practice
-2026,10,LAC,00-0041550,WR,Brenen Thompson,,,Did Not Participate In Practice
+2026,10,LAC,00-0041381,CB,Rodney Shelley,,,Full Participation in Practice
+2026,10,LAC,00-0041550,WR,Brenen Thompson,Hamstring,Doubtful,Did Not Participate In Practice
 2026,10,LV,00-0034275,DT,Foley Fatukasi,,,Full Participation in Practice
 2026,10,LV,00-0034365,TE,Ian Thomas,,,Full Participation in Practice
 2026,10,LV,00-0037262,DT,Thomas Booker,Ankle,Questionable,Full Participation in Practice

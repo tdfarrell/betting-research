@@ -21,7 +21,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,NYG,00-0031484,Chris Manhertz,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bw0kytk1nwrdln9t3wzg",2531358
 2026,10,NYG,00-0031503,Jameis Winston,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/e5qyxnibbyawi0pvfpjl",2969939
 2026,10,WAS,00-0031588,Stefon Diggs,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dpmpctgbwlvgyzg3opli",2976212
-2026,10,CLE,00-0031595,Michael Burton,RB,FB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/r2q22ztbvcptaxb51syw",2515270
+2026,10,CLE,00-0031595,Michael Burton,RB,FB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/r2q22ztbvcptaxb51syw",2515270
 2026,10,CAR,00-0031610,Darren Waller,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/t0advoaoix6fvhu6zs5e",2576925
 2026,10,DET,00-0031763,DeAndre Carter,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/jx4io3owliw3l5xve6ta",2580216
 2026,10,JAX,00-0032104,Ameer Abdullah,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/k8teyeiqchljlm0h5te4",2576336
@@ -42,7 +42,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,DET,00-0033106,Jared Goff,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kaicbot8qhzrvddilbtp",3046779
 2026,10,LA,00-0033110,Tyler Higbee,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/x1d4osiefibd04df6gow",2573401
 2026,10,BAL,00-0033119,Jacoby Brissett,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qjswiunczrn5xmdiqhlz",2578570
-2026,10,IND,00-0033217,Mo Alie-Cox,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/y7kf6jf3moyydyf69y4y",2998565
+2026,10,IND,00-0033217,Mo Alie-Cox,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/y7kf6jf3moyydyf69y4y",2998565
 2026,9,PHI,00-0033246,Johnny Mundt,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gbsnomwbzavt5124vvaz",3052096
 2026,10,SF,00-0033280,Christian McCaffrey,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/st82s2ytyzanatcmkqck",3117251
 2026,10,SF,00-0033288,George Kittle,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/vkicdglglkyukgyxtmpx",3040151
@@ -60,13 +60,13 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,CAR,00-0033589,David Moore,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/iyawzolvibsds35fwapv",4212909
 2026,10,WAS,00-0033699,Austin Ekeler,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/sldndpn2zwt4uhkj2zks",3068267
 2026,10,PIT,00-0033757,Robert Tonyan,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/capa47cncqjqlfk3es1a",2975674
-2026,10,HOU,00-0033854,Dare Ogunbowale,RB,RB,TRD,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bsm0k0jkytuiej2riudv",2983509
+2026,10,HOU,00-0033854,Dare Ogunbowale,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bsm0k0jkytuiej2riudv",2983509
 2026,10,GB,00-0033858,Jonnu Smith,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xajzhinuboxicxyyk3sa",3054212
 2026,10,TEN,00-0033869,Mitchell Trubisky,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/j0qtdgphb0ufvfglf34b",3039707
 2026,10,KC,00-0033873,Patrick Mahomes,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wdckwtob1lybvkmxnf7p",3139477
 2026,9,DEN,00-0033881,Evan Engram,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nucl2dxmpvhlywhyro8o",3051876
 2026,10,LAC,00-0033885,David Njoku,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/y4g1iayqrbrhdvkqywpx",3123076
-2026,10,ARI,00-0033891,Zay Jones,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qihjjzfk0vwzoyrzztkq",3059722
+2026,10,ARI,00-0033891,Zay Jones,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qihjjzfk0vwzoyrzztkq",3059722
 2026,10,NO,00-0033906,Alvin Kamara,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hedvtdbdgdyf4lo5e12p",3054850
 2026,10,SEA,00-0033908,Cooper Kupp,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kjixprihktsfog6wx9sq",2977187
 2026,9,TB,00-0033921,Chris Godwin Jr.,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ilkheljdx4hbjpisulke",3116165
@@ -149,7 +149,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,9,DEN,00-0036158,J.K. Dobbins,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cevotvl3ho5h1mioruyg",4241985
 2026,10,PIT,00-0036165,Isaiah Hodgins,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/khye1komqnehkql2a4ve",4242540
 2026,10,IND,00-0036182,Nick Westbrook-Ikhine,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pf9rjmwp7pbaebbc1ogg",3929785
-2026,10,NE,00-0036187,Reggie Gilliam,RB,FB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mbeg92ct8fvu93jq7mge",4039505
+2026,10,NE,00-0036187,Reggie Gilliam,RB,FB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mbeg92ct8fvu93jq7mge",4039505
 2026,10,ATL,00-0036212,Tua Tagovailoa,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ofdaeqinzmboli54fyis",4241479
 2026,10,IND,00-0036223,Jonathan Taylor,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/d7pmatz5wylijbsplnkg",4242335
 2026,10,LA,00-0036244,Colby Parkinson,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qsyrgtfjj06wryahnxc9",4242557
@@ -158,7 +158,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,SF,00-0036261,Brandon Aiyuk,WR,WR,EXE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/avzzxycxyculxxqce5k7",4360438
 2026,10,GB,00-0036264,Jordan Love,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/thz8stjkbjwddxqnozi5",4036378
 2026,10,CAR,00-0036265,AJ Dillon,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/imxxt8yrbrxptoxr1hw5",4239934
-2026,10,IND,00-0036271,Quez Watkins,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/w3szyykihsngaeq3906b",4050373
+2026,10,IND,00-0036271,Quez Watkins,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/w3szyykihsngaeq3906b",4050373
 2026,9,CHI,00-0036275,D'Andre Swift,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/owpmwzoilitcodc6cmxo",4259545
 2026,9,CHI,00-0036290,Cole Kmet,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ysnui8mzlu2fo70ub0yt",4258595
 2026,10,NYG,00-0036309,Darnell Mooney,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eaejonwaflt9drrs9ika",4040655
@@ -167,7 +167,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,TEN,00-0036345,K.J. Osborn,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ytgf9lftpnc3hqg81vhj",3916566
 2026,10,LAC,00-0036355,Justin Herbert,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/jnkspnntgebegzp4ghve",4038941
 2026,10,DAL,00-0036358,CeeDee Lamb,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mbblzwtynxr15ovzkevi",4241389
-2026,10,MIA,00-0036387,Jalen Reagor,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/obnrlnx4utwmgfum9fbt",4241802
+2026,10,MIA,00-0036387,Jalen Reagor,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/obnrlnx4utwmgfum9fbt",4241802
 2026,9,PHI,00-0036389,Jalen Hurts,QB,QB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xow5yvxjeqa6witmofmp",4040715
 2026,10,CLE,00-0036407,Jerry Jeudy,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/szca1v9butuqkjs7ekpm",4241463
 2026,10,CIN,00-0036410,Tee Higgins,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gpwtyv3viwy9q4ewderl",4239993
@@ -193,7 +193,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,KC,00-0036637,Noah Gray,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bpmlguml8jth2rbdfyp5",4240472
 2026,10,ARI,00-0036646,Simi Fehoko,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eep30drknwucjdj6tivh",4360739
 2026,10,ARI,00-0036670,Jermar Jefferson,RB,RB,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bkgrgirrdwlm05vqg74b",4374033
-2026,10,BUF,00-0036679,Shane Buechele,QB,QB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cnwov6r46wsf072ugdzg",4039034
+2026,10,BUF,00-0036679,Shane Buechele,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cnwov6r46wsf072ugdzg",4039034
 2026,9,DEN,00-0036727,Adam Prentice,RB,FB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xuvyqidnso9ga1dfefoy",3929914
 2026,10,SF,00-0036741,Jack Stoll,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/i98fozz1coxycsn5w2up",4034862
 2026,10,DET,00-0036754,Brock Wright,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ghmaeofuj87fm97yhvcp",4242392
@@ -214,7 +214,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,ATL,00-0036906,Khalil Herbert,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xtdwbltrbluogsqz98iv",4035886
 2026,9,PHI,00-0036912,DeVonta Smith,WR,WR,INA,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/k724kq3hyv7jc0y9s03x",4241478
 2026,9,TB,00-0036919,Kenny Gainwell,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eo62l8ec8e3lzt86ihth",4371733
-2026,10,TEN,00-0036924,Michael Carter,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/j9ockcyi5etuz8gfv73h",4240657
+2026,10,TEN,00-0036924,Michael Carter,RB,RB,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/j9ockcyi5etuz8gfv73h",4240657
 2026,10,DAL,00-0036928,Kyle Trask,QB,QB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xd0hbsqzz2xhh392woow",4034946
 2026,10,KC,00-0036945,Justin Fields,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/npjrombgxkc5vjkctcgy",4362887
 2026,9,DEN,00-0036959,Michael Bandy,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bcashgwve9ean9pq8egb",4034704
@@ -222,12 +222,12 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,ATL,00-0036970,Kyle Pitts,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xczipzxvytnmvgznhhb4",4360248
 2026,10,JAX,00-0036971,Trevor Lawrence,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/k9uzdernqkx7oquy7dkg",4360310
 2026,10,SF,00-0036972,Mac Jones,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mbdwfwiuhl0ib5ajtmzq",4241464
-2026,10,NO,00-0036973,Travis Etienne,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pwko5dybmjie8qqo4qz2",4239996
+2026,10,NO,00-0036973,Travis Etienne,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pwko5dybmjie8qqo4qz2",4239996
 2026,9,PHI,00-0036980,Elijah Moore,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wax90oyx9vs0x9j4nt5n",4372414
 2026,10,ATL,00-0036984,Trey Sermon,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/v46vmnu7aq1h8h1mztu4",4241401
 2026,10,BUF,00-0036988,Josh Palmer,WR,WR,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/woswdfrtxnsfgzsjvsxx",4242433
 2026,10,DAL,00-0036997,Javonte Williams,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xvwroirev2kie6oiphtz",4361579
-2026,10,ARI,00-0037004,Hunter Long,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zu9wzaatrgpkwost3kwo",4239944
+2026,10,ARI,00-0037004,Hunter Long,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zu9wzaatrgpkwost3kwo",4239944
 2026,10,CAR,00-0037005,Tommy Tremble,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/t7wjikfv09d3o1q7wjdx",4372780
 2026,10,LAC,00-0037012,Trey Lance,QB,QB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/j3psmvvxo13kmbgi60ej",4383351
 2026,10,NO,00-0037013,Zach Wilson,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/fkkl1s27rrksxibhpoqo",4361259
@@ -239,7 +239,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,GB,00-0037091,Bo Melton,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/d7hxvsyeufobjykcxhls",4259305
 2026,10,LV,00-0037093,Dareke Young,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xd0585sr1fy1wpry0ued",4401805
 2026,10,SF,00-0037112,Jake Tonges,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/z6goxhdhfc2m0rmwvtbl",4259147
-2026,10,DAL,00-0037120,Tyler Goodson,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gqgrmbnzyqu4vynmovxl",4429676
+2026,10,DAL,00-0037120,Tyler Goodson,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gqgrmbnzyqu4vynmovxl",4429676
 2026,9,PHI,00-0037132,Britain Covey,WR,WR,INA,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/jgvgr3prtme8ua28bfxi",3926231
 2026,10,SEA,00-0037156,Irvin Charles,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/smmnxshufwm9yn8z1rap",3929636
 2026,10,ARI,00-0037157,Bam Knight,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mjxnlzlnnwlfqayeybut",4427728
@@ -259,7 +259,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,ARI,00-0037267,Jerome Ford,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rntmoum7ncnyo5j2bdei",4372019
 2026,10,NO,00-0037276,Ty Chandler,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/u78ddt9afo0mt40hgrz6",4242431
 2026,10,ARI,00-0037277,Teagan Quitoriano,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/adwepaexueevxdcqjhyf",4374045
-2026,10,DAL,00-0037282,James Mitchell,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ga51e9cwxd1eswlnfwey",4361988
+2026,10,DAL,00-0037282,James Mitchell,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ga51e9cwxd1eswlnfwey",4361988
 2026,10,LV,00-0037291,Jalen Nailor,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nojopyt8hxuwycxyaokb",4382466
 2026,10,IND,00-0037292,Andrew Ogletree,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hufz9e6zicjonf8daeuz",4722908
 2026,10,LV,00-0037304,Connor Heyward,RB,FB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nbbhxtutzvbj0ejljyyp",4241961
@@ -268,7 +268,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,ATL,00-0037317,Nick Muse,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hdqfxjrw4gzsr6wn13gi",4249624
 2026,10,BAL,00-0037327,Skylar Thompson,QB,QB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/estx7utxpnqif0lto9cq",4036419
 2026,9,CHI,00-0037329,Brittain Brown,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/relpury9aesxxbxvryvy",4036032
-2026,10,CLE,00-0037340,Zaire Mitchell-Paden,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dvbehofycluge1uowtic",4876006
+2026,10,CLE,00-0037340,Zaire Mitchell-Paden,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dvbehofycluge1uowtic",4876006
 2026,10,NE,00-0037348,Tanner Conner,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/aqg2br8ixm5d0hwxy5jj",4047422
 2026,9,CHI,00-0037380,Kaden Davis,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/j4pxqpw02oztmctolcdr",5065495
 2026,10,PIT,00-0037382,Brandon Johnson,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pjdx1jdr9snczoeyevli",4035198
@@ -305,7 +305,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,NO,00-0038040,Zamir White,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/uqfr1mk9ze3nemk03bm3",4361777
 2026,10,DAL,00-0038041,Jake Ferguson,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xpykb0tbosfwsn6dqstb",4242355
 2026,10,LAC,00-0038046,Charlie Kolar,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wjguwfmbshhyuetf3lgs",4241263
-2026,10,GB,00-0038090,Skyy Moore,WR,WR,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/id9k0aylvgyq8lulabe3",4430191
+2026,10,GB,00-0038090,Skyy Moore,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/id9k0aylvgyq8lulabe3",4430191
 2026,9,PHI,00-0038092,Erik Ezukanma,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/jlhjonsu8idqrcj6tune",4362186
 2026,10,GB,00-0038098,Pierre Strong,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/aa0nufst85vutgor1fqv",4249836
 2026,10,CAR,00-0038102,Kenny Pickett,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gw6lyiuevyuspfkglnmj",4240703
@@ -320,7 +320,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,KC,00-0038145,Thomas Odukoya,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dsxbhvmffkfgkvquesgy",
 2026,10,DET,00-0038181,Lucky Jackson,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xa9o8zlctwgga8wh5apl",3915802
 2026,10,LA,00-0038359,Xavier Smith,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hqvwpitewijx8bjrcofe",4386544
-2026,10,DAL,00-0038389,Israel Abanikanda,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mt7lgg9gbjcmb2wttxeg",4429202
+2026,10,DAL,00-0038389,Israel Abanikanda,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mt7lgg9gbjcmb2wttxeg",4429202
 2026,10,CIN,00-0038391,Sean Clifford,QB,QB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/v0tmzl4x5qf2fo2yimqf",4259592
 2026,9,PHI,00-0038393,Dontayvion Wicks,WR,WR,INA,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/v1lt8kpvkn0qw5elyaoz",4428850
 2026,10,IND,00-0038394,Will Mallory,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/eti1fo2pwyhiihzpxiqo",4362523
@@ -352,7 +352,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,LAC,00-0038573,Derius Davis,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ykmeihbr6903smvblzgc",4362477
 2026,10,NYG,00-0038576,Charlie Jones,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gwqpjp7x9swytqvrdihi",4257188
 2026,10,LV,00-0038579,Aidan O'Connell,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bcejxo7ofgk5pszhup12",4260394
-2026,10,GB,00-0038589,Josh Whyle,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/an9hxzbzmg6kgkdai022",4360086
+2026,10,GB,00-0038589,Josh Whyle,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/an9hxzbzmg6kgkdai022",4360086
 2026,10,CIN,00-0038597,Chase Brown,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/tch3y6jlj7khvyi9jg0c",4362238
 2026,10,JAX,00-0038606,Parker Washington,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yn0hc5xrz5nqeccg8two",4432620
 2026,10,HOU,00-0038608,Kayshon Boutte,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/afjemks6p7md28t57f0g",4429022
@@ -365,7 +365,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,SF,00-0038643,Brayden Willis,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/sdifjifrgrvunhiigdub",4360290
 2026,10,SEA,00-0038658,Adrian Martinez,QB,QB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/w0ehlpfwk70tqpswllwv",4361182
 2026,10,BUF,00-0038679,Tyrell Shavers,WR,WR,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gbw0qf2xam6k8eygeoy8",4241476
-2026,10,GB,00-0038685,Chris Brooks,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ityat7ltppdxe9t0imjd",3149687
+2026,10,GB,00-0038685,Chris Brooks,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ityat7ltppdxe9t0imjd",3149687
 2026,10,HOU,00-0038705,Emari Demercado,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wojuvwuzqhesa93iwlzd",4362478
 2026,10,CLE,00-0038710,Blake Whiteheart,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cupbiosaxda8p06n7mti",4362018
 2026,10,NE,00-0038720,Julian Hill,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ntrsoupvy1agk1yq2iaf",4365395
@@ -426,7 +426,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,WAS,00-0039305,Jack Westover,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nbsmknrabdgvg4e6qwbk",4361100
 2026,10,NYG,00-0039337,Malik Nabers,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/w3edoyyuomqlovvp9ixc",4595348
 2026,10,LV,00-0039338,Brock Bowers,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/waorceny0ggpaeckaol8",4432665
-2026,10,CAR,00-0039342,Xavier Legette,WR,WR,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yoyxkitrdqbkhyqncy5p",4430034
+2026,10,CAR,00-0039342,Xavier Legette,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yoyxkitrdqbkhyqncy5p",4430034
 2026,10,CAR,00-0039344,Jonathon Brooks,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/txl39rwjrs2fkm1shtxh",4678008
 2026,10,WAS,00-0039355,Luke McCaffrey,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xtxiwlkniuldrqg65n3q",4426948
 2026,10,CAR,00-0039356,Ja'Tavion Sanders,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/le2akm1cbou170ioctxl",4431588
@@ -450,7 +450,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,NYJ,00-0039451,Isaiah Williams,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ropm1zstod6hzfazgmcl",4569371
 2026,10,JAX,00-0039458,Brenden Bates,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/g3ho1adsxdwpl0epcnzq",4362603
 2026,10,BUF,00-0039471,Frank Gore Jr.,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qzf7faowlqoh5nengpq5",4429805
-2026,10,LAC,00-0039489,Hayden Rucci,TE,TE,TRD,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gpmvjj2zltvbtr2tmi8q",4428396
+2026,10,LAC,00-0039489,Hayden Rucci,TE,TE,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gpmvjj2zltvbtr2tmi8q",4428396
 2026,10,CAR,00-0039491,Jalen Coker,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yynz8rxen6tsvhojggiv",4695883
 2026,10,NO,00-0039518,Treyton Welch,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/x6hv8bllxtwifzwwoj8z",4430684
 2026,10,DAL,00-0039530,Brevyn Spann-Ford,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/sko2pmuqociwa92ep1ad",4360967
@@ -467,14 +467,14 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,WAS,00-0039677,Sam Hartman,QB,QB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mvpbrqp3o04zla5lzf7u",4361994
 2026,10,WAS,00-0039686,Colson Yankoff,TE,TE,INA,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cgsxdjqy6l2zuqaftbd6",4361088
 2026,9,DEN,00-0039703,Cody Schrader,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/snrwsjepuvkatdjjokp8",4391845
-2026,10,MIN,00-0039710,Jeshaun Jones,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/lulcwap1sfbihl5jvimk",4360637
+2026,10,MIN,00-0039710,Jeshaun Jones,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/lulcwap1sfbihl5jvimk",4360637
 2026,9,DEN,00-0039732,Bo Nix,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zvo9xatffmqn9lnukpgk",4426338
 2026,10,ARI,00-0039737,Tip Reiman,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yfi3fqch6kzqrcvuptal",4696700
 2026,10,LA,00-0039738,Blake Corum,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/axzqbqjkrbwfzodwwakq",4429096
 2026,10,PIT,00-0039739,Roman Wilson,WR,WR,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xuhjoscmhmmsutbvfmrs",4431492
 2026,9,PHI,00-0039746,Will Shipley,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pvpaepncsdfgzdubkuhg",4431545
 2026,10,LA,00-0039751,Jordan Whittington,WR,WR,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/enqcg1lgjkuk0hqz3qjc",4569382
-2026,10,MIN,00-0039754,Devin Culp,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/e32gorf12yuyy6iyijt9",4361112
+2026,10,MIN,00-0039754,Devin Culp,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/e32gorf12yuyy6iyijt9",4361112
 2026,10,NE,00-0039757,Terrell Jennings,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/apyriqt5707yo5qgbni5",4427600
 2026,10,BAL,00-0039792,Devontez Walker,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/x3x3k5ispk44ms0f7vrv",4696882
 2026,10,SEA,00-0039793,AJ Barner,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/i0esiguve9if4ts5mm1q",4576297
@@ -575,14 +575,14 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,LAC,00-0040311,Theo Wease Jr.,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ywtuq1sielt0scr220fi",4426535
 2026,10,NE,00-0040323,Chandler Brayboy,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/jon5gjtl7jm7r1zjklgu",
 2026,10,LAC,00-0040331,Patrick Herbert,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wmoqrkghvaozhyzkqksa",
-2026,10,GB,00-0040352,Coleman Owen,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cjnhiftygnypqumwfphq",4578436
+2026,10,GB,00-0040352,Coleman Owen,WR,WR,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cjnhiftygnypqumwfphq",4578436
 2026,10,BUF,00-0040361,Stephen Gosnell,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/unatikabx0fwgicu33si",
 2026,10,BUF,00-0040363,Keleki Latu,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/yppefrczshhvnyrgghsi",4688552
 2026,10,CIN,00-0040375,Jordan Moore,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mgod5tukhxuqm5kyy7zh",4594444
 2026,10,DET,00-0040390,Jackson Meeks,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ot3dsyhfhos9epmkqdip",4602788
 2026,10,CIN,00-0040392,Caden Prieskorn,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/oajiq54ejf3zkntg427s",
 2026,10,CAR,00-0040394,Anthony Tyus III,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ycph0v6jfxwkcycuztk0",4709392
-2026,10,MIA,00-0040398,Brady Cook,QB,QB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cnek1ugisgarhb16fusi",4429435
+2026,10,MIA,00-0040398,Brady Cook,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cnek1ugisgarhb16fusi",4429435
 2026,10,NYJ,00-0040405,Jamaal Pritchett,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nstxvbgveuwgiumufsi3",4892576
 2026,9,TB,00-0040419,Garrett Greene,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ryxqb4ioarar7jduttfu",
 2026,9,TB,00-0040429,Josh Williams,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/c2zxbiz8153usfggosvv",4568024
@@ -592,14 +592,14 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,LAC,00-0040461,Luke Grimm,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/msl5b0uckldeci4bztpl",4433830
 2026,10,LAC,00-0040464,DJ Uiagalelei,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/uxkbvrw5eu41udzsesnu",4429020
 2026,10,CLE,00-0040466,Raheim Sanders,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ctackzywfc6vahyqwo4f",4601080
-2026,10,LV,00-0040488,Carter Runyon,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/q8knlo3npxhjxiyyx4h6",5155825
+2026,10,LV,00-0040488,Carter Runyon,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/q8knlo3npxhjxiyyx4h6",5155825
 2026,10,MIN,00-0040494,Max Brosmer,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zipyso37qpwgbsjkvnnr",4573398
 2026,10,NYG,00-0040498,Dontae Fleming,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/z31bqmrgzn9t5wsqtqoy",
 2026,10,MIN,00-0040506,Myles Price,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zsjrzuziooij49ubg0lx",4430656
 2026,10,MIN,00-0040509,Ben Yurosek,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/v03auprkmgp733ks9un4",4433959
-2026,10,TEN,00-0040522,Xavier Restrepo,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/f8aoygwmzxztmfrmo8tc",4431353
+2026,10,TEN,00-0040522,Xavier Restrepo,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/f8aoygwmzxztmfrmo8tc",4431353
 2026,10,CIN,00-0040534,Ke'Shawn Williams,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/r7enwgccqv93feuoeurz",4570738
-2026,10,KC,00-0040547,Nate Carter,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/c7wg2qvjvd8diaaujwpt",4605841
+2026,10,KC,00-0040547,Nate Carter,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/c7wg2qvjvd8diaaujwpt",4605841
 2026,10,GB,00-0040553,Quincy Skinner Jr.,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ni8qfwwvpyklvxqseorj",4572380
 2026,10,NE,00-0040556,Corey Kiner,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zz4imen7bzozyeicm1mn",4431431
 2026,10,GB,00-0040558,Isaiah Neyor,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kpmodyntguke9pmvxeyw",4428116
@@ -619,7 +619,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,LA,00-0040601,Jordan Waters,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wszz5ts7eqzjgiuwep45",
 2026,10,PIT,00-0040618,Max Hurleman,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/axybwbw7inp1vu7xxf0t",
 2026,10,SEA,00-0040621,Montorie Foster Jr,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qkyl0pfhi4pmzdtodu9k",4600597
-2026,10,GB,00-0040628,Drake Dabney,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/olsiufbauh2x6pshrygm",4429466
+2026,10,GB,00-0040628,Drake Dabney,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/olsiufbauh2x6pshrygm",4429466
 2026,10,BAL,00-0040637,Lucas Scott,RB,FB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/fczsn4gxvqg2a99hlkdy",
 2026,10,CAR,00-0040644,Trevor Etienne,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pcuzq84x7ia5yvmikltb",4685350
 2026,10,KC,00-0040646,Jalen Royals,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/sqrid1hnmwqymcp2vxfx",5082630
@@ -644,7 +644,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,LAC,00-0040727,Tre Harris,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/v5ofh8jggzo8rygtpwl7",4686612
 2026,10,LV,00-0040729,Jack Bech,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/feplgtl0x1svqen9szwv",4603186
 2026,9,DEN,00-0040730,RJ Harvey,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/szxmro5enrxlscvv67xg",4568490
-2026,10,NE,00-0040734,TreVeyon Henderson,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ac50ezemcsqyjkrfrzgt",4432710
+2026,10,NE,00-0040734,TreVeyon Henderson,RB,RB,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ac50ezemcsqyjkrfrzgt",4432710
 2026,9,CHI,00-0040735,Luther Burden III,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/iyuwdz7pbowdkwzq2tg5",4685278
 2026,10,NYJ,00-0040736,Mason Taylor,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/lejmnygqgkeu7ujr7x36",4808766
 2026,10,LA,00-0040737,Terrance Ferguson,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/w5o0s5yf6j5dsmiwdtfg",4570037
@@ -679,7 +679,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,KC,00-0040954,Omari Evans,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/q5szmdmukkkusqpfj9m5",
 2026,10,KC,00-0040955,John Michael Gyllenborg,TE,TE,RES,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ohnb7wcxvi1plpugph2p",4708490
 2026,10,KC,00-0040959,Jaydn Ott,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ywfb4a8vkz1eubb43o8i",4685489
-2026,10,KC,00-0040967,Jacob De Jesus,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/e2vu3nw6evgo0tfku7nt",
+2026,10,KC,00-0040967,Jacob De Jesus,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/e2vu3nw6evgo0tfku7nt",
 2026,10,MIN,00-0040970,Michael Briscoe,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cqvpfayb0yju1fhcyjyg",
 2026,10,BAL,00-0040981,Joe Fagnano,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/p8uqfsnpx153mn3gjtd3",4429582
 2026,10,BAL,00-0040986,Ty Pezza,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ywdsjydirrztbfc0bp9c",
@@ -717,10 +717,10 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,10,JAX,00-0041106,C.J. Williams,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/svmb2citno2f6zqc9qbm",5085024
 2026,10,CIN,00-0041116,Jack Endries,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wxtev9zj048yzxk8ebfu",5085189
 2026,10,WAS,00-0041117,Athan Kaliakmanis,QB,QB,INA,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ahtbv63jyg8ampmyrxn9",4432722
-2026,10,NE,00-0041123,Behren Morton,QB,QB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/l1v5gn8liujl05ji6trm",4431465
+2026,10,NE,00-0041123,Behren Morton,QB,QB,INA,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/l1v5gn8liujl05ji6trm",4431465
 2026,10,IND,00-0041125,Seth McGowan,RB,RB,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/f4h7kmayu7kqncha3f6v",4686468
 2026,10,ATL,00-0041129,Jam Miller,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zfxfycwnsyjtoj1n8j5e",4685477
-2026,10,CLE,00-0041131,Carsen Ryan,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xqchpo5g0sxoslbqfzsf",4685540
+2026,10,CLE,00-0041131,Carsen Ryan,TE,TE,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xqchpo5g0sxoslbqfzsf",4685540
 2026,10,IND,00-0041132,Deion Burks,WR,WR,ACT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/j4rcng9wtk5wmew7gpmv",4683151
 2026,9,DEN,00-0041133,Dallen Bentley,TE,TE,INA,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/vaiszquqlgric9cfbwjf",5159802
 2026,10,MIN,00-0041139,Damon Bankston,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pfbet5qlrhpv0qaxqbax",4876378
@@ -754,7 +754,7 @@ season,week,team,player_id,name,position,depth_chart_position,status,headshot,es
 2026,9,DEN,00-0041293,Dane Key,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/got8amcmxwu5li8zwcnv",4685424
 2026,10,NYJ,00-0041294,Joseph Manjack,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gcaf5glbypplos7a9hci",
 2026,10,HOU,00-0041307,Joshua Pitsenberger,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xljrjnk1wzpc4erpjdqx",
-2026,10,HOU,00-0041309,Daniel Sobkowicz,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hdilmfsyvrayslz7xxit",
+2026,10,HOU,00-0041309,Daniel Sobkowicz,WR,WR,CUT,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hdilmfsyvrayslz7xxit",
 2026,10,HOU,00-0041312,Noah Whittington,RB,RB,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/a9kiccc4ugnuzftqzn8t",4432631
 2026,10,NE,00-0041314,Tanner Arkin,TE,TE,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pdhondtfhvwdn5sojzw6",4683308
 2026,10,WAS,00-0041317,Nick DeGennaro,WR,WR,DEV,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/vc9uhlgxs79dhcza4qp2",
