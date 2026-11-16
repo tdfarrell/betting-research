@@ -348,11 +348,11 @@
    "ast_pm_e20"
   ]
  },
- "trained_rows": 53880,
+ "trained_rows": 55008,
  "starter": "projected",
  "cal": {
   "const": 0.0,
-  "slope": 0.1445504500597084,
+  "slope": 0.14455045005970846,
   "offset": {}
  },
  "walk_forward": {
