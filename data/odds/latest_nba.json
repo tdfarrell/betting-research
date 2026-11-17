@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-17T17:56Z",
+ "pulled_utc": "2026-11-17T19:06Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -145,19 +145,19 @@
    "venue": "Scotiabank Arena",
    "weather": null,
    "temp_f": null,
-   "home_spread": "+3.5",
-   "home_spread_odds": "-104",
+   "home_spread": "+4.5",
+   "home_spread_odds": "-114",
    "home_spread_open": "+3.5",
-   "home_ml": "+142",
+   "home_ml": "+150",
    "home_ml_open": "+128",
-   "away_spread": "-3.5",
-   "away_spread_odds": "-117",
+   "away_spread": "-4.5",
+   "away_spread_odds": "-106",
    "away_spread_open": "-3.5",
-   "away_ml": "-169",
+   "away_ml": "-179",
    "away_ml_open": "-152",
    "total": 214.5,
-   "over_odds": "-114",
-   "under_odds": "-106",
+   "over_odds": "-108",
+   "under_odds": "-112",
    "total_open": "o216.5"
   },
   {
