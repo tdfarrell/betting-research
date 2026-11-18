@@ -12,9 +12,9 @@ player_id,name,team,status,detail,date
 4431687,Patrick Williams,CHI,Day-To-Day,Williams (finger) is listed as probable for Wednesday's game against Brooklyn.,2026-11-17
 5105555,Tobe Awaka,CHI,Out,Awaka (back) has been ruled out for Wednesday's game against the Nets.,2026-11-17
 4432158,Evan Mobley,CLE,Out,"Mobley will receive treatment and participate in rehab after the team confirmed a diagnosis of a right great toe sprain, and he'll be re-evaluated in the next 7",2026-11-16
-4683747,Jaylon Tyson,CLE,Day-To-Day,Tyson (ankle) is listed as doubtful for Wednesday's game against the Grizzlies.,2026-11-17
+4683747,Jaylon Tyson,CLE,Out,Tyson (ankle) has been ruled out for Wednesday's game against Memphis.,2026-11-18
 5106268,Nae'Qwan Tomlin,CLE,Out,Tomlin (back) will remain on the inactive list for Wednesday's game against the Grizzlies.,2026-11-17
-4576087,Peyton Watson,CLE,Day-To-Day,Watson (back) is listed as questionable for Wednesday's game against Memphis.,2026-11-17
+4576087,Peyton Watson,CLE,Day-To-Day,Watson (back) is doubtful for Wednesday's game versus Memphis.,2026-11-18
 4066757,Sam Merrill,CLE,Out,Merrill (elbow) is questionable to face the Grizzlies on Wednesday.,2026-11-17
 4683688,Dereck Lively II,DAL,Out,Lively (foot) is out for Wednesday's game against the Warriors.,2026-11-17
 4432582,Max Christie,DAL,Day-To-Day,Christie (ankle) is questionable for Wednesday's game against the Warriors.,2026-11-17
@@ -30,7 +30,7 @@ player_id,name,team,status,detail,date
 4683771,Ronald Holland II,DET,Day-To-Day,Holland is out for Tuesday's game against San Antonio due to a left knee contusion.,2026-11-18
 2990962,Taurean Prince,DET,Day-To-Day,Prince (knee) has been ruled out for Tuesday's game against the Spurs.,2026-11-18
 3213,Al Horford,GS,Day-To-Day,Horford (back) is questionable for Wednesday's game against Dallas.,2026-11-17
-4397040,Brandon Williams,GS,Out,"Williams (hamstring) will miss at least one week, per Anthony Slater of ESPN.com.",2026-11-10
+4397040,Brandon Williams,GS,Out,Williams (hamstring) has progressed to on-court activities and will be re-evaluated Saturday.,2026-11-18
 6589,Draymond Green,GS,Day-To-Day,Green is questionable for Wednesday's game in Dallas due to inflammation in his right elbow.,2026-11-18
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis announced on his social media that he's stepping away from basketball.,2026-11-06
@@ -54,10 +54,9 @@ player_id,name,team,status,detail,date
 5105462,Richie Saunders,MEM,Out,"Saunders signed a two-way contract with the Grizzlies on Saturday, Shams Charania of ESPN reports.",2026-11-07
 4431785,Scotty Pippen Jr.,MEM,Out,Pippen (back) is progressing in his recovery but is still considered week-to-week.,2026-11-16
 4065733,Ty Jerome,MEM,Out,Jerome (hip) has been ruled out for Wednesday's game in Cleveland.,2026-11-17
-4066261,Bam Adebayo,MIA,Day-To-Day,"Adebayo (hip) is probable for Wednesday's game against the Bucks, per Ira Winderman of the South Florida Sun Sentinel.",2026-11-17
-4431772,Myron Gardner,MIA,Day-To-Day,"Gardner (hamstring) is questionable for Wednesday's game against the Bucks, per Ira Winderman of the South Florida Sun Sentinel.",2026-11-17
-4997528,Nikola Jovic,MIA,Day-To-Day,"Jovic (illness) is listed as probable for Wednesday's game against Milwaukee, Ira Winderman of the South Florida Sun Sentinel reports.",2026-11-17
+4431772,Myron Gardner,MIA,Out,Gardner (hamstring) is out for Wednesday's game against the Bucks.,2026-11-18
 4997526,Ousmane Dieng,MIL,Out,"Dieng will undergo a procedure to repair a fractured left finger Monday, Justin Garcia of the Milwaukee Bucks Radio Network reports.",2026-11-15
+4591725,Ryan Rollins,MIL,Out,Rollins (illness) has been ruled out for Wednesday's game at Miami.,2026-11-18
 4594268,Anthony Edwards,MIN,Out,"Edwards underwent a successful arthroscopic procedure on his right knee Thursday, the Timberwolves announced.",2026-10-29
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
 4432247,Jaylen Clark,MIN,Out,Clark (hamstring) has been ruled out for the next two weeks.,2026-11-15
@@ -73,12 +72,13 @@ player_id,name,team,status,detail,date
 4593803,Jalen Williams,OKC,Out,"Williams (leg) underwent successful surgery Wednesday to ""address a fractured left fibula and reconstruction of ankle ligaments following a fracture and disloca",2026-10-28
 4432823,Jaylin Williams,OKC,Out,"Williams (back) is listed as questionable for Wednesday's game against the Hawks, Clemente Almanza of USA Today reports.",2026-11-17
 5061603,Thomas Sorber,OKC,Out,"Sorber underwent an arthroscopic knee procedure Tuesday to address inflammation at the patellofemoral joint in his right knee, and he's expected to return to on",2026-11-18
-5107251,Izaiyah Nelson,ORL,Out,Nelson (ankle) has been ruled out for Wednesday's game against the 76ers.,2026-11-17
+5107251,Izaiyah Nelson,ORL,Out,"Head coach Sean Sweeney said Wednesday that Nelson (ankle) has been doing ""some on-court stuff,"" though Sweeney added that the work has been ""minimal,"" Jason Be",2026-11-18
 4065654,Jonathan Isaac,ORL,Out,Isaac (knee) has been ruled out for Monday's game against the Celtics.,2026-11-15
 5214637,Noah Penda,ORL,Out,"Penda (hamstring) is making progress but remains without a timetable to return to game action, Jason Beede of the Orlando Sentinel reports.",2026-11-14
 4432573,Paolo Banchero,ORL,Out,"Banchero is expected to be sidelined for the next four-to-six weeks due to a right high-ankle sprain, Shams Charania of ESPN reports.",2026-10-24
 5105637,Adem Bona,PHI,Out,"Bona (back) will be re-evaluated in approximately one week after seeing a specialist, Ky Carlin of USA Today reports.",2026-11-12
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
+3912848,Dean Wade,PHI,Day-To-Day,Wade (hamstring) has been downgraded to questionable for Wednesday's game against the Magic.,2026-11-18
 4870562,Dominick Barlow,PHI,Out,Barlow (back) is out for Wednesday's game against Orlando.,2026-11-17
 3917376,Jaylen Brown,PHI,Out,Brown is out for Wednesday's game against the Magic with a left hamstring strain.,2026-11-17
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
@@ -97,6 +97,8 @@ player_id,name,team,status,detail,date
 6450,Kawhi Leonard,TOR,Out,"Leonard (knee) has progressed in his strength and conditioning program but will miss at least one more week, Michael Scotto of HoopsHype.com reports.",2026-11-17
 4411057,Kevin McCullar Jr.,TOR,Day-To-Day,"McCullar signed a two-way contract with the Raptors on Thursday, Michael Scotto of HoopsHype.com reports.",2026-11-13
 4432586,Nate Bittle,TOR,Out,"Bittle (foot) has been ruled out for Sunday's game against the Knicks, Zulfi Sheikh of Sportsnet.ca reports.",2026-11-14
+4395625,RJ Barrett,TOR,Day-To-Day,"Barrett is questionable for Wednesday's game against the Wizards due to hamstring tightness, Esfandiar Baraheni of The Athletic reports.",2026-11-18
+4433134,Scottie Barnes,TOR,Out,"Barnes (injury management) has been ruled out for Wednesday's game against Washington, Esfandiar Baraheni of The Athletic reports.",2026-11-18
 4277961,Jaren Jackson Jr.,UTAH,Out,"Jackson has been diagnosed with a torn MCL in his right knee and will be sidelined for 6-to-8 weeks, per Shams Charania of ESPN.",2026-10-27
 4397077,Jaxson Hayes,UTAH,Day-To-Day,Hayes (knee) has been ruled out for Tuesday's game against the Clippers.,2026-11-18
 3102530,Jusuf Nurkic,UTAH,Out,Nurkic (toe) has begun participating in on-court activities as he continues recovering from a right foot injury sustained during an Oct. 4 preseason game agains,2026-11-06
