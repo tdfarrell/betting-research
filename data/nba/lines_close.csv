@@ -2671,3 +2671,5 @@ season,date,game_id,home,away,home_spread,total,home_score,away_score,provider
 2027,2026-11-17,401910002,TOR,NY,2.5,215.5,102.0,111.0,Draft Kings
 2027,2026-11-17,401910003,MIN,POR,-4.5,225.5,106.0,105.0,Draft Kings
 2027,2026-11-17,401910004,SA,DET,-9.5,221.5,93.0,105.0,Draft Kings
+2027,2026-11-17,401910006,LAC,UTAH,-5.5,227.5,107.0,132.0,DraftKings
+2027,2026-11-18,401910005,LAL,CHA,-6.5,221.5,118.0,114.0,DraftKings
