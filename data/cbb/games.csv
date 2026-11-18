@@ -13550,5 +13550,7 @@ season,date,game_id,home_id,away_id,home,away,home_name,away_name,home_score,awa
 2027,2026-11-17,401929358,2572,250,USM,UTA,Southern Miss,UT Arlington,72,83,0,0,0,,,
 2027,2026-11-17,401930568,6,2590,USA,SPRH,South Alabama,Spring Hill,122,69,0,0,0,,,
 2027,2026-11-17,401934595,264,2829,WASH,SFRU,Washington,Simon Fraser,96,59,0,0,0,,,
+2027,2026-11-18,401909753,239,2296,BAY,JKST,Baylor,Jackson St,104,55,0,0,0,,,
 2027,2026-11-18,401920512,2,277,AUB,WVU,Auburn,West Virginia,70,76,1,0,0,,,
+2027,2026-11-18,401920513,87,164,ND,RUTG,Notre Dame,Rutgers,110,100,1,0,1,,,
 2027,2026-11-18,401925879,2250,147,GONZ,MTST,Gonzaga,Montana St,74,62,0,0,0,,,
