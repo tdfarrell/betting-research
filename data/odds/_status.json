@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-19T04:17Z",
+ "pulled_utc": "2026-11-19T13:36Z",
  "status": {
   "cfb": {
    "games": 70,
@@ -13,18 +13,18 @@
   },
   "nba": {
    "games": 60,
-   "with_dk_line": 1,
+   "with_dk_line": 4,
    "mode": "per-day"
   },
   "cbb": {
    "games": 488,
-   "with_dk_line": 22,
+   "with_dk_line": 29,
    "mode": "per-day"
   }
  },
  "errors": [
   "cfb range: HTTPError: HTTP Error 400: Bad Request",
-  "nfl range: URLError: <urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1011)>",
+  "nfl range: HTTPError: HTTP Error 400: Bad Request",
   "nba range: HTTPError: HTTP Error 400: Bad Request",
   "cbb range: HTTPError: HTTP Error 400: Bad Request"
  ]
