@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-20T02:42Z",
+ "pulled_utc": "2026-11-20T03:02Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -11,12 +11,12 @@
    "away_name": "Rice Owls",
    "home_name": "Temple Owls",
    "away_score": "14",
-   "home_score": "17",
+   "home_score": "24",
    "neutral": false,
    "conference_game": true,
    "venue": "Lincoln Financial Field",
-   "weather": "38",
-   "temp_f": 50
+   "weather": "35",
+   "temp_f": 49
   },
   {
    "game_id": "401856869",
@@ -1303,9 +1303,9 @@
    "away_spread_open": "+25.5",
    "away_ml": "+1400",
    "away_ml_open": "+1800",
-   "total": 43.5,
-   "over_odds": "-115",
-   "under_odds": "-105",
+   "total": 44.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
    "total_open": "o48.5"
   },
   {
