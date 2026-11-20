@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-20T18:32Z",
+ "pulled_utc": "2026-11-20T18:53Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -246,7 +246,7 @@
    "home_spread": "-3",
    "home_spread_odds": "-115",
    "home_spread_open": "-9.5",
-   "home_ml": "-171",
+   "home_ml": "-172",
    "home_ml_open": "-440",
    "away_spread": "+3",
    "away_spread_odds": "-105",
@@ -392,7 +392,7 @@
    "conference_game": false,
    "venue": "SoFi Stadium",
    "weather": "Mostly cloudy",
-   "temp_f": 68,
+   "temp_f": 67,
    "home_spread": "-3.5",
    "home_spread_odds": "-107",
    "home_spread_open": "-3.5",
@@ -421,8 +421,8 @@
    "neutral": false,
    "conference_game": false,
    "venue": "Ford Field",
-   "weather": "Flurries",
-   "temp_f": 40,
+   "weather": "Intermittent clouds",
+   "temp_f": 42,
    "home_spread": "+2.5",
    "home_spread_odds": "-105",
    "home_spread_open": "-2.5",
