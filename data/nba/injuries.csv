@@ -11,6 +11,7 @@ player_id,name,team,status,detail,date
 3135045,Grayson Allen,CHA,Out,Allen (concussion) has been ruled out for Friday's game against Atlanta.,2026-11-19
 5061575,Kon Knueppel,CHA,Out,Knueppel (hamstring) was diagnosed with a left hamstring strain Sunday and will be re-evaluated in four weeks.,2026-11-08
 5095151,Caleb Wilson,CHI,Out,"Wilson (hand) is expected to miss four to six weeks, Shams Charania of ESPN reports.",2026-11-12
+4397189,Jalen Smith,CHI,Day-To-Day,Smith (illness) has been downgraded to questionable for Friday's game against the Wizards.,2026-11-20
 5242496,Noa Essengue,CHI,Day-To-Day,Essengue is listed as probable for Friday's game against Washington due to bilateral wrist soreness.,2026-11-19
 5105555,Tobe Awaka,CHI,Out,Awaka (back) has been ruled out for Wednesday's game against the Nets.,2026-11-17
 4432158,Evan Mobley,CLE,Out,"Mobley will receive treatment and participate in rehab after the team confirmed a diagnosis of a right great toe sprain, and he'll be re-evaluated in the next 7",2026-11-16
@@ -26,7 +27,7 @@ player_id,name,team,status,detail,date
 3157465,Duncan Robinson,DET,Out,"Robinson will be re-evaluated in one week due to a left quadriceps strain, Coty M. Davis of The Detroit News reports.",2026-11-17
 5258459,Ebuka Okorie,DET,Out,Okorie (oblique) has been ruled out for Friday's game against Toronto.,2026-11-19
 4433621,Jalen Duren,DET,Out,"Duren (hamstring) has begun on-court activity and will be re-evaluated in two weeks, Hunter Patterson of The Athletic reports.",2026-11-08
-4683771,Ronald Holland II,DET,Out,"Holland (knee) won't play in Friday's game against the Raptors, Blake Murphy of Sportsnet.ca reports.",2026-11-19
+4683771,Ronald Holland II,DET,Day-To-Day,"Holland (knee) has been upgraded to doubtful for Friday's game against Toronto, Hunter Patterson of The Athletic reports.",2026-11-20
 2990962,Taurean Prince,DET,Out,Prince underwent right knee surgery and is listed as out for Friday's game against the Raptors.,2026-11-19
 5037878,Ugonna Onyenso,DET,Day-To-Day,Onyenso agreed to a two-way contract with the Pistons on Thursday.,2026-11-19
 4397040,Brandon Williams,GS,Out,Williams (hamstring) has progressed to on-court activities and will be re-evaluated Saturday.,2026-11-18
@@ -70,17 +71,17 @@ player_id,name,team,status,detail,date
 4683692,Cason Wallace,OKC,Out,"Wallace underwent surgery Friday to repair a torn labrum in his left shoulder and will be re-evaluated before the end of the regular season, Clemente Almanza of",2026-10-31
 4433255,Chet Holmgren,OKC,Out,"Holmgren underwent a biological treatment Friday to address a small patellar tendon tear and will miss at least 8-10 weeks, Nick Crain of Slam reports.",2026-10-31
 4593803,Jalen Williams,OKC,Out,"Williams (leg) underwent successful surgery Wednesday to ""address a fractured left fibula and reconstruction of ankle ligaments following a fracture and disloca",2026-10-28
+5159925,Nikola Topic,OKC,Out,Topic (hip) is out for Friday's game against New Orleans.,2026-11-20
 5061603,Thomas Sorber,OKC,Out,"Sorber underwent an arthroscopic knee procedure Tuesday to address inflammation at the patellofemoral joint in his right knee, and he's expected to return to on",2026-11-18
 5107251,Izaiyah Nelson,ORL,Out,"Head coach Sean Sweeney said Wednesday that Nelson (ankle) has been doing ""some on-court stuff,"" though Sweeney added that the work has been ""minimal,"" Jason Be",2026-11-18
 4065654,Jonathan Isaac,ORL,Out,Isaac (knee) has been ruled out for Monday's game against the Celtics.,2026-11-15
 5214637,Noah Penda,ORL,Out,"Penda (hamstring) is making progress but remains without a timetable to return to game action, Jason Beede of the Orlando Sentinel reports.",2026-11-14
 4432573,Paolo Banchero,ORL,Out,"Banchero is expected to be sidelined for the next four-to-six weeks due to a right high-ankle sprain, Shams Charania of ESPN reports.",2026-10-24
-5105637,Adem Bona,PHI,Out,"Bona (back) will be re-evaluated in approximately one week after seeing a specialist, Ky Carlin of USA Today reports.",2026-11-12
+5105637,Adem Bona,PHI,Out,"Bona (back) participated in Friday's practice, though he still needs to go through a full practice with contact before being cleared to return to game action, A",2026-11-20
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
-3912848,Dean Wade,PHI,Day-To-Day,Wade (hamstring) is out for Wednesday's game in Orlando.,2026-11-19
-4870562,Dominick Barlow,PHI,Out,Barlow (back) is out for Wednesday's game against Orlando.,2026-11-17
-3917376,Jaylen Brown,PHI,Out,"Brown (hamstring) will be re-evaluated at some point this weekend, per Kris Rihm of ESPN.com.",2026-11-18
-4431678,Tyrese Maxey,PHI,Day-To-Day,"Maxey (foot) is out for Wednesday's game in Orlando, Ky Carlin of USA Today reports.",2026-11-19
+4870562,Dominick Barlow,PHI,Out,"Barlow (back) is trending toward making his season debut in Saturday's game against the Bucks, Tony Jones of The Athletic reports.",2026-11-20
+3917376,Jaylen Brown,PHI,Out,"Brown (hamstring) went through individual work during Friday's practice, Tony Jones of The Athletic reports.",2026-11-20
+4431678,Tyrese Maxey,PHI,Day-To-Day,"Maxey (foot) was a full participant in Friday's practice, Tony Jones of The Athletic reports.",2026-11-20
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
 4706557,Chris Youngblood,POR,Out,Youngblood (heel) has been ruled out for Thursday's game against the Bucks.,2026-11-19
 4683021,Deni Avdija,POR,Day-To-Day,Avdija (foot) is listed as out for Thursday's game against the Bucks.,2026-11-20
