@@ -30,7 +30,7 @@ player_id,name,team,status,detail,date
 2990962,Taurean Prince,DET,Out,Prince underwent right knee surgery and is listed as out for Friday's game against the Raptors.,2026-11-19
 5037878,Ugonna Onyenso,DET,Day-To-Day,Onyenso agreed to a two-way contract with the Pistons on Thursday.,2026-11-19
 4397040,Brandon Williams,GS,Out,Williams (hamstring) has progressed to on-court activities and will be re-evaluated Saturday.,2026-11-18
-6589,Draymond Green,GS,Out,Green (elbow) is out for Thursday's game against the Grizzlies.,2026-11-19
+6589,Draymond Green,GS,Day-To-Day,Green (elbow) is out for Thursday's game against the Grizzlies.,2026-11-20
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis announced on his social media that he's stepping away from basketball.,2026-11-06
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
@@ -53,10 +53,10 @@ player_id,name,team,status,detail,date
 5105462,Richie Saunders,MEM,Out,"Saunders signed a two-way contract with the Grizzlies on Saturday, Shams Charania of ESPN reports.",2026-11-07
 4431785,Scotty Pippen Jr.,MEM,Out,Pippen (back) is progressing in his recovery but is still considered week-to-week.,2026-11-16
 4065733,Ty Jerome,MEM,Out,Jerome (hip) has been ruled out for Thursday's game against the Warriors.,2026-11-19
-4600663,Zach Edey,MEM,Out,Edey (hip) has been ruled out for Thursday's game against the Warriors.,2026-11-19
+4600663,Zach Edey,MEM,Day-To-Day,Edey (hip) has been ruled out for Thursday's game against the Warriors.,2026-11-20
 4431772,Myron Gardner,MIA,Day-To-Day,Gardner (hamstring) is out for Wednesday's game against the Bucks.,2026-11-19
-3134907,Kyle Kuzma,MIL,Out,Kuzma (shoulder) has been ruled out for Thursday's game against Portland due to a right shoulder contusion.,2026-11-19
-3133628,Myles Turner,MIL,Out,"Turner (shoulder) has been ruled out for Thursday's game against Portland due to a left shoulder contusion,",2026-11-19
+3134907,Kyle Kuzma,MIL,Day-To-Day,Kuzma (shoulder) has been ruled out for Thursday's game against Portland due to a right shoulder contusion.,2026-11-20
+3133628,Myles Turner,MIL,Day-To-Day,"Turner (shoulder) has been ruled out for Thursday's game against Portland due to a left shoulder contusion,",2026-11-20
 4997526,Ousmane Dieng,MIL,Out,"Dieng will undergo a procedure to repair a fractured left finger Monday, Justin Garcia of the Milwaukee Bucks Radio Network reports.",2026-11-15
 4594268,Anthony Edwards,MIN,Out,"Edwards underwent a successful arthroscopic procedure on his right knee Thursday, the Timberwolves announced.",2026-10-29
 3934673,Donte DiVincenzo,MIN,Out,"DiVincenzo (Achilles) remains confident that he'll return during the 2026-27 season, Jon Krawczynski of The Athletic reports.",2026-10-05
@@ -83,9 +83,9 @@ player_id,name,team,status,detail,date
 4431678,Tyrese Maxey,PHI,Day-To-Day,"Maxey (foot) is out for Wednesday's game in Orlando, Ky Carlin of USA Today reports.",2026-11-19
 4701232,Mark Williams,PHX,Out,"Williams underwent surgery Thursday to repair a torn labrum in his left shoulder and will miss an extended period of time, Shams Charania of ESPN reports.",2026-09-11
 4706557,Chris Youngblood,POR,Out,Youngblood (heel) has been ruled out for Thursday's game against the Bucks.,2026-11-19
-4683021,Deni Avdija,POR,Out,Avdija (foot) is listed as out for Thursday's game against the Bucks.,2026-11-20
+4683021,Deni Avdija,POR,Day-To-Day,Avdija (foot) is listed as out for Thursday's game against the Bucks.,2026-11-20
 4279888,Ja Morant,POR,Out,"Head coach Micah Nori said Morant met with a doctor in Los Angeles, who gave him a positive outlook on his recovery from the hamstring injury. While Nori declin",2026-11-08
-4066211,Robert Williams III,POR,Out,Williams (rest) is listed as out for Thursday's game versus the Bucks.,2026-11-18
+4066211,Robert Williams III,POR,Day-To-Day,Williams (rest) is listed as out for Thursday's game versus the Bucks.,2026-11-20
 4914336,Shaedon Sharpe,POR,Out,"Sharpe suffered a torn meniscus in his knee and is expected to miss six months, per Shams Charania of ESPN.",2026-08-24
 4578893,Vit Krejci,POR,Out,"Krejci underwent surgery on his fractured left ankle Wednesday and will be re-evaluated in eight weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-11
 5037871,Dylan Harper,SA,Out,"Harper (hip) is expected to miss two to three weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-19

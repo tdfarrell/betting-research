@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-20T03:03+00:00",
- "odds_pulled_utc": "2026-11-20T03:02Z",
+ "generated_utc": "2026-11-20T10:39+00:00",
+ "odds_pulled_utc": "2026-11-20T10:38Z",
  "stats_pulled_utc": "2026-11-20T03:03+00:00",
  "slates": [
   {
@@ -100,7 +100,7 @@
    "beat_close": 14,
    "lost_close": 10,
    "w": 18,
-   "l": 11,
+   "l": 12,
    "p": 0
   },
   "WATCH_side": {
@@ -109,7 +109,7 @@
    "beat_close": 7,
    "lost_close": 1,
    "w": 7,
-   "l": 6,
+   "l": 7,
    "p": 0
   },
   "WATCH_total": {
