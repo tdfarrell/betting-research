@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-22T17:46+00:00",
- "odds_pulled_utc": "2026-11-22T17:46Z",
+ "generated_utc": "2026-11-22T21:02+00:00",
+ "odds_pulled_utc": "2026-11-22T21:02Z",
  "cfbd_pulled_utc": "2026-11-22T17:46+00:00",
  "slates": [
   {
@@ -197,7 +197,7 @@
   },
   {
    "date": "2026-11-28",
-   "games": 48,
+   "games": 52,
    "plays": 0,
    "leans": 0
   }
