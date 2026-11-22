@@ -15,10 +15,10 @@ player_id,name,team,status,detail,date
 3135045,Grayson Allen,CHA,Day-To-Day,Allen (concussion) has been ruled out for Friday's game against Atlanta.,2026-11-21
 5061575,Kon Knueppel,CHA,Out,Knueppel (hamstring) was diagnosed with a left hamstring strain Sunday and will be re-evaluated in four weeks.,2026-11-08
 5095151,Caleb Wilson,CHI,Out,"Wilson (hand) is expected to miss four to six weeks, Shams Charania of ESPN reports.",2026-11-12
-4397189,Jalen Smith,CHI,Day-To-Day,"Smith (illness) is out for Friday's game against the Wizards, Joel Lorenzi of The Athletic reports.",2026-11-21
+4397189,Jalen Smith,CHI,Day-To-Day,Smith (illness) has been upgraded to probable for Sunday's game against the Nuggets.,2026-11-22
+4278067,Nic Claxton,CHI,Day-To-Day,Claxton (illness) is questionable to play in Sunday's game against the Nuggets.,2026-11-22
 2595516,Norman Powell,CHI,Out,Powell has been diagnosed with a mild right hamstring strain and will be re-evaluated later this week.,2026-11-22
 4431687,Patrick Williams,CHI,Day-To-Day,Williams is probable for Sunday's game against the Nuggets due to a left thumb sprain.,2026-11-22
-5105555,Tobe Awaka,CHI,Out,Awaka (back) has been ruled out for Wednesday's game against the Nets.,2026-11-17
 4432158,Evan Mobley,CLE,Out,"Mobley will receive treatment and participate in rehab after the team confirmed a diagnosis of a right great toe sprain, and he'll be re-evaluated in the next 7",2026-11-16
 4683747,Jaylon Tyson,CLE,Out,Tyson (ankle) has been ruled out for Friday's game against Indiana.,2026-11-19
 5106268,Nae'Qwan Tomlin,CLE,Out,Tomlin (back) will remain on the inactive list for Wednesday's game against the Grizzlies.,2026-11-17
@@ -34,7 +34,6 @@ player_id,name,team,status,detail,date
 4433621,Jalen Duren,DET,Out,"Duren (hamstring) has begun on-court activity and will be re-evaluated in two weeks, Hunter Patterson of The Athletic reports.",2026-11-08
 4683771,Ronald Holland II,DET,Out,Holland (knee) is listed as questionable for Sunday's game against Atlanta.,2026-11-21
 2990962,Taurean Prince,DET,Out,"Prince (knee) underwent surgery to address lingering issues and has no timeline for a return, Hunter Patterson of The Athletic reports.",2026-11-20
-5037878,Ugonna Onyenso,DET,Day-To-Day,Onyenso agreed to a two-way contract with the Pistons on Thursday.,2026-11-19
 4397040,Brandon Williams,GS,Out,Williams (hamstring) is out for Sunday's game against the Celtics.,2026-11-22
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis announced on his social media that he's stepping away from basketball.,2026-11-06
@@ -98,13 +97,14 @@ player_id,name,team,status,detail,date
 6440,Tobias Harris,SA,Out,"Harris (calf) is likely to be sidelined until early December, per Jeff Garcia of KENS 5 San Antonio.",2026-11-16
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
 4898371,Maxime Raynaud,SAC,Out,Raynaud (knee) will remain on the inactive list for Wednesday's game against the Suns.,2026-11-18
-5093267,Collin Murray-Boyles,TOR,Day-To-Day,Murray-Boyles (concussion) has been ruled out for Friday's game against the Pistons.,2026-11-21
+5093267,Collin Murray-Boyles,TOR,Day-To-Day,"Murray-Boyles (concussion) participated in Sunday's practice, Michael Grange of Sportsnet.ca reports.",2026-11-22
 6450,Kawhi Leonard,TOR,Out,"Leonard (knee) could return in the next few weeks, per Shams Charania of ESPN.",2026-11-20
 4432586,Nate Bittle,TOR,Out,"Bittle (foot) has been ruled out for Sunday's game against the Knicks, Zulfi Sheikh of Sportsnet.ca reports.",2026-11-14
 4395625,RJ Barrett,TOR,Out,"Barrett has been diagnosed with a right hamstring strain and will be re-evaluated in two weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-19
 4277961,Jaren Jackson Jr.,UTAH,Out,"Jackson has been diagnosed with a torn MCL in his right knee and will be sidelined for 6-to-8 weeks, per Shams Charania of ESPN.",2026-10-27
 3102530,Jusuf Nurkic,UTAH,Out,Nurkic (foot) has been cleared for on-court work and will be re-evaluated in one week.,2026-11-20
 4066336,Lauri Markkanen,UTAH,Out,"Markkanen has been diagnosed with a non-displaced fracture in his right hand and will be sidelined for at least one month, Shams Charania of ESPN reports.",2026-11-11
+4278129,Deandre Ayton,WSH,Day-To-Day,"Ayton had two points (1-1 FG), four rebounds and one block in nine minutes during Thursday's 144-140 double-overtime loss to the Pistons.",2026-11-22
 4606840,Jamir Watkins,WSH,Out,The Wizards announced Thursday that Watkins has undergone surgery for a torn ACL.,2026-07-30
 4432907,Justin Champagnie,WSH,Out,"Champagnie (foot) is expected to miss several months, per Josh Robbins of The Athletic.",2026-10-28
 4432187,Reece Beekman,WSH,Out,The Wizards announced Monday that Beekman sustained a right acromioclavicular joint injury and will be re-evaluated in approximately three weeks.,2026-11-02

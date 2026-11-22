@@ -57,21 +57,22 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,11,CHI,00-0040735,WR,Luther Burden III,,,Full Participation in Practice
 2026,11,CHI,00-0041051,WR,Zavion Thomas,Ankle,Questionable,Did Not Participate In Practice
 2026,11,CHI,00-0041060,CB,Malik Muhammad,,,Full Participation in Practice
-2026,11,CIN,00-0033523,DT,Jonathan Allen,,,Did Not Participate In Practice
-2026,11,CIN,00-0034446,CB,Jalen Davis,,,Full Participation in Practice
-2026,11,CIN,00-0034754,LB,Oren Burks,,,Did Not Participate In Practice
+2026,11,CIN,00-0033523,DT,Jonathan Allen,,,Limited Participation in Practice
+2026,11,CIN,00-0034446,CB,Jalen Davis,Hamstring,Doubtful,Full Participation in Practice
+2026,11,CIN,00-0034754,LB,Oren Burks,Groin,Out,Did Not Participate In Practice
 2026,11,CIN,00-0034800,DT,B.J. Hill,,,Did Not Participate In Practice
-2026,11,CIN,00-0035702,G,Dalton Risner,,,Did Not Participate In Practice
-2026,11,CIN,00-0036231,S,Kyle Dugger,,,Full Participation in Practice
+2026,11,CIN,00-0035683,DT,Dexter Lawrence,,,Did Not Participate In Practice
+2026,11,CIN,00-0035702,G,Dalton Risner,Knee,Out,Did Not Participate In Practice
+2026,11,CIN,00-0036231,S,Kyle Dugger,Quadricep,Questionable,Full Participation in Practice
 2026,11,CIN,00-0036410,WR,Tee Higgins,,,Full Participation in Practice
 2026,11,CIN,00-0036442,QB,Joe Burrow,,,Full Participation in Practice
-2026,11,CIN,00-0037743,CB,Daxton Hill,,,Did Not Participate In Practice
-2026,11,CIN,00-0038619,WR,Andrei Iosivas,,,Full Participation in Practice
-2026,11,CIN,00-0039313,LB,Swayze Bozeman,,,Full Participation in Practice
+2026,11,CIN,00-0037743,CB,Daxton Hill,Illness,Questionable,Did Not Participate In Practice
+2026,11,CIN,00-0038619,WR,Andrei Iosivas,Thumb,Doubtful,Full Participation in Practice
+2026,11,CIN,00-0039313,LB,Swayze Bozeman,Forearm,Questionable,Full Participation in Practice
 2026,11,CIN,00-0039632,S,PJ Jules,,,Full Participation in Practice
 2026,11,CIN,00-0040015,T,Myles Hinton,,,Full Participation in Practice
-2026,11,CIN,00-0040140,G,Dylan Fairchild,,,Limited Participation in Practice
-2026,11,CIN,00-0041098,G,Brian Parker II,,,Full Participation in Practice
+2026,11,CIN,00-0040140,G,Dylan Fairchild,Oblique,Questionable,Full Participation in Practice
+2026,11,CIN,00-0041098,G,Brian Parker II,Knee,Questionable,Full Participation in Practice
 2026,11,DAL,00-0027940,LB,Von Miller,,,Full Participation in Practice
 2026,11,DAL,00-0033877,S,Malik Hooker,,,Full Participation in Practice
 2026,11,DAL,00-0035227,S,P.J. Locke,Concussion,Out,Did Not Participate In Practice
@@ -297,15 +298,17 @@ season,week,team,gsis_id,position,full_name,report_primary_injury,report_status,
 2026,11,TEN,00-0041438,WR,Carnell Tate,Shoulder,Questionable,Full Participation in Practice
 2026,11,TEN,00-0041479,LB,Anthony Hill Jr.,Neck,Questionable,Full Participation in Practice
 2026,11,WAS,00-0031588,WR,Stefon Diggs,,,Did Not Participate In Practice
-2026,11,WAS,00-0033082,C,Lucas Patrick,,,Full Participation in Practice
+2026,11,WAS,00-0033082,C,Lucas Patrick,Concussion,Questionable,Full Participation in Practice
 2026,11,WAS,00-0033831,T,Andrew Wylie,,,Full Participation in Practice
+2026,11,WAS,00-0033947,DE,Deatrich Wise,,,Limited Participation in Practice
 2026,11,WAS,00-0035149,G,Nick Allegretti,,,Full Participation in Practice
+2026,11,WAS,00-0036375,CB,Amik Robertson,Ankle,Questionable,Did Not Participate In Practice
 2026,11,WAS,00-0036628,TE,John Bates,,,Full Participation in Practice
-2026,11,WAS,00-0037256,RB,Rachaad White,,,Limited Participation in Practice
-2026,11,WAS,00-0037742,WR,Treylon Burks,,,Did Not Participate In Practice
+2026,11,WAS,00-0037256,RB,Rachaad White,Heel,Questionable,Did Not Participate In Practice
+2026,11,WAS,00-0037742,WR,Treylon Burks,,,Full Participation in Practice
 2026,11,WAS,00-0037809,TE,Chig Okonkwo,,,Full Participation in Practice
-2026,11,WAS,00-0039149,S,Quan Martin,,,Limited Participation in Practice
+2026,11,WAS,00-0039149,S,Quan Martin,,,Full Participation in Practice
 2026,11,WAS,00-0039681,S,Tyler Owens,,,Full Participation in Practice
 2026,11,WAS,00-0039686,TE,Colson Yankoff,,,Full Participation in Practice
 2026,11,WAS,00-0039910,QB,Jayden Daniels,,,Full Participation in Practice
-2026,11,WAS,00-0040242,RB,Jacory Croskey-Merritt,,,Full Participation in Practice
+2026,11,WAS,00-0040242,RB,Jacory Croskey-Merritt,Groin,Questionable,Full Participation in Practice
