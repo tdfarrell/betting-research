@@ -1,4 +1,13 @@
 kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total,total_open,sp_total_cal,pp_total_cal,total_grade,total_pick,flags,adjustments,notes
-1:00 AM,AUB @ ALA,-14.0,-10.0,-18.7,-13.7,PICK,AUB +14,50.5,52.5,46.4,47.5,PICK,Over 50.5,,,Alabama pass edge (pass EPA +0.39; Auburn allows +0.19)
-1:00 AM,DUKE @ WAKE,-13.5,-10.5,-13.1,-11.5,PICK,DUKE +13.5,55.5,52.5,53.4,53.4,PICK,Under 55.5,,,Wake Forest pass edge (pass EPA +0.51; Duke allows +0.22)
-1:30 PM,ILL @ NU,-4.5,3.5,-6.5,-8.1,PICK,NU -4.5,47.5,52.5,51.2,52.2,PICK,Over 47.5,,,Northwestern pass edge (pass EPA +0.30; Illinois allows +0.29)
+1:00 PM,LOU @ UK,1.5,-1.5,5.9,4.3,PICK,LOU -1.5,53.5,54.5,60.0,54.9,PICK,Over 53.5,,,Louisville pass edge (pass EPA +0.42; Kentucky allows +0.14)
+1:00 PM,MICH @ OSU,-11.5,-14.0,-18.8,-14.5,PICK,OSU -11.5,38.5,46.5,37.0,36.6,PICK,Over 38.5,,Models are 5.1 pts off DK (usual gap 2.2): big gaps usually mean news the models don't have. Lean only; check injuries/QB first,Ohio State pass edge (pass EPA +0.41; Michigan allows +0.06)
+1:00 PM,ND @ SYR,24.5,21.0,22.8,26.5,PICK,ND -24.5,52.5,54.5,55.3,53.4,PICK,Over 52.5,,,Notre Dame pass edge (pass EPA +0.45; Syracuse allows +0.11)
+1:30 PM,ILL @ NU,-4.0,3.5,-6.5,-8.1,PICK,NU -4,47.5,52.5,51.2,52.2,PICK,Over 47.5,,,Northwestern pass edge (pass EPA +0.30; Illinois allows +0.29)
+4:00 PM,SC @ CLEM,3.0,-3.0,6.0,1.5,PICK,CLEM +3,42.5,53.5,43.1,45.6,PICK,Over 42.5,,,Clemson havoc rate 20%
+4:00 PM,UVA @ VT,-3.0,-1.5,-2.8,3.5,PICK,UVA +3,53.5,53.5,50.3,52.4,PICK,Under 53.5,,,Virginia Tech pass edge (pass EPA +0.32; Virginia allows +0.18); Virginia pass edge (pass EPA +0.28; Virginia Tech allows +0.21); Virginia Tech havoc rate 22%
+4:30 PM,USC @ UCLA,6.5,11.5,-9.6,-0.8,PICK,UCLA +6.5,47.5,55.5,49.2,49.7,PICK,Over 47.5,,Models are 11.7 pts off DK (usual gap 2.2): big gaps usually mean news the models don't have. Lean only; check injuries/QB first,UCLA pass edge (pass EPA +0.19; USC allows +0.35); UCLA havoc rate 21%
+4:30 PM,DUKE @ WAKE,-13.5,-10.5,-13.1,-11.5,PICK,DUKE +13.5,55.5,52.5,53.4,53.4,PICK,Under 55.5,,,Wake Forest pass edge (pass EPA +0.51; Duke allows +0.22)
+5:15 PM,OU @ MIZ,-1.5,-1.5,-6.0,-1.1,PICK,OU +1.5,42.5,42.5,37.0,42.6,PICK,Over 42.5,,,
+8:00 PM,TENN @ VAN,13.5,3.0,18.7,12.1,PICK,TENN -13.5,44.5,57.5,46.3,39.8,PICK,Over 44.5,,,Tennessee havoc rate 22%
+8:30 PM,AUB @ ALA,-14.0,-10.0,-18.7,-13.7,PICK,AUB +14,50.5,52.5,46.4,47.5,PICK,Over 50.5,,,Alabama pass edge (pass EPA +0.39; Auburn allows +0.19)
+8:30 PM,WASH @ ORE,-12.5,-15.5,-10.9,-11.8,PICK,WASH +12.5,49.5,54.5,46.7,48.8,PICK,Over 49.5,,,

@@ -17,6 +17,7 @@ player_id,name,team,status,detail,date
 5095151,Caleb Wilson,CHI,Out,"Wilson (hand) is expected to miss four to six weeks, Shams Charania of ESPN reports.",2026-11-12
 4397189,Jalen Smith,CHI,Day-To-Day,"Smith (illness) is out for Friday's game against the Wizards, Joel Lorenzi of The Athletic reports.",2026-11-21
 2595516,Norman Powell,CHI,Day-To-Day,Powell is questionable for Sunday's game against the Nuggets due to a right hamstring strain.,2026-11-22
+4431687,Patrick Williams,CHI,Day-To-Day,Williams is probable for Sunday's game against the Nuggets due to a left thumb sprain.,2026-11-22
 5105555,Tobe Awaka,CHI,Out,Awaka (back) has been ruled out for Wednesday's game against the Nets.,2026-11-17
 4432158,Evan Mobley,CLE,Out,"Mobley will receive treatment and participate in rehab after the team confirmed a diagnosis of a right great toe sprain, and he'll be re-evaluated in the next 7",2026-11-16
 4683747,Jaylon Tyson,CLE,Out,Tyson (ankle) has been ruled out for Friday's game against Indiana.,2026-11-19
@@ -34,8 +35,7 @@ player_id,name,team,status,detail,date
 4683771,Ronald Holland II,DET,Out,Holland (knee) is listed as questionable for Sunday's game against Atlanta.,2026-11-21
 2990962,Taurean Prince,DET,Out,"Prince (knee) underwent surgery to address lingering issues and has no timeline for a return, Hunter Patterson of The Athletic reports.",2026-11-20
 5037878,Ugonna Onyenso,DET,Day-To-Day,Onyenso agreed to a two-way contract with the Pistons on Thursday.,2026-11-19
-4397040,Brandon Williams,GS,Out,Williams (hamstring) has progressed to on-court activities and will be re-evaluated Saturday.,2026-11-18
-6589,Draymond Green,GS,Day-To-Day,Green (elbow) is out for Thursday's game against the Grizzlies.,2026-11-20
+4397040,Brandon Williams,GS,Out,Williams (hamstring) is out for Sunday's game against the Celtics.,2026-11-22
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis announced on his social media that he's stepping away from basketball.,2026-11-06
 4432171,Moses Moody,GS,Out,"Moody (knee) is progressing toward a potential return between December and January after rupturing his left patellar tendon in March, Anthony Slater of ESPN rep",2026-10-16
@@ -68,9 +68,9 @@ player_id,name,team,status,detail,date
 4431675,Trendon Watford,NO,Out,Watford (ankle) is out for Saturday's game against the Spurs.,2026-11-21
 4397688,Trey Murphy III,NO,Out,Murphy (knee) has been ruled out for Saturday's game against the Spurs.,2026-11-21
 4395628,Zion Williamson,NO,Out,Williamson is out for Saturday's game against the Spurs due to a left thigh contusion.,2026-11-22
-2528426,Jordan Clarkson,NY,Out,Clarkson (foot) won't play in Saturday's game against Portland.,2026-11-20
-3136195,Karl-Anthony Towns,NY,Out,Towns (illness) won't play in Saturday's game versus the Trail Blazers.,2026-11-21
-3934719,OG Anunoby,NY,Out,Anunoby (calf) has been ruled out for Saturday's game against the Trail Blazers.,2026-11-21
+2528426,Jordan Clarkson,NY,Day-To-Day,Clarkson (foot) won't play in Saturday's game against Portland.,2026-11-22
+3136195,Karl-Anthony Towns,NY,Day-To-Day,Towns (illness) won't play in Saturday's game versus the Trail Blazers.,2026-11-22
+3934719,OG Anunoby,NY,Day-To-Day,Anunoby (calf) has been ruled out for Saturday's game against the Trail Blazers.,2026-11-22
 2991350,Alex Caruso,OKC,Out,Caruso (hip) won't play Sunday against the Heat.,2026-11-21
 4683692,Cason Wallace,OKC,Out,"Wallace underwent surgery Friday to repair a torn labrum in his left shoulder and will be re-evaluated before the end of the regular season, Clemente Almanza of",2026-10-31
 4433255,Chet Holmgren,OKC,Out,"Holmgren underwent a biological treatment Friday to address a small patellar tendon tear and will miss at least 8-10 weeks, Nick Crain of Slam reports.",2026-10-31
