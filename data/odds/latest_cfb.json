@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-22T21:02Z",
+ "pulled_utc": "2026-11-22T21:21Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -2455,9 +2455,9 @@
    "away_spread_open": "+1.5",
    "away_ml": "-102",
    "away_ml_open": "-102",
-   "total": 43.5,
-   "over_odds": "-118",
-   "under_odds": "-102",
+   "total": 44.5,
+   "over_odds": "-102",
+   "under_odds": "-118",
    "total_open": "o43.5"
   },
   {
@@ -2546,8 +2546,8 @@
    "away_ml": "+100",
    "away_ml_open": "-102",
    "total": 41.5,
-   "over_odds": "-102",
-   "under_odds": "-118",
+   "over_odds": "-110",
+   "under_odds": "-110",
    "total_open": "o42.5"
   },
   {
@@ -2906,8 +2906,8 @@
    "away_ml": "+164",
    "away_ml_open": "+154",
    "total": 55.5,
-   "over_odds": "-110",
-   "under_odds": "-110",
+   "over_odds": "-105",
+   "under_odds": "-115",
    "total_open": "o54.5"
   },
   {

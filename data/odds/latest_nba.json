@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-22T21:02Z",
+ "pulled_utc": "2026-11-22T21:21Z",
  "source": "ESPN scoreboard, provider DraftKings",
  "games": [
   {
@@ -106,8 +106,8 @@
    "home": "ATL",
    "away_name": "Detroit Pistons",
    "home_name": "Atlanta Hawks",
-   "away_score": "21",
-   "home_score": "22",
+   "away_score": "34",
+   "home_score": "40",
    "neutral": false,
    "conference_game": false,
    "venue": "State Farm Arena",
@@ -278,7 +278,21 @@
    "conference_game": false,
    "venue": "Chase Center",
    "weather": null,
-   "temp_f": null
+   "temp_f": null,
+   "home_spread": "+7.5",
+   "home_spread_odds": "-108",
+   "home_spread_open": "+8.5",
+   "home_ml": "+247",
+   "home_ml_open": "+299",
+   "away_spread": "-7.5",
+   "away_spread_odds": "-112",
+   "away_spread_open": "-8.5",
+   "away_ml": "-304",
+   "away_ml_open": "-378",
+   "total": 209.5,
+   "over_odds": "-110",
+   "under_odds": "-110",
+   "total_open": "o212.5"
   },
   {
    "game_id": "401910036",
