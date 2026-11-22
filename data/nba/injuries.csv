@@ -67,7 +67,7 @@ player_id,name,team,status,detail,date
 3907497,Dejounte Murray,NO,Out,Murray (ankle) is out for Friday's game against Memphis.,2026-11-13
 4431675,Trendon Watford,NO,Out,Watford (ankle) is out for Saturday's game against the Spurs.,2026-11-21
 4397688,Trey Murphy III,NO,Out,Murphy (knee) has been ruled out for Saturday's game against the Spurs.,2026-11-21
-4395628,Zion Williamson,NO,Out,"Williamson ended with 22 points (9-19 FG, 4-6 FT), six rebounds, seven assists and two steals over 37 minutes in Friday's 126-120 loss to Oklahoma City.",2026-11-22
+4395628,Zion Williamson,NO,Out,Williamson is out for Saturday's game against the Spurs due to a left thigh contusion.,2026-11-22
 2528426,Jordan Clarkson,NY,Out,Clarkson (foot) won't play in Saturday's game against Portland.,2026-11-20
 3136195,Karl-Anthony Towns,NY,Out,Towns (illness) won't play in Saturday's game versus the Trail Blazers.,2026-11-21
 3934719,OG Anunoby,NY,Out,Anunoby (calf) has been ruled out for Saturday's game against the Trail Blazers.,2026-11-21
@@ -98,7 +98,6 @@ player_id,name,team,status,detail,date
 6440,Tobias Harris,SA,Out,"Harris (calf) is likely to be sidelined until early December, per Jeff Garcia of KENS 5 San Antonio.",2026-11-16
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
 4898371,Maxime Raynaud,SAC,Out,Raynaud (knee) will remain on the inactive list for Wednesday's game against the Suns.,2026-11-18
-4431679,Precious Achiuwa,SAC,Day-To-Day,Achiuwa (lower leg) is questionable for Saturday's game against the Celtics.,2026-11-21
 5093267,Collin Murray-Boyles,TOR,Day-To-Day,Murray-Boyles (concussion) has been ruled out for Friday's game against the Pistons.,2026-11-21
 6450,Kawhi Leonard,TOR,Out,"Leonard (knee) could return in the next few weeks, per Shams Charania of ESPN.",2026-11-20
 4432586,Nate Bittle,TOR,Out,"Bittle (foot) has been ruled out for Sunday's game against the Knicks, Zulfi Sheikh of Sportsnet.ca reports.",2026-11-14

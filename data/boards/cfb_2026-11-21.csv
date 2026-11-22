@@ -1,10 +1,10 @@
 kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total,total_open,sp_total_cal,pp_total_cal,total_grade,total_pick,flags,adjustments,notes
+10:00 PM,UTAH @ TCU,9.5,5.5,9.7,8.7,PICK,TCU +9.5,46.5,44.5,46.3,51.6,PICK,Over 46.5,,,
+10:30 PM,SDSU @ BOIS,-20.5,-18.5,-20.0,-18.0,PICK,BOIS -20.5,60.5,62.5,63.1,60.5,PICK,Under 60.5,,,Boise State pass edge (pass EPA +0.53; San Diego State allows +0.17); Boise State should finish drives (5.0 pts/opp; San Diego State allows 3.9)
+11:15 PM,OKST @ ASU,2.5,4.0,5.8,-0.3,PICK,ASU +2.5,59.5,62.5,60.1,62.7,PICK,Over 59.5,,,Oklahoma State pass edge (pass EPA +0.36; Arizona State allows +0.12)
+11:30 PM,USU @ ORST,-7.0,-10.0,-13.0,-8.9,PICK,ORST -7,51.5,49.5,50.0,50.1,PICK,Under 51.5,,Line moved 3 pts toward the other side since open,Oregon State pass edge (pass EPA +0.35; Utah State allows +0.12)
+11:30 PM,HAW @ NEV,-7.0,-2.5,-8.9,-1.8,PICK,HAW +7,40.5,42.5,38.2,39.1,PICK,Over 40.5,,,
 9:00 PM,UTSA @ UAB,4.0,7.5,4.1,1.2,PICK,UAB +4,49.5,53.5,53.7,43.3,PICK,Over 49.5,,,
-10:00 PM,UTAH @ TCU,8.5,5.5,9.7,8.7,PICK,UTAH -8.5,46.5,44.5,46.3,51.8,PICK,Over 46.5,,,
-10:30 PM,SDSU @ BOIS,-20.5,-18.5,-20.0,-18.0,PICK,BOIS -20.5,60.5,62.5,63.1,60.7,PICK,Under 60.5,,,Boise State pass edge (pass EPA +0.53; San Diego State allows +0.17); Boise State should finish drives (5.0 pts/opp; San Diego State allows 3.9)
-11:15 PM,OKST @ ASU,2.5,4.0,5.8,-0.3,PICK,ASU +2.5,59.5,62.5,60.1,62.9,PICK,Over 59.5,,,Oklahoma State pass edge (pass EPA +0.36; Arizona State allows +0.12)
-11:30 PM,USU @ ORST,-7.0,-10.0,-13.0,-8.9,PICK,ORST -7,51.5,49.5,50.0,50.3,PICK,Under 51.5,,Line moved 3 pts toward the other side since open,Oregon State pass edge (pass EPA +0.35; Utah State allows +0.12)
-11:30 PM,HAW @ NEV,-7.0,-2.5,-8.9,-1.8,PICK,HAW +7,40.5,42.5,38.2,39.3,PICK,Over 40.5,,,
 5:00 PM,GAST @ MRSH,-3.0,1.5,0.3,0.5,PICK,GAST +3,56.5,57.5,59.6,59.7,PICK,Under 56.5,,Line moved 4.5 pts toward the other side since open,Georgia State pass edge (pass EPA +0.32; Marshall allows +0.32)
 5:00 PM,USA @ USM,4.5,5.5,4.1,5.5,PICK,USA -4.5,65.5,62.5,63.8,63.6,PICK,Over 65.5,,,South Alabama pass edge (pass EPA +0.24; Southern Miss allows +0.24)
 5:00 PM,NIU @ NDSU,-25.5,-25.5,-39.0,-24.3,PICK,NDSU -25.5,46.5,48.5,42.8,38.8,PICK,Over 46.5,Big spread,Models are 5.7 off the DK total (usual gap 2.5): usually weather or news the models don't have. Lean only,North Dakota State pass edge (pass EPA +0.19; Northern Illinois allows +0.45)
