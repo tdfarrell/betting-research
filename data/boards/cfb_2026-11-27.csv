@@ -1,14 +1,14 @@
 kick_et,game,dk_home_spread,dk_open,sp_cal,elo_cal,side_grade,side_pick,dk_total,total_open,sp_total_cal,pp_total_cal,total_grade,total_pick,flags,adjustments,notes
-1:00 PM,BUFF @ AKR,8.5,10.0,10.6,16.8,PICK,BUFF -8.5,50.5,49.5,45.9,51.5,PICK,Over 50.5,,,Buffalo pass edge (pass EPA +0.06; Akron allows +0.40)
-1:00 PM,NEB @ IOWA,-5.5,-6.5,-3.0,-8.5,PICK,IOWA -5.5,39.5,38.5,35.1,44.3,PICK,Over 39.5,,,
-1:00 PM,MSST @ MISS,-18.5,-14.5,-11.7,-17.8,PICK,MSST +18.5,56.5,57.5,56.8,54.8,PICK,Over 56.5,,,Ole Miss pass edge (pass EPA +0.34; Mississippi State allows +0.29)
-1:00 PM,TLSA @ UTSA,-1.5,-2.5,-2.8,-1.8,PICK,TLSA +1.5,58.5,58.5,61.5,51.2,PICK,Under 58.5,,,
-1:00 PM,TOL @ OHIO,4.0,4.5,2.3,5.2,PICK,TOL -4,49.5,48.5,46.6,48.1,PICK,Over 49.5,,,
-4:00 PM,APP @ USA,-3.0,-2.5,1.5,-5.8,PICK,USA -3,56.5,55.5,58.2,57.4,PICK,Over 56.5,,,South Alabama pass edge (pass EPA +0.27; App State allows +0.18); App State pass edge (pass EPA +0.22; South Alabama allows +0.26)
-4:30 PM,FLA @ FSU,5.5,4.5,-2.4,0.9,PICK,FSU +5.5,52.5,52.5,55.5,53.5,PICK,Over 52.5,,,Florida State pass edge (pass EPA +0.22; Florida allows +0.25); Florida pass edge (pass EPA +0.29; Florida State allows +0.26)
-4:30 PM,NDSU @ SJSU,10.5,11.5,14.5,7.4,PICK,SJSU +10.5,39.5,39.5,30.2,37.3,PICK,Over 39.5,,Models are 5.7 off the DK total (usual gap 2.6): usually weather or news the models don't have. Lean only,
-4:30 PM,TEM @ MEM,-17.5,-17.5,-18.8,-19.2,PICK,MEM -17.5,64.5,64.5,64.3,64.0,PICK,Under 64.5,,,Memphis pass edge (pass EPA +0.43; Temple allows +0.28)
-5:30 PM,AFA @ UNM,-6.5,-7.0,-10.3,-5.6,PICK,UNM -6.5,41.5,41.5,42.8,43.6,PICK,Over 41.5,Option offense,,New Mexico havoc rate 25%
-8:30 PM,MINN @ WIS,-7.0,-6.0,-9.9,-12.9,PICK,WIS -7,36.5,38.5,32.6,34.5,PICK,Over 36.5,,,
-8:30 PM,TEX @ TA&M,10.5,2.5,9.0,10.9,PICK,TEX -10.5,39.5,53.5,40.6,38.1,PICK,Over 39.5,,,Texas pass edge (pass EPA +0.22; Texas A&M allows +0.32)
-10:00 PM,WVU @ UTAH,-21.0,-20.5,-20.6,-23.0,PICK,UTAH -21,68.5,68.5,68.5,71.0,PICK,Under 68.5,,,Utah pass edge (pass EPA +0.34; West Virginia allows +0.52)
+1:00 PM,BUFF @ AKR,8.5,10.0,11.1,16.7,PICK,BUFF -8.5,50.5,49.5,45.8,51.4,PICK,Over 50.5,,,Buffalo pass edge (pass EPA +0.06; Akron allows +0.40)
+1:00 PM,NEB @ IOWA,-5.5,-6.5,-3.0,-8.5,PICK,IOWA -5.5,39.5,38.5,34.8,44.2,PICK,Over 39.5,,,
+1:00 PM,MSST @ MISS,-18.5,-14.5,-12.0,-17.7,PICK,MSST +18.5,56.5,57.5,56.9,54.7,PICK,Over 56.5,,,Ole Miss pass edge (pass EPA +0.34; Mississippi State allows +0.29)
+1:00 PM,TLSA @ UTSA,-1.5,-2.5,-2.8,-1.8,PICK,TLSA +1.5,58.5,58.5,61.6,51.1,PICK,Under 58.5,,,
+1:00 PM,TOL @ OHIO,3.5,4.5,2.6,5.2,PICK,TOL -3.5,49.5,48.5,46.5,48.1,PICK,Over 49.5,,,
+4:00 PM,APP @ USA,-3.0,-2.5,1.7,-5.8,PICK,USA -3,56.5,55.5,58.2,57.3,PICK,Over 56.5,,,South Alabama pass edge (pass EPA +0.27; App State allows +0.18); App State pass edge (pass EPA +0.22; South Alabama allows +0.26)
+4:30 PM,FLA @ FSU,5.5,4.5,-2.3,0.8,PICK,FSU +5.5,52.5,52.5,55.5,53.4,PICK,Over 52.5,,,Florida State pass edge (pass EPA +0.22; Florida allows +0.25); Florida pass edge (pass EPA +0.29; Florida State allows +0.26)
+4:30 PM,NDSU @ SJSU,10.0,11.5,15.3,7.3,PICK,SJSU +10,39.5,39.5,29.9,37.2,PICK,Over 39.5,,Models are 5.9 off the DK total (usual gap 2.7): usually weather or news the models don't have. Lean only,
+4:30 PM,TEM @ MEM,-17.5,-17.5,-19.4,-19.1,PICK,MEM -17.5,64.5,64.5,64.4,63.9,PICK,Under 64.5,,,Memphis pass edge (pass EPA +0.43; Temple allows +0.28)
+5:30 PM,AFA @ UNM,-6.5,-7.0,-10.6,-5.6,PICK,UNM -6.5,41.5,41.5,42.6,43.5,PICK,Over 41.5,Option offense,,New Mexico havoc rate 25%
+8:30 PM,MINN @ WIS,-7.5,-6.0,-10.2,-12.9,PICK,WIS -7.5,37.5,38.5,32.4,34.4,PICK,Over 37.5,,,
+8:30 PM,TEX @ TA&M,11.5,2.5,9.5,10.8,PICK,TEX -11.5,40.5,53.5,40.5,38.0,PICK,Over 40.5,,,Texas pass edge (pass EPA +0.22; Texas A&M allows +0.32)
+10:00 PM,WVU @ UTAH,-21.0,-20.5,-21.2,-22.9,PICK,UTAH -21,68.5,68.5,68.6,70.9,PICK,Under 68.5,,,Utah pass edge (pass EPA +0.34; West Virginia allows +0.52)
