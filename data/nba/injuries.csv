@@ -32,10 +32,9 @@ player_id,name,team,status,detail,date
 3975,Stephen Curry,GS,Out,"Curry has been diagnosed with an oblique abdominal tear and will be re-evaluated in two weeks, Shams Charania of ESPN reports.",2026-11-12
 4396909,Aaron Nesmith,IND,Day-To-Day,Nesmith is out for Monday's game against the Thunder due to right foot soreness.,2026-11-24
 4433076,Ben Sheppard,IND,Out,"Head coach Rick Carlise confirmed Sheppard will miss ""months"" after undergoing surgery to repair a torn meniscus in his left knee, Tony East of Forbes.com repor",2026-10-28
-5157066,Johnny Furphy,IND,Out,"Furphy (knee) is practicing with the G League's Noblesville Boom, per Alex Golden of SI.com.",2026-10-30
 2580365,Larry Nance Jr.,IND,Day-To-Day,"Nance exited Monday's game against the Thunder due to a sore right ankle and he will not return, Tony East of Forbes.com reports.",2026-11-24
-2530530,T.J. McConnell,IND,Day-To-Day,McConnell is out for Monday's game against the Thunder due to left hamstring soreness.,2026-11-24
-4396993,Tyrese Haliburton,IND,Out,"Haliburton (hamstring) is expected to miss at least two more weeks, Shams Charania of ESPN reports.",2026-11-20
+2530530,T.J. McConnell,IND,Day-To-Day,McConnell (hamstring) was assigned to the G League's Noblesville Boom on Tuesday.,2026-11-24
+4396993,Tyrese Haliburton,IND,Out,Haliburton (hamstring) was assigned to the G League's Noblesville Boom on Tuesday.,2026-11-24
 6580,Bradley Beal,LAC,Out,"Beal (knee) will not be ready for the start of the regular season, NBA writer Justin Russo reports.",2026-10-15
 4396818,Jordan Miller,LAC,Out,"Miller underwent surgery Wednesday to repair a torn left rotator cuff and will be re-evaluated in six months, per Law Murray of The Athletic.",2026-08-26
 4066457,Austin Reaves,LAL,Out,"Coach JJ Redick stated Monday that the team is optimistic Reaves (heel) will return for Friday's game against San Antonio, Daniel Starkand of LakersNation.com r",2026-11-24
@@ -73,18 +72,18 @@ player_id,name,team,status,detail,date
 4279888,Ja Morant,POR,Out,"Head coach Micah Nori said Morant met with a doctor in Los Angeles, who gave him a positive outlook on his recovery from the hamstring injury. While Nori declin",2026-11-08
 4914336,Shaedon Sharpe,POR,Out,"Sharpe suffered a torn meniscus in his knee and is expected to miss six months, per Shams Charania of ESPN.",2026-08-24
 4578893,Vit Krejci,POR,Out,"Krejci underwent surgery on his fractured left ankle Wednesday and will be re-evaluated in eight weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-11
-4066259,De'Aaron Fox,SA,Out,"Fox (shin) has been ruled out for Monday's game against the Kings, Jeff McDonald of the San Antonio Express-News reports.",2026-11-24
+4066259,De'Aaron Fox,SA,Day-To-Day,"Fox (shin) has been ruled out for Monday's game against the Kings, Jeff McDonald of the San Antonio Express-News reports.",2026-11-24
 5037871,Dylan Harper,SA,Out,"Harper (hip) is expected to miss two to three weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-19
 5101845,Jayden Quaintance,SA,Out,"Quaintance has been around the team but has not yet been cleared for basketball activities, Matt Guzman of SI.com reports.",2026-10-05
 6440,Tobias Harris,SA,Out,"Harris (calf) is likely to be sidelined until early December, per Jeff Garcia of KENS 5 San Antonio.",2026-11-16
-5104157,Victor Wembanyama,SA,Out,"Wembanyama (back) won't play Monday against the Kings, Jeff McDonald of the San Antonio Express-News reports.",2026-11-24
+5104157,Victor Wembanyama,SA,Day-To-Day,"Wembanyama (back) won't play Monday against the Kings, Jeff McDonald of the San Antonio Express-News reports.",2026-11-24
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
 4898371,Maxime Raynaud,SAC,Out,Raynaud (knee) will remain on the inactive list for Wednesday's game against the Suns.,2026-11-18
 6450,Kawhi Leonard,TOR,Out,"Leonard (knee) could return in the next few weeks, per Shams Charania of ESPN.",2026-11-20
 4432586,Nate Bittle,TOR,Out,"Bittle (foot) has been ruled out for Monday's game against the Bucks, Blake Murphy of Sportsnet.ca reports.",2026-11-22
 4395625,RJ Barrett,TOR,Out,"Barrett has been diagnosed with a right hamstring strain and will be re-evaluated in two weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-19
 4277961,Jaren Jackson Jr.,UTAH,Out,"Jackson has been diagnosed with a torn MCL in his right knee and will be sidelined for 6-to-8 weeks, per Shams Charania of ESPN.",2026-10-27
-4397077,Jaxson Hayes,UTAH,Out,Hayes (knee) has been ruled out for Monday's game against the Lakers.,2026-11-23
+4397077,Jaxson Hayes,UTAH,Day-To-Day,Hayes (knee) has been ruled out for Monday's game against the Lakers.,2026-11-24
 3102530,Jusuf Nurkic,UTAH,Out,Nurkic (foot) has been cleared for on-court work and will be re-evaluated in one week.,2026-11-20
 4066336,Lauri Markkanen,UTAH,Out,"Markkanen has been diagnosed with a non-displaced fracture in his right hand and will be sidelined for at least one month, Shams Charania of ESPN reports.",2026-11-11
 4606840,Jamir Watkins,WSH,Out,The Wizards announced Thursday that Watkins has undergone surgery for a torn ACL.,2026-07-30
