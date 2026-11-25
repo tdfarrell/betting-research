@@ -7,9 +7,9 @@ player_id,name,team,status,detail,date
 5279130,Nolan Traore,BKN,Out,"Traore will be re-evaluated in approximately 8-10 weeks due to a right hamstring strain, Michael Scotto of HoopsHype.com reports.",2026-11-23
 4351852,Mitchell Robinson,BOS,Out,"Robinson (illness) is out for Tuesday's game against Washington, Taylor Snow of the Celtics' official site reports.",2026-11-23
 3032979,Dennis Schroder,CHA,Out,Schroder (hamstring) is out for Wednesday's game the Bulls.,2026-11-24
-3135045,Grayson Allen,CHA,Out,Allen (concussion) is listed as questionable for Wednesday's game versus Chicago.,2026-11-24
+3135045,Grayson Allen,CHA,Out,Allen (concussion) has been ruled out for Wednesday's game against Chicago.,2026-11-25
 5061575,Kon Knueppel,CHA,Out,Knueppel (hamstring) was diagnosed with a left hamstring strain Sunday and will be re-evaluated in four weeks.,2026-11-08
-4576060,Ryan Kalkbrenner,CHA,Day-To-Day,Kalkbrenner (hip) is doubtful to play Wednesday against the Bulls.,2026-11-24
+4576060,Ryan Kalkbrenner,CHA,Out,Kalkbrenner (hip) has been ruled out for Wednesday's matchup with Chicago.,2026-11-25
 4602025,Sion James,CHA,Day-To-Day,James is probable for Wednesday's game against the Bulls due to general soreness.,2026-11-24
 5095151,Caleb Wilson,CHI,Out,"Wilson (hand) is expected to miss four to six weeks, Shams Charania of ESPN reports.",2026-11-12
 4397189,Jalen Smith,CHI,Day-To-Day,Smith (illness) is listed as questionable for Wednesday's game against the Hornets.,2026-11-24
@@ -20,7 +20,7 @@ player_id,name,team,status,detail,date
 5279129,Sergio de Larrea,DAL,Out,De Larrea (knee) is listed as out for Wednesday's game against the Warriors.,2026-11-17
 5148538,Tarik Biberovic,DAL,Out,Biberovic (heel) is out for Wednesday's game against the Warriors.,2026-11-17
 5106040,Tobi Lawal,DAL,Out,Lawal (groin) is out for Tuesday's game against Denver.,2026-11-23
-4432166,Cade Cunningham,DET,Out,Cunningham (knee) is listed as out for Tuesday's game against Orlando.,2026-11-24
+4432166,Cade Cunningham,DET,Day-To-Day,Cunningham (knee) is listed as out for Tuesday's game against Orlando.,2026-11-25
 3157465,Duncan Robinson,DET,Out,"Robinson (quadriceps) is considered day-to-day as he progresses in his rehab, Eric Vincent of ClutchPoints.com reports.",2026-11-24
 5258459,Ebuka Okorie,DET,Out,"The Pistons announced Tuesday that Okorie (oblique) will miss at least two weeks, per Eric Vincent of ClutchPoints.com.",2026-11-24
 4433621,Jalen Duren,DET,Out,"Duren (hamstring) is being assigned to the Motor City Cruise on Wednesday for practice as he ramps up for a return, Eric Vincent of ClutchPoints.com reports.",2026-11-24
@@ -50,11 +50,13 @@ player_id,name,team,status,detail,date
 4432247,Jaylen Clark,MIN,Out,Clark (hamstring) has been ruled out for the next two weeks.,2026-11-15
 4683634,Bennedict Mathurin,NO,Out,Mathurin (foot) has been ruled out for Friday's game against the Thunder.,2026-11-19
 3907497,Dejounte Murray,NO,Out,Murray (ankle) is out for Friday's game against Memphis.,2026-11-13
+4683742,Julian Reese,NO,Day-To-Day,"The Pelicans transferred Reese from the G League's Laketown Squadron, and he will be available for New Orleans' game against the Warriors on Monday.",2026-11-25
 4431675,Trendon Watford,NO,Out,Watford (ankle) is out for Saturday's game against the Spurs.,2026-11-21
+3934672,Jalen Brunson,NY,Day-To-Day,Brunson (illness) has been downgraded to questionable for Wednesday's game against the Cavaliers.,2026-11-25
 2528426,Jordan Clarkson,NY,Out,Clarkson (foot) is out for Wednesday's game against Cleveland.,2026-11-24
-3062679,Josh Hart,NY,Day-To-Day,Hart (shoulder) is listed as questionable for Wednesday's game against Cleveland.,2026-11-24
-3136195,Karl-Anthony Towns,NY,Day-To-Day,Towns (knee) is questionable for Wednesday's game against Cleveland.,2026-11-24
-4431823,Miles McBride,NY,Day-To-Day,McBride (adductor) is listed as questionable for Wednesday's game versus Cleveland.,2026-11-24
+3062679,Josh Hart,NY,Day-To-Day,Hart (shoulder) has been upgraded to probable for Wednesday's game against the Cavaliers.,2026-11-25
+3136195,Karl-Anthony Towns,NY,Day-To-Day,Towns (knee) is probable for Wednesday's game against Cleveland.,2026-11-25
+4431823,Miles McBride,NY,Out,McBride (adductor) has been ruled out for Wednesday's game against the Cavaliers.,2026-11-25
 3934719,OG Anunoby,NY,Out,Anunoby (calf) is out for Wednesday's game against Cleveland.,2026-11-24
 5174983,Aday Mara,OKC,Out,Mara (leg) is out for Wednesday's game versus the Timberwolves.,2026-11-24
 4683692,Cason Wallace,OKC,Out,"Wallace underwent surgery Friday to repair a torn labrum in his left shoulder and will be re-evaluated before the end of the regular season, Clemente Almanza of",2026-10-31
@@ -80,7 +82,7 @@ player_id,name,team,status,detail,date
 6440,Tobias Harris,SA,Out,"Harris (calf) is likely to be sidelined until early December, per Jeff Garcia of KENS 5 San Antonio.",2026-11-16
 5104157,Victor Wembanyama,SA,Day-To-Day,Wembanyama (back) is questionable for Wednesday's game in Portland.,2026-11-25
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
-4898371,Maxime Raynaud,SAC,Out,Raynaud (knee) is out for Wednesday's game against the Warriors.,2026-11-25
+4898371,Maxime Raynaud,SAC,Out,"Raynaud (knee) was assigned to the G League's Stockton Kings on Wednesday, James Ham of ESPN 1320 Sacramento reports.",2026-11-25
 6450,Kawhi Leonard,TOR,Out,"Leonard has begun individual on-court workouts following treatment to address swelling in his left knee, and he will be re-evaluated in one week, Marc J. Spears",2026-11-24
 4432586,Nate Bittle,TOR,Out,"Bittle (foot) has been ruled out for Monday's game against the Bucks, Blake Murphy of Sportsnet.ca reports.",2026-11-22
 4395625,RJ Barrett,TOR,Out,"Barrett has been diagnosed with a right hamstring strain and will be re-evaluated in two weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-19
