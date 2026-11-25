@@ -1,5 +1,5 @@
 {
- "pulled_utc": "2026-11-25T01:09Z",
+ "pulled_utc": "2026-11-25T04:51Z",
  "status": {
   "cfb": {
    "games": 69,
@@ -13,12 +13,12 @@
   },
   "nba": {
    "games": 62,
-   "with_dk_line": 6,
+   "with_dk_line": 9,
    "mode": "per-day"
   },
   "cbb": {
    "games": 510,
-   "with_dk_line": 43,
+   "with_dk_line": 56,
    "mode": "per-day"
   }
  },

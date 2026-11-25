@@ -17,7 +17,6 @@ player_id,name,team,status,detail,date
 4432158,Evan Mobley,CLE,Out,"Mobley will receive treatment and participate in rehab after the team confirmed a diagnosis of a right great toe sprain, and he'll be re-evaluated in the next 7",2026-11-16
 5106268,Nae'Qwan Tomlin,CLE,Out,Tomlin (back) will remain on the inactive list for Wednesday's game against the Grizzlies.,2026-11-17
 4683688,Dereck Lively II,DAL,Out,"Head coach Dusty May said Friday that Lively (foot) is moving well and progressing in his recovery, and the big man told May he's ""close"" to returning, Mike Cur",2026-11-20
-4278078,P.J. Washington,DAL,Day-To-Day,Washington (illness) is questionable for Tuesday's game against the Nuggets.,2026-11-23
 5279129,Sergio de Larrea,DAL,Out,De Larrea (knee) is listed as out for Wednesday's game against the Warriors.,2026-11-17
 5148538,Tarik Biberovic,DAL,Out,Biberovic (heel) is out for Wednesday's game against the Warriors.,2026-11-17
 5106040,Tobi Lawal,DAL,Out,Lawal (groin) is out for Tuesday's game against Denver.,2026-11-23
@@ -75,13 +74,13 @@ player_id,name,team,status,detail,date
 4279888,Ja Morant,POR,Out,"Head coach Micah Nori said Morant met with a doctor in Los Angeles, who gave him a positive outlook on his recovery from the hamstring injury. While Nori declin",2026-11-08
 4914336,Shaedon Sharpe,POR,Out,"Sharpe suffered a torn meniscus in his knee and is expected to miss six months, per Shams Charania of ESPN.",2026-08-24
 4578893,Vit Krejci,POR,Out,"Krejci underwent surgery on his fractured left ankle Wednesday and will be re-evaluated in eight weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-11
-4066259,De'Aaron Fox,SA,Day-To-Day,"Fox (shin) has been ruled out for Monday's game against the Kings, Jeff McDonald of the San Antonio Express-News reports.",2026-11-24
+4066259,De'Aaron Fox,SA,Day-To-Day,Fox (shin) is questionable to play Wednesday's game against the Trail Blazers.,2026-11-25
 5037871,Dylan Harper,SA,Out,"Harper (hip) is expected to miss two to three weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-19
 5101845,Jayden Quaintance,SA,Out,"Quaintance has been around the team but has not yet been cleared for basketball activities, Matt Guzman of SI.com reports.",2026-10-05
 6440,Tobias Harris,SA,Out,"Harris (calf) is likely to be sidelined until early December, per Jeff Garcia of KENS 5 San Antonio.",2026-11-16
-5104157,Victor Wembanyama,SA,Day-To-Day,"Wembanyama (back) won't play Monday against the Kings, Jeff McDonald of the San Antonio Express-News reports.",2026-11-24
+5104157,Victor Wembanyama,SA,Day-To-Day,Wembanyama (back) is questionable for Wednesday's game in Portland.,2026-11-25
 3907387,Ben Simmons,SAC,Out,"Simmons underwent successful surgery Tuesday to repair a torn right Achilles tendon, James Ham of ESPN 1320 Sacramento reports.",2026-10-21
-4898371,Maxime Raynaud,SAC,Out,Raynaud (knee) will remain on the inactive list for Wednesday's game against the Suns.,2026-11-18
+4898371,Maxime Raynaud,SAC,Out,Raynaud (knee) is out for Wednesday's game against the Warriors.,2026-11-25
 6450,Kawhi Leonard,TOR,Out,"Leonard has begun individual on-court workouts following treatment to address swelling in his left knee, and he will be re-evaluated in one week, Marc J. Spears",2026-11-24
 4432586,Nate Bittle,TOR,Out,"Bittle (foot) has been ruled out for Monday's game against the Bucks, Blake Murphy of Sportsnet.ca reports.",2026-11-22
 4395625,RJ Barrett,TOR,Out,"Barrett has been diagnosed with a right hamstring strain and will be re-evaluated in two weeks, Brett Siegel of ClutchPoints.com reports.",2026-11-19
