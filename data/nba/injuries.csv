@@ -6,7 +6,7 @@ player_id,name,team,status,detail,date
 4712863,Mouhamed Gueye,ATL,Out,"Gueye (foot) is ready to begin on-court activities and will be re-evaluated in four weeks, Brad Rowland of the Locked On Podcast Network reports.",2026-11-13
 3150844,Moritz Wagner,BKN,Out,"Wagner (knee) will not return to Wednesday's game against the Bucks, C.J. Holmes of the New York Daily News reports.",2026-11-26
 5279130,Nolan Traore,BKN,Out,"Traore will be re-evaluated in approximately 8-10 weeks due to a right hamstring strain, Michael Scotto of HoopsHype.com reports.",2026-11-23
-4351852,Mitchell Robinson,BOS,Out,"Robinson (illness) is out for Tuesday's game against Washington, Taylor Snow of the Celtics' official site reports.",2026-11-23
+4351852,Mitchell Robinson,BOS,Out,Robinson (illness) is questionable for Friday's game against the Hawks.,2026-11-26
 3032979,Dennis Schroder,CHA,Out,Schroder (hamstring) is out for Wednesday's game the Bulls.,2026-11-24
 3135045,Grayson Allen,CHA,Out,Allen (concussion) has been ruled out for Wednesday's game against Chicago.,2026-11-25
 5061575,Kon Knueppel,CHA,Out,Knueppel (hamstring) was diagnosed with a left hamstring strain Sunday and will be re-evaluated in four weeks.,2026-11-08
@@ -23,7 +23,7 @@ player_id,name,team,status,detail,date
 4432166,Cade Cunningham,DET,Day-To-Day,Cunningham (knee) is listed as out for Tuesday's game against Orlando.,2026-11-25
 3157465,Duncan Robinson,DET,Out,"Robinson (quadriceps) is considered day-to-day as he progresses in his rehab, Eric Vincent of ClutchPoints.com reports.",2026-11-24
 5258459,Ebuka Okorie,DET,Out,"The Pistons announced Tuesday that Okorie (oblique) will miss at least two weeks, per Eric Vincent of ClutchPoints.com.",2026-11-24
-4433621,Jalen Duren,DET,Out,"Duren (hamstring) is being assigned to the Motor City Cruise on Wednesday for practice as he ramps up for a return, Eric Vincent of ClutchPoints.com reports.",2026-11-24
+4433621,Jalen Duren,DET,Out,Detroit recalled Duren (hamstring) from the G League's Motor City Cruise on Wednesday.,2026-11-26
 2990962,Taurean Prince,DET,Out,"Prince underwent arthroscopic right knee surgery Nov. 18 and will be re-evaluated in four weeks, Eric Vincent of ClutchPoints.com reports.",2026-11-24
 6430,Jimmy Butler III,GS,Out,"Butler (knee) could return sometime between January and February as he continues recovering from a torn right ACL, Anthony Slater of ESPN reports.",2026-10-16
 3102531,Kristaps Porzingis,GS,Out,Porzingis announced on his social media that he's stepping away from basketball.,2026-11-06
@@ -62,6 +62,7 @@ player_id,name,team,status,detail,date
 4432823,Jaylin Williams,OKC,Out,Williams (back) is listed as out for Wednesday's game against Minnesota.,2026-11-24
 5159925,Nikola Topic,OKC,Out,Topic (hip) is listed as out for Wednesday's game versus Minnesota.,2026-11-24
 5061603,Thomas Sorber,OKC,Out,"Sorber underwent an arthroscopic knee procedure Tuesday to address inflammation at the patellofemoral joint in his right knee, and he's expected to return to on",2026-11-18
+4397204,Colin Castleton,ORL,Day-To-Day,"Castleton totaled five points (2-4 FG, 1-1 3Pt) and four rebounds in seven minutes during Tuesday's 132-116 preseason win over the Cavaliers.",2026-11-26
 5107251,Izaiyah Nelson,ORL,Out,"Head coach Sean Sweeney said Wednesday that Nelson (ankle) has been doing ""some on-court stuff,"" though Sweeney added that the work has been ""minimal,"" Jason Be",2026-11-18
 4065654,Jonathan Isaac,ORL,Out,Isaac (knee) is out for Sunday's game against the Wizards.,2026-11-21
 5214637,Noah Penda,ORL,Out,"Penda (hamstring) is making progress but remains without a timetable to return to game action, Jason Beede of the Orlando Sentinel reports.",2026-11-14
