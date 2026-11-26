@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-26T04:07+00:00",
- "odds_pulled_utc": "2026-11-26T04:06Z",
+ "generated_utc": "2026-11-26T11:36+00:00",
+ "odds_pulled_utc": "2026-11-26T11:36Z",
  "stats_pulled_utc": "2026-11-26T04:06+00:00",
  "slates": [
   {
@@ -82,6 +82,16 @@
    "games": 16,
    "plays": 0,
    "leans": 0
+  },
+  {
+   "key": "2026_wk13",
+   "season": 2026,
+   "week": 13,
+   "label": "Week 13",
+   "first_day": "2026-12-03",
+   "games": 1,
+   "plays": 0,
+   "leans": 0
   }
  ],
  "flag_record": {
@@ -90,7 +100,7 @@
    "avg_clv": 0.4,
    "beat_close": 13,
    "lost_close": 17,
-   "w": 19,
+   "w": 20,
    "l": 25,
    "p": 0
   },
