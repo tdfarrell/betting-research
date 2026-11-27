@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-27T19:26+00:00",
- "odds_pulled_utc": "2026-11-27T19:26Z",
+ "generated_utc": "2026-11-27T21:42+00:00",
+ "odds_pulled_utc": "2026-11-27T21:42Z",
  "stats_pulled_utc": "2026-11-27T19:26+00:00",
  "slates": [
   {
@@ -96,9 +96,9 @@
  ],
  "flag_record": {
   "TARGET_side": {
-   "n": 47,
-   "avg_clv": 0.38,
-   "beat_close": 13,
+   "n": 48,
+   "avg_clv": 0.44,
+   "beat_close": 14,
    "lost_close": 17,
    "w": 20,
    "l": 26,

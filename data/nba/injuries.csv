@@ -18,7 +18,7 @@ player_id,name,team,status,detail,date
 4432158,Evan Mobley,CLE,Out,"Mobley will receive treatment and participate in rehab after the team confirmed a diagnosis of a right great toe sprain, and he'll be re-evaluated in the next 7",2026-11-16
 5106268,Nae'Qwan Tomlin,CLE,Out,Tomlin (back) will remain on the inactive list for Wednesday's game against the Grizzlies.,2026-11-17
 4683688,Dereck Lively II,DAL,Out,Lively (foot) is out for Friday's game against the Suns.,2026-11-26
-6442,Kyrie Irving,DAL,Day-To-Day,"Irving contributed 11 points (5-19 FG, 1-8 3Pt), six assists, five rebounds, one block and one steal across 34 minutes during Tuesday's 120-101 win over the Nug",2026-11-27
+6442,Kyrie Irving,DAL,Day-To-Day,Irving (knee) is listed as questionable for Friday's game against the Suns due to left knee injury management.,2026-11-27
 5279129,Sergio de Larrea,DAL,Out,De Larrea (knee) is out for Friday's game against the Suns.,2026-11-26
 5148538,Tarik Biberovic,DAL,Out,Biberovic (heel) is out for Friday's game against the Suns.,2026-11-26
 5106040,Tobi Lawal,DAL,Out,Lawal (groin) is out for Friday's game against the Suns.,2026-11-27
@@ -67,9 +67,11 @@ player_id,name,team,status,detail,date
 4432823,Jaylin Williams,OKC,Out,Williams (back) is listed as out for Wednesday's game against Minnesota.,2026-11-24
 5159925,Nikola Topic,OKC,Out,Topic (hip) is listed as out for Wednesday's game versus Minnesota.,2026-11-24
 5061603,Thomas Sorber,OKC,Out,"Sorber underwent an arthroscopic knee procedure Tuesday to address inflammation at the patellofemoral joint in his right knee, and he's expected to return to on",2026-11-18
+4712849,Anthony Black,ORL,Day-To-Day,Black (back) is questionable for Saturday's game against the Wizards.,2026-11-27
 4397204,Colin Castleton,ORL,Day-To-Day,"Castleton totaled five points (2-4 FG, 1-1 3Pt) and four rebounds in seven minutes during Tuesday's 132-116 preseason win over the Cavaliers.",2026-11-26
 5107251,Izaiyah Nelson,ORL,Out,"Head coach Sean Sweeney said Wednesday that Nelson (ankle) has been doing ""some on-court stuff,"" though Sweeney added that the work has been ""minimal,"" Jason Be",2026-11-18
 4065654,Jonathan Isaac,ORL,Out,Isaac (knee) is out for Sunday's game against the Wizards.,2026-11-21
+4397140,Kevin Porter Jr.,ORL,Out,Porter won't play Saturday against the Wizards as he's still in the process of getting up to speed on his conditioning.,2026-11-27
 5214637,Noah Penda,ORL,Out,"Penda (hamstring) is making progress but remains without a timetable to return to game action, Jason Beede of the Orlando Sentinel reports.",2026-11-14
 4432573,Paolo Banchero,ORL,Out,"Banchero is expected to be sidelined for the next four-to-six weeks due to a right high-ankle sprain, Shams Charania of ESPN reports.",2026-10-24
 4871141,Ariel Hukporti,PHI,Out,"Hukporti has sustained a season-ending ruptured right Achilles tendon, per Shams Charania of ESPN.",2026-10-06
