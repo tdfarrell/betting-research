@@ -27576,6 +27576,30 @@ season,week,game_id,season_type,team,opp,player_id,name,position,headshot,attemp
 2026,12,2026_12_CHI_DET,REG,DET,CHI,00-0039139,Jahmyr Gibbs,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/cursejnmmp1i9hnxihkj",0,0,0,0,0,0,21,205,3,5,5,47,0,0.139,0.032,1,5,2,0,53,0.75
 2026,12,2026_12_CHI_DET,REG,DET,CHI,00-0039364,Sione Vaki,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/abqcluf2gbejhiyjjtoz",0,0,0,0,0,0,6,19,0,3,2,-4,0,0.083,-0.012,1,0,0,0,18,0.25
 2026,12,2026_12_CHI_DET,REG,DET,CHI,00-0040669,Isaac TeSlaa,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ducfhbiy2a8loytcjymn",0,0,0,0,0,0,0,0,0,1,0,0,0,0.028,0.017,1,0,0,0,42,0.59
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0033881,Evan Engram,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nucl2dxmpvhlywhyro8o",0,0,0,0,0,0,0,0,0,2,0,0,0,0.05,0.021,0,0,0,0,38,0.54
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0034348,Courtland Sutton,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kqwmqcrlrwmqcvfuguhs",0,0,0,0,0,0,0,0,0,8,1,4,0,0.2,0.452,0,0,0,0,50,0.7
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0036422,Adam Trautman,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/bqsgkwkfolczyrxmdp1j",0,0,0,0,0,0,0,0,0,2,2,17,0,0.05,0.012,0,0,0,0,38,0.54
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0036613,Jaylen Waddle,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/gkh7m1jedon9mwn5jlf1",0,0,0,0,0,0,0,0,0,8,5,53,0,0.2,0.336,0,0,0,0,47,0.66
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0036727,Adam Prentice,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xuvyqidnso9ga1dfefoy",0,0,0,0,0,0,1,4,0,0,0,0,0,0,0,0,0,0,0,9,0.13
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0037085,Tyler Badie,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/ghhul5piv9vzeih6atsj",0,0,0,0,0,0,1,11,0,0,0,0,0,0,0,0,0,0,0,14,0.2
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0038783,Nate Adkins,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/hedaw0ksq5qdzp9uhe3w",0,0,0,0,0,0,0,0,0,2,1,6,0,0.05,0.041,0,0,0,0,26,0.37
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0038976,Marvin Mims Jr.,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zbdjtph5xplbf4yocz0l",0,0,0,0,0,0,1,-2,0,0,0,0,0,0,0,0,0,0,0,12,0.17
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0039703,Cody Schrader,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/snrwsjepuvkatdjjokp8",0,0,0,0,0,0,7,27,0,0,0,0,0,0,0,0,0,0,0,7,0.1
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0039732,Bo Nix,QB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/zvo9xatffmqn9lnukpgk",40,22,169,0,2,3,1,7,0,0,0,0,0,0,0,0,0,0,1,71,1.0
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0039868,Troy Franklin,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/wgfbgxjntyqzojpizgaj",0,0,0,0,0,0,0,0,0,1,1,1,0,0.025,-0.025,0,0,0,0,20,0.28
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0040134,Pat Bryant,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/n91hznzkfpftxhqt1qd9",0,0,0,0,0,0,0,0,0,7,4,42,0,0.175,0.29,1,0,0,0,42,0.59
+2026,12,2026_12_DEN_PIT,REG,DEN,PIT,00-0041496,Jonah Coleman,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/qbauucaxakkhtxihuvmr",0,0,0,0,0,0,15,26,0,10,8,46,0,0.25,-0.129,0,0,0,0,47,0.66
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0034771,Mason Rudolph,QB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/oadtxde6hxz1jgrs618o",15,9,142,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,2,48,1.0
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0035640,DK Metcalf,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/kxql4sjfelubhxawu2zh",0,0,0,0,0,0,0,0,0,4,3,36,1,0.308,0.275,0,0,0,0,38,0.79
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0036139,Rico Dowdle,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/mx2bxccuzmdvzbksypws",0,0,0,0,0,0,11,71,0,1,1,3,0,0.077,0,0,1,0,0,18,0.38
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0036252,Michael Pittman,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/q1ythn05kwcmdr4mwzll",0,0,0,0,0,0,0,0,0,2,1,7,0,0.154,0.198,0,0,0,0,18,0.38
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0036894,Pat Freiermuth,TE,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/pyrdsypgggjshiaygkr7",0,0,0,0,0,0,0,0,0,1,1,1,0,0.077,-0.018,1,0,0,0,36,0.75
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0037228,Jaylen Warren,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/dkiteytgnxar1mpaxcxv",0,0,0,0,0,0,20,46,0,2,1,0,0,0.154,-0.018,0,0,0,0,32,0.67
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0038409,Lew Nichols III,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/plqg1yngo8vvs8ths7aw",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0039739,Roman Wilson,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/xuhjoscmhmmsutbvfmrs",0,0,0,0,0,0,0,0,0,1,1,37,0,0.077,0.216,0,0,0,0,5,0.1
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0040618,Max Hurleman,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/axybwbw7inp1vu7xxf0t",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0041398,Riley Nowakowski,RB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/nhyd8plaetjoosbq1btb",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,0.19
+2026,12,2026_12_DEN_PIT,REG,PIT,DEN,00-0041489,Germie Bernard,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/rsbtypbsvxux94vokb5q",0,0,0,0,0,0,0,0,0,2,1,58,0,0.154,0.216,0,0,0,0,37,0.77
 2026,12,2026_12_GB_LA,REG,GB,LA,00-0036264,Jordan Love,QB,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/thz8stjkbjwddxqnozi5",29,17,198,1,2,1,1,7,0,0,0,0,0,0,0,0,0,0,2,46,1.0
 2026,12,2026_12_GB_LA,REG,GB,LA,00-0037091,Bo Melton,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/d7hxvsyeufobjykcxhls",0,0,0,0,0,0,1,3,0,3,2,20,0,0.103,0.158,0,0,0,0,17,0.37
 2026,12,2026_12_GB_LA,REG,GB,LA,00-0038090,Skyy Moore,WR,"https://static.www.nfl.com/image/upload/f_auto,q_auto/league/id9k0aylvgyq8lulabe3",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0.02
