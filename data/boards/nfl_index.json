@@ -1,6 +1,6 @@
 {
- "generated_utc": "2026-11-27T21:42+00:00",
- "odds_pulled_utc": "2026-11-27T21:42Z",
+ "generated_utc": "2026-11-28T03:37+00:00",
+ "odds_pulled_utc": "2026-11-28T03:36Z",
  "stats_pulled_utc": "2026-11-27T19:26+00:00",
  "slates": [
   {
@@ -101,7 +101,7 @@
    "beat_close": 14,
    "lost_close": 17,
    "w": 20,
-   "l": 26,
+   "l": 27,
    "p": 1
   },
   "TARGET_total": {
